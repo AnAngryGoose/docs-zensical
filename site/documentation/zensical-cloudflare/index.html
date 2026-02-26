@@ -12,36 +12,36 @@
         <meta name="author" content="goose">
       
       
-        <link rel="canonical" href="https://docs.vanth.me/Linux/fileystem/snapraid/">
+        <link rel="canonical" href="https://docs.vanth.me/documentation/zensical-cloudflare/">
       
       
-        <link rel="prev" href="../mergerfs/">
+        <link rel="prev" href="../markdown/">
       
       
-        <link rel="next" href="../../../ansible/1ansible/">
+        <link rel="next" href="../../media%20server/gluetun/">
       
       
         
       
       
-      <link rel="icon" href="../../../lucide/server">
+      <link rel="icon" href="../../lucide/server">
       <meta name="generator" content="zensical-0.0.24">
     
     
       
-        <title>SnapRAID Configuration Guide - Documentation</title>
+        <title>Hosting Zensical on Cloudflare Pages - Documentation</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.28978c9b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.28978c9b.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -60,7 +60,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#snapraid-configuration-guide" class="md-skip">
+        <a href="#hosting-zensical-on-cloudflare-pages" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SnapRAID Configuration Guide
+              Hosting Zensical on Cloudflare Pages
             
           </span>
         </div>
@@ -201,7 +201,21 @@
   
   
   
-    
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  Get started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
   
   
     
@@ -210,13 +224,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../1install/nassetup/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../Linux/filesystem/management/" class="md-tabs__link">
           
   
   Linux
@@ -238,7 +250,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../ansible/1ansible/" class="md-tabs__link">
+        <a href="../../ansible/1ansible/" class="md-tabs__link">
           
   
   Ansible
@@ -257,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../docker/docker/" class="md-tabs__link">
+        <a href="../../docker/docker/" class="md-tabs__link">
           
   
   Docker
@@ -272,14 +284,16 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../docs/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../markdown/" class="md-tabs__link">
           
   
-  Docs
+  Documentation
 
         </a>
       </li>
@@ -295,7 +309,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../media%20server/gluetun/" class="md-tabs__link">
+        <a href="../../media%20server/gluetun/" class="md-tabs__link">
           
   
   Media server
@@ -321,7 +335,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../networking/Nginx%20Proxy%20Manager/overview/" class="md-tabs__link">
+        <a href="../../networking/Nginx%20Proxy%20Manager/overview/" class="md-tabs__link">
           
   
   Networking
@@ -342,14 +356,24 @@
   
     
     
+      
+  
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
-        <a href="../../../services/git/" class="md-tabs__link">
+        <a href="../../services/backups/" class="md-tabs__link">
           
   
   Services
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -376,7 +400,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -403,10 +427,37 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+  
+  <span class="md-ellipsis">
     
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
   
   
   
+  
     
     
       
@@ -418,22 +469,21 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -451,8 +501,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -475,35 +525,34 @@
       
         
       
+        
+      
     
     
     
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
         
           
-          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    1install
+    Filesystem
   
 
     
@@ -514,141 +563,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    1install
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../1install/nassetup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Server Setup: NAS
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../1install/pcsetup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Server Setup: App Server
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fileystem
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Fileystem
+    Filesystem
   
 
           </label>
@@ -661,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../management/" class="md-nav__link">
+      <a href="../../Linux/filesystem/management/" class="md-nav__link">
         
   
   
@@ -689,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mergerfs/" class="md-nav__link">
+      <a href="../../Linux/filesystem/mergerfs/" class="md-nav__link">
         
   
   
@@ -714,37 +634,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SnapRAID Configuration Guide
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Linux/filesystem/snapraid/" class="md-nav__link">
         
   
   
@@ -760,211 +653,130 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
-        
+    </li>
+  
 
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+              
+            
+              
+                
+  
   
   
   
     
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    
       
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#the-parity-concept" class="md-nav__link">
-    <span class="md-ellipsis">
       
-        The Parity Concept
-      
-    </span>
-  </a>
-  
-</li>
         
-      </ul>
-    </nav>
-  
-</li>
       
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
+    
+    
+    
       
-        Installation
       
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#compile-from-source" class="md-nav__link">
-    <span class="md-ellipsis">
       
-        Compile from Source
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
-    </span>
-  </a>
-  
-</li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#key-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Components
-      
-    </span>
-  </a>
-  
-</li>
+          
         
-          <li class="md-nav__item">
-  <a href="#configuration-example-etcsnapraidconf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration Example (/etc/snapraid.conf)
-      
-    </span>
-  </a>
-  
-</li>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
         
-      </ul>
-    </nav>
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage-maintenance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage &amp; Maintenance
-      
-    </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Usage &amp; Maintenance">
-      <ul class="md-nav__list">
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          <li class="md-nav__item">
-  <a href="#syncing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syncing
-      
-    </span>
-  </a>
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
   
-</li>
+    Install
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/install/nassetup/" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#scrubbing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scrubbing
-      
-    </span>
-  </a>
   
-</li>
+  
+  <span class="md-ellipsis">
+    
+  
+    Server Setup: NAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/install/pcsetup/" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#automation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Automation
-      
-    </span>
-  </a>
   
-</li>
-        
-      </ul>
-    </nav>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recovery
-      
-    </span>
-  </a>
+  <span class="md-ellipsis">
+    
   
-    <nav class="md-nav" aria-label="Recovery">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#undeleting-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Undeleting Files
-      
-    </span>
-  </a>
+    Server Setup: App Server
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recovering-a-failed-drive" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recovering a Failed Drive
-      
-    </span>
-  </a>
+
+    
+  </span>
   
-</li>
-        
-      </ul>
-    </nav>
   
-</li>
-      
-    </ul>
-  
-</nav>
-      
+
+      </a>
     </li>
   
 
@@ -1019,10 +831,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -1040,8 +852,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1058,7 +870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/1ansible/" class="md-nav__link">
+      <a href="../../ansible/1ansible/" class="md-nav__link">
         
   
   
@@ -1086,7 +898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/2ansibleinstallation/" class="md-nav__link">
+      <a href="../../ansible/2ansibleinstallation/" class="md-nav__link">
         
   
   
@@ -1114,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/3ansibleinventory/" class="md-nav__link">
+      <a href="../../ansible/3ansibleinventory/" class="md-nav__link">
         
   
   
@@ -1142,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/4ansiblecommands/" class="md-nav__link">
+      <a href="../../ansible/4ansiblecommands/" class="md-nav__link">
         
   
   
@@ -1170,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/5ansibleplaybook/" class="md-nav__link">
+      <a href="../../ansible/5ansibleplaybook/" class="md-nav__link">
         
   
   
@@ -1228,10 +1040,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -1249,8 +1061,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1267,7 +1079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker/" class="md-nav__link">
+      <a href="../../docker/docker/" class="md-nav__link">
         
   
   
@@ -1297,7 +1109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/dockerpostinstall/" class="md-nav__link">
+      <a href="../../docker/dockerpostinstall/" class="md-nav__link">
         
   
   
@@ -1325,7 +1137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/z-cheatsheet/" class="md-nav__link">
+      <a href="../../docker/z-cheatsheet/" class="md-nav__link">
         
   
   
@@ -1357,48 +1169,44 @@
       
   
   
+    
+  
   
   
     
     
       
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../docs/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
   
-  
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
   
   <span class="md-ellipsis">
     
   
-    Docs
+    Documentation
   
 
     
@@ -1406,27 +1214,19 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Docs
+    Documentation
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
             
               
                 
@@ -1435,7 +1235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/markdown/" class="md-nav__link">
+      <a href="../markdown/" class="md-nav__link">
         
   
   
@@ -1462,10 +1262,39 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../docs/zensical-cloudflare/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.509 16.845c.147-.507.09-.971-.155-1.316-.225-.316-.605-.499-1.062-.52l-8.66-.113a.16.16 0 0 1-.133-.07.2.2 0 0 1-.02-.156.24.24 0 0 1 .203-.156l8.736-.113c1.035-.049 2.16-.886 2.554-1.913l.499-1.302a.27.27 0 0 0 .014-.168 5.689 5.689 0 0 0-10.937-.584 2.58 2.58 0 0 0-1.794-.498 2.56 2.56 0 0 0-2.223 3.18A3.634 3.634 0 0 0 0 16.751q.002.264.035.527a.174.174 0 0 0 .17.148h15.98c.091 0 .176-.065.204-.155zm2.757-5.564c-.077 0-.161 0-.239.011-.056 0-.105.042-.127.098l-.337 1.174c-.148.507-.092.971.154 1.317.225.316.605.498 1.062.52l1.844.113c.056 0 .105.026.133.07a.2.2 0 0 1 .021.156.24.24 0 0 1-.204.156l-1.92.112c-1.042.049-2.159.887-2.553 1.914l-.141.358c-.028.072.021.142.099.142h6.597a.174.174 0 0 0 .17-.126c.111-.408.175-.837.175-1.28a4.74 4.74 0 0 0-4.734-4.727"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Hosting Zensical on Cloudflare Pages
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1483,6 +1312,66 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-init-your-fresh-zensical-project-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Init your fresh Zensical project locally
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Init your fresh Zensical project locally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-connect-to-cloudflare-pages-one-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Connect to Cloudflare Pages (one-time)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-your-custom-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Add your custom domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1527,10 +1416,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1548,8 +1437,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1566,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media%20server/gluetun/" class="md-nav__link">
+      <a href="../../media%20server/gluetun/" class="md-nav__link">
         
   
   
@@ -1596,7 +1485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media%20server/qbittorrent/" class="md-nav__link">
+      <a href="../../media%20server/qbittorrent/" class="md-nav__link">
         
   
   
@@ -1626,7 +1515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media%20server/radarr/" class="md-nav__link">
+      <a href="../../media%20server/radarr/" class="md-nav__link">
         
   
   
@@ -1656,7 +1545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media%20server/sonarr/" class="md-nav__link">
+      <a href="../../media%20server/sonarr/" class="md-nav__link">
         
   
   
@@ -1718,10 +1607,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -1739,8 +1628,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1778,10 +1667,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
         
           
-          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
             
   
   
@@ -1799,8 +1688,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1817,7 +1706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/Nginx%20Proxy%20Manager/overview/" class="md-nav__link">
+      <a href="../../networking/Nginx%20Proxy%20Manager/overview/" class="md-nav__link">
         
   
   
@@ -1845,7 +1734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/Nginx%20Proxy%20Manager/pihole/" class="md-nav__link">
+      <a href="../../networking/Nginx%20Proxy%20Manager/pihole/" class="md-nav__link">
         
   
   
@@ -1900,10 +1789,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
             
   
   
@@ -1921,8 +1810,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1939,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/cloudflare/tunnels/" class="md-nav__link">
+      <a href="../../networking/cloudflare/tunnels/" class="md-nav__link">
         
   
   
@@ -1998,10 +1887,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
             
   
   
@@ -2019,8 +1908,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2037,7 +1926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/opnsense/opnsense/" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsense/" class="md-nav__link">
         
   
   
@@ -2065,7 +1954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/opnsense/opnsenseadguard/" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsenseadguard/" class="md-nav__link">
         
   
   
@@ -2093,7 +1982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/opnsense/opnsensetailscale/" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsensetailscale/" class="md-nav__link">
         
   
   
@@ -2150,10 +2039,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
             
   
   
@@ -2171,8 +2060,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2189,7 +2078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/vlan/vlan/" class="md-nav__link">
+      <a href="../../networking/vlan/vlan/" class="md-nav__link">
         
   
   
@@ -2217,7 +2106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/vlan/vlandhcp/" class="md-nav__link">
+      <a href="../../networking/vlan/vlandhcp/" class="md-nav__link">
         
   
   
@@ -2297,10 +2186,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -2318,8 +2207,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2335,36 +2224,12 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../services/git/" class="md-nav__link">
+    
+    
+      
         
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git Reference &amp; Version Control
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
+          
+        
       
         
       
@@ -2387,12 +2252,15 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1" >
         
           
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../services/backups/" class="md-nav__link ">
+              
   
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-up-from-line" viewBox="0 0 24 24"><path d="m18 9-6-6-6 6M12 3v14M5 21h14"/></svg>
   
   <span class="md-ellipsis">
     
@@ -2405,11 +2273,17 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2420,13 +2294,15 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../../services/backups/backrest/" class="md-nav__link">
+      <a href="../../services/backups/backrest/" class="md-nav__link">
         
   
   
@@ -2454,7 +2330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/backups/backrestssh/" class="md-nav__link">
+      <a href="../../services/backups/backrestssh/" class="md-nav__link">
         
   
   
@@ -2482,7 +2358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/backups/restic/" class="md-nav__link">
+      <a href="../../services/backups/restic/" class="md-nav__link">
         
   
   
@@ -2490,6 +2366,113 @@
     
   
     Backrest - Restic with WebUI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../services/git/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Git
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/git/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Reference &amp; Version Control
   
 
     
@@ -2537,10 +2520,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
         
           
-          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
             
   
   
@@ -2558,8 +2541,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2576,7 +2559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/homeassisstant/homeassisstant/" class="md-nav__link">
+      <a href="../../services/homeassisstant/homeassisstant/" class="md-nav__link">
         
   
   
@@ -2633,10 +2616,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
         
           
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
             
   
   
@@ -2654,8 +2637,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2672,7 +2655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/immich/immich/" class="md-nav__link">
+      <a href="../../services/immich/immich/" class="md-nav__link">
         
   
   
@@ -2700,7 +2683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/immich/takeoutimport/" class="md-nav__link">
+      <a href="../../services/immich/takeoutimport/" class="md-nav__link">
         
   
   
@@ -2755,10 +2738,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
         
           
-          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
             
   
   
@@ -2776,8 +2759,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2794,7 +2777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/nextcloud/nextcloud/" class="md-nav__link">
+      <a href="../../services/nextcloud/nextcloud/" class="md-nav__link">
         
   
   
@@ -2849,10 +2832,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6" >
         
           
-          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
             
   
   
@@ -2870,8 +2853,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2888,7 +2871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/ollama/ollama/" class="md-nav__link">
+      <a href="../../services/ollama/ollama/" class="md-nav__link">
         
   
   
@@ -2943,10 +2926,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_7" >
         
           
-          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
             
   
   
@@ -2964,8 +2947,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2982,7 +2965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/omada/omada/" class="md-nav__link">
+      <a href="../../services/omada/omada/" class="md-nav__link">
         
   
   
@@ -3037,10 +3020,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_8" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8" >
         
           
-          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_8" id="__nav_8_8_label" tabindex="0">
             
   
   
@@ -3058,8 +3041,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3076,7 +3059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/pihole/pihole/" class="md-nav__link">
+      <a href="../../services/pihole/pihole/" class="md-nav__link">
         
   
   
@@ -3131,10 +3114,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_9" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9" >
         
           
-          <label class="md-nav__link" for="__nav_7_9" id="__nav_7_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_9" id="__nav_8_9_label" tabindex="0">
             
   
   
@@ -3152,8 +3135,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3170,7 +3153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/tailscale/tailscale/" class="md-nav__link">
+      <a href="../../services/tailscale/tailscale/" class="md-nav__link">
         
   
   
@@ -3227,10 +3210,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_10" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_10" >
         
           
-          <label class="md-nav__link" for="__nav_7_10" id="__nav_7_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_10" id="__nav_8_10_label" tabindex="0">
             
   
   
@@ -3248,8 +3231,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3266,7 +3249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/utilities/convertx/" class="md-nav__link">
+      <a href="../../services/utilities/convertx/" class="md-nav__link">
         
   
   
@@ -3294,7 +3277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/utilities/obslivesync/" class="md-nav__link">
+      <a href="../../services/utilities/obslivesync/" class="md-nav__link">
         
   
   
@@ -3358,78 +3341,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#1-init-your-fresh-zensical-project-locally" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        1. Init your fresh Zensical project locally
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+    <nav class="md-nav" aria-label="1. Init your fresh Zensical project locally">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-parity-concept" class="md-nav__link">
+  <a href="#2-connect-to-cloudflare-pages-one-time" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Parity Concept
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#compile-from-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compile from Source
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Components
+        2. Connect to Cloudflare Pages (one-time)
       
     </span>
   </a>
@@ -3437,99 +3364,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configuration-example-etcsnapraidconf" class="md-nav__link">
+  <a href="#3-add-your-custom-domain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuration Example (/etc/snapraid.conf)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage-maintenance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage &amp; Maintenance
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage &amp; Maintenance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#syncing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syncing
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scrubbing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scrubbing
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#automation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Automation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recovery
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Recovery">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#undeleting-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Undeleting Files
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recovering-a-failed-drive" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recovering a Failed Drive
+        3. Add your custom domain
       
     </span>
   </a>
@@ -3556,36 +3394,27 @@
 
 
 
+  
+
 
   <nav class="md-path" aria-label="Navigation" >
     <ol class="md-path__list">
       
-      
         
   
   
-    
-    
-      
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../../1install/nassetup/" class="md-path__link">
-          
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
   <span class="md-ellipsis">
-    Linux
+    Get started
   </span>
 
-        </a>
-      </li>
-    
+      </a>
+    </li>
   
 
-    
-  
-
+      
       
         
   
@@ -3593,10 +3422,10 @@
     
     
       <li class="md-path__item">
-        <a href="../management/" class="md-path__link">
+        <a href="../markdown/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Fileystem
+    Documentation
   </span>
 
         </a>
@@ -3613,7 +3442,7 @@
                 
                   
   
-    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/Linux/fileystem/snapraid.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/documentation/zensical-cloudflare.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
@@ -3621,151 +3450,27 @@
   
 
 
-<h1 id="snapraid-configuration-guide">SnapRAID Configuration Guide<a class="headerlink" href="#snapraid-configuration-guide" title="Permanent link">&para;</a></h1>
-<p><a href="https://www.snapraid.it/">SnapRAID Official Docs</a></p>
-<hr />
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p><strong>SnapRAID</strong> is a backup program for disk arrays. It stores parity information of the data to recover from up to six disk failures.</p>
-<p>Unlike traditional RAID 5 or 6, SnapRAID is not real-time; it is a snapshot-based system.</p>
-<ul>
-<li>Provide fault tolerance to protect against (inevitable) hard drive failure</li>
-<li>Checksum files to guard against bitrot</li>
-<li>Support hard drives of differing / mismatched sizes</li>
-<li>Enable incremental upgrading of hard drives in batches as small as one</li>
-<li>Each drive should have a separately readable filesystem with no striping of data</li>
-</ul>
-<h3 id="the-parity-concept">The Parity Concept<a class="headerlink" href="#the-parity-concept" title="Permanent link">&para;</a></h3>
-<p>SnapRAID requires dedicating specific disks to "Parity."</p>
-<ul>
-<li><strong>Parity Level:</strong> One parity disk protects against one drive failure. Two parity disks protect against two failures, and so on.</li>
-<li><strong>Sizing:</strong> The parity disk <strong>must</strong> be equal to or larger than the largest single data disk in the array.</li>
-<li><strong>Storage:</strong> Parity disks contain only the large <code>.parity</code> file; they cannot be used for standard data storage.</li>
-</ul>
-<hr />
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>To ensure the latest features and compatibility, SnapRAID is often compiled from source.</p>
-<h3 id="compile-from-source">Compile from Source<a class="headerlink" href="#compile-from-source" title="Permanent link">&para;</a></h3>
-<p>Run the following commands to download, compile, and install version 13.0.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Download source</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>https://github.com/amadvance/snapraid/releases/download/v13.0/snapraid-13.0.tar.gz
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Extract archive</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>tar<span class="w"> </span>xzvf<span class="w"> </span>snapraid-13.0.tar.gz
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Enter directory</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">cd</span><span class="w"> </span>snapraid
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Compile and Install</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>./autogen.sh
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>./configure
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>make
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>make<span class="w"> </span>check
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># Verify installation</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>snapraid<span class="w"> </span>-V
+<h1 id="hosting-zensical-on-cloudflare-pages">Hosting Zensical on Cloudflare Pages<a class="headerlink" href="#hosting-zensical-on-cloudflare-pages" title="Permanent link">&para;</a></h1>
+<h2 id="1-init-your-fresh-zensical-project-locally">1. Init your fresh Zensical project locally<a class="headerlink" href="#1-init-your-fresh-zensical-project-locally" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>zensical
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>zensical<span class="w"> </span>new<span class="w"> </span>my-docs
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">cd</span><span class="w"> </span>my-docs
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git<span class="w"> </span>init
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/yourusername/my-docs.git
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
 </span></code></pre></div>
-<hr />
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>SnapRAID is configured via a single text file located at <code>/etc/snapraid.conf</code>. This file defines the parity volumes, content files, and data disks.</p>
-<h3 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h3>
+<h3 id="2-connect-to-cloudflare-pages-one-time">2. Connect to Cloudflare Pages (one-time)<a class="headerlink" href="#2-connect-to-cloudflare-pages-one-time" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Parity Files:</strong> The destination for redundancy data.</li>
-<li><strong>Content Files:</strong> These act as the "index" or "database" of the array. They contain checksums and file maps.</li>
-<li>
-<p><em>Critical:</em> Multiple copies should be stored on separate physical disks (e.g., one on the boot drive, others on data drives) to ensure the index survives a disk failure.</p>
-</li>
-<li>
-<p><strong>Data Disks:</strong> The actual storage drives containing the media/files to protect.</p>
-</li>
+<li>Cloudflare Dashboard → <strong>Workers &amp; Pages → Create application → Pages → Connect to Git</strong></li>
+<li>Authorize GitHub, select your repo</li>
+<li>Set build settings:</li>
+<li><strong>Framework preset:</strong> None</li>
+<li><strong>Build command:</strong> <code>pip install zensical &amp;&amp; zensical build --clean</code></li>
+<li><strong>Build output directory:</strong> <code>site</code></li>
+<li>Click <strong>Save and Deploy</strong></li>
 </ol>
-<h3 id="configuration-example-etcsnapraidconf">Configuration Example (<code>/etc/snapraid.conf</code>)<a class="headerlink" href="#configuration-example-etcsnapraidconf" title="Permanent link">&para;</a></h3>
-<p>Create or edit the file using a text editor:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># --- Parity Location --- </span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># The parity file must be on the dedicated parity drive</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>parity<span class="w"> </span>/mnt/parity1/snapraid.parity<span class="w"> </span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># --- Content files ---</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Store copies on multiple physical drives for safety</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>content<span class="w"> </span>/var/snapraid/snapraid.content
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>content<span class="w"> </span>/mnt/disk1/snapraid.content
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>content<span class="w"> </span>/mnt/disk2/snapraid.content
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># --- Data Disks ---</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># Assign a name (d1, d2) and a mount point for each disk</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>data<span class="w"> </span>d1<span class="w"> </span>/mnt/disk1
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>data<span class="w"> </span>d2<span class="w"> </span>/mnt/disk2
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1"># --- Excludes ---</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="c1"># Prevent temporary files from breaking the sync</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>exclude<span class="w"> </span>*.unrecoverable
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>exclude<span class="w"> </span>/tmp/
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>exclude<span class="w"> </span>/lost+found/
-</span></code></pre></div>
-<hr />
-<h2 id="usage-maintenance">Usage &amp; Maintenance<a class="headerlink" href="#usage-maintenance" title="Permanent link">&para;</a></h2>
-<p>Because SnapRAID is snapshot-based, the array is not protected until a "sync" is performed.</p>
-<h3 id="syncing">Syncing<a class="headerlink" href="#syncing" title="Permanent link">&para;</a></h3>
-<p>Run the <code>sync</code> command to update the parity information. This reads data from the data disks and computes the parity.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>snapraid<span class="w"> </span>sync
-</span></code></pre></div>
-<ul>
-<li><strong>Note:</strong> The first sync may take several hours. Subsequent syncs only process changed data.</li>
-<li><strong>Interruptible:</strong> The process can be stopped (<code>Ctrl+C</code>) and resumed later.</li>
-</ul>
-<h3 id="scrubbing">Scrubbing<a class="headerlink" href="#scrubbing" title="Permanent link">&para;</a></h3>
-<p>Scrubbing checks the data and parity for silent corruption (bitrot).</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>snapraid<span class="w"> </span>scrub
-</span></code></pre></div>
-<ul>
-<li><strong>Default Behavior:</strong> Checks approximately 8% of the array that hasn't been scrubbed in the last 10 days.</li>
-<li><strong>Custom Plan:</strong> To check a specific percentage (e.g., 5%) of blocks older than 20 days:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>snapraid<span class="w"> </span>-p<span class="w"> </span><span class="m">5</span><span class="w"> </span>-o<span class="w"> </span><span class="m">20</span><span class="w"> </span>scrub
-</span></code></pre></div></li>
-</ul>
-<h3 id="automation">Automation<a class="headerlink" href="#automation" title="Permanent link">&para;</a></h3>
-<p>Since SnapRAID requires manual commands, it is highly recommended to automate these tasks using scripts. The <a href="https://github.com/auanasgheps/snapraid-aio-script?tab=readme-ov-file">SnapRAID AIO Script</a> is a popular community solution for automating syncs, scrubs, and monitoring.</p>
-<hr />
-<h2 id="recovery">Recovery<a class="headerlink" href="#recovery" title="Permanent link">&para;</a></h2>
-<h3 id="undeleting-files">Undeleting Files<a class="headerlink" href="#undeleting-files" title="Permanent link">&para;</a></h3>
-<p>If a file is accidentally deleted, SnapRAID can restore it to its previous state (like a backup).</p>
-<p><strong>Restore specific file:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>snapraid<span class="w"> </span>fix<span class="w"> </span>-f<span class="w"> </span>/path/to/file
-</span></code></pre></div>
-<p><strong>Restore specific directory:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>snapraid<span class="w"> </span>fix<span class="w"> </span>-f<span class="w"> </span>/path/to/directory/
-</span></code></pre></div>
-<p><strong>Restore only missing files:</strong>
-Use the <code>-m</code> flag to recover deleted files without overwriting existing changed files.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>snapraid<span class="w"> </span>fix<span class="w"> </span>-m<span class="w"> </span>-f<span class="w"> </span>/path/to/directory/
-</span></code></pre></div>
-<h3 id="recovering-a-failed-drive">Recovering a Failed Drive<a class="headerlink" href="#recovering-a-failed-drive" title="Permanent link">&para;</a></h3>
-<p>In the event of a total disk failure, follow this procedure strictly.</p>
-<p><strong>1. Halt Operations</strong>
-Disable any automated tasks (cron jobs, AIO scripts) and stop writing new data to the array.</p>
-<p><strong>2. Reconfigure</strong>
-Install the replacement disk and mount it. Edit <code>/etc/snapraid.conf</code> to point the failed disk identifier to the new mount point.</p>
-<ul>
-<li><em>Example:</em> Change <code>data d1 /mnt/failed_disk</code> to <code>data d1 /mnt/new_disk</code>.</li>
-</ul>
-<p><strong>3. Fix (Restore Data)</strong>
-Run the fix command targeting the specific disk identifier (<code>-d</code>). Log the output to a file on a different drive for review.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>snapraid<span class="w"> </span>-d<span class="w"> </span>d1<span class="w"> </span>-l<span class="w"> </span>fix.log<span class="w"> </span>fix
-</span></code></pre></div>
-<ul>
-<li><em>Note:</em> This process will read from all other disks to reconstruct the missing data. It runs at the speed of the slowest drive.</li>
-</ul>
-<p><strong>4. Review</strong>
-Check <code>fix.log</code> for "unrecoverable" errors. If files were modified since the last sync, they may not be fully recoverable.</p>
-<p><strong>5. Verification (Optional)</strong>
-Run a check on the restored disk to verify integrity.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>snapraid<span class="w"> </span>-d<span class="w"> </span>d1<span class="w"> </span>-a<span class="w"> </span>check
-</span></code></pre></div>
-<p><strong>6. Resync</strong>
-Once verified, run a standard sync to update the array status.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>snapraid<span class="w"> </span>sync
-</span></code></pre></div>
-<hr />
+<h3 id="3-add-your-custom-domain">3. Add your custom domain<a class="headerlink" href="#3-add-your-custom-domain" title="Permanent link">&para;</a></h3>
+<p>Once the first deploy succeeds, go to your Pages project → <strong>Custom domains → Set up a custom domain</strong> → enter <code>docs.mydomain.me</code>. Since your domain is already on Cloudflare, it adds the DNS record for you automatically.</p>
 
 
 
@@ -3774,6 +3479,9 @@ Once verified, run a standard sync to update the array status.</p>
 
 
 
+
+  
+  
 
 
 
@@ -3805,7 +3513,7 @@ Once verified, run a standard sync to update the array status.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../mergerfs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MergerFS Configuration Guide">
+          <a href="../markdown/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Markdown in 5min">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -3815,20 +3523,20 @@ Once verified, run a standard sync to update the array status.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                MergerFS Configuration Guide
+                Markdown in 5min
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../../ansible/1ansible/" class="md-footer__link md-footer__link--next" aria-label="Next: Ansible">
+          <a href="../../media%20server/gluetun/" class="md-footer__link md-footer__link--next" aria-label="Next: Gluetun - ProtonVPN + Qbittorrent">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Ansible
+                Gluetun - ProtonVPN + Qbittorrent
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -3871,10 +3579,10 @@ Once verified, run a standard sync to update the array status.</p>
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.16f8adc2.min.js"></script>
+      <script src="../../assets/javascripts/bundle.16f8adc2.min.js"></script>
       
     
   </body>

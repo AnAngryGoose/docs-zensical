@@ -31,7 +31,7 @@ site_author = "goose"
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-site_url = "https://docs.vanth.me"
+site_url = "https://docs.vanth.me/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
+        <loc>https://docs.vanth.me/</loc>
+      </url>
+      <url>
         <loc>https://docs.vanth.me/Linux/filesystem/management/</loc>
       </url>
       <url>
@@ -40,13 +43,10 @@
         <loc>https://docs.vanth.me/docker/z-cheatsheet/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/docs/</loc>
+        <loc>https://docs.vanth.me/documentation/markdown/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/docs/markdown/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/docs/zensical-cloudflare/</loc>
+        <loc>https://docs.vanth.me/documentation/zensical-cloudflare/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/media%20server/gluetun/</loc>

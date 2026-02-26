@@ -71,8 +71,7 @@ Copyright &copy; 2026 The authors
 # Section for configuring theme options
 # ----------------------------------------------------------------------------
 [project.theme]
-palette.accent = "deep orange"
-palette.primary = "deep orange"
+
 # change this to "classic" to use the traditional Material for MkDocs look.
 #variant = "classic"
 

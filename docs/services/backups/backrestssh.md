@@ -2,7 +2,7 @@
 
 ---
 
-### [Step 1: Create a Local Directory for SSH Config](https://garethgeorge.github.io/backrest/cookbooks/ssh-remote#step-1-create-a-local-directory-for-ssh-config)
+### Step 1: Create a Local Directory for SSH Config
 
 First, create a directory to store your SSH key and configuration files. This keeps your Backrest-related files organized.
 
@@ -10,7 +10,7 @@ First, create a directory to store your SSH key and configuration files. This ke
 mkdir -p ./backrest/ssh
 ```
 
-### [Step 2: Generate an SSH Key](https://garethgeorge.github.io/backrest/cookbooks/ssh-remote#step-2-generate-an-ssh-key)
+### Step 2: Generate an SSH Key
 
 Next, generate a new SSH key pair specifically for Backrest.
 
@@ -20,7 +20,7 @@ ssh-keygen -t ed25519 -f ./backrest/ssh/id_rsa -C "backrest-backup-key"
 
 When prompted for a passphrase, you can leave it empty by pressing Enter. Using a passphrase adds another layer of security but requires more complex setup to use with an automated tool like Backrest.
 
-### [Step 3: Copy the Public Key to Your Remote Server](https://garethgeorge.github.io/backrest/cookbooks/ssh-remote#step-3-copy-the-public-key-to-your-remote-server)
+### Step 3: Copy the Public Key to Your Remote Server
 
 Copy the public key to your remote server's `authorized_keys` file. The `ssh-copy-id` command is the easiest way to do this.
 
@@ -30,8 +30,7 @@ ssh-copy-id -i ./backrest/ssh/id_rsa.pub your-username@example.com
 ```
 
 
-### [Step 4: Create the SSH Config and Known Hosts Files](https://garethgeorge.github.io/backrest/cookbooks/ssh-remote#step-4-create-the-ssh-config-and-known-hosts-files)
-
+### Step 4: Create the SSH Config and Known Hosts Files
 Create an SSH configuration file that Restic (inside the container) will use to connect.
 
 ```back
@@ -58,7 +57,7 @@ Copy to clipboard
 -   **`IdentityFile`**: This **must be `/root/.ssh/id_rsa`**. This is the path _inside_ the container where the key will be mounted.
 -   **`Port`**: The SSH port of your remote server.
 
-### [Step 5: Set Secure Permissions](https://garethgeorge.github.io/backrest/cookbooks/ssh-remote#step-5-set-secure-permissions)
+### Step 5: Set Secure Permissions
 
 SSH requires that key and configuration files have strict permissions. These permissions need to be set as **root**. To ensure this is read properly via backrest, you can run them via the container itself 
 
@@ -81,7 +80,7 @@ Fix File Permissions: Ensure the config and keys are read-only for the owner.
 docker exec -u 0 backrest chmod 600 /root/.ssh/config /root/.ssh/id_rsa
 ```
 
-### [Step 6: Mount the SSH Directory in Docker Compose](https://garethgeorge.github.io/backrest/cookbooks/ssh-remote#step-6-mount-the-ssh-directory-in-docker-compose)
+### Step 6: Mount the SSH Directory in Docker Compose
 
 Now, edit your `docker-compose.yml` to mount the `backrest/ssh` directory into the container. We mount it as read-only (`:ro`) for better security.
 
@@ -110,8 +109,7 @@ docker compose up -d --force-recreate
 ```
 
 
-### [Step 7: Add the Repository in Backrest](https://garethgeorge.github.io/backrest/cookbooks/ssh-remote#step-7-add-the-repository-in-backrest)
-
+### Step 7: Add the Repository in Backrest
 !!!important
     Ensure your user has write permissions to the **destination** repo. 
 
@@ -123,7 +121,7 @@ docker compose up -d --force-recreate
 4.  Enter a secure **Password** to encrypt your backup data. This is a new password for the repository itself, not your SSH key password.
 5.  Click **Initialize Repository**.
 
-## [Troubleshooting](https://garethgeorge.github.io/backrest/cookbooks/ssh-remote#troubleshooting)
+## Troubleshooting
 
 -  **Connection Errors:** First, test your SSH connection from the host machine to isolate issues. This command uses the exact same configuration files that the container will use. Running this via the container itself verifies access. Official docs have this run locally, which did not work for me. 
 

@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
-        <loc>https://docs.vanth.me/</loc>
+        <loc>https://docs.vanth.me/Linux/filesystem/management/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/markdown/</loc>
+        <loc>https://docs.vanth.me/Linux/filesystem/mergerfs/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/zensical-cloudflare/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/Linux/git/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/Linux/fileystem/management/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/Linux/fileystem/mergerfs/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/Linux/fileystem/snapraid/</loc>
+        <loc>https://docs.vanth.me/Linux/filesystem/snapraid/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/Linux/install/nassetup/</loc>
@@ -52,6 +40,27 @@
         <loc>https://docs.vanth.me/docker/z-cheatsheet/</loc>
       </url>
       <url>
+        <loc>https://docs.vanth.me/docs/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/docs/markdown/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/docs/zensical-cloudflare/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/media%20server/gluetun/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/media%20server/qbittorrent/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/media%20server/radarr/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/media%20server/sonarr/</loc>
+      </url>
+      <url>
         <loc>https://docs.vanth.me/networking/Nginx%20Proxy%20Manager/overview/</loc>
       </url>
       <url>
@@ -76,6 +85,9 @@
         <loc>https://docs.vanth.me/networking/vlan/vlandhcp/</loc>
       </url>
       <url>
+        <loc>https://docs.vanth.me/services/backups/</loc>
+      </url>
+      <url>
         <loc>https://docs.vanth.me/services/backups/backrest/</loc>
       </url>
       <url>
@@ -83,6 +95,12 @@
       </url>
       <url>
         <loc>https://docs.vanth.me/services/backups/restic/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/services/git/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/services/git/git/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/services/homeassisstant/homeassisstant/</loc>
@@ -104,21 +122,6 @@
       </url>
       <url>
         <loc>https://docs.vanth.me/services/pihole/pihole/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/services/servarr/gluetun/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/services/servarr/prowlarr/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/services/servarr/qbittorrent/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/services/servarr/radarr/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/services/servarr/sonarr/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/services/tailscale/tailscale/</loc>

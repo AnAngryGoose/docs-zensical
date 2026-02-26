@@ -1,3 +1,7 @@
+---
+icon: simple/sonarr
+---
+
 # Sonarr
 
 [Servarr Wiki :simple-sonarr: ](https://wiki.servarr.com/sonarr/quick-start-guide) - this is just a copy from here

@@ -1,3 +1,7 @@
+---
+icon: simple/radarr
+---
+
 #Radarr
 
 [Servarr Wiki :simple-radarr: ](https://wiki.servarr.com/en/radarr/quick-start-guide) - This is just a copy from here

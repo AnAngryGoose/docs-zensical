@@ -1,3 +1,7 @@
+---
+icon: lucide/download
+---
+
 # Gluetun - ProtonVPN + Qbittorrent
 
 [Gluetun :simple-github: ](https://github.com/qdm12/gluetun)
@@ -24,6 +28,33 @@ Use this `compose.yaml` to setup the gluetun container for ProtonVPN and bind it
 
 ```yaml
 services:
+### -------------------------------------- ###
+### ----------- Download W/ VPN ---------- ###
+### -------------------------------------- ###
+
+### --- Qbittorrent: Torrent Client --- ###
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    depends_on:
+      gluetun:
+        condition: service_healthy
+    environment:
+      - PUID=${PUID}
+      - PGID=${GUID}
+      - TZ=${TZ}
+      - WEBUI_PORT=8080
+      # - TORRENTING_PORT=8694 # Make sure to port forward this port in your router so you can seed more effectively
+    volumes:
+      - ${MEDIA_DATA}:/data
+      - ${APPDATA_PATH}/qbittorrent/config:/config
+
+    restart: unless-stopped
+    network_mode: "service:gluetun"
+
+
+### --- Glutun: VPN for Downloading --- ###
+# https://www.reddit.com/r/gluetun/comments/1kpbfs2/the_definitive_howto_for_setting_up_protonvpn/
   gluetun:
     image: qmcgaw/gluetun:v3
     container_name: gluetun
@@ -33,7 +64,7 @@ services:
       - /dev/net/tun:/dev/net/tun
     ports:
       - 8080:8080/tcp # qbittorrent
-    environment:
+    environment: 
       - TZ=${TZ}
       - UPDATER_PERIOD=24h
       - VPN_SERVICE_PROVIDER=protonvpn
@@ -48,25 +79,8 @@ services:
       - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":{{PORTS}}}" http://127.0.0.1:8080/api/v2/app/setPreferences 2>&1'
       - SERVER_COUNTRIES=${SERVER_COUNTRIES}
     volumes:
-      - ${MEDIA_DIR}/gluetun/config:/gluetun
+      - ${APPDATA_PATH}/gluetun/config:/gluetun
     restart: unless-stopped
-
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
-    depends_on:
-      gluetun:
-        condition: service_healthy
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=${TZ}
-      - WEBUI_PORT=8080
-    volumes:
-      - ${MEDIA_DIR}/qbittorrent/config:/config
-      - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
-    restart: unless-stopped
-    network_mode: "service:gluetun"
 ```
 **.env**
 
@@ -87,12 +101,12 @@ OPENVPN_USER=username+pmp
 OPENVPN_PASSWORD=password
 
 # Wireguard config (example key)
-WIREGUARD_PRIVATE_KEY=wOEI9rqqbDwnN8/Bpp22sVz48T71vJ4fYmFWujulwUU=
+WIREGUARD_PRIVATE_KEY=privatekey12345
 ```
 
 Run `docker compose up -d` to start it. 
 
-!!!note
+!!!warning
     This WILL fail to set the port on first run. Fix below.
 
 Login to the Qbittorrent WebUI. 

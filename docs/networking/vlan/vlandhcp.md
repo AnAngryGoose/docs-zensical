@@ -3,6 +3,10 @@
 [OPNSense DNSMasq Docs :simple-opnsense: ](https://docs.opnsense.org/manual/dnsmasq.html)
 
 ----
+!!!warning
+    This is not a recommended setup. It is only provided as an example of how to use Dnsmasq for DHCP and DNS registration, while using Unbound as the primary DNS server for clients. This setup is not recommended because it adds unnecessary complexity and potential points of failure. Currently, recommended is to use unbound for DNS and DNSMasq for DHCP only, without using Dnsmasq as a DNS forwarder. This is the recommended setup because it is simpler and more reliable. 
+    
+    See [OPNSense DNS Setup](../opnsense/opnsensesplitdns/) for the recommended setup.
 
 Dnsmasq can be used as a DNS forwarder. Though in our recommended setup, we will not use it as our default DNS server.
 

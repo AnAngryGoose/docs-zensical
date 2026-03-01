@@ -312,4 +312,9 @@ next = "fontawesome/solid/angle-right"
 #icon = "fontawesome/brands/github"
 #link = "https://github.com/user/repo"
 
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }
+]
+
 

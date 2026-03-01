@@ -64,6 +64,9 @@ services:
 
 * Forward your hostname / IP of the hosting machine/service. 
 
+!!!note
+    It is strongly recommended to use the assign a DNS name to your hosting machine and use that instead of the IP address. This is because if you change your IP address, you won't have to update the forward IP in NPM.
+
 * Forward Port - use port defined in service. This would be the host port defined in a container. 
 
     * e.g. a `compose.yaml` with:
@@ -86,5 +89,7 @@ services:
 * Save
 
 Now you can access `service.domain.com` instead of `192.168.3.20:3005`.
+
+
 
 

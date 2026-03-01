@@ -43,22 +43,34 @@
         <loc>https://docs.vanth.me/docker/z-cheatsheet/</loc>
       </url>
       <url>
+        <loc>https://docs.vanth.me/documentation/getstarted/</loc>
+      </url>
+      <url>
         <loc>https://docs.vanth.me/documentation/markdown/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/documentation/zensical-cloudflare/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/media%20server/gluetun/</loc>
+        <loc>https://docs.vanth.me/media-server/gluetun/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/media%20server/qbittorrent/</loc>
+        <loc>https://docs.vanth.me/media-server/qbittorrent/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/media%20server/radarr/</loc>
+        <loc>https://docs.vanth.me/media-server/radarr/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/media%20server/sonarr/</loc>
+        <loc>https://docs.vanth.me/media-server/seerr/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/media-server/sonarr/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/networking/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/networking/macvlan/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/Nginx%20Proxy%20Manager/overview/</loc>
@@ -74,6 +86,9 @@
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/opnsense/opnsenseadguard/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/networking/opnsense/opnsensesplitdns/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/opnsense/opnsensetailscale/</loc>

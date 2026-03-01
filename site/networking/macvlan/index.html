@@ -12,36 +12,36 @@
         <meta name="author" content="goose">
       
       
-        <link rel="canonical" href="https://docs.vanth.me/services/nextcloud/nextcloud/">
+        <link rel="canonical" href="https://docs.vanth.me/networking/macvlan/">
       
       
-        <link rel="prev" href="../../immich/takeoutimport/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../ollama/ollama/">
+        <link rel="next" href="../Nginx%20Proxy%20Manager/overview/">
       
       
         
       
       
-      <link rel="icon" href="../../../lucide/server">
+      <link rel="icon" href="../../lucide/server">
       <meta name="generator" content="zensical-0.0.23">
     
     
       
-        <title>Nextcloud Storage - Documentation</title>
+        <title>macvlan - Documentation</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e989742.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e989742.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -60,7 +60,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nextcloud-storage" class="md-skip">
+        <a href="#macvlan" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Nextcloud Storage
+              macvlan
             
           </span>
         </div>
@@ -203,7 +203,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   Get started
@@ -228,7 +228,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Linux/filesystem/management/" class="md-tabs__link">
+        <a href="../../Linux/filesystem/management/" class="md-tabs__link">
           
   
   Linux
@@ -250,7 +250,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../ansible/1ansible/" class="md-tabs__link">
+        <a href="../../ansible/1ansible/" class="md-tabs__link">
           
   
   Ansible
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../docker/docker/" class="md-tabs__link">
+        <a href="../../docker/docker/" class="md-tabs__link">
           
   
   Docker
@@ -288,7 +288,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../documentation/getstarted/" class="md-tabs__link">
+        <a href="../../documentation/getstarted/" class="md-tabs__link">
           
   
   Documentation
@@ -307,7 +307,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../media-server/gluetun/" class="md-tabs__link">
+        <a href="../../media-server/gluetun/" class="md-tabs__link">
           
   
   Media server
@@ -322,11 +322,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../networking/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   Networking
@@ -341,8 +343,6 @@
   
   
   
-    
-  
   
     
     
@@ -350,13 +350,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../backups/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../services/backups/" class="md-tabs__link">
           
   
   Services
@@ -392,7 +390,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -422,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -573,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/filesystem/management/" class="md-nav__link">
+      <a href="../../Linux/filesystem/management/" class="md-nav__link">
         
   
   
@@ -601,7 +599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/filesystem/mergerfs/" class="md-nav__link">
+      <a href="../../Linux/filesystem/mergerfs/" class="md-nav__link">
         
   
   
@@ -629,7 +627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/filesystem/snapraid/" class="md-nav__link">
+      <a href="../../Linux/filesystem/snapraid/" class="md-nav__link">
         
   
   
@@ -725,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/install/nassetup/" class="md-nav__link">
+      <a href="../../Linux/install/nassetup/" class="md-nav__link">
         
   
   
@@ -753,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/install/pcsetup/" class="md-nav__link">
+      <a href="../../Linux/install/pcsetup/" class="md-nav__link">
         
   
   
@@ -862,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/1ansible/" class="md-nav__link">
+      <a href="../../ansible/1ansible/" class="md-nav__link">
         
   
   
@@ -890,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/2ansibleinstallation/" class="md-nav__link">
+      <a href="../../ansible/2ansibleinstallation/" class="md-nav__link">
         
   
   
@@ -918,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/3ansibleinventory/" class="md-nav__link">
+      <a href="../../ansible/3ansibleinventory/" class="md-nav__link">
         
   
   
@@ -946,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/4ansiblecommands/" class="md-nav__link">
+      <a href="../../ansible/4ansiblecommands/" class="md-nav__link">
         
   
   
@@ -974,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/5ansibleplaybook/" class="md-nav__link">
+      <a href="../../ansible/5ansibleplaybook/" class="md-nav__link">
         
   
   
@@ -1071,7 +1069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker/" class="md-nav__link">
+      <a href="../../docker/docker/" class="md-nav__link">
         
   
   
@@ -1101,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/dockerpostinstall/" class="md-nav__link">
+      <a href="../../docker/dockerpostinstall/" class="md-nav__link">
         
   
   
@@ -1129,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/z-cheatsheet/" class="md-nav__link">
+      <a href="../../docker/z-cheatsheet/" class="md-nav__link">
         
   
   
@@ -1226,7 +1224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/getstarted/" class="md-nav__link">
+      <a href="../../documentation/getstarted/" class="md-nav__link">
         
   
   
@@ -1256,7 +1254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/markdown/" class="md-nav__link">
+      <a href="../../documentation/markdown/" class="md-nav__link">
         
   
   
@@ -1286,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/zensical-cloudflare/" class="md-nav__link">
+      <a href="../../documentation/zensical-cloudflare/" class="md-nav__link">
         
   
   
@@ -1389,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/gluetun/" class="md-nav__link">
+      <a href="../../media-server/gluetun/" class="md-nav__link">
         
   
   
@@ -1419,7 +1417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/qbittorrent/" class="md-nav__link">
+      <a href="../../media-server/qbittorrent/" class="md-nav__link">
         
   
   
@@ -1449,7 +1447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/radarr/" class="md-nav__link">
+      <a href="../../media-server/radarr/" class="md-nav__link">
         
   
   
@@ -1479,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/seerr/" class="md-nav__link">
+      <a href="../../media-server/seerr/" class="md-nav__link">
         
   
   
@@ -1507,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/sonarr/" class="md-nav__link">
+      <a href="../../media-server/sonarr/" class="md-nav__link">
         
   
   
@@ -1541,6 +1539,8 @@
       
   
   
+    
+  
   
   
     
@@ -1564,22 +1564,23 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../networking/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1597,13 +1598,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1620,10 +1621,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../networking/macvlan/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1639,6 +1649,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1663,10 +1674,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1675,7 +1689,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
         
           
-          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="">
             
   
   
@@ -1711,7 +1725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/Nginx%20Proxy%20Manager/overview/" class="md-nav__link">
+      <a href="../Nginx%20Proxy%20Manager/overview/" class="md-nav__link">
         
   
   
@@ -1739,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/Nginx%20Proxy%20Manager/pihole/" class="md-nav__link">
+      <a href="../Nginx%20Proxy%20Manager/pihole/" class="md-nav__link">
         
   
   
@@ -1785,10 +1799,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1797,7 +1814,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_4" >
         
           
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="">
             
   
   
@@ -1833,7 +1850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/cloudflare/tunnels/" class="md-nav__link">
+      <a href="../cloudflare/tunnels/" class="md-nav__link">
         
   
   
@@ -1885,10 +1902,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1897,7 +1917,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_5" >
         
           
-          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="">
             
   
   
@@ -1933,7 +1953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/opnsense/opnsense/" class="md-nav__link">
+      <a href="../opnsense/opnsense/" class="md-nav__link">
         
   
   
@@ -1961,7 +1981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/opnsense/opnsenseadguard/" class="md-nav__link">
+      <a href="../opnsense/opnsenseadguard/" class="md-nav__link">
         
   
   
@@ -1989,7 +2009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/opnsense/opnsensesplitdns/" class="md-nav__link">
+      <a href="../opnsense/opnsensesplitdns/" class="md-nav__link">
         
   
   
@@ -2017,7 +2037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/opnsense/opnsensetailscale/" class="md-nav__link">
+      <a href="../opnsense/opnsensetailscale/" class="md-nav__link">
         
   
   
@@ -2065,10 +2085,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -2077,7 +2100,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_6" >
         
           
-          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="">
             
   
   
@@ -2113,7 +2136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/vlan/vlan/" class="md-nav__link">
+      <a href="../vlan/vlan/" class="md-nav__link">
         
   
   
@@ -2141,7 +2164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../networking/vlan/vlandhcp/" class="md-nav__link">
+      <a href="../vlan/vlandhcp/" class="md-nav__link">
         
   
   
@@ -2181,10 +2204,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -2212,22 +2233,21 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -2245,7 +2265,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2281,13 +2301,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -2297,7 +2314,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../backups/" class="md-nav__link ">
+            <a href="../../services/backups/" class="md-nav__link ">
               
   
   
@@ -2317,7 +2334,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -2343,7 +2360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../backups/backrest/" class="md-nav__link">
+      <a href="../../services/backups/backrest/" class="md-nav__link">
         
   
   
@@ -2371,7 +2388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../backups/backrestssh/" class="md-nav__link">
+      <a href="../../services/backups/backrestssh/" class="md-nav__link">
         
   
   
@@ -2399,7 +2416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../backups/restic/" class="md-nav__link">
+      <a href="../../services/backups/restic/" class="md-nav__link">
         
   
   
@@ -2449,13 +2466,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -2465,7 +2479,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../git/" class="md-nav__link ">
+            <a href="../../services/git/" class="md-nav__link ">
               
   
   
@@ -2483,7 +2497,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -2509,7 +2523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../git/git/" class="md-nav__link">
+      <a href="../../services/git/git/" class="md-nav__link">
         
   
   
@@ -2555,13 +2569,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -2570,7 +2581,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
         
           
-          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
             
   
   
@@ -2606,7 +2617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../homeassisstant/homeassisstant/" class="md-nav__link">
+      <a href="../../services/homeassisstant/homeassisstant/" class="md-nav__link">
         
   
   
@@ -2654,13 +2665,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -2669,7 +2677,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
         
           
-          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
             
   
   
@@ -2705,7 +2713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../immich/immich/" class="md-nav__link">
+      <a href="../../services/immich/immich/" class="md-nav__link">
         
   
   
@@ -2733,7 +2741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../immich/takeoutimport/" class="md-nav__link">
+      <a href="../../services/immich/takeoutimport/" class="md-nav__link">
         
   
   
@@ -2766,10 +2774,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -2780,21 +2786,20 @@
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
         
           
-          
         
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
         
           
-          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
             
   
   
@@ -2812,7 +2817,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2827,37 +2832,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Nextcloud Storage
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../services/nextcloud/nextcloud/" class="md-nav__link">
         
   
   
@@ -2873,172 +2851,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-compose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Docker Compose
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Compose">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#compose-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compose Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#initial-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Initial Setup
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-caching" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Database &amp; Caching
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Database &amp; Caching">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PostgreSQL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Redis
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-tuning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Performance Tuning
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Performance Tuning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-php-memory-limit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. PHP Memory Limit
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-preview-generator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        B. Preview Generator
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3069,13 +2881,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -3084,7 +2893,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6" >
         
           
-          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
             
   
   
@@ -3120,7 +2929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ollama/ollama/" class="md-nav__link">
+      <a href="../../services/ollama/ollama/" class="md-nav__link">
         
   
   
@@ -3166,13 +2975,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -3181,7 +2987,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_7" >
         
           
-          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
             
   
   
@@ -3217,7 +3023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../omada/omada/" class="md-nav__link">
+      <a href="../../services/omada/omada/" class="md-nav__link">
         
   
   
@@ -3263,13 +3069,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -3278,7 +3081,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8" >
         
           
-          <label class="md-nav__link" for="__nav_8_8" id="__nav_8_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_8" id="__nav_8_8_label" tabindex="0">
             
   
   
@@ -3314,7 +3117,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pihole/pihole/" class="md-nav__link">
+      <a href="../../services/pihole/pihole/" class="md-nav__link">
         
   
   
@@ -3360,13 +3163,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -3375,7 +3175,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9" >
         
           
-          <label class="md-nav__link" for="__nav_8_9" id="__nav_8_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_9" id="__nav_8_9_label" tabindex="0">
             
   
   
@@ -3411,7 +3211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tailscale/tailscale/" class="md-nav__link">
+      <a href="../../services/tailscale/tailscale/" class="md-nav__link">
         
   
   
@@ -3459,13 +3259,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -3474,7 +3271,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_10" >
         
           
-          <label class="md-nav__link" for="__nav_8_10" id="__nav_8_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_10" id="__nav_8_10_label" tabindex="0">
             
   
   
@@ -3510,7 +3307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/convertx/" class="md-nav__link">
+      <a href="../../services/utilities/convertx/" class="md-nav__link">
         
   
   
@@ -3538,7 +3335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/obslivesync/" class="md-nav__link">
+      <a href="../../services/utilities/obslivesync/" class="md-nav__link">
         
   
   
@@ -3595,159 +3392,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-compose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Docker Compose
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Compose">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#compose-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compose Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#initial-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Initial Setup
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-caching" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Database &amp; Caching
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Database &amp; Caching">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PostgreSQL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Redis
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-tuning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Performance Tuning
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Performance Tuning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-php-memory-limit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. PHP Memory Limit
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-preview-generator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        B. Preview Generator
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -3771,7 +3415,7 @@
   
   
     <li class="md-path__item">
-      <a href="../../.." class="md-path__link">
+      <a href="../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Get started
@@ -3788,37 +3432,11 @@
   
     
     
-      
-  
-  
-    
-    
       <li class="md-path__item">
-        <a href="../../backups/" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
-    Services
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="././" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Nextcloud
+    Networking
   </span>
 
         </a>
@@ -3835,7 +3453,7 @@
                 
                   
   
-    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/services/nextcloud/nextcloud.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/networking/macvlan.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
@@ -3843,142 +3461,40 @@
   
 
 
-<h1 id="nextcloud-storage">Nextcloud Storage</h1>
-<p><a href="https://github.com/nextcloud/server">NextCloud Github :simple-github: </a> </p>
-<p><a href="https://hub.docker.com/r/linuxserver/nextcloud">Nextcloud linuxserverio image :simple-docker: </a></p>
-<h2 id="overview">Overview</h2>
-<p><strong>Nextcloud</strong> is a self-hosted, open-source productivity platform that functions as a private alternative to services like Google Drive or Dropbox. It provides file storage, synchronization, and sharing, but can be expanded via "apps" to include contacts, calendars, office suites, and more.</p>
-<p>While the core functionality manages files, the architecture requires a web server, PHP runtime, a database for metadata, and a caching mechanism for performance.</p>
+<h1 id="macvlan">macvlan</h1>
 <hr />
-<h2 id="installation">Installation</h2>
-<h3 id="docker-compose">Docker Compose</h3>
-<p>While there are multiple ways to install Nextcloud, this guide uses Docker Compose for easier configuration and maintenance.</p>
-<p>!!! note "Image Choice"
-    I read a lot of people having issues with the official nextcloud docker image so I used the <strong><a href="https://hub.docker.com/r/linuxserver/nextcloud">LinuxServer.io</a></strong> image. It is apparently generally more stable. </p>
-<h4 id="compose-configuration">Compose Configuration</h4>
-<p>Create a <code>compose.yaml</code> file. You should also create a <code>.env</code> file in the same directory to store your secrets (passwords and users).</p>
-<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">nextcloud</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lscr.io/linuxserver/nextcloud:latest</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nextcloud</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PUID=1000</span><span class="w">   </span><span class="c1"># Change to your user ID (run &#39;id&#39; in terminal)</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PGID=1000</span><span class="w">   </span><span class="c1"># Change to your group ID</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=America/Chicago</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/appdata/nextcloud/config:/config</span><span class="w"> </span><span class="c1"># Configuration files (appdata ssd)</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/storage/nextcloud:/data</span><span class="w">  </span><span class="c1"># This is where your actual files/photos will live</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># - 443:443 # Default HTTPS port (uncomment if you want to use it)</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4043:443</span><span class="w"> </span>
-<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nextcloud_db</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nextcloud_redis</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<p><strong>Without macvlan — the default Docker bridge</strong></p>
+<p>Normally Docker puts containers on an internal virtual network (docker0 bridge, 172.17.0.0/16). Containers share the host's IP address and reach the outside world via NAT — the same concept as your home router sharing one public IP. If Frigate needs port 554 accessible, you do <code>-p 554:554</code> which punches a hole through the host's NAT to the container.</p>
+<p>The problem is the container doesn't look like a real device to your network. It hides behind the host. OPNsense sees traffic coming from your NAS's IP, not from Frigate specifically. You can't apply per-container firewall rules, DHCP reservations, or DNS entries in any clean way.</p>
+<hr />
+<p><strong>With macvlan — the container becomes a real network citizen</strong></p>
+<p>macvlan is a Linux kernel feature that creates a virtual network interface with its own unique MAC address, attached directly to your physical NIC. Docker then gives that interface to the container. The result is the container appears on your network as if it were a completely separate physical machine plugged into your switch.</p>
+<div class="highlight"><pre><span></span><code>Physical NIC (eth0) on NAS
+        │
+        ├── NAS host itself        → 192.168.1.10
+        ├── Frigate container      → 192.168.1.50  (macvlan)
+        ├── Immich container       → 192.168.1.51  (macvlan, if needed)
+        └── ...
+</code></pre></div>
+<p>OPNsense sees 192.168.1.50 as a distinct device. You can give it a DHCP reservation, write firewall rules specifically for it, and it can talk directly to your IoT VLAN cameras over RTSP without any port forwarding or NAT gymnastics.</p>
+<hr />
+<p><strong>Why it specifically matters for Frigate</strong></p>
+<p>Frigate needs to pull RTSP streams from your cameras which are on a separate IoT VLAN. With bridge networking, that traffic goes: camera → OPNsense → NAS host IP → NAT → Frigate container. OPNsense can't distinguish "this is Frigate" from "this is Plex" — it just sees your NAS IP.</p>
+<p>With macvlan, Frigate has its own IP. Your OPNsense firewall rule becomes explicit and clean:</p>
+<div class="highlight"><pre><span></span><code>Source: Frigate IP (192.168.1.50)
+Destination: IoT VLAN (192.168.20.0/24)
+Port: 554 (RTSP)
+Action: Allow
 
-<span class="w">  </span><span class="nt">nextcloud_db</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:15-alpine</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nextcloud_db</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=${POSTGRES_USER}</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=${POSTGRES_PASSWORD}</span><span class="w">  </span><span class="c1"># CHANGE THIS in .env!</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DB=${POSTGRES_DB}</span><span class="w"> </span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/appdata/nextcloud/db_data:/var/lib/postgresql/data</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-
-<span class="w">  </span><span class="nt">nextcloud_redis</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:alpine</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nextcloud_redis</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">db_data</span><span class="p">:</span>
+Everything else from IoT VLAN → Trusted VLAN: Block
 </code></pre></div>
+<p>That's proper network segmentation. Frigate can reach the cameras. The cameras can't reach anything else. Nothing else on your trusted VLAN can reach the cameras unless you explicitly allow it.</p>
 <hr />
-<h2 id="initial-setup">Initial Setup</h2>
-<p>After creating your <code>compose.yaml</code> and <code>.env</code> files, run <code>docker compose up -d</code> to start the containers.</p>
-<p>Navigate to <code>https://your.server.ip:4043</code> to access the setup wizard.</p>
-<ol>
-<li><strong>Create Admin Account:</strong> Enter your desired username and password.</li>
-<li><strong>Database Configuration:</strong> Click "Storage &amp; Database" to expand the options.</li>
-<li><strong>Select Database:</strong> Choose <strong>PostgreSQL</strong>.</li>
-</ol>
-<p>!!! warning "Database Hostname"
-    When asked for "Database host", do not use <code>localhost</code> or an IP. Use the container name: <code>nextcloud_db</code>.</p>
-<pre><code>Ensure the user, password, and database name match exactly what you defined in your `.env` file.
-</code></pre>
+<p><strong>The one quirk of macvlan</strong></p>
+<p>By default, a macvlan container cannot communicate with the host machine it's running on. The host and the container are on the same physical NIC but the kernel deliberately blocks that path. So if Frigate (macvlan IP 192.168.1.50) needs to talk to your MQTT broker running on the NAS host itself, it can't — it has to reach it via the network through OPNsense and back.</p>
+<p>The fix is either running your MQTT broker in a container too (so it also has its own IP), or creating a macvlan interface on the host side as well (called a bridge macvlan or <code>macvlan</code> with a companion <code>macvlan</code> on the host) which creates a virtual link between the two. In your case this isn't an issue since your MQTT broker is on your appserver anyway — Frigate just talks to it over the network normally.</p>
 <hr />
-<h2 id="database-caching">Database &amp; Caching</h2>
-<h3 id="postgresql">PostgreSQL</h3>
-<p><strong>Why use it:</strong>
-By default, Nextcloud can run on SQLite (file-based). However, SQLite performs poorly with concurrent connections and slows down significantly as your file count grows. PostgreSQL is an enterprise-class database that handles concurrent connections efficiently, providing stability for metadata operations.</p>
-<p><strong>How to configure:</strong>
-This is handled during the initial setup wizard (see above).</p>
-<h3 id="redis">Redis</h3>
-<p><strong>Why use it:</strong>
-Redis is an in-memory data structure store used for:
-1.  <strong>Memory Caching:</strong> Speeds up the web interface by storing frequently accessed data in RAM.
-2.  <strong>Transactional File Locking:</strong> Prevents file corruption when multiple devices (phone, desktop) access the same file simultaneously.</p>
-<p><strong>How to configure:</strong>
-The <code>nextcloud_redis</code> container is running, but Nextcloud needs to be told to use it.</p>
-<ol>
-<li>Locate your <code>config.php</code> file (mapped in your volume, e.g., <code>/mnt/appdata/nextcloud/config/www/nextcloud/config/config.php</code>).</li>
-<li>Add or modify the following lines inside the <code>$CONFIG = array ( ... );</code> block:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="x">  &#39;memcache.local&#39; =&gt; &#39;\\OC\\Memcache\\APCu&#39;,</span>
-<span class="x">  &#39;memcache.distributed&#39; =&gt; &#39;\\OC\\Memcache\\Redis&#39;,</span>
-<span class="x">  &#39;memcache.locking&#39; =&gt; &#39;\\OC\\Memcache\\Redis&#39;,</span>
-<span class="x">  &#39;redis&#39; =&gt; </span>
-<span class="x">  array (</span>
-<span class="x">    &#39;host&#39; =&gt; &#39;nextcloud_redis&#39;,</span>
-<span class="x">    &#39;port&#39; =&gt; 6379,</span>
-<span class="x">  ),</span>
-</code></pre></div>
-<hr />
-<h2 id="performance-tuning">Performance Tuning</h2>
-<h3 id="a-php-memory-limit">A. PHP Memory Limit</h3>
-<p>By default, the container often limits PHP to 512MB, which causes sluggishness or crashes during heavy photo uploads.</p>
-<p><strong>The Fix:</strong>
-Set the limit via environment variables in your <code>compose.yaml</code>:</p>
-<p><div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">nextcloud</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># ... existing config ...</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PHP_MEMORY_LIMIT=2G</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PHP_UPLOAD_LIMIT=16G</span><span class="w"> </span><span class="c1"># Adjust based on your needs</span>
-</code></pre></div>
-<em>Run <code>docker compose up -d</code> to apply changes.</em></p>
-<h3 id="b-preview-generator">B. Preview Generator</h3>
-<p>Nextcloud generates image thumbnails "on the fly" when you open a folder. If you open a folder with 1,000 photos, the server will freeze trying to generate them all at once.</p>
-<p><strong>The Fix:</strong>
-Install the <strong>Preview Generator</strong> app to pre-render thumbnails in the background.</p>
-<ol>
-<li><strong>Install App:</strong> Go to <strong>Apps</strong> (top right menu) &gt; Search "Preview Generator" &gt; <strong>Download &amp; Enable</strong>.</li>
-<li>
-<p><strong>Run Initial Scan:</strong></p>
-<p>!!! tip
-    This command can take a long time. It is recommended to run this inside a <code>screen</code> or <code>tmux</code> session so it doesn't fail if your SSH connection drops.</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nextcloud<span class="w"> </span>occ<span class="w"> </span>preview:generate-all<span class="w"> </span>-vvv
-</code></pre></div>
-</li>
-<li>
-<p><strong>Add to Cron:</strong>
-    To ensure new photos get thumbnails automatically, open your host crontab (<code>crontab -e</code>) and add this line to run every 10 minutes:</p>
-<div class="highlight"><pre><span></span><code>*/10<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-u<span class="w"> </span>abc<span class="w"> </span>nextcloud<span class="w"> </span>occ<span class="w"> </span>preview:pre-generate
-</code></pre></div>
-</li>
-</ol>
-<hr />
-<p><em>Sources:</em></p>
-<ul>
-<li>
-<p><a href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_database/linux_database_configuration.html">Nextcloud Database Configuration</a></p>
-</li>
-<li>
-<p><a href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/caching_configuration.html">Nextcloud Caching &amp; Locking</a></p>
-</li>
-</ul>
+<p>So yes — at its simplest, macvlan gives a container its own IP and MAC address so it looks and behaves like a real independent machine on your network. That's exactly what you want for Frigate.</p>
 
 
 
@@ -4018,7 +3534,7 @@ Install the <strong>Preview Generator</strong> app to pre-render thumbnails in t
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../immich/takeoutimport/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Importing your photos from Google Takeout">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Index">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -4028,20 +3544,20 @@ Install the <strong>Preview Generator</strong> app to pre-render thumbnails in t
                 Previous
               </span>
               <div class="md-ellipsis">
-                Importing your photos from Google Takeout
+                Index
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../ollama/ollama/" class="md-footer__link md-footer__link--next" aria-label="Next: Ollama - Self Hosted AI">
+          <a href="../Nginx%20Proxy%20Manager/overview/" class="md-footer__link md-footer__link--next" aria-label="Next: NGINX Proxy Mananger">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Ollama - Self Hosted AI
+                NGINX Proxy Mananger
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -4084,10 +3600,10 @@ Install the <strong>Preview Generator</strong> app to pre-render thumbnails in t
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5fcf0de6.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5fcf0de6.min.js"></script>
       
     
   </body>

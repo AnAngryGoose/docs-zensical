@@ -1,0 +1,400 @@
+/* ==========================================================================
+   ZENSICAL — CUSTOM THEME
+   extra.css
+
+   SETUP:
+     zensical.toml:  extra_css = ["stylesheets/extra.css"]
+     mkdocs.yml:     extra_css: - stylesheets/extra.css
+
+   Also set in your config:
+     palette.primary = "custom"
+     palette.accent  = "custom"
+     palette.scheme  = "slate"
+
+   HOW TO CREATE A NEW THEME:
+     Edit ONLY Section 1. Everything else references those variables.
+
+   CURRENT PRESET: Gruvbox Dark (Hard Contrast)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   SECTION 1 — THEME VARIABLES (The Control Panel)
+   Edit only this section to create a new theme.
+   ========================================================================== */
+:root {
+
+  /* ── 1A. BASE PALETTE ─────────────────────────────────────────────────────
+     Raw named colors. Referenced by all other variables below.
+     Swap these first when changing the overall color palette.           */
+  --color-red:              #fb4934;
+  --color-orange:           #fe8019;
+  --color-yellow:           #fabd2f;
+  --color-green:            #b8bb26;
+  --color-aqua:             #8ec07c;
+  --color-blue:             #83a598;
+  --color-purple:           #d3869b;
+  --color-gray:             #928374;
+  --color-white:            #fbf1c7;
+  --color-black:            #1d2021;
+
+  /* ── 1B. BACKGROUNDS ──────────────────────────────────────────────────────
+     bg-base      → Body, footer, deepest layer (darkest)
+     bg-surface   → Cards, sidebar, header, elevated panels
+     bg-highlight → Code blocks, active inputs, hovered rows
+     bg-border    → Dividers, table lines, input outlines               */
+  --theme-bg-base:          #1d2021;
+  --theme-bg-surface:       #282828;
+  --theme-bg-highlight:     #3c3836;
+  --theme-bg-border:        #504945;
+
+  /* ── 1C. TYPOGRAPHY ───────────────────────────────────────────────────────
+     text-main  → Primary body text
+     text-bold  → Bold/strong text, nav titles
+     text-muted → Subtitles, secondary nav, captions
+     text-dim   → Comments, placeholders, disabled states               */
+  --theme-text-main:        #ebdbb2;
+  --theme-text-bold:        #fbf1c7;
+  --theme-text-muted:       #d5c4a1;
+  --theme-text-dim:         #928374;
+
+  /* ── 1D. HEADING COLORS ───────────────────────────────────────────────────
+     Each heading level is independently colored.
+     For monochrome: set all to var(--theme-text-bold).                 */
+  --h1-color:               var(--color-red);
+  --h2-color:               var(--color-orange);
+  --h3-color:               var(--color-yellow);
+  --h4-color:               var(--color-green);
+  --h5-color:               var(--color-blue);
+  --h6-color:               var(--color-purple);
+
+  /* ── 1E. ACCENTS & INTERACTION ───────────────────────────────────────────
+     accent-main   → Buttons, progress bar, active tabs, scrollbar thumb
+     accent-hover  → Hover color for links and interactive elements
+     link          → Default unvisited link color
+     link-active   → Active / currently selected nav link
+     nav-title     → Collapsible nav section label color                */
+  --theme-accent-main:      #fe8019;
+  --theme-accent-hover:     #fabd2f;
+  --theme-link:             #83a598;
+  --theme-link-active:      #fe8019;
+  --theme-nav-title:        var(--color-red);
+
+  /* ── 1F. STATUS / ADMONITION COLORS ──────────────────────────────────────
+     Left-border stripe colors for admonition/callout boxes.
+     Covers: note/info, tip/success, warning, danger/failure, example   */
+  --status-info:            #83a598;
+  --status-success:         #b8bb26;
+  --status-warning:         #fabd2f;
+  --status-danger:          #fb4934;
+  --status-special:         #d3869b;
+
+  /* ── 1G. CODE SYNTAX HIGHLIGHTING ────────────────────────────────────────
+     Pygments token type colors for fenced code blocks.                 */
+  --code-keyword:           #fb4934;   /* if, for, return, def, class...   */
+  --code-function:          #fabd2f;   /* function and method names        */
+  --code-string:            #b8bb26;   /* string literals                  */
+  --code-number:            #d3869b;   /* numeric literals                 */
+  --code-comment:           #928374;   /* inline comments                  */
+  --code-class:             #8ec07c;   /* class and type names             */
+  --code-variable:          #83a598;   /* variable references              */
+  --code-operator:          #ebdbb2;   /* +, =, !=, ->, ...                */
+  --code-punctuation:       #d5c4a1;   /* brackets, commas, semicolons     */
+
+  /* ── 1H. FONTS ───────────────────────────────────────────────────────────
+     Per Zensical docs: always define fonts via CSS variables, not
+     font-family directly, to preserve system font fallback.
+     Also set theme.font in your config if loading from Google Fonts.   */
+  --md-text-font:           "Inter";
+  --md-code-font:           "JetBrains Mono";
+
+  /* ── 1I. LAYOUT ──────────────────────────────────────────────────────────
+     content-width → Max width of the main content column
+     sidebar-width → Width of left/right navigation sidebars
+     header-height → Height of the top fixed header bar                 */
+  --layout-content-width:   60rem;
+  --layout-sidebar-width:   14rem;
+  --layout-header-height:   2.4rem;
+
+  /* ── 1J. HERO SECTION ────────────────────────────────────────────────────
+     bg-image      → Path to hero background image (relative to docs/)
+     overlay-rgb   → RGB values of the overlay tint (match bg-base)
+     overlay-alpha → Opacity of the tint overlay (0.0–1.0)             */
+  --hero-bg-image:          url('../assets/landing-bg-gruvbox.png');
+  --hero-overlay-rgb:       29, 32, 33;
+  --hero-overlay-alpha:     0.85;
+
+  /* ── 1K. TRANSITIONS ─────────────────────────────────────────────────────
+     Shared animation timing used across all hover/focus interactions.  */
+  --transition-speed:       0.2s;
+  --transition-easing:      ease;
+
+  /* ── 1L. SHADOWS ─────────────────────────────────────────────────────────
+     z1 → Subtle: dropdowns, tooltips
+     z2 → Medium: floating panels
+     z3 → High: modals, overlays                                        */
+  --shadow-z1: 0 0.2rem 0.5rem rgba(0,0,0,0.2), 0 0 0.05rem rgba(0,0,0,0.3);
+  --shadow-z2: 0 0.3rem 0.8rem rgba(0,0,0,0.3), 0 0 0.05rem rgba(0,0,0,0.4);
+  --shadow-z3: 0 0.4rem 1.2rem rgba(0,0,0,0.5), 0 0 0.05rem rgba(0,0,0,0.5);
+}
+
+
+/* ==========================================================================
+   SECTION 2 — ZENSICAL INTERNAL VARIABLE MAPPING
+   Maps Section 1 variables to the --md-* system used by Zensical internally.
+   Do not edit values here — change Section 1 instead.
+   ========================================================================== */
+[data-md-color-scheme="slate"] {
+
+  /* 2.1 Backgrounds */
+  --md-default-bg-color:              var(--theme-bg-base);
+  --md-default-bg-color--light:       var(--theme-bg-surface);
+  --md-default-bg-color--lighter:     var(--theme-bg-highlight);
+  --md-default-bg-color--lightest:    var(--theme-bg-surface);
+
+  /* 2.2 Foreground / text */
+  --md-default-fg-color:              var(--theme-text-main);
+  --md-default-fg-color--light:       var(--theme-text-muted);
+  --md-default-fg-color--lighter:     var(--theme-text-dim);
+  --md-default-fg-color--lightest:    var(--theme-bg-border);
+
+  /* 2.3 Primary: header bar (classic variant) + mobile drawer */
+  --md-primary-fg-color:              var(--theme-bg-surface);
+  --md-primary-fg-color--light:       var(--theme-text-bold);
+  --md-primary-fg-color--dark:        var(--theme-bg-base);
+  --md-primary-bg-color:              var(--theme-text-main);
+  --md-primary-bg-color--light:       var(--theme-text-muted);
+
+  /* 2.4 Accent: buttons, active tabs, scrollbar, loading bar */
+  --md-accent-fg-color:               var(--theme-accent-main);
+  --md-accent-fg-color--transparent:  rgba(254, 128, 25, 0.1);
+  --md-accent-bg-color:               var(--theme-bg-surface);
+
+  /* 2.5 Links */
+  --md-typeset-a-color:               var(--theme-link);
+
+  /* 2.6 Footer */
+  --md-footer-bg-color:               var(--theme-bg-base);
+  --md-footer-bg-color--dark:         var(--theme-bg-base);
+  --md-footer-fg-color:               var(--theme-text-main);
+  --md-footer-fg-color--light:        var(--theme-text-muted);
+  --md-footer-fg-color--lighter:      var(--theme-text-dim);
+
+  /* 2.7 Inputs and search box */
+  --md-inputs-bg-color:               var(--theme-bg-highlight);
+  --md-inputs-fg-color:               var(--theme-text-main);
+
+  /* 2.8 Tables: alternating row tint */
+  --md-typeset-table-color:           rgba(235, 219, 178, 0.05);
+
+  /* 2.9 Admonitions */
+  --md-admonition-bg-color:           var(--theme-bg-surface);
+  --md-admonition-fg-color:           var(--theme-text-main);
+
+  /* 2.10 Code */
+  --md-code-bg-color:                 var(--theme-bg-surface);
+  --md-code-fg-color:                 var(--theme-text-main);
+  --md-code-hl-color:                 var(--theme-bg-highlight);
+  --md-code-hl-keyword-color:         var(--code-keyword);
+  --md-code-hl-function-color:        var(--code-function);
+  --md-code-hl-string-color:          var(--code-string);
+  --md-code-hl-number-color:          var(--code-number);
+  --md-code-hl-special-color:         var(--status-special);
+  --md-code-hl-comment-color:         var(--code-comment);
+  --md-code-hl-variable-color:        var(--code-variable);
+  --md-code-hl-name-color:            var(--code-class);
+  --md-code-hl-operator-color:        var(--code-operator);
+  --md-code-hl-punctuation-color:     var(--code-punctuation);
+  --md-code-hl-generic-color:         var(--theme-text-muted);
+
+  /* 2.11 Shadows */
+  --md-shadow-z1:                     var(--shadow-z1);
+  --md-shadow-z2:                     var(--shadow-z2);
+  --md-shadow-z3:                     var(--shadow-z3);
+}
+
+
+/* ==========================================================================
+   SECTION 3 — COMPONENT OVERRIDES
+   Targeted element styling. All values reference Section 1 variables only.
+   ========================================================================== */
+
+/* ── 3.1 LAYOUT ─────────────────────────────────────────────────────────── */
+
+.md-grid       { max-width: var(--layout-content-width); }
+.md-sidebar    { width: var(--layout-sidebar-width); }
+.md-header     { height: var(--layout-header-height); line-height: var(--layout-header-height); }
+
+/* ── 3.2 TYPOGRAPHY ─────────────────────────────────────────────────────── */
+
+[data-md-color-scheme="slate"] strong { color: var(--theme-text-bold); }
+[data-md-color-scheme="slate"] .md-typeset { line-height: 1.75; }
+
+[data-md-color-scheme="slate"] .md-typeset h1 { color: var(--h1-color); font-weight: 800; }
+[data-md-color-scheme="slate"] .md-typeset h2 { color: var(--h2-color); font-weight: 700; }
+[data-md-color-scheme="slate"] .md-typeset h3 { color: var(--h3-color); font-weight: 600; }
+[data-md-color-scheme="slate"] .md-typeset h4 { color: var(--h4-color); font-weight: 600; }
+[data-md-color-scheme="slate"] .md-typeset h5 { color: var(--h5-color); font-weight: 600; }
+[data-md-color-scheme="slate"] .md-typeset h6 { color: var(--h6-color); font-weight: 600; }
+
+/* ── 3.3 LINKS ──────────────────────────────────────────────────────────── */
+
+.md-typeset a {
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+.md-typeset a:hover {
+  color: var(--theme-accent-hover);
+}
+
+/* ── 3.4 NAVIGATION ─────────────────────────────────────────────────────── */
+
+/* Collapsible section label */
+[data-md-color-scheme="slate"] .md-nav__item--section > .md-nav__link[for] {
+  color: var(--theme-nav-title);
+  font-weight: 700;
+}
+
+/* Sidebar and header nav title */
+[data-md-color-scheme="slate"] .md-nav__title {
+  color: var(--theme-text-bold);
+}
+
+/* Currently active nav item */
+[data-md-color-scheme="slate"] .md-nav__item--active > .md-nav__link {
+  color: var(--theme-link-active);
+}
+
+/* ── 3.5 CODE ───────────────────────────────────────────────────────────── */
+
+[data-md-color-scheme="slate"] .md-typeset code          { border-radius: 0.2rem; }
+[data-md-color-scheme="slate"] .md-typeset pre > code    { border-radius: 0.3rem; }
+
+/* ── 3.6 ADMONITIONS ────────────────────────────────────────────────────── */
+
+[data-md-color-scheme="slate"] .md-typeset .admonition,
+[data-md-color-scheme="slate"] .md-typeset details {
+  border-width: 0 0 0 0.4rem;
+  border-style: solid;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details):is(.note, .info)     { border-color: var(--status-info); }
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details):is(.tip, .success)   { border-color: var(--status-success); }
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details).warning              { border-color: var(--status-warning); }
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details):is(.danger, .failure){ border-color: var(--status-danger); }
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details).example              { border-color: var(--status-special); }
+
+/* ── 3.7 TABLES ─────────────────────────────────────────────────────────── */
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  border: 1px solid var(--theme-bg-border);
+  border-radius: 0.3rem;
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: var(--theme-bg-highlight);
+  color: var(--theme-text-bold);
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:hover {
+  background-color: var(--theme-bg-highlight);
+}
+
+/* ── 3.8 SEARCH ─────────────────────────────────────────────────────────── */
+
+[data-md-color-scheme="slate"] .md-search-result mark {
+  color: var(--theme-accent-hover);
+  background-color: transparent;
+}
+
+/* ── 3.9 SCROLLBAR ──────────────────────────────────────────────────────── */
+
+[data-md-color-scheme="slate"] * {
+  scrollbar-color: var(--theme-accent-main) var(--theme-bg-surface);
+  scrollbar-width: thin;
+}
+
+/* ── 3.10 FOOTER ────────────────────────────────────────────────────────── */
+
+[data-md-color-scheme="slate"] .md-footer a {
+  color: var(--theme-text-muted);
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+[data-md-color-scheme="slate"] .md-footer a:hover {
+  color: var(--theme-accent-hover);
+}
+
+
+/* ==========================================================================
+   SECTION 4 — HERO (Landing Page)
+   Full-viewport splash with overlay + background image.
+   ========================================================================== */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.hero-container {
+  /* Breakout: span full viewport, ignore page padding */
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  /* Alignment */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  /* Sizing */
+  min-height: 100vh;
+  padding: 4rem;
+  margin-top: -5rem;    /* Pull up behind fixed header */
+  margin-bottom: -5rem;
+  box-sizing: border-box;
+
+  /* Overlay tint over background image */
+  background:
+    linear-gradient(
+      rgba(var(--hero-overlay-rgb), var(--hero-overlay-alpha)),
+      rgba(var(--hero-overlay-rgb), var(--hero-overlay-alpha))
+    ),
+    var(--hero-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero-container h1 {
+  color: var(--h1-color);
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero-container p {
+  color: var(--theme-text-main);
+  font-size: 1.4rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Call-to-action button inside hero */
+.hero-container .hero-cta {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  background-color: var(--theme-accent-main);
+  color: var(--theme-bg-base);
+  font-weight: 700;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  transition: background-color var(--transition-speed) var(--transition-easing);
+}
+.hero-container .hero-cta:hover {
+  background-color: var(--theme-accent-hover);
+}

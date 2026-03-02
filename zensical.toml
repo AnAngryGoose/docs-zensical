@@ -11,7 +11,7 @@
 # The site_name is shown in the page header and the browser window title
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
-site_name = "Documentation"
+site_name = "Homelab References"
 
 # In order to display a link to the repository of your project as part of your 
 # documentation, set repo_url in your configuration to the public URL of your repository, e.g.:
@@ -61,7 +61,7 @@ Copyright &copy; 2026 The authors
 #
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
-#extra_css = ["stylesheets/extra.css"]
+extra_css = ["stylesheets/extra.css"]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
 # project to customize the behavior according to your needs.
@@ -70,6 +70,8 @@ Copyright &copy; 2026 The authors
 #
 # Read more: https://zensical.org/docs/customization/#additional-javascript
 #extra_javascript = ["javascripts/extra.js"]
+
+
 
 # ----------------------------------------------------------------------------
 # Section for configuring theme options
@@ -312,9 +314,26 @@ next = "fontawesome/solid/angle-right"
 #icon = "fontawesome/brands/github"
 #link = "https://github.com/user/repo"
 
-[project.markdown_extensions.pymdownx.superfences]
+# ----------------------------------------------------------------------------
+# Zensical supports a number of Markdown extensions that allow you to use
+# additional syntax in your Markdown files. You can configure these extensions
+# in the "markdown_extensions" section. Some extensions have their own options
+# that you can set in this section as well.
+# ----------------------------------------------------------------------------
+
+[project.markdown_extensions.admonition] # Admonitions 
+[project.markdown_extensions.pymdownx.details] # Collapsible admonitions
+
+[project.markdown_extensions.pymdownx.superfences] # superfences, custom for mermaid diagrams
 custom_fences = [
   { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }
 ]
+
+[project.markdown_extensions.attr_list] # needed for icons, emoji, buttons, grids, tooltips
+[project.markdown_extensions.md_in_html] # Needed for grids
+[project.markdown_extensions.pymdownx.emoji] # emoji support
+emoji_index = "zensical.extensions.emoji.twemoji" 
+emoji_generator = "zensical.extensions.emoji.to_svg"
+
 
 

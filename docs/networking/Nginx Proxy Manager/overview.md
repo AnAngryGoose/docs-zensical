@@ -8,6 +8,8 @@
 
 Instead of remembering 8000 different `IP-ADDR:PORT` combos, you can use NPM to set a reverse proxy to `service.domain.me`. 
 
+I am solely using that as an **internal** DNS reverse proxy, not an internet edge. That is handled by cloudflare tunnels. 
+
 ## Installation
 
 ### Docker Compose

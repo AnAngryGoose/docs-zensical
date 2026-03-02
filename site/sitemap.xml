@@ -4,6 +4,9 @@
         <loc>https://docs.vanth.me/</loc>
       </url>
       <url>
+        <loc>https://docs.vanth.me/Linux/</loc>
+      </url>
+      <url>
         <loc>https://docs.vanth.me/Linux/filesystem/management/</loc>
       </url>
       <url>
@@ -43,6 +46,9 @@
         <loc>https://docs.vanth.me/docker/z-cheatsheet/</loc>
       </url>
       <url>
+        <loc>https://docs.vanth.me/documentation/customcss/</loc>
+      </url>
+      <url>
         <loc>https://docs.vanth.me/documentation/getstarted/</loc>
       </url>
       <url>
@@ -50,6 +56,9 @@
       </url>
       <url>
         <loc>https://docs.vanth.me/documentation/zensical-cloudflare/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/media-server/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/media-server/gluetun/</loc>

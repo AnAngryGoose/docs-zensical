@@ -6,46 +6,44 @@ icon: lucide/server
 
 This is a general reference for all the projects, guides, and references for my homelab projects. Most has references and is from official docs, some is just from what worked for me. 
 
-This covers a wide range of stuff inluding:
-
-## Linux 
+This covers a wide range of stuff including:
 
 <div class="grid cards" markdown>
 
--   :simple-linux:{ .lg .middle } __[Linux Installation and Setup](../Linux/)__
+-   :simple-linux:{ .lg .middle } __[Linux](../Linux/)__
 
     ---
 
-    Installation and setup of a NAS and Application server. Debian and Ubuntu.
+    Installation and configuration of Linux servers.
 
--   :material-file-tree:{ .lg .middle } __[Filesystem Management](../Linux/filesystem.md)__
-
-    ---
-
-    Managing a Linux filesystem. MergerFS and SnapRAID.
-
--   :lucide-terminal:{ .lg .middle } __[Command Line Basics](../Linux/cli.md)__
+-   :simple-ansible:{ .lg .middle } __[Ansible](../ansible/index.md)__
 
     ---
 
-    Various references for command line basic utilities.
+    IaC configuration management software.
 
--   :lucide-network:{ .lg .middle } __[Networking Basics](../Linux/networking.md)__
-
-    ---
-
-    Linux networking basics.
-
--   :lucide-clock:{ .lg .middle } __[Cron and Scheduling](../Linux/cron.md)__
+-   :simple-docker:{ .lg .middle } __[Docker](../docker/index.md)__
 
     ---
 
-    Cron and other scheduling info.
+    Run and management containerized applications.
 
--   :lucide-diamond-plus:{ .lg .middle } __[Users, Logs & More](../Linux/users-permissions.md)__
+-   :lucide-play:{ .lg .middle } __[Media Server](../media-server/index.md)__
 
     ---
 
-    User management, logs, package management, systemd, and performance.
+    Building and managing a media server.
+
+-   :lucide-network:{ .lg .middle } __[Networking](../networking/index.md)__
+
+    ---
+
+    Networking with OPNSense & More.
+
+-   :lucide-container:{ .lg .middle } __[Services](../services/index.md)__
+
+    ---
+
+    Various services to run and use.
 
 </div>

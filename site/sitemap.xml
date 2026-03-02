@@ -13,7 +13,13 @@
         <loc>https://docs.vanth.me/Linux/nassetup/</loc>
       </url>
       <url>
+        <loc>https://docs.vanth.me/Linux/disk-management/</loc>
+      </url>
+      <url>
         <loc>https://docs.vanth.me/Linux/mergerfs/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/Linux/snapraid/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/Linux/users-permissions/</loc>
@@ -32,9 +38,6 @@
       </url>
       <url>
         <loc>https://docs.vanth.me/Linux/cron/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/Linux/disk-management/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/Linux/log-management/</loc>

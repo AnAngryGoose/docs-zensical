@@ -1,3 +1,8 @@
+---
+icon: simple/debian
+---
+
+
 # Server Setup: App Server
 
 * [Debian 12 Bookworm Release Notes :simple-debian:](https://www.debian.org/releases/bookworm/releasenotes)

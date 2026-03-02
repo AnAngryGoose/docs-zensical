@@ -10,7 +10,7 @@ icon: simple/cloudflare
 pip install zensical
 zensical new my-docs
 cd my-docs
-git init
+git init  
 git remote add origin https://github.com/yourusername/my-docs.git
 git push -u origin main
 ```
@@ -20,7 +20,7 @@ git push -u origin main
 1. Cloudflare Dashboard → **Workers & Pages → Create application → Pages → Connect to Git**
 2. Authorize GitHub, select your repo
 3. Set build settings:
-   - **Framework preset:** None
+   - **Framework preset:** None installed
    - **Build command:** `pip install zensical && zensical build --clean`
    - **Build output directory:** `site`
 4. Click **Save and Deploy**

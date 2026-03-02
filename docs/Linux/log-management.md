@@ -1,4 +1,5 @@
 ---
+icon: lucide/scroll-text
 title: Log Management
 description: Reading, searching, and managing system logs on Linux.
 ---

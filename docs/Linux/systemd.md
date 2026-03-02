@@ -1,4 +1,5 @@
 ---
+icon: lucide/toolbox
 title: Systemd
 description: Managing services, units, and the journal with systemd.
 ---

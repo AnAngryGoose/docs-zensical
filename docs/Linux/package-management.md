@@ -1,4 +1,5 @@
 ---
+icon: lucide/package
 title: Package Management
 description: Installing, updating, and managing packages with apt on Debian and Ubuntu.
 ---

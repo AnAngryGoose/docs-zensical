@@ -1,4 +1,5 @@
 ---
+icon: lucide/user
 title: Users & Permissions
 description: Managing users, groups, and file permissions on Linux.
 ---

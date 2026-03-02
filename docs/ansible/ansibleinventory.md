@@ -1,3 +1,7 @@
+---
+icon: lucide/circle-pile
+---
+
 # Building Inventories & Running Ad Hoc Commands
 
 [Official Docs :simple-ansible: ](https://docs.ansible.com/projects/ansible/latest/inventory_guide/index.html)

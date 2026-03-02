@@ -1,4 +1,5 @@
 ---
+icon: lucide/network
 title: Networking Basics
 description: Network configuration, diagnostics, and DNS management on Linux.
 ---

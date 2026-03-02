@@ -1,3 +1,7 @@
+---
+icon: lucide/switch-camera
+---
+
 # SnapRAID Configuration Guide
 
 [SnapRAID Official Docs](https://www.snapraid.it/)

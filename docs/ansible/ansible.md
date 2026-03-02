@@ -1,3 +1,7 @@
+---
+icon: simple/ansible
+---
+
 # Ansible 
 
 [Ansible :simple-ansible: ](https://docs.ansible.com/projects/ansible/latest/getting_started/index.html)

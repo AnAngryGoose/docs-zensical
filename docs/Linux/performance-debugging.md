@@ -1,4 +1,5 @@
 ---
+icon: lucide/bug
 title: Performance & Debugging
 description: Tools for monitoring system resources and diagnosing problems on Linux.
 ---

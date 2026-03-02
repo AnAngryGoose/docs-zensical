@@ -1,36 +1,42 @@
+---
+icon: simple/ansible
+title: Ansible
+---
+
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
+-   :simple-ansible:{ .lg .middle } __[Ansible](ansible.md)__
 
     ---
 
-    Install [`zensical`](#) with [`pip`](#) and get up
-    and running in minutes
+    Overview of Ansible.
 
-    [:octicons-arrow-right-24: Getting started](#)
 
--   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
+-   :lucide-download:{ .lg .middle } __[Installation & Setup](ansibleinstallation.md)__
 
     ---
 
-    Focus on your content and generate a responsive and searchable static site
+    Install and Run Ansible.
 
-    [:octicons-arrow-right-24: Reference](#)
 
--   :material-format-font:{ .lg .middle } __Made to measure__
-
-    ---
-
-    Change the colors, fonts, language, icons, logo and more with a few lines
-
-    [:octicons-arrow-right-24: Customization](#)
-
--   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
+-   :lucide-circle-pile:{ .lg .middle } __[Setup Hosts](ansibleinventory.md)__
 
     ---
 
-    Zensical is licensed under MIT and available on [GitHub]
+    Create a host inventory to manage & run ad-hoc commands.
 
-    [:octicons-arrow-right-24: License](#)
+
+-   :lucide-terminal:{ .lg .middle } __[Commands](ansiblecommands.md)__
+
+    ---
+
+    Elevated commands to actually do stuff with. 
+
+
+-   :lucide-book:{ .lg .middle } __[Playbooks](ansibleplaybook.md)__
+
+    ---
+
+    Playbooks for repeatable, reusable, simple configuration. 
 
 </div>

@@ -1,3 +1,7 @@
+---
+icon: lucide/terminal
+---
+
 # Elevated Commands
 
 [Official Docs :simple-ansible: ](https://docs.ansible.com/projects/ansible/latest/command_guide/index.html)

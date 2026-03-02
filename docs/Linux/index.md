@@ -1,36 +1,44 @@
+---
+icon: simple/linux
+title: Linux
+---
+
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
+-   :simple-linux:{ .lg .middle } __[Linux Installation and Setup](../Linux/pcsetup.md)__
 
     ---
 
-    Install [`zensical`](#) with [`pip`](#) and get up
-    and running in minutes
+    Installation and setup of a NAS and Application server. Debian and Ubuntu.
 
-    [:octicons-arrow-right-24: Getting started](#)
-
--   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
+-   :material-file-tree:{ .lg .middle } __[Filesystem Management](../Linux/disk-management.md)__
 
     ---
 
-    Focus on your content and generate a responsive and searchable static site
+    Managing a Linux filesystem. MergerFS and SnapRAID.
 
-    [:octicons-arrow-right-24: Reference](#)
-
--   :material-format-font:{ .lg .middle } __Made to measure__
+-   :lucide-lock:{ .lg .middle } __[SSH Hardening & Key Management](../Linux/ssh.md)__
 
     ---
 
-    Change the colors, fonts, language, icons, logo and more with a few lines
+    Various references for command line basic utilities.
 
-    [:octicons-arrow-right-24: Customization](#)
-
--   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
+-   :lucide-network:{ .lg .middle } __[Networking Basics](../Linux/networking.md)__
 
     ---
 
-    Zensical is licensed under MIT and available on [GitHub]
+    Linux networking basics.
 
-    [:octicons-arrow-right-24: License](#)
+-   :lucide-clock:{ .lg .middle } __[Cron and Scheduling](../Linux/cron.md)__
+
+    ---
+
+    Cron and other scheduling info.
+
+-   :lucide-diamond-plus:{ .lg .middle } __[Users, Logs & More](../Linux/users-permissions.md)__
+
+    ---
+
+    User management, logs, package management, systemd, and performance. 
 
 </div>

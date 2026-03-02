@@ -1,4 +1,5 @@
 ---
+icon: lucide/hard-drive
 title: Disk Management
 description: Partitioning, mounting, fstab, and disk health on Linux.
 ---

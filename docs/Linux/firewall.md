@@ -1,4 +1,5 @@
 ---
+icon: lucide/brick-wall-fire
 title: Firewall (ufw / nftables)
 description: Host-level firewall management with ufw and nftables on Debian and Ubuntu.
 ---

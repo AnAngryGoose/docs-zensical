@@ -60,14 +60,15 @@ nav = [
     "Linux/index.md",
     { "Server Setup"            = "Linux/pcsetup.md" },
     { "NAS Setup"               = "Linux/nassetup.md"},
+    { "Disk Management"         = "Linux/disk-management.md" },
     { "MergerFS"                = "Linux/mergerfs.md"},
+    { "SnapRAID"                = "Linux/snapraid.md"},
     { "Users & Permissions"     = "Linux/users-permissions.md" },
     { "SSH"                     = "Linux/ssh.md" },
     { "Systemd"                 = "Linux/systemd.md" },
     { "Networking"              = "Linux/networking.md" },
     { "Package Management"      = "Linux/package-management.md" },
     { "Cron & Scheduling"       = "Linux/cron.md" },
-    { "Disk Management"         = "Linux/disk-management.md" },
     { "Log Management"          = "Linux/log-management.md" },
     { "Firewall"                = "Linux/firewall.md" },
     { "Performance & Debugging" = "Linux/performance-debugging.md" },
@@ -176,7 +177,7 @@ nav = [
 #
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
-extra_css = ["stylesheets/extra.css"]
+#extra_css = ["stylesheets/extra.css"]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
 # project to customize the behavior according to your needs.

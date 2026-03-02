@@ -1,3 +1,7 @@
+---
+icon: lucide/book
+---
+
 # Playbooks
 
 [Official Docs :simple-ansible: ](https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_intro.html)

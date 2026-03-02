@@ -1,3 +1,7 @@
+---
+icon: simple/ubuntu
+---
+
 # Server Setup: NAS 
 
 * [SnapRAID Manual](https://www.snapraid.it/manual)

@@ -1,4 +1,5 @@
 ---
+icon: lucide/clock
 title: Cron & Scheduling
 description: Scheduling tasks with cron, crontab, and systemd timers.
 ---

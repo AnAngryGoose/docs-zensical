@@ -1,3 +1,7 @@
+---
+icon: lucide/merge
+---
+
 # MergerFS Configuration Guide
 
 ---

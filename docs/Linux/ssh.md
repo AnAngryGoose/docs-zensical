@@ -1,4 +1,5 @@
 ---
+icon: lucide/lock
 title: SSH Hardening & Key Management
 description: Secure SSH configuration, key-based authentication, and multi-host management.
 ---

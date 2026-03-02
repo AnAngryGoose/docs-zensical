@@ -7,34 +7,64 @@
         <loc>https://docs.vanth.me/Linux/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/Linux/filesystem/management/</loc>
+        <loc>https://docs.vanth.me/Linux/pcsetup/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/Linux/filesystem/mergerfs/</loc>
+        <loc>https://docs.vanth.me/Linux/nassetup/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/Linux/filesystem/snapraid/</loc>
+        <loc>https://docs.vanth.me/Linux/mergerfs/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/Linux/install/nassetup/</loc>
+        <loc>https://docs.vanth.me/Linux/users-permissions/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/Linux/install/pcsetup/</loc>
+        <loc>https://docs.vanth.me/Linux/ssh/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/ansible/1ansible/</loc>
+        <loc>https://docs.vanth.me/Linux/systemd/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/ansible/2ansibleinstallation/</loc>
+        <loc>https://docs.vanth.me/Linux/networking/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/ansible/3ansibleinventory/</loc>
+        <loc>https://docs.vanth.me/Linux/package-management/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/ansible/4ansiblecommands/</loc>
+        <loc>https://docs.vanth.me/Linux/cron/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/ansible/5ansibleplaybook/</loc>
+        <loc>https://docs.vanth.me/Linux/disk-management/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/Linux/log-management/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/Linux/firewall/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/Linux/performance-debugging/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/ansible/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/ansible/ansible/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/ansible/ansibleinstallation/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/ansible/ansibleinventory/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/ansible/ansiblecommands/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/ansible/ansibleplaybook/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/docker/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/docker/docker/</loc>
@@ -43,85 +73,64 @@
         <loc>https://docs.vanth.me/docker/dockerpostinstall/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/docker/z-cheatsheet/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/documentation/customcss/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/documentation/getstarted/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/documentation/markdown/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/documentation/zensical-cloudflare/</loc>
+        <loc>https://docs.vanth.me/docker/cheatsheet/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/media-server/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/media-server/gluetun/</loc>
+        <loc>https://docs.vanth.me/media-server/qbittorrent/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/media-server/qbittorrent/</loc>
+        <loc>https://docs.vanth.me/media-server/gluetun/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/media-server/radarr/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/media-server/seerr/</loc>
+        <loc>https://docs.vanth.me/media-server/sonarr/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/media-server/sonarr/</loc>
+        <loc>https://docs.vanth.me/media-server/seerr/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/networking/macvlan/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/networking/Nginx%20Proxy%20Manager/overview/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/networking/Nginx%20Proxy%20Manager/pihole/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/networking/cloudflare/tunnels/</loc>
-      </url>
-      <url>
         <loc>https://docs.vanth.me/networking/opnsense/opnsense/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/networking/opnsense/opnsenseadguard/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/opnsense/opnsensesplitdns/</loc>
       </url>
       <url>
+        <loc>https://docs.vanth.me/networking/opnsense/opnsenseadguard/</loc>
+      </url>
+      <url>
         <loc>https://docs.vanth.me/networking/opnsense/opnsensetailscale/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/networking/vlan/vlan/</loc>
+        <loc>https://docs.vanth.me/networking/opnsense/vlan/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/networking/vlan/vlandhcp/</loc>
+        <loc>https://docs.vanth.me/networking/opnsense/vlandhcp/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/services/backups/</loc>
+        <loc>https://docs.vanth.me/networking/npm/npm/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/networking/npm/npm-pihole/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/networking/cloudflare/tunnels/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/services/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/services/backups/backrest/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/services/backups/backrestssh/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/services/backups/restic/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/services/git/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/services/git/git/</loc>
@@ -134,9 +143,6 @@
       </url>
       <url>
         <loc>https://docs.vanth.me/services/immich/takeoutimport/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/services/nextcloud/nextcloud/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/services/ollama/ollama/</loc>
@@ -155,5 +161,17 @@
       </url>
       <url>
         <loc>https://docs.vanth.me/services/utilities/obslivesync/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/documentation/getstarted/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/documentation/markdown/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/documentation/zensical-cloudflare/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/documentation/customcss/</loc>
       </url>
 </urlset>

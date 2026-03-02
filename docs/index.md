@@ -12,19 +12,40 @@ This covers a wide range of stuff inluding:
 
 <div class="grid cards" markdown>
 
-
--   :simple-linux:{ .lg .middle } __[**Linux Installation and Setup**](/Linux)__ 
-
-    ---
-
-    Installtion and setup of a NAS and Application server. Debian and Ubuntu. 
-
--  :simple-linux:{ .lg .middle } __[**Linux Installation and Setup**](/Linux)__ 
+-   :simple-linux:{ .lg .middle } __[Linux Installation and Setup](../Linux/)__
 
     ---
 
-    Installtion and setup of a NAS and Application server. Debian and Ubuntu. 
+    Installation and setup of a NAS and Application server. Debian and Ubuntu.
 
-    
+-   :material-file-tree:{ .lg .middle } __[Filesystem Management](../Linux/filesystem.md)__
+
+    ---
+
+    Managing a Linux filesystem. MergerFS and SnapRAID.
+
+-   :lucide-terminal:{ .lg .middle } __[Command Line Basics](../Linux/cli.md)__
+
+    ---
+
+    Various references for command line basic utilities.
+
+-   :lucide-network:{ .lg .middle } __[Networking Basics](../Linux/networking.md)__
+
+    ---
+
+    Linux networking basics.
+
+-   :lucide-clock:{ .lg .middle } __[Cron and Scheduling](../Linux/cron.md)__
+
+    ---
+
+    Cron and other scheduling info.
+
+-   :lucide-diamond-plus:{ .lg .middle } __[Users, Logs & More](../Linux/users-permissions.md)__
+
+    ---
+
+    User management, logs, package management, systemd, and performance.
 
 </div>

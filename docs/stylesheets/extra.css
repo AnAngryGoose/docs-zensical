@@ -321,6 +321,19 @@
   color: var(--theme-accent-hover);
 }
 
+/* ── 3.11 GRID CARDS ──────────────────────────────────────────────────────*/
+
+.md-typeset .grid.cards > ul {
+  display: contents;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+/* 14rem is max allowable value - higher will cause vertical stacking of cards */
+.md-typeset .grid.cards {
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)) !important;
+} 
+
 
 /* ==========================================================================
    SECTION 4 — HERO (Landing Page)

@@ -19,10 +19,16 @@ Gluetun is a VPN client in a thin Docker container for multiple VPN providers, w
 [Reddit Guide :simple-reddit: ](https://www.reddit.com/r/gluetun/comments/1kpbfs2/the_definitive_howto_for_setting_up_protonvpn/)
 
 For this I'm using a Wireguard setup instead of OpenVPN.
-    * It is lighter, faster, and easier to configure. 
+
+* It is lighter, faster, and easier to configure. 
 
 In ProtonVPN webpage: 
-    * go into the Downloads section and create a new WireGuard configuration. Select Router, no filtering, and "NAT-PMP (Port Forwarding)". Deselect VPN accelerator. When you click Create, a popup of the config will display. Copy the PrivateKey.
+
+* go into the Downloads section and create a new WireGuard configuration. 
+* Select Router, no filtering, and "NAT-PMP (Port Forwarding)". 
+* Deselect VPN accelerator. 
+* When you click Create, a popup of the config will display. 
+* Copy the PrivateKey.
   
 Use this `compose.yaml` to setup the gluetun container for ProtonVPN and bind it to QB. The `.env` is below it. No need to configure the `compose.yaml`. It can all be done via the `.env`.
 
@@ -104,16 +110,19 @@ OPENVPN_PASSWORD=password
 WIREGUARD_PRIVATE_KEY=privatekey12345
 ```
 
+## Additional Info
+
 Run `docker compose up -d` to start it. 
 
 !!!warning
     This WILL fail to set the port on first run. Fix below.
 
 Login to the Qbittorrent WebUI. 
-    * Settings > WebUI tab
-    * Set user/pass
-    * Check 'Bypass authentication for clients on localhost'
-    * Save. 
+
+* Settings > WebUI tab
+* Set user/pass
+* Check 'Bypass authentication for clients on localhost'
+* Save. 
   
 Restart the stack, check the container logs, and it should work. 
 

@@ -1,310 +1,576 @@
-# VLANs - OPNSense & Omada Controller
+---
+title: VLANs with OPNsense & Omada
+description: Complete guide to planning, configuring, and implementing VLANs using OPNsense as a router and TP-Link Omada managed switches.
+tags:
+  - networking
+  - vlans
+  - opnsense
+  - omada
+---
 
-[OPNSense Docs :simple-opnsense: ](https://docs.opnsense.org/manual/how-tos/vlan_and_lagg.html)
+# VLANs with OPNsense & Omada
 
-[Zenarmor Tutorial :material-web: ](https://www.zenarmor.com/docs/network-security-tutorials/how-to-configure-vlan-on-opnsense)
-
-[Home Network Guy Youtube :material-youtube: ](https://www.youtube.com/watch?v=fPP4UE6IuRc)
+This guide covers planning and implementing a VLAN network using **OPNsense** as the router/firewall and **TP-Link Omada** managed switches. It covers the full stack: VLAN design, OPNsense interface and DHCP configuration, firewall rules, NAT, and Omada switch profiles and port assignments.
 
 ---
 
-I am only using IPv4 for this guide. Not familiar enough with IPv6, and I don't feel like dealing with for now. I'll come around to it (maybe).
+## Concepts
 
-This is made for DNSMasq and Unbound DNS specifically, but same ideas apply if using something else. Same for omada controller (for the most part) 
+### What is a VLAN?
 
----
+A VLAN (Virtual Local Area Network) logically separates devices on the same physical network into isolated segments. Devices on different VLANs cannot communicate with each other unless explicitly permitted by a router or firewall rule.
 
-## VLAN Structure
+Common use cases:
 
-I currently have my network setup as this:
+- Isolating IoT devices from trusted workstations
+- Separating guest WiFi from internal networks
+- Segmenting servers from personal devices
+- Creating a dedicated management network for infrastructure
 
-You can set this however works for you. 
+### Tagged vs Untagged
 
-* **VLAN 10:** Management (Mgmt) - 10.10.10.x
+Understanding the difference between tagged and untagged traffic is fundamental to VLAN configuration.
 
-    Devices: Omada Switches, WAPs, Omada Controller, Proxmox Web GUI, iDRAC/IPMI.
+**Untagged (access ports)**
+Used for end devices that are not VLAN-aware — computers, servers, NAS devices, printers. The device sends a normal ethernet frame with no VLAN information. The switch receives it, stamps the appropriate VLAN tag internally based on the port's profile, and routes it accordingly. On egress, the tag is stripped before delivery to the device. The device never knows VLANs exist.
 
-    **Rules: strict access; only your main PC can reach this.**
+**Tagged (trunk ports)**
+Used for VLAN-aware devices — routers, upstream switches, hypervisors. The device itself includes a VLAN tag in each ethernet frame. The switch receives the frame with the tag intact and uses it to route traffic to the correct VLAN. Trunk ports carry multiple VLANs simultaneously, each identified by its tag.
 
-* **VLAN 20:** Trusted LAN - 10.10.20.x
+| Port Type | Used For | Device Awareness |
+|---|---|---|
+| Untagged / Access | End devices (PCs, servers) | Device is VLAN-unaware |
+| Tagged / Trunk | Routers, switches, hypervisors | Device tags its own frames |
 
-    Devices: Personal, known devices. 
+### Router-on-a-Stick
 
-* **VLAN 30:** Lab / Server - 10.10.30.x
-
-    Devices: VMs, Docker Containers. 
-
-* **VLAN 50:** IoT - 10.10.50.x
-
-    Devices: Smart plugs, Alexa, Thermostats, random IoT stuff. 
-
-    Rules: Can access Internet, CANNOT access other VLANs.
-
-* **VLAN 99:** Guest - 10.10.99.x
-
-    Devices: Random, new, unkown devices. 
-
-
-## VLAN Creation in OPNSense 
+With a single physical port connecting OPNsense to the switch, all VLAN traffic travels over one link — each VLAN tagged. OPNsense creates virtual sub-interfaces (one per VLAN) on top of that physical port. This is the most common homelab setup and works well at any scale that doesn't saturate the uplink.
 
 ---
 
-### WAN Settings 
+## Planning
 
-**Go to Interfaces** > [WAN]
+### VLAN Scheme
 
-* IPv4 Configuration Type = DHCP
+Design your VLANs before touching any configuration. A clean numbering scheme that maps to subnets makes the network far easier to manage and troubleshoot.
 
-This will allow your OPNSense router to be able to hand out DHCP addresses to the rest of the network - assuming your ISP allows this.
+**Recommended pattern:** Use the VLAN ID as the third octet of the subnet.
 
+| VLAN ID | Name | Subnet | Gateway | Purpose |
+|---|---|---|---|---|
+| 10 | MANAGEMENT | 10.10.10.0/24 | 10.10.10.1 | Infrastructure — router, switches, DNS |
+| 20 | TRUSTED | 10.10.20.0/24 | 10.10.20.1 | Workstations, personal devices |
+| 30 | SERVERS | 10.10.30.0/24 | 10.10.30.1 | Servers, self-hosted services |
+| 50 | IOT | 10.10.50.0/24 | 10.10.50.1 | Smart home, cameras, IoT devices |
+| 99 | GUEST | 10.10.99.0/24 | 10.10.99.1 | Guest WiFi — internet only |
 
+> **Tip:** Leave gaps in your VLAN ID numbering (10, 20, 30 rather than 1, 2, 3) so you can insert new VLANs later without renumbering.
 
-### Create a New VLAN
+### Firewall Policy
 
-Go to **Interfaces > Devices > VLAN**. Configure each VLAN as:
+Define your inter-VLAN routing policy before writing any rules. This makes the rules themselves straightforward to implement.
 
-!!!note
-    
-    I am using the management interface for the examples, same ideas apply for the others. 
+| Source | Destination | Policy | Reason |
+|---|---|---|---|
+| MANAGEMENT | All | Allow | Admins need access to everything |
+| TRUSTED | All | Allow | Workstations need full access |
+| SERVERS | TRUSTED | Block | Servers shouldn't reach workstations |
+| SERVERS | MANAGEMENT | Block | Servers shouldn't manage infrastructure |
+| SERVERS | WAN | Allow | Servers need internet |
+| IOT | Internal (all) | Block | IoT isolated from all internal networks |
+| IOT | WAN | Allow | IoT devices need internet |
+| GUEST | Internal (all) | Block | Guests isolated from everything internal |
+| GUEST | WAN | Allow | Guests need internet |
 
-* `Device`: [blank - will auto create name, can be custom if wanted.]
+### IP Address Allocation
 
-* `Parent`: igb0 (12.34.56.mac.address) (physical interface that will carry traffic)
-  
-* `VLAN tag`: 10 
+Plan static IP allocation to avoid conflicts with DHCP ranges.
 
-* `VLAN Priority:` Best effort (0, default) 
+**Recommended layout per subnet:**
 
-* `Description:` MANAGEMENT (or whatever you want)
-
-
-* **Repeat this for all other VLANs**
-
-### Interface Assignment 
-
- Go to **Interface > Assignments**
-
-* Assign each new VLAN (device).
-
-* Match the description name 
-
-
-
-### VLAN IP Configuration Settings
-
-Go to each new interface - **[MANAGMENT], [TRSUTED]. etc.**
-
-* Enable each interface
-
-* Prevent interface removal 
-
-* IPv4 Configuration Type = **Static IPv4**
-
-* Static IPv4 Configuration - this will assign the gateway IP address for your LAN. 
-
-    * IPv4 Address = 10.10.10.1/24 (be sure to change this to /24).
-
-* (Usually for LAN/VLANs) leave **Block private networks** and **Block bogon networks unchecke**d. Enable them only on WAN-like interfaces.
-
-
-## DHCP / DNS Settings 
+| Range | Purpose |
+|---|---|
+| `.1` | Gateway (OPNsense VLAN interface) |
+| `.2 – .9` | Reserved infrastructure (DNS, NTP, etc.) |
+| `.10 – .99` | Static device assignments |
+| `.100 – .200` | DHCP pool |
+| `.201 – .254` | Reserved |
 
 ---
 
-### DHCP
+## OPNsense Configuration
 
-**1**. Go to **Services >  Dnsmasq DNS & DHCP > General**
+### Step 1 — Create VLAN Interfaces
 
-!!!important
+Navigate to **Interfaces → Other Types → VLAN**.
 
-    Make sure the VLAN interfaces are selected uunder **Interface**.
+For each VLAN, click **+** and set:
 
-    
-**2**. Go to **Services >  Dnsmasq DNS & DHCP > DHCP Ranges**
+| Field | Value | Notes |
+|---|---|---|
+| Device | Leave auto-generated | OPNsense names it `vlan0.X` |
+| Parent Interface | Your LAN physical port (e.g. `igb0`) | The port connected to your switch |
+| VLAN tag | VLAN ID (e.g. `10`) | Must match switch config exactly |
+| VLAN priority | `0` | Leave default unless using QoS |
+| Description | e.g. `MANAGEMENT` | For your reference only |
 
-* Press the + button 
-
-* Select desired interface
-
-* Start Address = 10.10.10.100
-
-* End Address = 10.10.10.200
-
-* **Repeat this for all other interfaces, changing 3rd octect.**
-
-    * MANAGEMENT = 10.10.10.100 - 10.10.10.200
-
-    * TRUSTED = 10.10.20.100 - 10.10.20.200
-
-    * ETC.
-
-### DNS  
-
-For client configuration see: [Client DHCP and DNS configuration](../vlandhcp)
-
-**1.** Go to **Services > Unbound DNS > General** 
-
-* Listen port: 53
-
-* Enable DNSSEC Support: Enabled (if upstream DNS supports)
-
-* Register DHCP Static Mappings: Enabled
-
-    * This will register all static DHCP reservations. This will auto create a DNS hostname. Handy.
-
-* Do not register A/AAAA records: Enabled.
-
-    * By default, OPNSense will register all IPs for all interfaces to routers hostname (e.g. OPNSense.internal). Hostname lookup will return all IPs, exposing all IPs and gets in the way.
-
-    * Enabling this also allows you to access router web interface more easily from seperate VLAN if using a DNS override to lookup hostname. 
-
-* Flush DNS Cache during reload: Enabled 
-
-    * Allows changes to apply immediately after reload, instead of waiting for new lease. 
-
-
-## Firewall Rules
+Click **Save** after each entry, then **Apply changes**.
 
 ---
 
-!!!tip
+### Step 2 — Assign VLAN Interfaces
 
-    Basic setup for the rules is: all VLANs can access internet, but not eachother unless specified.
+Navigate to **Interfaces → Assignments**.
 
+Each VLAN device you created needs to be assigned as an interface so OPNsense can route for it.
 
-**1**. Go to **Firewall > Aliases**
+1. At the bottom, select a VLAN device from the **Device** dropdown
+2. Click **+ Add**
+3. Repeat for each VLAN
+4. Click **Save**
 
-Aliases will group together IPs and networks, much easier to create rules
-
-* Create new Alias by pressing + button. Configure as: 
-
-``` 
-Name: PrivateNetworks
-
-Type: Network(s) 
-
-Content: 10.0.0./8 172.16.0.0/12 192.168.0.0/16 
-    # All private IP ranges
-
-Description: All private IP addresses
-```
-**2**. Go to **Firewall > Groups**
-
-* Configure as:
-
-```
-Name: private
-    # This will generate a network name as "private net" like other interfaces, easier to manange. 
-
-Members: LAN and all VLANs - NOT WAN
-
-(no) GUI Groups: Enabled 
-    # Will not group them under Interfaces page.
-
-Description: All private interfaces. 
-```
-
-**3**. Go to **Firewall > Rules** 
-
-This will create 2 rules. One to allow internet access without other VLAN access. The other will 
-
-* Select MANAGEMENT interface
-
-!!!note 
-
-    By default on a new interface, all access is blocked. Need to make rules to allow. 
-
-* Configure first rule as: 
-
-```
-Action: Pass
-
-Interface: MANAGMENT (should auto fill)
-
-TCP/IP: IPv4 
-
-Protocol: any
-
-Source: MANAGEMENT net
-
-Destination: private net
-
-Destination / Invert: ENABLED # IMPORTANT 
-    # This will allow access to internet, but blocking all other private IPs. Inverting the rule above. 
-
-Destination Port Range: any | any (can only select if other protocols selected)
-
-Description: Internet access - block local network. 
-```
-* Because first rule blocks all private networks, the MANAGEMENT interface's IP address (10.10.10.1), the second rule will correct that for selected interface only. 
-
-* Configure second rule as:
-
-```
-Action: Pass
-
-Interface: MANAGMENT (should auto fill)
-
-TCP/IP: IPv4 
-
-Protocol: UDP
-
-Source: MANAGEMENT net
-
-Destination: MANAGMENT address 
-
-Destination / Invert: disabled
-
-Destination Port Range: DNS | DNS 
-
-Description: Allow DNS on MANAGMENT network 
-```
-
-!!!important 
-
-    **Repeat this for all other interfaces. Ensuring to change the selected net and addresses for each. For first rule, "private net" should be destination on all. You can clone the rules and make it faster.** 
-
-## Switch Configuration - Omada Controller 
-
-### VLAN Profile Creation
-
-* Open the Omada Controller WebUI 
-
-* Go to **Settings > Wired and Wireless Networks > LAN**
-
-* Select Create New LAN 
-
-* Configure as:
-    * `Name`: VLAN Name 
-    * `Purpose`: VLAN
-    * `VLAN`: Enter the tag defined in your OPNSense configuration above
-    *  Other options availabe as needed for different configs are listed. 
-
-### VLAN assignment
-
-- Select **Devices** on sidebar
-- Select **Ports**
-    - Click the edit icon on the port you want to configure
-    - Set the profile to the VLAN profile created in Omada. 
-- This should be working correctly now. 
-
-## Testing
+You will now see each VLAN listed as an interface (OPT1, OPT2, etc.). Click each one to configure it.
 
 ---
 
-Testing confirms whether the VLAN works as expected before deploying it widely.
+### Step 3 — Configure Each VLAN Interface
 
-1.  Connect a device (e.g., laptop or VM) to a switch port assigned to the VLAN.
-2.  Ensure it receives an IP address from the correct VLAN subnet.
-3.  Test connectivity (e.g., ping the gateway or browse the internet).
-4.  Verify that firewall rules are functioning as intended.
-This helps identify and fix any misconfigurations early.
+Navigate to **Interfaces → [VLAN NAME]** for each interface.
 
-Linux - `ip a` should show newly assigned, correct, subnet
+| Field | Value | Notes |
+|---|---|---|
+| Enable | ✅ Checked | Must be enabled |
+| Description | e.g. `MANAGEMENT` | Replaces the OPT label |
+| IPv4 Configuration Type | Static IPv4 | |
+| IPv4 Address | Gateway IP (e.g. `10.10.10.1`) | OPNsense acts as gateway |
+| Subnet mask | `24` | For /24 subnets |
+| IPv6 Configuration Type | None | Unless using IPv6 |
 
-Windows - `ipconfig` 
+Click **Save** → **Apply changes** after each interface.
 
+---
 
+### Step 4 — Configure DHCP per VLAN
 
+Navigate to **Services → Dnsmasq DNS & DHCP → DHCP ranges**.
 
+Add one DHCP range per VLAN interface:
 
+| Field | Value |
+|---|---|
+| Interface | Select the VLAN interface |
+| Start address | e.g. `10.10.10.100` |
+| End address | e.g. `10.10.10.200` |
+
+> Do not create overlapping ranges. Static reservations (dnsmasq Hosts) do not need their own DHCP range — they sit outside the pool by convention.
+
+---
+
+### Step 5 — Push DNS Server via DHCP
+
+Clients need to receive your DNS server (e.g. AdGuard Home) via DHCP so all DNS queries are filtered.
+
+Navigate to **Services → Dnsmasq DNS & DHCP → DHCP options**.
+
+For each VLAN interface, add:
+
+| Field | Value |
+|---|---|
+| Interface | VLAN interface |
+| Option | `6` (DNS server) |
+| Value | IP address of your DNS server |
+
+---
+
+### Step 6 — Static DHCP Reservations
+
+For servers and infrastructure that need consistent IPs, use static reservations rather than configuring IPs on the devices themselves where possible.
+
+Navigate to **Services → Dnsmasq DNS & DHCP → Hosts**.
+
+| Field | Value |
+|---|---|
+| Host | Hostname (e.g. `server01`) |
+| IP address | Static IP outside DHCP pool (e.g. `10.10.30.10`) |
+| Hardware address | Device MAC address |
+
+> **Note:** Do not duplicate entries across both Dnsmasq Hosts and Unbound Overrides. Pick one. Unbound Overrides are preferred for DNS records. Dnsmasq Hosts are preferred for DHCP-bound static reservations.
+
+---
+
+### Step 7 — Firewall Rules
+
+Navigate to **Firewall → Rules → [Interface tab]**.
+
+OPNsense processes rules **top to bottom, first match wins**. Always place block rules above allow rules.
+
+#### Field Reference
+
+| Field | Description | Typical Value |
+|---|---|---|
+| **Action** | What to do with matching traffic | `Pass`, `Block`, or `Reject` |
+| **Disabled** | Temporarily disable the rule | Unchecked |
+| **Interface** | Which interface this rule applies to | The SOURCE interface |
+| **Direction** | Inbound or outbound | Always `In` |
+| **TCP/IP Version** | IP version | `IPv4` |
+| **Protocol** | Traffic type | `Any`, `TCP`, `UDP`, `TCP/UDP`, `ICMP` |
+| **Source** | Origin of traffic | Interface network (e.g. `SERVERS net`) |
+| **Source Port** | Source port | `any` — source ports are ephemeral |
+| **Destination** | Target of traffic | Specific network, host alias, or `any` |
+| **Destination Port** | Target port | `any` for broad rules, specific port for service rules |
+| **Log** | Log matching packets | Enable on all block rules |
+| **Description** | Label for the rule | Always fill in — critical for maintenance |
+| **State Type** | Connection tracking | `Keep State` (default) |
+
+> **Block vs Reject:** `Block` silently drops packets (client times out). `Reject` sends an immediate refusal. Use `Block` for security rules — it gives less information to potential attackers and is the safer default.
+
+---
+
+#### MANAGEMENT Rules
+
+One rule — full unrestricted access:
+
+```
+Action:      Pass
+Interface:   MANAGEMENT
+Direction:   In
+Protocol:    Any
+Source:      MANAGEMENT net
+Destination: any
+Log:         No
+Description: Management full access
+```
+
+---
+
+#### TRUSTED Rules
+
+One rule — full unrestricted access:
+
+```
+Action:      Pass
+Interface:   TRUSTED
+Direction:   In
+Protocol:    Any
+Source:      TRUSTED net
+Destination: any
+Log:         No
+Description: Trusted full access
+```
+
+---
+
+#### SERVERS Rules
+
+Three rules in this order:
+
+**Rule 1 — Block servers from reaching trusted workstations**
+```
+Action:      Block
+Interface:   SERVERS
+Direction:   In
+Protocol:    Any
+Source:      SERVERS net
+Destination: TRUSTED net
+Log:         Yes
+Description: Block SERVERS to TRUSTED
+```
+
+**Rule 2 — Block servers from reaching management infrastructure**
+```
+Action:      Block
+Interface:   SERVERS
+Direction:   In
+Protocol:    Any
+Source:      SERVERS net
+Destination: MANAGEMENT net
+Log:         Yes
+Description: Block SERVERS to MANAGEMENT
+```
+
+**Rule 3 — Allow servers internet access**
+```
+Action:      Pass
+Interface:   SERVERS
+Direction:   In
+Protocol:    Any
+Source:      SERVERS net
+Destination: any
+Log:         No
+Description: SERVERS internet access
+```
+
+> Rule 3 uses `any` as destination. Rules 1 and 2 above it have already blocked the specific internal targets — `any` here effectively means everything not already matched.
+
+---
+
+#### IOT Rules
+
+Two rules in this order:
+
+**Rule 1 — Block IoT from all internal networks**
+```
+Action:      Block
+Interface:   IOT
+Direction:   In
+Protocol:    Any
+Source:      IOT net
+Destination: 10.0.0.0/8  (or your internal range)
+Log:         Yes
+Description: Block IOT to all internal
+```
+
+> Use an alias if your internal networks span multiple RFC1918 ranges (10.x.x.x, 192.168.x.x, 172.16.x.x). Create the alias under **Firewall → Aliases** and reference it as the destination.
+
+**Rule 2 — Allow IoT internet access**
+```
+Action:      Pass
+Interface:   IOT
+Direction:   In
+Protocol:    Any
+Source:      IOT net
+Destination: any
+Log:         No
+Description: IOT internet access
+```
+
+---
+
+#### GUEST Rules
+
+Two rules in this order:
+
+**Rule 1 — Block guests from all internal networks**
+```
+Action:      Block
+Interface:   GUEST
+Direction:   In
+Protocol:    Any
+Source:      GUEST net
+Destination: 10.0.0.0/8
+Log:         Yes
+Description: Block GUEST to all internal
+```
+
+**Rule 2 — Allow guest internet access**
+```
+Action:      Pass
+Interface:   GUEST
+Direction:   In
+Protocol:    Any
+Source:      GUEST net
+Destination: any
+Log:         No
+Description: GUEST internet access
+```
+
+---
+
+### Step 8 — Force DNS via NAT (Optional but Recommended)
+
+Prevents clients from bypassing your DNS server by pointing at a public resolver directly (e.g. `8.8.8.8`). Any DNS query not going to your resolver gets redirected.
+
+Navigate to **Firewall → NAT → Port Forward**. Create one rule per VLAN:
+
+| Field | Value |
+|---|---|
+| Interface | VLAN interface (e.g. IOT) |
+| TCP/IP Version | IPv4 |
+| Protocol | TCP/UDP |
+| Source | VLAN net |
+| Source Port | any |
+| Destination / Invert | ✅ Invert — enter your DNS server IP |
+| Destination Port | 53 |
+| Redirect Target IP | Your DNS server IP |
+| Redirect Target Port | 53 |
+| Log | Yes |
+| Description | Force DNS to resolver - [VLAN NAME] |
+
+> The **invert** on destination means: match any destination that is NOT your DNS server. This redirects rogue DNS queries while leaving legitimate queries to your resolver untouched.
+
+---
+
+## Omada Switch Configuration
+
+### Step 1 — Create Networks in Omada
+
+Navigate to **Settings → Wired Networks → Networks**.
+
+Create a network entry for each VLAN. The VLAN IDs must exactly match what you configured in OPNsense.
+
+| Field | Value | Notes |
+|---|---|---|
+| Name | e.g. `10 - MANAGEMENT` | Descriptive name |
+| Purpose | `VLAN` | Not Interface |
+| VLAN | VLAN ID (e.g. `10`) | Must match OPNsense |
+| Application | `Gateways and Switches` | Standard choice for routed VLANs |
+| IGMP Snooping | Disabled | Enable only if running multicast (e.g. Plex on local network) |
+| MLD Snooping | Disabled | IPv6 multicast — leave off unless needed |
+| QoS Queue | Disabled | Enable only if implementing QoS policy |
+| Legal DHCP Servers | Disabled | Enable to restrict DHCP to known servers only (optional hardening) |
+| DHCP L2 Relay | Disabled | Only needed if DHCP server is on a different L3 segment |
+
+---
+
+### Step 2 — Create Switch Port Profiles
+
+Navigate to **Settings → Wired Networks → Switch Profile**.
+
+Port profiles define how a switch port handles VLAN traffic. Create one profile per VLAN for access ports, plus one trunk profile for uplinks.
+
+#### Access Port Profiles (one per VLAN)
+
+Used for end devices — servers, workstations, NAS, IoT devices.
+
+| Field | Value | Notes |
+|---|---|---|
+| Name | e.g. `20 - TRUSTED` | |
+| PoE | Keep Device's Settings | Adjust per port if needed |
+| Native Network | The VLAN (e.g. `20 - TRUSTED`) | Untagged frames are assigned this VLAN |
+| Tagged Networks | None | Access ports carry one VLAN only |
+| Untagged Networks | The same VLAN | Frames exit untagged to the device |
+| Voice Network | None | Only needed for VoIP deployments |
+
+Create one profile for each VLAN:
+
+| Profile Name | Native Network | Tagged | Untagged |
+|---|---|---|---|
+| 10 - MANAGEMENT | 10 - MANAGEMENT | — | 10 - MANAGEMENT |
+| 20 - TRUSTED | 20 - TRUSTED | — | 20 - TRUSTED |
+| 30 - SERVERS | 30 - SERVERS | — | 30 - SERVERS |
+| 50 - IOT | 50 - IOT | — | 50 - IOT |
+| 99 - GUEST | 99 - GUEST | — | 99 - GUEST |
+
+#### Trunk Profile (for uplink ports)
+
+Used for ports connecting to OPNsense or between switches. Carries all VLANs tagged.
+
+| Field | Value | Notes |
+|---|---|---|
+| Name | `TRUNK - ALL` | |
+| PoE | Keep Device's Settings | |
+| Native Network | `10 - MANAGEMENT` | Untagged frames default to management VLAN |
+| Tagged Networks | All VLANs (10, 20, 30, 50, 99) | All VLANs pass through tagged |
+| Untagged Networks | None | Uplink devices are VLAN-aware |
+| Voice Network | None | |
+
+> **Why Management as native on trunk?** Untagged frames that arrive on a trunk port (e.g. switch management traffic) need to land somewhere. Assigning management as native ensures switch-to-switch communication stays on the correct VLAN rather than defaulting to VLAN 1.
+
+---
+
+### Step 3 — Assign Profiles to Switch Ports
+
+Navigate to **Devices → [Switch] → Ports**.
+
+Click a port and assign the appropriate profile.
+
+#### Example: Upstream Switch (connected to router)
+
+| Port | Connected To | Profile |
+|---|---|---|
+| Port 1 | OPNsense LAN port | `TRUNK - ALL` |
+| Port 2 | Downstream switch | `TRUNK - ALL` |
+| Port 3–8 | End devices | Appropriate access profile |
+
+#### Example: Downstream Switch
+
+| Port | Connected To | Profile |
+|---|---|---|
+| Port 1 | Upstream switch | `TRUNK - ALL` |
+| Port 2 | Server A | `30 - SERVERS` |
+| Port 3 | Server B | `30 - SERVERS` |
+| Port 4 | Workstation | `20 - TRUSTED` |
+| Port 5 | IoT device | `50 - IOT` |
+| Port 6–8 | Spare | Default or appropriate profile |
+
+> **Trunk ports must be trunk on both ends.** If port 1 on the downstream switch is set to `TRUNK - ALL` but the corresponding port on the upstream switch is set to an access profile, VLANs will not pass correctly.
+
+---
+
+## Verification
+
+Once configuration is complete, verify each layer is working correctly.
+
+### DNS Resolution
+
+From a client on each VLAN, confirm DNS resolves correctly:
+
+```bash
+# Should return an IP via your internal DNS resolver
+dig example.com @<dns-server-ip>
+
+# Internal hostname should resolve
+dig server01.internal @<dns-server-ip>
+```
+
+### Inter-VLAN Connectivity
+
+Test that your firewall policy is enforced:
+
+```bash
+# From TRUSTED — should reach servers
+ping 10.10.30.10
+
+# From SERVERS — should NOT reach trusted workstations
+ping 10.10.20.10   # expect: timeout
+
+# From IOT — should NOT reach any internal host
+ping 10.10.20.10   # expect: timeout
+ping 10.10.30.10   # expect: timeout
+
+# From any VLAN — internet should work
+ping 8.8.8.8
+```
+
+### DHCP Leases
+
+Confirm devices are receiving IPs in the correct subnet:
+
+```bash
+ip addr show   # Linux
+ipconfig       # Windows
+```
+
+Check active leases in OPNsense under **Services → Dnsmasq → Leases** — confirm each device's IP falls within its expected VLAN subnet.
+
+### Firewall Logs
+
+Navigate to **Firewall → Log Files → Live View** in OPNsense. Generate some cross-VLAN traffic and confirm block rules are logging hits as expected.
+
+---
+
+## Common Issues
+
+### Device received wrong subnet IP
+
+The port profile on the switch does not match the intended VLAN. Check:
+
+1. The port's assigned profile in Omada
+2. That the profile's Native/Untagged network matches the intended VLAN
+3. That the VLAN ID in the Omada network matches OPNsense exactly
+
+### No internet from a VLAN
+
+The allow rule for that VLAN is missing or below a block rule that is matching first. Check rule order in **Firewall → Rules → [Interface]**.
+
+### Can't reach OPNsense gateway from a VLAN
+
+The VLAN interface IP is not configured. Check **Interfaces → [VLAN]** and confirm a static IPv4 address is set.
+
+### Cross-VLAN traffic that should be blocked is getting through
+
+A block rule is missing or in the wrong position. Remember: first match wins. Block rules must be above any pass rules that would otherwise match the same traffic.
+
+### Trunk port not passing all VLANs
+
+Either the trunk profile is missing a VLAN in Tagged Networks, or the OPNsense VLAN interface is not assigned/enabled. Check both ends of every trunk link.
+
+---
+
+## Reference
+
+- [OPNsense VLAN Documentation](https://docs.opnsense.org/manual/other-interfaces.html)
+- [OPNsense Firewall Rules](https://docs.opnsense.org/manual/firewall.html)
+- [OPNsense NAT](https://docs.opnsense.org/manual/nat.html)
+- [OPNsense Dnsmasq](https://docs.opnsense.org/manual/dnsmasq.html)
+- [TP-Link Omada VLAN Configuration](https://www.tp-link.com/us/support/faq/3089/)

@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentation for homelab projects">
+        <meta name="description" content="Setting up a three-tier DNS stack on OPNsense using AdGuard Home for filtering, Unbound for recursive resolution, and dnsmasq for DHCP and local hostname registration.">
       
       
         <meta name="author" content="goose">
       
       
-        <link rel="canonical" href="https://docs.vanth.me/networking/opnsense/vlandhcp/">
+        <link rel="canonical" href="https://docs.vanth.me/networking/opnsense/opnsense-dns-stack/">
       
       
-        <link rel="prev" href="../vlan/">
+        <link rel="prev" href="../opnsense/">
       
       
-        <link rel="next" href="../../npm/npm/">
+        <link rel="next" href="../opnsenseadguard/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>DHCPv4 with DNS registration - Homelab References</title>
+        <title>DNS Stack — AdGuard + Unbound + dnsmasq - Homelab References</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dhcpv4-with-dns-registration" class="md-skip">
+        <a href="#dns-stack-adguard-unbound-dnsmasq" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DHCPv4 with DNS registration
+              DNS Stack — AdGuard + Unbound + dnsmasq
             
           </span>
         </div>
@@ -1691,8 +1691,6 @@
       
         
       
-        
-      
     
     
     
@@ -1773,17 +1771,44 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../opnsensesplitdns/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNSense DNS Stack
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    OPNSense Split DNS
+    OPNSense DNS Stack
   
 
     
@@ -1792,6 +1817,232 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-dnsmasq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — dnsmasq
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1 — dnsmasq">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-host-reservations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Host Reservations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Ranges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-options-push-dns-to-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Options — Push DNS to Clients
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-unbound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Unbound
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2 — Unbound">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query Forwarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host Overrides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-adguard-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — AdGuard Home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-force-dns-via-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Force DNS via NAT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-aka-itll-be-better-a-different-way-and-i-break-my-fucking-internet-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting AKA "It'll be better a different way and I break my fucking internet (again)"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting AKA &quot;It&#x27;ll be better a different way and I break my fucking internet (again)&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nxdomain-for-local-hostnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NXDOMAIN for local hostnames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stale-dns-record-after-ip-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stale DNS record after IP change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-not-receiving-correct-dns-via-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client not receiving correct DNS via DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rogue-dns-bypass-not-being-caught" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rogue DNS bypass not being caught
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1876,132 +2127,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OPNSense DNSMasq DNS
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OPNSense DNSMasq DNS
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dns-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DNS Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dhcp-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DHCP Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adguard-home-unbound" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adguard Home + Unbound
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Adguard Home + Unbound">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setup
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3495,10 +3620,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dns-configuration" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DNS Configuration
+        References
       
     </span>
   </a>
@@ -3506,10 +3631,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dhcp-configuration" class="md-nav__link">
+  <a href="#architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DHCP Configuration
+        Architecture
       
     </span>
   </a>
@@ -3517,22 +3642,177 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#adguard-home-unbound" class="md-nav__link">
+  <a href="#step-1-dnsmasq" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Adguard Home + Unbound
+        Step 1 — dnsmasq
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Adguard Home + Unbound">
+    <nav class="md-nav" aria-label="Step 1 — dnsmasq">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+  <a href="#static-host-reservations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setup
+        Static Host Reservations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Ranges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-options-push-dns-to-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Options — Push DNS to Clients
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-unbound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Unbound
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2 — Unbound">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query Forwarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host Overrides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-adguard-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — AdGuard Home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-force-dns-via-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Force DNS via NAT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-aka-itll-be-better-a-different-way-and-i-break-my-fucking-internet-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting AKA "It'll be better a different way and I break my fucking internet (again)"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting AKA &quot;It&#x27;ll be better a different way and I break my fucking internet (again)&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nxdomain-for-local-hostnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NXDOMAIN for local hostnames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stale-dns-record-after-ip-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stale DNS record after IP change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-not-receiving-correct-dns-via-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client not receiving correct DNS via DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rogue-dns-bypass-not-being-caught" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rogue DNS bypass not being caught
       
     </span>
   </a>
@@ -3625,7 +3905,7 @@
                 
                   
   
-    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/networking/opnsense/vlandhcp.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/networking/opnsense/opnsense-dns-stack.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
@@ -3633,425 +3913,420 @@
   
 
 
-<h1 id="dhcpv4-with-dns-registration">DHCPv4 with DNS registration</h1>
-<p><a href="https://docs.opnsense.org/manual/dnsmasq.html">OPNSense DNSMasq Docs <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.25 0v5.25h13.5v13.5H24V7.5L16.5 0Zm13.5 18.75H5.25V5.25H0V16.5L7.5 24h11.25Z"/></svg></span> </a></p>
-<hr />
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is not a recommended setup. It is only provided as an example of how to use Dnsmasq for DHCP and DNS registration, while using Unbound as the primary DNS server for clients. This setup is not recommended because it adds unnecessary complexity and potential points of failure. Currently, recommended is to use unbound for DNS and DNSMasq for DHCP only, without using Dnsmasq as a DNS forwarder. This is the recommended setup because it is simpler and more reliable. </p>
-<p>See <a href="../../opnsense/opnsensesplitdns/">OPNSense DNS Setup</a> for the recommended setup.</p>
-</div>
-<p>Dnsmasq can be used as a DNS forwarder. Though in our recommended setup, we will not use it as our default DNS server.</p>
-<p>We will use Unbound as primary DNS server for our clients, and only forward some internal zones to Dnsmasq which manages the hostnames of DHCP registered leases.</p>
-<p>This requires Dnsmasq to run with a non-standard port other than 53.</p>
-<h2 id="dns-configuration">DNS Configuration</h2>
-<hr />
+<h1 id="dns-stack-adguard-unbound-dnsmasq">DNS Stack — AdGuard + Unbound + dnsmasq</h1>
+<p>This guide covers setting up a layered DNS stack on OPNsense. Each service has a distinct role and they chain together so that all client DNS traffic is filtered, recursively resolved, and locally registered.</p>
+<h2 id="references">References</h2>
 <ul>
-<li>Go to Services ‣ <strong>Dnsmasq DNS &amp; DHCP</strong> ‣ General and set:</li>
+<li><a href="https://docs.opnsense.org/manual/dnsmasq.html">OPNsense Dnsmasq Documentation</a></li>
+<li><a href="https://docs.opnsense.org/manual/unbound.html">OPNsense Unbound Documentation</a></li>
+<li><a href="https://homenetworkguy.com/how-to/migrate-from-isc-dhcp-to-dnsmasq-or-kea-dhcp-in-opnsense/">How to Migrate from ISC DHCP to dnsmasq or Kea DHCP in OPNsense</a></li>
 </ul>
+<hr />
+<h2 id="architecture">Architecture</h2>
+<div class="highlight"><pre><span></span><code>Client
+  └─► AdGuard Home :53        — ad/tracker filtering, client-facing DNS
+        └─► Unbound :5335     — recursive resolver, DNSSEC, caching
+              └─► dnsmasq :53053   — local hostname resolution (.internal)
+              └─► Root DNS servers — all other queries
+</code></pre></div>
+<p><strong>Why three services?</strong></p>
+<ul>
+<li><strong>AdGuard</strong> — filtering layer. Sits in front so every query is inspected before resolution. Cannot do recursive resolution itself.</li>
+<li><strong>Unbound</strong> — recursive resolver. Resolves public DNS from root servers directly (no third-party upstream needed). Forwards internal domain queries to dnsmasq.</li>
+<li><strong>dnsmasq</strong> — DHCP server and local DNS registry. Registers DHCP hostnames automatically so <code>hostname.internal</code> resolves without manual DNS entries. Cannot resolve public DNS itself — it needs Unbound as its upstream.</li>
+</ul>
+<p>None of these roles overlap. Each is doing something the others cannot.</p>
+<hr />
+<h2 id="step-1-dnsmasq">Step 1 — dnsmasq</h2>
+<p><strong>Services → Dnsmasq DNS &amp; DHCP → General</strong></p>
 <table>
 <thead>
 <tr>
-<th>Option</th>
+<th>Setting</th>
 <th>Value</th>
+<th>Why</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Enable</strong></td>
-<td><code>X</code></td>
+<td>Enable</td>
+<td><strong>Enabled</strong></td>
+<td></td>
 </tr>
 <tr>
-<td><strong>Listen Port</strong></td>
+<td>Interface</td>
+<td>All VLANs + LAN</td>
+<td>Listen for DHCP on all networks</td>
+</tr>
+<tr>
+<td>DNS Listen port</td>
 <td><code>53053</code></td>
+<td>Non-standard port — Unbound forwards here, clients never query dnsmasq directly</td>
+</tr>
+<tr>
+<td>DHCP FQDN</td>
+<td><strong>Enabled</strong></td>
+<td>Registers fully qualified names (e.g. <code>host.internal</code>) not just bare hostnames</td>
+</tr>
+<tr>
+<td>DHCP default domain</td>
+<td><code>internal</code></td>
+<td>Appended to all DHCP hostnames — <code>server01</code> becomes <code>server01.internal</code></td>
+</tr>
+<tr>
+<td>DHCP local domain</td>
+<td><strong>Enabled</strong></td>
+<td>Makes dnsmasq authoritative for <code>.internal</code> — it will not forward these queries upstream</td>
+</tr>
+<tr>
+<td>Do not forward to system defined DNS</td>
+<td><strong>Enabled</strong></td>
+<td>Prevents query loops — dnsmasq must not forward back to Unbound for local lookups</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>Press <strong>Apply</strong></li>
-</ul>
-<p>Afterwards we can configure <strong>Unbound</strong> to forward the zones to Dnsmasq.</p>
-<ul>
-<li>Go to Services ‣ Unbound DNS ‣ General and set:</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Enable</strong></td>
-<td><code>X</code></td>
-</tr>
-<tr>
-<td><strong>Listen Port</strong></td>
-<td><code>53</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>
-<p>Press <strong>Apply</strong></p>
-</li>
-<li>
-<p>Go to Services ‣ Unbound DNS ‣ Query Forwarding and create an entry for each DHCP range you plan to configure.</p>
-</li>
-</ul>
-<p>In our example, we configure query forwarding for 2 networks:</p>
 <blockquote>
-<ul>
-<li>
-<p><code>lan.internal</code> - <code>192.168.1.0/24</code></p>
-</li>
-<li>
-<p><code>guest.internal</code> - <code>192.168.10.0/24</code>
-</p>
-</li>
-</ul>
+<p><strong>dnsmasq DNS is enabled here on port 53053.</strong> It is not disabled. Port 0 would disable DNS entirely and break the chain — Unbound would forward <code>.internal</code> queries to nothing.</p>
 </blockquote>
-<p>lan.internalguest.internal</p>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Domain</strong></td>
-<td><code>lan.internal</code></td>
-</tr>
-<tr>
-<td><strong>Server IP</strong></td>
-<td><code>127.0.0.1</code></td>
-</tr>
-<tr>
-<td><strong>Server Port</strong></td>
-<td><code>53053</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Press <strong>Save</strong> and add next</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Domain</strong></td>
-<td><code>1.168.192.in-addr.arpa</code></td>
-</tr>
-<tr>
-<td><strong>Server IP</strong></td>
-<td><code>127.0.0.1</code></td>
-</tr>
-<tr>
-<td><strong>Server Port</strong></td>
-<td><code>53053</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Press <strong>Save</strong> and <strong>Apply</strong></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The first entry is for the forward lookup (A-Record), the second for the reverse lookup (PTR-Record).</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If all PTR records for 192.168.0.0/16 should be handled by Dnsmasq, creating a single entry with <code>168.192.in-addr.arpa</code> is enough.</p>
-</div>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Domain</strong></td>
-<td><code>guest.internal</code></td>
-</tr>
-<tr>
-<td><strong>Server IP</strong></td>
-<td><code>127.0.0.1</code></td>
-</tr>
-<tr>
-<td><strong>Server Port</strong></td>
-<td><code>53053</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Press <strong>Save</strong> and add next</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Domain</strong></td>
-<td><code>10.168.192.in-addr.arpa</code></td>
-</tr>
-<tr>
-<td><strong>Server IP</strong></td>
-<td><code>127.0.0.1</code></td>
-</tr>
-<tr>
-<td><strong>Server Port</strong></td>
-<td><code>53053</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Press <strong>Save</strong> and <strong>Apply</strong></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code>.internal</code> is the IANA and ICANN approved TLD (Top Level Domain) for internal use. If you instead own a TLD, e.g., <code>example.com</code>, you could create a zone that is not used on the internet, e.g., <code>lan.internal.example.com</code>.</p>
-</div>
-<h2 id="dhcp-configuration">DHCP Configuration</h2>
 <hr />
-<p>Now that we have the DNS infrastructure set up, we can configure DHCP.</p>
-<ul>
-<li>Go to Services ‣ Dnsmasq DNS &amp; DHCP ‣ General and set:</li>
-</ul>
+<h3 id="static-host-reservations">Static Host Reservations</h3>
+<p><strong>Services → Dnsmasq DNS &amp; DHCP → Hosts</strong></p>
+<p>Add one entry per static host. A single entry handles both DHCP reservation and DNS registration.</p>
 <table>
 <thead>
 <tr>
-<th>Option</th>
+<th>Field</th>
 <th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Interface</strong></td>
-<td><code>LAN, GUEST</code> (The network interfaces which will serve DHCP, this registers firewall rules)</td>
+<td>Host</td>
+<td>Hostname only (e.g. <code>server01</code>)</td>
 </tr>
 <tr>
-<td><strong>Do not forward to system defined DNS servers</strong></td>
-<td><code>X</code> (Unless Domains are specified in Dnsmasq: Domains, this will disable forwarding behavior)</td>
+<td>Domain</td>
+<td><code>internal</code></td>
 </tr>
 <tr>
-<td><strong>DHCP fqdn</strong></td>
-<td><code>X</code></td>
+<td>IP Address</td>
+<td>Static IP (e.g. <code>10.10.30.20</code>)</td>
 </tr>
 <tr>
-<td><strong>DHCP default domain</strong></td>
-<td><code>internal</code> (or leave empty to use this system’s domain)</td>
-</tr>
-<tr>
-<td><strong>DHCP register firewall rules</strong></td>
-<td><code>X</code></td>
+<td>Hardware Address</td>
+<td>Device MAC address</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>DHCP fqdn</strong> will do two things:</p>
-<ul>
-<li>
-<p>Make sure all devices are registered in DNS with the configured domain name appended, e.g. <code>smartphone.lan.internal</code>. This ensures that <code>smartphone</code> can exist in both <code>lan.internal</code> and <code>guest.internal</code>.</p>
-</li>
-<li>
-<p>Register the DHCP domain name as local, which will make Dnsmasq authoritative for this domain, ensuring <code>NXDOMAIN</code> is returned for devices querying unknown hostnames within this local domain.</p>
-</li>
-</ul>
-</div>
-<ul>
-<li>Press <strong>Apply</strong></li>
-</ul>
-<p>As next step we define the DHCP ranges for our interfaces.</p>
-<ul>
-<li>Go to Services ‣ Dnsmasq DNS &amp; DHCP ‣ DHCP ranges and set:</li>
-</ul>
-<p>LANGUEST</p>
+<p>This gives you three things from one entry:</p>
+<ol>
+<li>DHCP always assigns this IP to this MAC</li>
+<li><code>server01</code> resolves to the IP</li>
+<li><code>server01.internal</code> resolves to the IP</li>
+</ol>
+<blockquote>
+<p><strong>Decision rule:</strong> Use dnsmasq Hosts for DHCP-managed devices. Use Unbound Overrides only for devices with static IPs configured on the device itself (no DHCP), or for custom DNS aliases.</p>
+</blockquote>
+<hr />
+<h3 id="dhcp-ranges">DHCP Ranges</h3>
+<p><strong>Services → Dnsmasq DNS &amp; DHCP → DHCP ranges</strong></p>
+<p>Add one range per VLAN. Static reservations defined in Hosts sit outside the pool by MAC binding — they do not need to be excluded from the range manually.</p>
 <table>
 <thead>
 <tr>
-<th>Option</th>
+<th>Field</th>
 <th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Interface</strong></td>
-<td><code>LAN</code></td>
+<td>Interface</td>
+<td>VLAN interface</td>
 </tr>
 <tr>
-<td><strong>Start address</strong></td>
-<td><code>192.168.1.100</code></td>
+<td>Start</td>
+<td>e.g. <code>10.10.30.100</code></td>
 </tr>
 <tr>
-<td><strong>End address</strong></td>
-<td><code>192.168.1.199</code></td>
-</tr>
-<tr>
-<td><strong>Domain</strong></td>
-<td><code>lan.internal</code></td>
+<td>End</td>
+<td>e.g. <code>10.10.30.200</code></td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>Press <strong>Save</strong> and <strong>Apply</strong></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If a host receives a DHCP lease from this range, and it advertises a hostname, it will be registered under the chosen domain name. E.g., a host named <code>nas01</code> will become <code>nas01.lan.internal</code>. A client can query this FQDN to receive the current IP address.</p>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>If you plan to use partial IPv6 addresses in ranges with a constructor, enable the advanced mode and set <strong>Domain Type</strong> to <code>Interface</code>. This will register any subnets on the chosen interface to the selected domain. This is the only way dynamic DNS registration succeeds when the IPv6 prefix is dynamic.</p>
-</div>
+<hr />
+<h3 id="dhcp-options-push-dns-to-clients">DHCP Options — Push DNS to Clients</h3>
+<p><strong>Services → Dnsmasq DNS &amp; DHCP → DHCP options</strong></p>
+<p>Clients need to receive AdGuard's IP as their DNS server via DHCP. Add one entry per VLAN:</p>
 <table>
 <thead>
 <tr>
-<th>Option</th>
+<th>Field</th>
 <th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Interface</strong></td>
-<td><code>GUEST</code></td>
+<td>Interface</td>
+<td>VLAN interface</td>
 </tr>
 <tr>
-<td><strong>Start address</strong></td>
-<td><code>192.168.10.100</code></td>
+<td>Option</td>
+<td><code>6</code> (DNS server)</td>
 </tr>
 <tr>
-<td><strong>End address</strong></td>
-<td><code>192.168.10.199</code></td>
-</tr>
-<tr>
-<td><strong>Domain</strong></td>
-<td><code>guest.internal</code></td>
+<td>Value</td>
+<td>IP of OPNsense interface where AdGuard listens (e.g. <code>10.10.10.1</code>)</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>Press <strong>Save</strong> and <strong>Apply</strong></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Creating a DHCP range will automatically send out common DHCP options to requesting clients, without explicitly configuring them.</p>
-</div>
-<p>This is an incomplete overview which highlights some default DHCP options:</p>
+<blockquote>
+<p>Use the gateway IP of the VLAN the client is on, not a fixed IP — once OPNsense has VLAN interfaces each will have its own IP and AdGuard listens on all of them.</p>
+</blockquote>
+<hr />
+<h2 id="step-2-unbound">Step 2 — Unbound</h2>
+<p><strong>Services → Unbound DNS → General</strong></p>
 <table>
 <thead>
 <tr>
-<th>DHCP Option</th>
-<th>Default</th>
+<th>Setting</th>
+<th>Value</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enable</td>
+<td><strong>Enabled</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Listen Port</td>
+<td><code>5335</code></td>
+<td>Non-standard port — AdGuard forwards here, clients never query Unbound directly</td>
+</tr>
+<tr>
+<td>DHCP Domain Override</td>
+<td><code>internal</code></td>
+<td>Tells Unbound which domain suffix to use when registering dnsmasq leases</td>
+</tr>
+<tr>
+<td>Register DHCP Static Mappings</td>
+<td><strong>Enabled</strong></td>
+<td>Imports dnsmasq Host entries into Unbound's awareness</td>
+</tr>
+<tr>
+<td>Register ISC DHCP4 Leases</td>
+<td><strong>Enabled</strong></td>
+<td>Registers active DHCP leases for dynamic hostname resolution</td>
+</tr>
+<tr>
+<td>Flush DNS Cache during reload</td>
+<td><strong>Enabled</strong></td>
+<td>Clears stale records on every restart — important when IPs change</td>
+</tr>
+<tr>
+<td>Local Zone Type</td>
+<td><code>transparent</code></td>
+<td>Passes <code>.internal</code> queries through to dnsmasq rather than blocking them</td>
+</tr>
+<tr>
+<td>Enable DNSSEC</td>
+<td><strong>Enabled</strong></td>
+<td>Validates DNS responses from upstream — Unbound is the right place to terminate DNSSEC</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="query-forwarding">Query Forwarding</h3>
+<p><strong>Services → Unbound DNS → Query Forwarding</strong></p>
+<p>This is the critical link. Unbound forwards <code>.internal</code> queries to dnsmasq instead of trying to resolve them recursively (which would fail — <code>.internal</code> is not a real TLD).</p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Server IP</th>
+<th>Port</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>router\[3\]</td>
-<td>IPv4 address of the interface that received the DHCP Request.</td>
-<td>The default gateway the client should use. In this case the OPNsense.</td>
+<td><code>internal</code></td>
+<td><code>127.0.0.1</code></td>
+<td><code>53053</code></td>
+<td>Forward local hostname lookups to dnsmasq</td>
 </tr>
 <tr>
-<td>dns-server\[6\]</td>
-<td>IPv4 address of the interface that received the DHCP Request.</td>
-<td>The DNS server the client should use. In this case Unbound on the OPNsense.</td>
-</tr>
-<tr>
-<td>domain-name\[15\]</td>
-<td>Domain set in a DHCP Range, or the default system domain if none could be matched.</td>
-<td>The domain name the client should use, to construct short names to FQDNs in DNS lookups</td>
-</tr>
-<tr>
-<td>client fqdn\[81\]</td>
-<td>A combination of client hostname and domain, the result of the DDNS registration.</td>
-<td>The full qualified domain name the client should use.</td>
+<td><code>x.x.x.in-addr.arpa</code></td>
+<td><code>127.0.0.1</code></td>
+<td><code>53053</code></td>
+<td>Forward reverse PTR lookups to dnsmasq</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Only some usecases require setting these options manually, e.g., the IPv4 address of the router and dns-server in high availability setups with CARP.</p>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>If Dnsmasq does not start, check that ISC-DHCP and KEA DHCP are not active since they will block the bindable ports this DHCP server requires. It is also a good idea to check Services ‣ Dnsmasq DNS &amp; DHCP ‣ Log for the error message.</p>
-</div>
-<p>Now that the setup is complete, the following will happen in regards of DHCP and DNS.</p>
-<ol>
-<li>
-<p>A new device (e.g. a smartphone) joins the LAN network and sends a DHCP Discover broadcast.</p>
-</li>
-<li>
-<p>Dnsmasq receives this broadcast on port 67 and responds with a DHCP offer, containing an available IP address and DHCP options for router[3] and dns-server[6].</p>
-</li>
-<li>
-<p>The device sends a DHCP request to request the available IP address, and possibly send its own hostname.</p>
-</li>
-<li>
-<p>Dnsmasq acknowledges the request.</p>
-</li>
-</ol>
-<p>Our smartphone now has the following IP configuration:</p>
-<ul>
-<li>
-<p>IP address: <code>192.168.1.100</code></p>
-</li>
-<li>
-<p>Default Gateway: <code>192.168.1.1</code></p>
-</li>
-<li>
-<p>DNS Server: <code>192.168.1.1</code></p>
-</li>
-</ul>
-<p>At the same time, Dnsmasq registers the DNS hostname of the smartphone (if it exists). Since we configured the FQDN option and domain in the DHCP range, the name of the smartphone will be: <code>smartphone.lan.internal.</code>.</p>
-<p>When a client queries Unbound for exactly <code>smartphone.lan.internal.</code>, the configured query forwarding sends the request to the DNS server responsible for <code>lan.internal.</code> which is our configured Dnsmasq listening on <code>127.0.0.1:53053</code>. <code>Dnsmasq</code> responds to this query and will resolve the current A record of <code>smartphone.lan.internal.</code> to <code>192.168.1.100</code>, sending this information to Unbound which in return sends the response back to the client that initially queried.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can usually resolve a hostname in your network by querying for e.g. <code>smartphone</code>. This works because client systems recognize that a FQDN is not used, and will therefore suffix the request with their domain name received from Dnsmasq, transforming the query to <code>smartphone.lan.internal.</code>.</p>
-</div>
-<p>As you can see, this is a highly integrated and simple setup which leverages just the available DHCP and DNS standards with no trickery involved.</p>
-<h2 id="adguard-home-unbound">Adguard Home + Unbound</h2>
+<blockquote>
+<p>Replace <code>x.x.x</code> with the reverse zone for your subnet. For <code>10.10.30.0/24</code> this is <code>30.10.10.in-addr.arpa</code>. Add one PTR entry per subnet.</p>
+</blockquote>
+<p>Without these entries, Unbound attempts to resolve <code>hostname.internal</code> from root DNS servers, fails, and returns NXDOMAIN.</p>
 <hr />
-<p>Using Adguard Home can be used to filter forwarded DNS requests, while Unbound + DNSmasq will forward using DNS over TLS as an upstream and resolve local IPs. These are useful to be used alongside eachother. The flow would be: </p>
-<p><img alt="adguard-unbound.png" src="https://i.postimg.cc/c4sfGq5f/DNS.jpg" /></p>
-<h3 id="setup">Setup</h3>
-<p>To allow this, you need to set Adguard home as the Primary DNS under Services &gt; Adguard Home &gt; General</p>
+<h3 id="host-overrides">Host Overrides</h3>
+<p><strong>Services → Unbound DNS → Overrides</strong></p>
+<p>Use sparingly. Unbound Overrides are for:</p>
 <ul>
-<li>
-<p>This will now set Adguard Home as primary DNS, running on port 53 </p>
-</li>
-<li>
-<p>Since Adguard Home will run on port 53, you need to change Unbound to run on a different port, I used 5335 </p>
-<ul>
-<li>Do not use 5353 - this is a reserved port for mDNS.</li>
+<li>Devices with static IPs set on the device itself (not via DHCP) — dnsmasq never sees them</li>
+<li>Custom DNS aliases or CNAMEs (e.g. <code>omada.internal</code> → <code>prod-deb-01.internal</code>)</li>
+<li>Any record that needs to exist regardless of DHCP lease state</li>
 </ul>
-</li>
-<li>
-<p>Go to the Adguard WebUI at opnsense.internal:3000</p>
-</li>
-<li>
-<p>under Settings &gt; DNS Settings:</p>
-<ul>
-<li>Set you upstream DNS to <code>opnsense.internal:5335</code></li>
-<li>Set Private reverse DNS servers to <code>opnsense.internal:5335</code> </li>
-</ul>
-</li>
-</ul>
+<p>Do <strong>not</strong> duplicate entries that already exist as dnsmasq Hosts — they will conflict.</p>
+<hr />
+<h2 id="step-3-adguard-home">Step 3 — AdGuard Home</h2>
+<p><strong>Services → Adguardhome</strong></p>
+<p>AdGuard sits in front of everything. Clients query it on port 53. It filters, then forwards upstream.</p>
+<p><strong>Settings → DNS settings → Upstream DNS servers:</strong></p>
+<div class="highlight"><pre><span></span><code>127.0.0.1:5335
+</code></pre></div>
+<p>This points AdGuard at Unbound. All queries — local and public — go through Unbound. Unbound then decides whether to forward to dnsmasq (<code>.internal</code>) or resolve recursively (everything else).</p>
+<p><strong>Settings → DNS settings → Bootstrap DNS:</strong></p>
+<div class="highlight"><pre><span></span><code>1.1.1.1
+9.9.9.9
+</code></pre></div>
+<p>Used only to resolve the upstream DNS server address itself at startup. Not used for client queries.</p>
+<p><strong>Settings → DNS settings → Clear cache</strong> — use this when stale records persist after configuration changes.</p>
+<hr />
+<h2 id="step-4-force-dns-via-nat">Step 4 — Force DNS via NAT</h2>
+<p>Prevents clients from bypassing AdGuard by pointing at a public resolver directly (e.g. <code>8.8.8.8</code>).</p>
+<p><strong>Firewall → NAT → Port Forward</strong> — add one rule per VLAN:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface</td>
+<td>VLAN interface</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>VLAN net</td>
+</tr>
+<tr>
+<td>Destination / Invert</td>
+<td><strong>Enabled</strong> — enter AdGuard IP</td>
+</tr>
+<tr>
+<td>Destination Port</td>
+<td><code>53</code></td>
+</tr>
+<tr>
+<td>Redirect Target IP</td>
+<td>AdGuard IP (OPNsense VLAN gateway)</td>
+</tr>
+<tr>
+<td>Redirect Target Port</td>
+<td><code>53</code></td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Force DNS — [VLAN NAME]</td>
+</tr>
+</tbody>
+</table>
+<p>Inverting the destination means: redirect any DNS query NOT already going to AdGuard. Queries going to AdGuard pass through normally. Rogue queries get silently redirected.</p>
+<hr />
+<h2 id="verification">Verification</h2>
+<p>After configuring all three services, verify each layer independently.</p>
+<p><strong>Test dnsmasq directly:</strong>
+<div class="highlight"><pre><span></span><code>dig<span class="w"> </span>hostname.internal<span class="w"> </span>@&lt;opnsense-ip&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">53053</span>
+</code></pre></div></p>
+<p><strong>Test Unbound directly (bypasses AdGuard):</strong>
+<div class="highlight"><pre><span></span><code>dig<span class="w"> </span>hostname.internal<span class="w"> </span>@&lt;opnsense-ip&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">5335</span>
+</code></pre></div></p>
+<p><strong>Test full chain through AdGuard:</strong>
+<div class="highlight"><pre><span></span><code>dig<span class="w"> </span>hostname.internal<span class="w"> </span>@&lt;opnsense-ip&gt;
+</code></pre></div></p>
+<p><strong>Test public resolution:</strong>
+<div class="highlight"><pre><span></span><code>dig<span class="w"> </span>example.com<span class="w"> </span>@&lt;opnsense-ip&gt;
+</code></pre></div></p>
+<p>All four should return correct answers. If dnsmasq works but Unbound doesn't, the Query Forwarding entries are missing or wrong. If Unbound works but AdGuard doesn't, the upstream DNS setting in AdGuard is incorrect.</p>
+<hr />
+<h2 id="troubleshooting-aka-itll-be-better-a-different-way-and-i-break-my-fucking-internet-again">Troubleshooting AKA "It'll be better a different way and I break my fucking internet (again)"</h2>
+<h3 id="nxdomain-for-local-hostnames">NXDOMAIN for local hostnames</h3>
+<p>Check in order:</p>
+<ol>
+<li>Does the dnsmasq Host entry exist with correct MAC and IP?</li>
+<li>Is dnsmasq DNS listen port set to <code>53053</code> (not <code>0</code>)?</li>
+<li>Do the Unbound Query Forwarding entries point to <code>127.0.0.1:53053</code>?</li>
+<li>Is AdGuard upstream set to <code>127.0.0.1:5335</code>?</li>
+</ol>
+<h3 id="stale-dns-record-after-ip-change">Stale DNS record after IP change</h3>
+<p>Clear cache at every layer in order:</p>
+<ol>
+<li>AdGuard → Settings → DNS settings → Clear cache</li>
+<li>Restart Unbound (flushes cache on reload if enabled)</li>
+<li>Client: <code>sudo systemctl restart systemd-resolved</code> (Linux) or <code>ipconfig /flushdns</code> (Windows)</li>
+</ol>
+<h3 id="client-not-receiving-correct-dns-via-dhcp">Client not receiving correct DNS via DHCP</h3>
+<p>Check <strong>Services → Dnsmasq DNS &amp; DHCP → DHCP options</strong> — confirm option <code>6</code> is set for the client's VLAN interface with the correct AdGuard IP.</p>
+<p>Verify what DNS the client actually received:
+<div class="highlight"><pre><span></span><code>resolvectl<span class="w"> </span>status<span class="w">          </span><span class="c1"># Linux</span>
+ipconfig<span class="w"> </span>/all<span class="w">              </span><span class="c1"># Windows</span>
+</code></pre></div></p>
+<h3 id="rogue-dns-bypass-not-being-caught">Rogue DNS bypass not being caught</h3>
+<p>Verify NAT port forward rules exist for each VLAN under <strong>Firewall → NAT → Port Forward</strong> and that the destination invert is checked.</p>
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">networking</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">dns</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">opnsense</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">adguard</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">unbound</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">dnsmasq</span>
+      
+    
+  </nav>
 
 
 
@@ -4060,6 +4335,8 @@
 
 
 
+  
+  
 
 
 
@@ -4091,7 +4368,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../vlan/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OPNSense VLANs w&#x2f; Omada">
+          <a href="../opnsense/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OPNSense">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -4101,20 +4378,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                OPNSense VLANs w/ Omada
+                OPNSense
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../npm/npm/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="../opnsenseadguard/" class="md-footer__link md-footer__link--next" aria-label="Next: OPNSense + ADGuard">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                OPNSense + ADGuard
               </div>
             </div>
             <div class="md-footer__button md-icon">

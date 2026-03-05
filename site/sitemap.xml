@@ -103,7 +103,7 @@
         <loc>https://docs.vanth.me/networking/opnsense/opnsense/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/networking/opnsense/opnsensesplitdns/</loc>
+        <loc>https://docs.vanth.me/networking/opnsense/opnsense-dns-stack/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/opnsense/opnsenseadguard/</loc>
@@ -113,9 +113,6 @@
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/opnsense/vlan/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/networking/opnsense/vlandhcp/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/npm/npm/</loc>

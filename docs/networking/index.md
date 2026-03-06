@@ -1,79 +1,96 @@
-```mermaid
-graph TB
+---
+title: Network Overview
+description: High-level reference for network layers, models, and standard protocols.
+icon: material/lan
+---
 
-    subgraph L7["Layer 7 - Application"]
-        AGH["AdGuard Home - DNS filtering - port 53 and 3000"]
-        UNBOUND["Unbound DNS - Recursive resolver - 127.0.0.1:5335"]
-        DNSMASQ["dnsmasq - DHCP server and local DNS relay - port 67 and 53"]
-        DOCKER_APP["Docker Containers - App services via docker0 or macvlan"]
-        OPNSENSE_UI["OPNsense Web UI - HTTPS port 443 - Firewall and NAT and VLAN mgmt"]
-    end
+# Network Architecture Overview
 
-    subgraph L6["Layer 6 - Presentation"]
-        TLS["TLS 1.3 - OPNsense UI and DoT - Let's Encrypt or self-signed cert"]
-        DNS_ENC["DNS-over-TLS - AdGuard upstream to 1.1.1.1 or 8.8.8.8"]
-    end
+!!! abstract "Quick Reference"
+    This document serves as an index for standard network communication models. It covers the 7-layer OSI model, the 4-layer TCP/IP suite, and commonly referenced protocols.
 
-    subgraph L5["Layer 5 - Session"]
-        SESSIONS["TCP Sessions - OPNsense pf stateful firewall - states table"]
-        DOCKER_NET["Docker network namespaces - per-container session isolation"]
-    end
+## Conceptual Models
 
-    subgraph L4["Layer 4 - Transport"]
-        TCP["TCP - HTTP and HTTPS and SSH and DoT port 853"]
-        UDP["UDP - DNS port 53 and DHCP port 67/68 and VPN tunnels"]
-    end
+## OSI Model (7 Layers)
 
-    subgraph L3["Layer 3 - Network"]
-        OPNSENSE_FW["OPNsense pf Router - NAT and VLAN routing - WAN and LAN and OPTx interfaces"]
-        VLANS["VLANs 802.1Q - VLAN10 LAN and VLAN20 IoT and VLAN30 DMZ and VLAN99 Mgmt"]
-        DOCKER_IP["Docker IP routing - docker0 172.17.0.0/16 or macvlan on LAN subnet"]
-    end
+| Layer | Name | Function | Common Protocols |
+| :---: | :--- | :--- | :--- |
+| **7** | **Application** | Network process to application | HTTP, DNS, DHCP |
+| **6** | **Presentation**| Data representation and encryption | TLS, SSL |
+| **5** | **Session** | Interhost communication | NetBIOS |
+| **4** | **Transport** | End-to-end connections and reliability | TCP, UDP |
+| **3** | **Network** | Path determination and IP addressing | IPv4, IPv6, ICMP, NAT |
+| **2** | **Data Link** | Physical addressing (MAC) | Ethernet, ARP |
+| **1** | **Physical** | Media, signal, and binary transmission | Fiber, Wi-Fi |
 
-    subgraph L2["Layer 2 - Data Link"]
-        SWITCH["Managed Switch - 802.1Q trunk and access ports - VLAN tagging"]
-        NIC_TRUNK["OPNsense NIC trunk - em0 WAN and em1 LAN - VLAN sub-interfaces"]
-        DOCKER_BRIDGE["Docker bridge docker0 - virtual veth pairs - veth to container eth0"]
-        WIFI_AP["WiFi AP - 802.11 to wired uplink - SSID per VLAN"]
-    end
+## TCP/IP Model (4 Layers)
 
-    subgraph L1["Layer 1 - Physical"]
-        CABLE["Ethernet Cat5e/6 - physical ports on switch and OPNsense"]
-        ISP["ISP Modem or ONT - WAN physical uplink"]
-        HOST_NIC["Host machine NIC - running OPNsense and Docker"]
-    end
+| Layer | Name | OSI Equivalent | Core Protocols |
+| :---: | :--- | :--- | :--- |
+| **4** | **Application** | Application, Presentation, Session (7, 6, 5) | HTTP, DNS, DHCP |
+| **3** | **Transport** | Transport (4) | TCP, UDP |
+| **2** | **Internet** | Network (3) | IP, ICMP, NAT, ARP |
+| **1** | **Network Access**| Data Link, Physical (2, 1) | Ethernet, Wi-Fi |
+---
 
-    ISP -->|"WAN uplink RJ45 or SFP"| HOST_NIC
-    HOST_NIC -->|"NIC driver to kernel"| NIC_TRUNK
-    CABLE -->|"physical medium"| SWITCH
-    SWITCH -->|"trunk port 802.1Q tagged"| NIC_TRUNK
-    WIFI_AP -->|"uplink cable to switch"| SWITCH
+## Core Protocols & Services
 
-    NIC_TRUNK -->|"VLAN sub-ifaces em1.10 em1.20"| VLANS
-    DOCKER_BRIDGE -->|"NAT via iptables/pf"| DOCKER_IP
-    SWITCH -->|"L2 frames to router"| OPNSENSE_FW
+### Address & Name Resolution
+* **DNS (Domain Name System):** Translates human-readable domain names (e.g., `google.com`) into routable IP addresses. Uses Port 53.
+* **DHCP (Dynamic Host Configuration Protocol):** Automatically assigns IP addresses, subnet masks, and default gateways to devices joining a network. Uses Ports 67/68.
+* **ARP (Address Resolution Protocol):** Bridges Layer 2 and Layer 3 by resolving a known IP address to an unknown physical MAC address on a local network.
 
-    VLANS -->|"inter-VLAN routing"| OPNSENSE_FW
-    OPNSENSE_FW -->|"stateful pf rules"| TCP
-    OPNSENSE_FW -->|"stateful pf rules"| UDP
-    DOCKER_IP -->|"port-forwarded TCP"| TCP
-    DOCKER_IP -->|"port-forwarded UDP"| UDP
+### Routing & Translation
+* **NAT (Network Address Translation):** Operates on routers/firewalls to translate private, internal IP addresses (e.g., `192.168.x.x`) into a single public IP address for internet access. Crucial for conserving IPv4 space.
 
-    TCP -->|"TCP connection tracking"| SESSIONS
-    UDP -->|"DHCP and DNS flows"| SESSIONS
-    TCP -->|"container port mapping"| DOCKER_NET
-    UDP -->|"container port mapping"| DOCKER_NET
+### Transport Layer
+* **TCP (Transmission Control Protocol):** Connection-oriented. Guarantees delivery, ordering, and error-checking. Used for web traffic, SSH, and file transfers.
+* **UDP (User Datagram Protocol):** Connectionless. Fast, but provides no delivery guarantees. Used for live video, VoIP, and DNS queries.
 
-    SESSIONS -->|"TLS handshake HTTPS and DoT"| TLS
-    SESSIONS -->|"plain DNS sessions"| DNS_ENC
+## Common Ports
 
-    TLS -->|"decrypted stream to Web UI"| OPNSENSE_UI
-    TLS -->|"DoT upstream queries"| DNS_ENC
-    DNS_ENC -->|"encrypted queries to upstream"| AGH
+| Port | Protocol | Usage |
+| :--- | :--- | :--- |
+| `22` | SSH | Secure remote command-line access |
+| `53` | DNS | Domain Name System |
+| `67/68`| DHCP | Dynamic Host Configuration |
+| `80` | HTTP | Unencrypted web traffic |
+| `443`| HTTPS | Encrypted web traffic (TLS/SSL) |
+| `3389`| RDP | Remote Desktop Protocol |
 
-    DNSMASQ -->|"DHCP lease DNS registration - client queries to port 53"| AGH
-    AGH -->|"filtered queries to upstream port 5335"| UNBOUND
-    UNBOUND -->|"recursive resolve A/AAAA/PTR via root hints or DoT"| DNS_ENC
-    DOCKER_APP -->|"resolv.conf points to host DNS port 53"| AGH
-    OPNSENSE_UI -->|"system resolver queries"| AGH
-```
+## Common Architectures
+
+### Layered DNS Stack
+
+A standard approach to network-wide filtering, recursive resolution, and local hostname registration (commonly deployed on OPNsense/pfSense).
+
+**The Resolution Chain:**
+`Client ➔ AdGuard Home (:53) ➔ Unbound (:5335) ➔ dnsmasq (:53053) / Root Servers`
+
+* **AdGuard Home (Frontend):** Ad/tracker filtering. Sits in front so every query is inspected.
+* **Unbound (Middle):** Recursive resolver and DNSSEC validation. Forwards local `.internal` queries to dnsmasq, resolves public domains directly.
+* **dnsmasq (Backend):** DHCP server and local DNS registry. Resolves `hostname.internal` automatically based on DHCP leases.
+
+---
+
+### VLAN Planning & Concepts
+
+!!! tip "Numbering Strategy"
+    A clean numbering scheme maps the VLAN ID directly to the third octet of the subnet (e.g., VLAN **30** = `10.10.`**`30`**`.0/24`). Leave gaps (10, 20, 30) to allow for future expansion.
+
+## Standard Numbering Scheme
+
+| ID | Name | Purpose | Default Routing Policy |
+| :---: | :--- | :--- | :--- |
+| **10** | MANAGEMENT | Infrastructure, routers, switches | Allow to All |
+| **20** | TRUSTED | Workstations, personal devices | Allow to All |
+| **30** | SERVERS | Self-hosted services, NAS | Block to Trusted/Mgmt |
+| **50** | IOT | Smart home, cameras | Block to all Internal |
+| **99** | GUEST | Guest WiFi | Internet only |
+
+## Tagged vs Untagged Ports
+
+| Port Type | Traffic | Used For | Device Awareness |
+| :--- | :--- | :--- | :--- |
+| **Access** | Untagged | End devices (PCs, servers, IoT) | **Unaware.** Switch adds/removes tags internally. |
+| **Trunk** | Tagged | Routers, switches, hypervisors | **Aware.** Device tags its own ethernet frames. |

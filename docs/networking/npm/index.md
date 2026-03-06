@@ -1,3 +1,7 @@
+---
+icon: simple/nginxproxymanager
+---
+
 # NGINX Proxy Mananger 
 
 [Github :simple-github: ](https://github.com/NginxProxyManager/nginx-proxy-manager)

@@ -6,42 +6,42 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Complete guide to planning, configuring, and implementing VLANs using OPNsense as a router and TP-Link Omada managed switches.">
+        <meta name="description" content="Documentation for homelab projects">
       
       
         <meta name="author" content="goose">
       
       
-        <link rel="canonical" href="https://docs.vanth.me/networking/opnsense/vlan/">
+        <link rel="canonical" href="https://docs.vanth.me/networking/npm/">
       
       
-        <link rel="prev" href="../opnsense-dns-stack/">
+        <link rel="prev" href="../opnsense/macvlan/">
       
       
-        <link rel="next" href="../opnsenseadguard/">
+        <link rel="next" href="./npm.md">
       
       
         
       
       
-      <link rel="icon" href="../../../lucide/server">
+      <link rel="icon" href="../../lucide/server">
       <meta name="generator" content="zensical-0.0.24">
     
     
       
-        <title>VLANs with OPNsense & Omada - Homelab References</title>
+        <title>NGINX Proxy Mananger - Homelab References</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.28978c9b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.28978c9b.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -60,7 +60,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vlans-with-opnsense-omada" class="md-skip">
+        <a href="#nginx-proxy-mananger" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Homelab References" class="md-header__button md-logo" aria-label="Homelab References" data-md-component="logo">
+    <a href="../.." title="Homelab References" class="md-header__button md-logo" aria-label="Homelab References" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VLANs with OPNsense & Omada
+              NGINX Proxy Mananger
             
           </span>
         </div>
@@ -203,7 +203,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   Get started
@@ -221,7 +221,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Linux/" class="md-tabs__link">
+        <a href="../../Linux/" class="md-tabs__link">
           
   
   Linux
@@ -240,7 +240,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../ansible/" class="md-tabs__link">
+        <a href="../../ansible/" class="md-tabs__link">
           
   
   Ansible
@@ -259,7 +259,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../docker/" class="md-tabs__link">
+        <a href="../../docker/" class="md-tabs__link">
           
   
   Docker
@@ -278,7 +278,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../media-server/" class="md-tabs__link">
+        <a href="../../media-server/" class="md-tabs__link">
           
   
   Media Server
@@ -299,7 +299,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   Networking
@@ -318,7 +318,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../services/" class="md-tabs__link">
+        <a href="../../services/" class="md-tabs__link">
           
   
   Services
@@ -337,7 +337,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../documentation/getstarted/" class="md-tabs__link">
+        <a href="../../documentation/getstarted/" class="md-tabs__link">
           
   
   Documentation
@@ -370,7 +370,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Homelab References" class="md-nav__button md-logo" aria-label="Homelab References" data-md-component="logo">
+    <a href="../.." title="Homelab References" class="md-nav__button md-logo" aria-label="Homelab References" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -400,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -482,7 +482,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../Linux/" class="md-nav__link ">
+            <a href="../../Linux/" class="md-nav__link ">
               
   
   
@@ -528,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/pcsetup/" class="md-nav__link">
+      <a href="../../Linux/pcsetup/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/nassetup/" class="md-nav__link">
+      <a href="../../Linux/nassetup/" class="md-nav__link">
         
   
   
@@ -588,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/disk-management/" class="md-nav__link">
+      <a href="../../Linux/disk-management/" class="md-nav__link">
         
   
   
@@ -618,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/mergerfs/" class="md-nav__link">
+      <a href="../../Linux/mergerfs/" class="md-nav__link">
         
   
   
@@ -648,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/snapraid/" class="md-nav__link">
+      <a href="../../Linux/snapraid/" class="md-nav__link">
         
   
   
@@ -678,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/users-permissions/" class="md-nav__link">
+      <a href="../../Linux/users-permissions/" class="md-nav__link">
         
   
   
@@ -708,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/ssh/" class="md-nav__link">
+      <a href="../../Linux/ssh/" class="md-nav__link">
         
   
   
@@ -738,7 +738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/systemd/" class="md-nav__link">
+      <a href="../../Linux/systemd/" class="md-nav__link">
         
   
   
@@ -768,7 +768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/networking/" class="md-nav__link">
+      <a href="../../Linux/networking/" class="md-nav__link">
         
   
   
@@ -798,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/package-management/" class="md-nav__link">
+      <a href="../../Linux/package-management/" class="md-nav__link">
         
   
   
@@ -828,7 +828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/cron/" class="md-nav__link">
+      <a href="../../Linux/cron/" class="md-nav__link">
         
   
   
@@ -858,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/log-management/" class="md-nav__link">
+      <a href="../../Linux/log-management/" class="md-nav__link">
         
   
   
@@ -888,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/firewall/" class="md-nav__link">
+      <a href="../../Linux/firewall/" class="md-nav__link">
         
   
   
@@ -918,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/performance-debugging/" class="md-nav__link">
+      <a href="../../Linux/performance-debugging/" class="md-nav__link">
         
   
   
@@ -990,7 +990,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ansible/" class="md-nav__link ">
+            <a href="../../ansible/" class="md-nav__link ">
               
   
   
@@ -1036,7 +1036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansible/" class="md-nav__link">
+      <a href="../../ansible/ansible/" class="md-nav__link">
         
   
   
@@ -1066,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansibleinstallation/" class="md-nav__link">
+      <a href="../../ansible/ansibleinstallation/" class="md-nav__link">
         
   
   
@@ -1096,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansibleinventory/" class="md-nav__link">
+      <a href="../../ansible/ansibleinventory/" class="md-nav__link">
         
   
   
@@ -1126,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansiblecommands/" class="md-nav__link">
+      <a href="../../ansible/ansiblecommands/" class="md-nav__link">
         
   
   
@@ -1156,7 +1156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansibleplaybook/" class="md-nav__link">
+      <a href="../../ansible/ansibleplaybook/" class="md-nav__link">
         
   
   
@@ -1224,7 +1224,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../docker/" class="md-nav__link ">
+            <a href="../../docker/" class="md-nav__link ">
               
   
   
@@ -1268,7 +1268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker/" class="md-nav__link">
+      <a href="../../docker/docker/" class="md-nav__link">
         
   
   
@@ -1298,7 +1298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/dockerpostinstall/" class="md-nav__link">
+      <a href="../../docker/dockerpostinstall/" class="md-nav__link">
         
   
   
@@ -1326,7 +1326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/cheatsheet/" class="md-nav__link">
+      <a href="../../docker/cheatsheet/" class="md-nav__link">
         
   
   
@@ -1396,7 +1396,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../media-server/" class="md-nav__link ">
+            <a href="../../media-server/" class="md-nav__link ">
               
   
   
@@ -1442,7 +1442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/qbittorrent/" class="md-nav__link">
+      <a href="../../media-server/qbittorrent/" class="md-nav__link">
         
   
   
@@ -1472,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/gluetun/" class="md-nav__link">
+      <a href="../../media-server/gluetun/" class="md-nav__link">
         
   
   
@@ -1502,7 +1502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/radarr/" class="md-nav__link">
+      <a href="../../media-server/radarr/" class="md-nav__link">
         
   
   
@@ -1532,7 +1532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/sonarr/" class="md-nav__link">
+      <a href="../../media-server/sonarr/" class="md-nav__link">
         
   
   
@@ -1562,7 +1562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/seerr/" class="md-nav__link">
+      <a href="../../media-server/seerr/" class="md-nav__link">
         
   
   
@@ -1633,7 +1633,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1676,8 +1676,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1711,15 +1709,17 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../opnsense/" class="md-nav__link ">
               
   
   
@@ -1745,7 +1745,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1765,7 +1765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../opnsense.md" class="md-nav__link">
+      <a href="../opnsense/opnsense.md" class="md-nav__link">
         
   
   
@@ -1793,7 +1793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../opnsense-dns-stack/" class="md-nav__link">
+      <a href="../opnsense/opnsense-dns-stack/" class="md-nav__link">
         
   
   
@@ -1818,37 +1818,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OPNSense VLANs w/ Omada
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../opnsense/vlan/" class="md-nav__link">
         
   
   
@@ -1864,554 +1837,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Concepts
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-is-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is a VLAN?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tagged-vs-untagged" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tagged vs Untagged
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#router-on-a-stick" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Router-on-a-Stick
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#planning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Planning
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Planning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vlan-scheme" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VLAN Scheme
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#firewall-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Firewall Policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ip-address-allocation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IP Address Allocation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opnsense-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OPNsense Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="OPNsense Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-vlan-interfaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Create VLAN Interfaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-assign-vlan-interfaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Assign VLAN Interfaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-configure-each-vlan-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Configure Each VLAN Interface
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-configure-dhcp-per-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4 — Configure DHCP per VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5-push-dns-server-via-dhcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 5 — Push DNS Server via DHCP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-6-static-dhcp-reservations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 6 — Static DHCP Reservations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-7-firewall-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 7 — Firewall Rules
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 7 — Firewall Rules">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#field-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Field Reference
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#management-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MANAGEMENT Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trusted-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TRUSTED Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servers-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SERVERS Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iot-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IOT Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#guest-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GUEST Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-8-force-dns-via-nat-optional-but-recommended" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 8 — Force DNS via NAT (Optional but Recommended)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#omada-switch-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Omada Switch Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Omada Switch Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-networks-in-omada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Create Networks in Omada
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-switch-port-profiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Create Switch Port Profiles
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2 — Create Switch Port Profiles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#access-port-profiles-one-per-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Access Port Profiles (one per VLAN)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trunk-profile-for-uplink-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trunk Profile (for uplink ports)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-assign-profiles-to-switch-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Assign Profiles to Switch Ports
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3 — Assign Profiles to Switch Ports">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-upstream-switch-connected-to-router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Upstream Switch (connected to router)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-downstream-switch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Downstream Switch
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verification
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Verification">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dns-resolution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DNS Resolution
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inter-vlan-connectivity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inter-VLAN Connectivity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dhcp-leases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DHCP Leases
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#firewall-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Firewall Logs
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Issues
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#device-received-wrong-subnet-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Device received wrong subnet IP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#no-internet-from-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        No internet from a VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cant-reach-opnsense-gateway-from-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Can't reach OPNsense gateway from a VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cross-vlan-traffic-that-should-be-blocked-is-getting-through" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cross-VLAN traffic that should be blocked is getting through
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trunk-port-not-passing-all-vlans" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trunk port not passing all VLANs
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reference
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2424,7 +1849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../opnsenseadguard/" class="md-nav__link">
+      <a href="../opnsense/opnsenseadguard/" class="md-nav__link">
         
   
   
@@ -2452,7 +1877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../opnsensetailscale/" class="md-nav__link">
+      <a href="../opnsense/opnsensetailscale/" class="md-nav__link">
         
   
   
@@ -2480,7 +1905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../macvlan/" class="md-nav__link">
+      <a href="../opnsense/macvlan/" class="md-nav__link">
         
   
   
@@ -2513,8 +1938,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2538,17 +1965,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../npm/" class="md-nav__link ">
+            <a href="././" class="md-nav__link md-nav__link--active">
               
   
   
@@ -2568,13 +1993,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+              <label class="md-nav__link md-nav__link--active" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2594,7 +2019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../npm/npm.md" class="md-nav__link">
+      <a href="./npm.md" class="md-nav__link">
         
   
   
@@ -2622,7 +2047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../npm/npm-pihole/" class="md-nav__link">
+      <a href="./npm-pihole/" class="md-nav__link">
         
   
   
@@ -2719,7 +2144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cloudflare/tunnels/" class="md-nav__link">
+      <a href="../cloudflare/tunnels/" class="md-nav__link">
         
   
   
@@ -2805,7 +2230,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../services/" class="md-nav__link ">
+            <a href="../../services/" class="md-nav__link ">
               
   
   
@@ -2909,7 +2334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/backups/backrest/" class="md-nav__link">
+      <a href="../../services/backups/backrest/" class="md-nav__link">
         
   
   
@@ -2937,7 +2362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/backups/backrestssh/" class="md-nav__link">
+      <a href="../../services/backups/backrestssh/" class="md-nav__link">
         
   
   
@@ -3031,7 +2456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/git/git/" class="md-nav__link">
+      <a href="../../services/git/git/" class="md-nav__link">
         
   
   
@@ -3125,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/homeassisstant/homeassisstant/" class="md-nav__link">
+      <a href="../../services/homeassisstant/homeassisstant/" class="md-nav__link">
         
   
   
@@ -3221,7 +2646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/immich/immich/" class="md-nav__link">
+      <a href="../../services/immich/immich/" class="md-nav__link">
         
   
   
@@ -3249,7 +2674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/immich/takeoutimport/" class="md-nav__link">
+      <a href="../../services/immich/takeoutimport/" class="md-nav__link">
         
   
   
@@ -3343,7 +2768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/ollama/ollama/" class="md-nav__link">
+      <a href="../../services/ollama/ollama/" class="md-nav__link">
         
   
   
@@ -3437,7 +2862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/omada/omada/" class="md-nav__link">
+      <a href="../../services/omada/omada/" class="md-nav__link">
         
   
   
@@ -3531,7 +2956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/pihole/pihole/" class="md-nav__link">
+      <a href="../../services/pihole/pihole/" class="md-nav__link">
         
   
   
@@ -3625,7 +3050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/tailscale/tailscale/" class="md-nav__link">
+      <a href="../../services/tailscale/tailscale/" class="md-nav__link">
         
   
   
@@ -3721,7 +3146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/utilities/convertx/" class="md-nav__link">
+      <a href="../../services/utilities/convertx/" class="md-nav__link">
         
   
   
@@ -3749,7 +3174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/utilities/obslivesync/" class="md-nav__link">
+      <a href="../../services/utilities/obslivesync/" class="md-nav__link">
         
   
   
@@ -3856,7 +3281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/getstarted/" class="md-nav__link">
+      <a href="../../documentation/getstarted/" class="md-nav__link">
         
   
   
@@ -3886,7 +3311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/markdown/" class="md-nav__link">
+      <a href="../../documentation/markdown/" class="md-nav__link">
         
   
   
@@ -3916,7 +3341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/zensical-cloudflare/" class="md-nav__link">
+      <a href="../../documentation/zensical-cloudflare/" class="md-nav__link">
         
   
   
@@ -3946,7 +3371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/customcss/" class="md-nav__link">
+      <a href="../../documentation/customcss/" class="md-nav__link">
         
   
   
@@ -4004,44 +3429,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
+  <a href="#github" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Concepts
+        Github
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Concepts">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-is-a-vlan" class="md-nav__link">
+  <a href="#docker-compose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is a VLAN?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tagged-vs-untagged" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tagged vs Untagged
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#router-on-a-stick" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Router-on-a-Stick
+        Docker Compose
       
     </span>
   </a>
@@ -4054,476 +3479,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#planning" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Planning
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Planning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vlan-scheme" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VLAN Scheme
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#firewall-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Firewall Policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ip-address-allocation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IP Address Allocation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opnsense-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OPNsense Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="OPNsense Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-vlan-interfaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Create VLAN Interfaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-assign-vlan-interfaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Assign VLAN Interfaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-configure-each-vlan-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Configure Each VLAN Interface
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-configure-dhcp-per-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4 — Configure DHCP per VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5-push-dns-server-via-dhcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 5 — Push DNS Server via DHCP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-6-static-dhcp-reservations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 6 — Static DHCP Reservations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-7-firewall-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 7 — Firewall Rules
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 7 — Firewall Rules">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#field-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Field Reference
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#management-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MANAGEMENT Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trusted-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TRUSTED Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servers-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SERVERS Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iot-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IOT Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#guest-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GUEST Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-8-force-dns-via-nat-optional-but-recommended" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 8 — Force DNS via NAT (Optional but Recommended)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#omada-switch-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Omada Switch Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Omada Switch Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-networks-in-omada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Create Networks in Omada
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-switch-port-profiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Create Switch Port Profiles
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2 — Create Switch Port Profiles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#access-port-profiles-one-per-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Access Port Profiles (one per VLAN)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trunk-profile-for-uplink-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trunk Profile (for uplink ports)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-assign-profiles-to-switch-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Assign Profiles to Switch Ports
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3 — Assign Profiles to Switch Ports">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-upstream-switch-connected-to-router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Upstream Switch (connected to router)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-downstream-switch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Downstream Switch
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verification
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Verification">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dns-resolution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DNS Resolution
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inter-vlan-connectivity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inter-VLAN Connectivity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dhcp-leases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DHCP Leases
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#firewall-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Firewall Logs
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Issues
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#device-received-wrong-subnet-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Device received wrong subnet IP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#no-internet-from-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        No internet from a VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cant-reach-opnsense-gateway-from-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Can't reach OPNsense gateway from a VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cross-vlan-traffic-that-should-be-blocked-is-getting-through" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cross-VLAN traffic that should be blocked is getting through
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trunk-port-not-passing-all-vlans" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trunk port not passing all VLANs
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reference
+        Usage
       
     </span>
   </a>
@@ -4555,7 +3514,7 @@
   
   
     <li class="md-path__item">
-      <a href="../../.." class="md-path__link">
+      <a href="../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Get started
@@ -4573,7 +3532,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
     Networking
@@ -4591,10 +3550,10 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="././" class="md-path__link">
           
   <span class="md-ellipsis">
-    OPNsense
+    NGINX Proxy Manager
   </span>
 
         </a>
@@ -4611,7 +3570,7 @@
                 
                   
   
-    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/networking/opnsense/vlan.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/networking/npm/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
@@ -4619,1008 +3578,117 @@
   
 
 
-<h1 id="vlans-with-opnsense-omada">VLANs with OPNsense &amp; Omada</h1>
-<p>This guide covers planning and implementing a VLAN network using <strong>OPNsense</strong> as the router/firewall and <strong>TP-Link Omada</strong> managed switches. It covers the full stack: VLAN design, OPNsense interface and DHCP configuration, firewall rules, NAT, and Omada switch profiles and port assignments.</p>
-<hr />
-<h2 id="concepts">Concepts</h2>
-<h3 id="what-is-a-vlan">What is a VLAN?</h3>
-<p>A VLAN (Virtual Local Area Network) logically separates devices on the same physical network into isolated segments. Devices on different VLANs cannot communicate with each other unless explicitly permitted by a router or firewall rule.</p>
-<p>Common use cases:</p>
+<h1 id="nginx-proxy-mananger">NGINX Proxy Mananger</h1>
+<h2 id="github"><a href="https://github.com/NginxProxyManager/nginx-proxy-manager">Github <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> </a></h2>
+<h2 id="overview">Overview</h2>
+<p><strong>NGINX Proxy Mananger</strong> is a user-friendly, web-based interface for configuring Nginx as a reverse proxy, simplifying the management of multiple web services on a single IP address, especially for home labs and self-hosted applications, by offering easy setup for proxy hosts, Let's Encrypt SSL certificates, redirects, access controls, and stream proxying, all within Docker containers. It removes the need for manual Nginx configuration, allowing quick deployment and management of secure web access to internal services through a simple dashboard. </p>
+<p>Instead of remembering 8000 different <code>IP-ADDR:PORT</code> combos, you can use NPM to set a reverse proxy to <code>service.domain.me</code>. </p>
+<p>I am solely using that as an <strong>internal</strong> DNS reverse proxy, not an internet edge. That is handled by cloudflare tunnels. </p>
+<h2 id="installation">Installation</h2>
+<h3 id="docker-compose">Docker Compose</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">npm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jc21/nginx-proxy-manager:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;80:80&quot;</span><span class="w">     </span><span class="c1"># HTTP</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;81:81&quot;</span><span class="w">     </span><span class="c1"># Admin UI</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;443:443&quot;</span><span class="w">   </span><span class="c1"># HTTPS</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">DB_SQLITE_FILE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data/database.sqlite&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${APPDATA}/ingress/npm/data:/data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${APPDATA}/ingress/npm/letsencrypt:/etc/letsencrypt</span>
+</code></pre></div>
+<h2 id="usage">Usage</h2>
 <ul>
-<li>Isolating IoT devices from trusted workstations</li>
-<li>Separating guest WiFi from internal networks</li>
-<li>Segmenting servers from personal devices</li>
-<li>Creating a dedicated management network for infrastructure</li>
-</ul>
-<h3 id="tagged-vs-untagged">Tagged vs Untagged</h3>
-<p>Understanding the difference between tagged and untagged traffic is fundamental to VLAN configuration.</p>
-<p><strong>Untagged (access ports)</strong>
-Used for end devices that are not VLAN-aware — computers, servers, NAS devices, printers. The device sends a normal ethernet frame with no VLAN information. The switch receives it, stamps the appropriate VLAN tag internally based on the port's profile, and routes it accordingly. On egress, the tag is stripped before delivery to the device. The device never knows VLANs exist.</p>
-<p><strong>Tagged (trunk ports)</strong>
-Used for VLAN-aware devices — routers, upstream switches, hypervisors. The device itself includes a VLAN tag in each ethernet frame. The switch receives the frame with the tag intact and uses it to route traffic to the correct VLAN. Trunk ports carry multiple VLANs simultaneously, each identified by its tag.</p>
-<table>
-<thead>
-<tr>
-<th>Port Type</th>
-<th>Used For</th>
-<th>Device Awareness</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Untagged / Access</td>
-<td>End devices (PCs, servers)</td>
-<td>Device is VLAN-unaware</td>
-</tr>
-<tr>
-<td>Tagged / Trunk</td>
-<td>Routers, switches, hypervisors</td>
-<td>Device tags its own frames</td>
-</tr>
-</tbody>
-</table>
-<h3 id="router-on-a-stick">Router-on-a-Stick</h3>
-<p>With a single physical port connecting OPNsense to the switch, all VLAN traffic travels over one link — each VLAN tagged. OPNsense creates virtual sub-interfaces (one per VLAN) on top of that physical port. This is the most common homelab setup and works well at any scale that doesn't saturate the uplink.</p>
-<hr />
-<h2 id="planning">Planning</h2>
-<h3 id="vlan-scheme">VLAN Scheme</h3>
-<p>Design your VLANs before touching any configuration. A clean numbering scheme that maps to subnets makes the network far easier to manage and troubleshoot.</p>
-<p><strong>Recommended pattern:</strong> Use the VLAN ID as the third octet of the subnet.</p>
-<table>
-<thead>
-<tr>
-<th>VLAN ID</th>
-<th>Name</th>
-<th>Subnet</th>
-<th>Gateway</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10</td>
-<td>MANAGEMENT</td>
-<td>10.10.10.0/24</td>
-<td>10.10.10.1</td>
-<td>Infrastructure — router, switches, DNS</td>
-</tr>
-<tr>
-<td>20</td>
-<td>TRUSTED</td>
-<td>10.10.20.0/24</td>
-<td>10.10.20.1</td>
-<td>Workstations, personal devices</td>
-</tr>
-<tr>
-<td>30</td>
-<td>SERVERS</td>
-<td>10.10.30.0/24</td>
-<td>10.10.30.1</td>
-<td>Servers, self-hosted services</td>
-</tr>
-<tr>
-<td>50</td>
-<td>IOT</td>
-<td>10.10.50.0/24</td>
-<td>10.10.50.1</td>
-<td>Smart home, cameras, IoT devices</td>
-</tr>
-<tr>
-<td>99</td>
-<td>GUEST</td>
-<td>10.10.99.0/24</td>
-<td>10.10.99.1</td>
-<td>Guest WiFi — internet only</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Tip:</strong> Leave gaps in your VLAN ID numbering (10, 20, 30 rather than 1, 2, 3) so you can insert new VLANs later without renumbering.</p>
-</blockquote>
-<h3 id="firewall-policy">Firewall Policy</h3>
-<p>Define your inter-VLAN routing policy before writing any rules. This makes the rules themselves straightforward to implement.</p>
-<table>
-<thead>
-<tr>
-<th>Source</th>
-<th>Destination</th>
-<th>Policy</th>
-<th>Reason</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MANAGEMENT</td>
-<td>All</td>
-<td>Allow</td>
-<td>Admins need access to everything</td>
-</tr>
-<tr>
-<td>TRUSTED</td>
-<td>All</td>
-<td>Allow</td>
-<td>Workstations need full access</td>
-</tr>
-<tr>
-<td>SERVERS</td>
-<td>TRUSTED</td>
-<td>Block</td>
-<td>Servers shouldn't reach workstations</td>
-</tr>
-<tr>
-<td>SERVERS</td>
-<td>MANAGEMENT</td>
-<td>Block</td>
-<td>Servers shouldn't manage infrastructure</td>
-</tr>
-<tr>
-<td>SERVERS</td>
-<td>WAN</td>
-<td>Allow</td>
-<td>Servers need internet</td>
-</tr>
-<tr>
-<td>IOT</td>
-<td>Internal (all)</td>
-<td>Block</td>
-<td>IoT isolated from all internal networks</td>
-</tr>
-<tr>
-<td>IOT</td>
-<td>WAN</td>
-<td>Allow</td>
-<td>IoT devices need internet</td>
-</tr>
-<tr>
-<td>GUEST</td>
-<td>Internal (all)</td>
-<td>Block</td>
-<td>Guests isolated from everything internal</td>
-</tr>
-<tr>
-<td>GUEST</td>
-<td>WAN</td>
-<td>Allow</td>
-<td>Guests need internet</td>
-</tr>
-</tbody>
-</table>
-<h3 id="ip-address-allocation">IP Address Allocation</h3>
-<p>Plan static IP allocation to avoid conflicts with DHCP ranges.</p>
-<p><strong>Recommended layout per subnet:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Range</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.1</code></td>
-<td>Gateway (OPNsense VLAN interface)</td>
-</tr>
-<tr>
-<td><code>.2 – .9</code></td>
-<td>Reserved infrastructure (DNS, NTP, etc.)</td>
-</tr>
-<tr>
-<td><code>.10 – .99</code></td>
-<td>Static device assignments</td>
-</tr>
-<tr>
-<td><code>.100 – .200</code></td>
-<td>DHCP pool</td>
-</tr>
-<tr>
-<td><code>.201 – .254</code></td>
-<td>Reserved</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="opnsense-configuration">OPNsense Configuration</h2>
-<h3 id="step-1-create-vlan-interfaces">Step 1 — Create VLAN Interfaces</h3>
-<p>Navigate to <strong>Interfaces → Other Types → VLAN</strong>.</p>
-<p>For each VLAN, click <strong>+</strong> and set:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Device</td>
-<td>Leave auto-generated</td>
-<td>OPNsense names it <code>vlan0.X</code></td>
-</tr>
-<tr>
-<td>Parent Interface</td>
-<td>Your LAN physical port (e.g. <code>igb0</code>)</td>
-<td>The port connected to your switch</td>
-</tr>
-<tr>
-<td>VLAN tag</td>
-<td>VLAN ID (e.g. <code>10</code>)</td>
-<td>Must match switch config exactly</td>
-</tr>
-<tr>
-<td>VLAN priority</td>
-<td><code>0</code></td>
-<td>Leave default unless using QoS</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>e.g. <code>MANAGEMENT</code></td>
-<td>For your reference only</td>
-</tr>
-</tbody>
-</table>
-<p>Click <strong>Save</strong> after each entry, then <strong>Apply changes</strong>.</p>
-<hr />
-<h3 id="step-2-assign-vlan-interfaces">Step 2 — Assign VLAN Interfaces</h3>
-<p>Navigate to <strong>Interfaces → Assignments</strong>.</p>
-<p>Each VLAN device you created needs to be assigned as an interface so OPNsense can route for it.</p>
-<ol>
-<li>At the bottom, select a VLAN device from the <strong>Device</strong> dropdown</li>
-<li>Click <strong>+ Add</strong></li>
-<li>Repeat for each VLAN</li>
-<li>Click <strong>Save</strong></li>
-</ol>
-<p>You will now see each VLAN listed as an interface (OPT1, OPT2, etc.). Click each one to configure it.</p>
-<hr />
-<h3 id="step-3-configure-each-vlan-interface">Step 3 — Configure Each VLAN Interface</h3>
-<p>Navigate to <strong>Interfaces → [VLAN NAME]</strong> for each interface.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Enable</td>
-<td>✅ Checked</td>
-<td>Must be enabled</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>e.g. <code>MANAGEMENT</code></td>
-<td>Replaces the OPT label</td>
-</tr>
-<tr>
-<td>IPv4 Configuration Type</td>
-<td>Static IPv4</td>
-<td></td>
-</tr>
-<tr>
-<td>IPv4 Address</td>
-<td>Gateway IP (e.g. <code>10.10.10.1</code>)</td>
-<td>OPNsense acts as gateway</td>
-</tr>
-<tr>
-<td>Subnet mask</td>
-<td><code>24</code></td>
-<td>For /24 subnets</td>
-</tr>
-<tr>
-<td>IPv6 Configuration Type</td>
-<td>None</td>
-<td>Unless using IPv6</td>
-</tr>
-</tbody>
-</table>
-<p>Click <strong>Save</strong> → <strong>Apply changes</strong> after each interface.</p>
-<hr />
-<h3 id="step-4-configure-dhcp-per-vlan">Step 4 — Configure DHCP per VLAN</h3>
-<p>Navigate to <strong>Services → Dnsmasq DNS &amp; DHCP → DHCP ranges</strong>.</p>
-<p>Add one DHCP range per VLAN interface:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Interface</td>
-<td>Select the VLAN interface</td>
-</tr>
-<tr>
-<td>Start address</td>
-<td>e.g. <code>10.10.10.100</code></td>
-</tr>
-<tr>
-<td>End address</td>
-<td>e.g. <code>10.10.10.200</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Do not create overlapping ranges. Static reservations (dnsmasq Hosts) do not need their own DHCP range — they sit outside the pool by convention.</p>
-</blockquote>
-<hr />
-<h3 id="step-5-push-dns-server-via-dhcp">Step 5 — Push DNS Server via DHCP</h3>
-<p>Clients need to receive your DNS server (e.g. AdGuard Home) via DHCP so all DNS queries are filtered.</p>
-<p>Navigate to <strong>Services → Dnsmasq DNS &amp; DHCP → DHCP options</strong>.</p>
-<p>For each VLAN interface, add:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Interface</td>
-<td>VLAN interface</td>
-</tr>
-<tr>
-<td>Option</td>
-<td><code>6</code> (DNS server)</td>
-</tr>
-<tr>
-<td>Value</td>
-<td>IP address of your DNS server</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="step-6-static-dhcp-reservations">Step 6 — Static DHCP Reservations</h3>
-<p>For servers and infrastructure that need consistent IPs, use static reservations rather than configuring IPs on the devices themselves where possible.</p>
-<p>Navigate to <strong>Services → Dnsmasq DNS &amp; DHCP → Hosts</strong>.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Host</td>
-<td>Hostname (e.g. <code>server01</code>)</td>
-</tr>
-<tr>
-<td>IP address</td>
-<td>Static IP outside DHCP pool (e.g. <code>10.10.30.10</code>)</td>
-</tr>
-<tr>
-<td>Hardware address</td>
-<td>Device MAC address</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Note:</strong> Do not duplicate entries across both Dnsmasq Hosts and Unbound Overrides. Pick one. Unbound Overrides are preferred for DNS records. Dnsmasq Hosts are preferred for DHCP-bound static reservations.</p>
-</blockquote>
-<hr />
-<h3 id="step-7-firewall-rules">Step 7 — Firewall Rules</h3>
-<p>Navigate to <strong>Firewall → Rules → [Interface tab]</strong>.</p>
-<p>OPNsense processes rules <strong>top to bottom, first match wins</strong>. Always place block rules above allow rules.</p>
-<h4 id="field-reference">Field Reference</h4>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Typical Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Action</strong></td>
-<td>What to do with matching traffic</td>
-<td><code>Pass</code>, <code>Block</code>, or <code>Reject</code></td>
-</tr>
-<tr>
-<td><strong>Disabled</strong></td>
-<td>Temporarily disable the rule</td>
-<td>Unchecked</td>
-</tr>
-<tr>
-<td><strong>Interface</strong></td>
-<td>Which interface this rule applies to</td>
-<td>The SOURCE interface</td>
-</tr>
-<tr>
-<td><strong>Direction</strong></td>
-<td>Inbound or outbound</td>
-<td>Always <code>In</code></td>
-</tr>
-<tr>
-<td><strong>TCP/IP Version</strong></td>
-<td>IP version</td>
-<td><code>IPv4</code></td>
-</tr>
-<tr>
-<td><strong>Protocol</strong></td>
-<td>Traffic type</td>
-<td><code>Any</code>, <code>TCP</code>, <code>UDP</code>, <code>TCP/UDP</code>, <code>ICMP</code></td>
-</tr>
-<tr>
-<td><strong>Source</strong></td>
-<td>Origin of traffic</td>
-<td>Interface network (e.g. <code>SERVERS net</code>)</td>
-</tr>
-<tr>
-<td><strong>Source Port</strong></td>
-<td>Source port</td>
-<td><code>any</code> — source ports are ephemeral</td>
-</tr>
-<tr>
-<td><strong>Destination</strong></td>
-<td>Target of traffic</td>
-<td>Specific network, host alias, or <code>any</code></td>
-</tr>
-<tr>
-<td><strong>Destination Port</strong></td>
-<td>Target port</td>
-<td><code>any</code> for broad rules, specific port for service rules</td>
-</tr>
-<tr>
-<td><strong>Log</strong></td>
-<td>Log matching packets</td>
-<td>Enable on all block rules</td>
-</tr>
-<tr>
-<td><strong>Description</strong></td>
-<td>Label for the rule</td>
-<td>Always fill in — critical for maintenance</td>
-</tr>
-<tr>
-<td><strong>State Type</strong></td>
-<td>Connection tracking</td>
-<td><code>Keep State</code> (default)</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Block vs Reject:</strong> <code>Block</code> silently drops packets (client times out). <code>Reject</code> sends an immediate refusal. Use <code>Block</code> for security rules — it gives less information to potential attackers and is the safer default.</p>
-</blockquote>
-<hr />
-<h4 id="management-rules">MANAGEMENT Rules</h4>
-<p>One rule — full unrestricted access:</p>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   MANAGEMENT
-Direction:   In
-Protocol:    Any
-Source:      MANAGEMENT net
-Destination: any
-Log:         No
-Description: Management full access
-</code></pre></div>
-<hr />
-<h4 id="trusted-rules">TRUSTED Rules</h4>
-<p>One rule — full unrestricted access:</p>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   TRUSTED
-Direction:   In
-Protocol:    Any
-Source:      TRUSTED net
-Destination: any
-Log:         No
-Description: Trusted full access
-</code></pre></div>
-<hr />
-<h4 id="servers-rules">SERVERS Rules</h4>
-<p>Three rules in this order:</p>
-<p><strong>Rule 1 — Block servers from reaching trusted workstations</strong>
-<div class="highlight"><pre><span></span><code>Action:      Block
-Interface:   SERVERS
-Direction:   In
-Protocol:    Any
-Source:      SERVERS net
-Destination: TRUSTED net
-Log:         Yes
-Description: Block SERVERS to TRUSTED
-</code></pre></div></p>
-<p><strong>Rule 2 — Block servers from reaching management infrastructure</strong>
-<div class="highlight"><pre><span></span><code>Action:      Block
-Interface:   SERVERS
-Direction:   In
-Protocol:    Any
-Source:      SERVERS net
-Destination: MANAGEMENT net
-Log:         Yes
-Description: Block SERVERS to MANAGEMENT
-</code></pre></div></p>
-<p><strong>Rule 3 — Allow servers internet access</strong>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   SERVERS
-Direction:   In
-Protocol:    Any
-Source:      SERVERS net
-Destination: any
-Log:         No
-Description: SERVERS internet access
-</code></pre></div></p>
-<blockquote>
-<p>Rule 3 uses <code>any</code> as destination. Rules 1 and 2 above it have already blocked the specific internal targets — <code>any</code> here effectively means everything not already matched.</p>
-</blockquote>
-<hr />
-<h4 id="iot-rules">IOT Rules</h4>
-<p>Two rules in this order:</p>
-<p><strong>Rule 1 — Block IoT from all internal networks</strong>
-<div class="highlight"><pre><span></span><code>Action:      Block
-Interface:   IOT
-Direction:   In
-Protocol:    Any
-Source:      IOT net
-Destination: 10.0.0.0/8  (or your internal range)
-Log:         Yes
-Description: Block IOT to all internal
-</code></pre></div></p>
-<blockquote>
-<p>Use an alias if your internal networks span multiple RFC1918 ranges (10.x.x.x, 192.168.x.x, 172.16.x.x). Create the alias under <strong>Firewall → Aliases</strong> and reference it as the destination.</p>
-</blockquote>
-<p><strong>Rule 2 — Allow IoT internet access</strong>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   IOT
-Direction:   In
-Protocol:    Any
-Source:      IOT net
-Destination: any
-Log:         No
-Description: IOT internet access
-</code></pre></div></p>
-<hr />
-<h4 id="guest-rules">GUEST Rules</h4>
-<p>Two rules in this order:</p>
-<p><strong>Rule 1 — Block guests from all internal networks</strong>
-<div class="highlight"><pre><span></span><code>Action:      Block
-Interface:   GUEST
-Direction:   In
-Protocol:    Any
-Source:      GUEST net
-Destination: 10.0.0.0/8
-Log:         Yes
-Description: Block GUEST to all internal
-</code></pre></div></p>
-<p><strong>Rule 2 — Allow guest internet access</strong>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   GUEST
-Direction:   In
-Protocol:    Any
-Source:      GUEST net
-Destination: any
-Log:         No
-Description: GUEST internet access
-</code></pre></div></p>
-<hr />
-<h3 id="step-8-force-dns-via-nat-optional-but-recommended">Step 8 — Force DNS via NAT (Optional but Recommended)</h3>
-<p>Prevents clients from bypassing your DNS server by pointing at a public resolver directly (e.g. <code>8.8.8.8</code>). Any DNS query not going to your resolver gets redirected.</p>
-<p>Navigate to <strong>Firewall → NAT → Port Forward</strong>. Create one rule per VLAN:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Interface</td>
-<td>VLAN interface (e.g. IOT)</td>
-</tr>
-<tr>
-<td>TCP/IP Version</td>
-<td>IPv4</td>
-</tr>
-<tr>
-<td>Protocol</td>
-<td>TCP/UDP</td>
-</tr>
-<tr>
-<td>Source</td>
-<td>VLAN net</td>
-</tr>
-<tr>
-<td>Source Port</td>
-<td>any</td>
-</tr>
-<tr>
-<td>Destination / Invert</td>
-<td>✅ Invert — enter your DNS server IP</td>
-</tr>
-<tr>
-<td>Destination Port</td>
-<td>53</td>
-</tr>
-<tr>
-<td>Redirect Target IP</td>
-<td>Your DNS server IP</td>
-</tr>
-<tr>
-<td>Redirect Target Port</td>
-<td>53</td>
-</tr>
-<tr>
-<td>Log</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>Force DNS to resolver - [VLAN NAME]</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>The <strong>invert</strong> on destination means: match any destination that is NOT your DNS server. This redirects rogue DNS queries while leaving legitimate queries to your resolver untouched.</p>
-</blockquote>
-<hr />
-<h2 id="omada-switch-configuration">Omada Switch Configuration</h2>
-<h3 id="step-1-create-networks-in-omada">Step 1 — Create Networks in Omada</h3>
-<p>Navigate to <strong>Settings → Wired Networks → Networks</strong>.</p>
-<p>Create a network entry for each VLAN. The VLAN IDs must exactly match what you configured in OPNsense.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td>e.g. <code>10 - MANAGEMENT</code></td>
-<td>Descriptive name</td>
-</tr>
-<tr>
-<td>Purpose</td>
-<td><code>VLAN</code></td>
-<td>Not Interface</td>
-</tr>
-<tr>
-<td>VLAN</td>
-<td>VLAN ID (e.g. <code>10</code>)</td>
-<td>Must match OPNsense</td>
-</tr>
-<tr>
-<td>Application</td>
-<td><code>Gateways and Switches</code></td>
-<td>Standard choice for routed VLANs</td>
-</tr>
-<tr>
-<td>IGMP Snooping</td>
-<td>Disabled</td>
-<td>Enable only if running multicast (e.g. Plex on local network)</td>
-</tr>
-<tr>
-<td>MLD Snooping</td>
-<td>Disabled</td>
-<td>IPv6 multicast — leave off unless needed</td>
-</tr>
-<tr>
-<td>QoS Queue</td>
-<td>Disabled</td>
-<td>Enable only if implementing QoS policy</td>
-</tr>
-<tr>
-<td>Legal DHCP Servers</td>
-<td>Disabled</td>
-<td>Enable to restrict DHCP to known servers only (optional hardening)</td>
-</tr>
-<tr>
-<td>DHCP L2 Relay</td>
-<td>Disabled</td>
-<td>Only needed if DHCP server is on a different L3 segment</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="step-2-create-switch-port-profiles">Step 2 — Create Switch Port Profiles</h3>
-<p>Navigate to <strong>Settings → Wired Networks → Switch Profile</strong>.</p>
-<p>Port profiles define how a switch port handles VLAN traffic. Create one profile per VLAN for access ports, plus one trunk profile for uplinks.</p>
-<h4 id="access-port-profiles-one-per-vlan">Access Port Profiles (one per VLAN)</h4>
-<p>Used for end devices — servers, workstations, NAS, IoT devices.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td>e.g. <code>20 - TRUSTED</code></td>
-<td></td>
-</tr>
-<tr>
-<td>PoE</td>
-<td>Keep Device's Settings</td>
-<td>Adjust per port if needed</td>
-</tr>
-<tr>
-<td>Native Network</td>
-<td>The VLAN (e.g. <code>20 - TRUSTED</code>)</td>
-<td>Untagged frames are assigned this VLAN</td>
-</tr>
-<tr>
-<td>Tagged Networks</td>
-<td>None</td>
-<td>Access ports carry one VLAN only</td>
-</tr>
-<tr>
-<td>Untagged Networks</td>
-<td>The same VLAN</td>
-<td>Frames exit untagged to the device</td>
-</tr>
-<tr>
-<td>Voice Network</td>
-<td>None</td>
-<td>Only needed for VoIP deployments</td>
-</tr>
-</tbody>
-</table>
-<p>Create one profile for each VLAN:</p>
-<table>
-<thead>
-<tr>
-<th>Profile Name</th>
-<th>Native Network</th>
-<th>Tagged</th>
-<th>Untagged</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10 - MANAGEMENT</td>
-<td>10 - MANAGEMENT</td>
-<td>—</td>
-<td>10 - MANAGEMENT</td>
-</tr>
-<tr>
-<td>20 - TRUSTED</td>
-<td>20 - TRUSTED</td>
-<td>—</td>
-<td>20 - TRUSTED</td>
-</tr>
-<tr>
-<td>30 - SERVERS</td>
-<td>30 - SERVERS</td>
-<td>—</td>
-<td>30 - SERVERS</td>
-</tr>
-<tr>
-<td>50 - IOT</td>
-<td>50 - IOT</td>
-<td>—</td>
-<td>50 - IOT</td>
-</tr>
-<tr>
-<td>99 - GUEST</td>
-<td>99 - GUEST</td>
-<td>—</td>
-<td>99 - GUEST</td>
-</tr>
-</tbody>
-</table>
-<h4 id="trunk-profile-for-uplink-ports">Trunk Profile (for uplink ports)</h4>
-<p>Used for ports connecting to OPNsense or between switches. Carries all VLANs tagged.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td><code>TRUNK - ALL</code></td>
-<td></td>
-</tr>
-<tr>
-<td>PoE</td>
-<td>Keep Device's Settings</td>
-<td></td>
-</tr>
-<tr>
-<td>Native Network</td>
-<td><code>10 - MANAGEMENT</code></td>
-<td>Untagged frames default to management VLAN</td>
-</tr>
-<tr>
-<td>Tagged Networks</td>
-<td>All VLANs (10, 20, 30, 50, 99)</td>
-<td>All VLANs pass through tagged</td>
-</tr>
-<tr>
-<td>Untagged Networks</td>
-<td>None</td>
-<td>Uplink devices are VLAN-aware</td>
-</tr>
-<tr>
-<td>Voice Network</td>
-<td>None</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Why Management as native on trunk?</strong> Untagged frames that arrive on a trunk port (e.g. switch management traffic) need to land somewhere. Assigning management as native ensures switch-to-switch communication stays on the correct VLAN rather than defaulting to VLAN 1.</p>
-</blockquote>
-<hr />
-<h3 id="step-3-assign-profiles-to-switch-ports">Step 3 — Assign Profiles to Switch Ports</h3>
-<p>Navigate to <strong>Devices → [Switch] → Ports</strong>.</p>
-<p>Click a port and assign the appropriate profile.</p>
-<h4 id="example-upstream-switch-connected-to-router">Example: Upstream Switch (connected to router)</h4>
-<table>
-<thead>
-<tr>
-<th>Port</th>
-<th>Connected To</th>
-<th>Profile</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Port 1</td>
-<td>OPNsense LAN port</td>
-<td><code>TRUNK - ALL</code></td>
-</tr>
-<tr>
-<td>Port 2</td>
-<td>Downstream switch</td>
-<td><code>TRUNK - ALL</code></td>
-</tr>
-<tr>
-<td>Port 3–8</td>
-<td>End devices</td>
-<td>Appropriate access profile</td>
-</tr>
-</tbody>
-</table>
-<h4 id="example-downstream-switch">Example: Downstream Switch</h4>
-<table>
-<thead>
-<tr>
-<th>Port</th>
-<th>Connected To</th>
-<th>Profile</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Port 1</td>
-<td>Upstream switch</td>
-<td><code>TRUNK - ALL</code></td>
-</tr>
-<tr>
-<td>Port 2</td>
-<td>Server A</td>
-<td><code>30 - SERVERS</code></td>
-</tr>
-<tr>
-<td>Port 3</td>
-<td>Server B</td>
-<td><code>30 - SERVERS</code></td>
-</tr>
-<tr>
-<td>Port 4</td>
-<td>Workstation</td>
-<td><code>20 - TRUSTED</code></td>
-</tr>
-<tr>
-<td>Port 5</td>
-<td>IoT device</td>
-<td><code>50 - IOT</code></td>
-</tr>
-<tr>
-<td>Port 6–8</td>
-<td>Spare</td>
-<td>Default or appropriate profile</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Trunk ports must be trunk on both ends.</strong> If port 1 on the downstream switch is set to <code>TRUNK - ALL</code> but the corresponding port on the upstream switch is set to an access profile, VLANs will not pass correctly.</p>
-</blockquote>
-<hr />
-<h2 id="verification">Verification</h2>
-<p>Once configuration is complete, verify each layer is working correctly.</p>
-<h3 id="dns-resolution">DNS Resolution</h3>
-<p>From a client on each VLAN, confirm DNS resolves correctly:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Should return an IP via your internal DNS resolver</span>
-dig<span class="w"> </span>example.com<span class="w"> </span>@&lt;dns-server-ip&gt;
-
-<span class="c1"># Internal hostname should resolve</span>
-dig<span class="w"> </span>server01.internal<span class="w"> </span>@&lt;dns-server-ip&gt;
-</code></pre></div>
-<h3 id="inter-vlan-connectivity">Inter-VLAN Connectivity</h3>
-<p>Test that your firewall policy is enforced:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># From TRUSTED — should reach servers</span>
-ping<span class="w"> </span><span class="m">10</span>.10.30.10
-
-<span class="c1"># From SERVERS — should NOT reach trusted workstations</span>
-ping<span class="w"> </span><span class="m">10</span>.10.20.10<span class="w">   </span><span class="c1"># expect: timeout</span>
-
-<span class="c1"># From IOT — should NOT reach any internal host</span>
-ping<span class="w"> </span><span class="m">10</span>.10.20.10<span class="w">   </span><span class="c1"># expect: timeout</span>
-ping<span class="w"> </span><span class="m">10</span>.10.30.10<span class="w">   </span><span class="c1"># expect: timeout</span>
-
-<span class="c1"># From any VLAN — internet should work</span>
-ping<span class="w"> </span><span class="m">8</span>.8.8.8
-</code></pre></div>
-<h3 id="dhcp-leases">DHCP Leases</h3>
-<p>Confirm devices are receiving IPs in the correct subnet:</p>
-<div class="highlight"><pre><span></span><code>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w">   </span><span class="c1"># Linux</span>
-ipconfig<span class="w">       </span><span class="c1"># Windows</span>
-</code></pre></div>
-<p>Check active leases in OPNsense under <strong>Services → Dnsmasq → Leases</strong> — confirm each device's IP falls within its expected VLAN subnet.</p>
-<h3 id="firewall-logs">Firewall Logs</h3>
-<p>Navigate to <strong>Firewall → Log Files → Live View</strong> in OPNsense. Generate some cross-VLAN traffic and confirm block rules are logging hits as expected.</p>
-<hr />
-<h2 id="common-issues">Common Issues</h2>
-<h3 id="device-received-wrong-subnet-ip">Device received wrong subnet IP</h3>
-<p>The port profile on the switch does not match the intended VLAN. Check:</p>
-<ol>
-<li>The port's assigned profile in Omada</li>
-<li>That the profile's Native/Untagged network matches the intended VLAN</li>
-<li>That the VLAN ID in the Omada network matches OPNsense exactly</li>
-</ol>
-<h3 id="no-internet-from-a-vlan">No internet from a VLAN</h3>
-<p>The allow rule for that VLAN is missing or below a block rule that is matching first. Check rule order in <strong>Firewall → Rules → [Interface]</strong>.</p>
-<h3 id="cant-reach-opnsense-gateway-from-a-vlan">Can't reach OPNsense gateway from a VLAN</h3>
-<p>The VLAN interface IP is not configured. Check <strong>Interfaces → [VLAN]</strong> and confirm a static IPv4 address is set.</p>
-<h3 id="cross-vlan-traffic-that-should-be-blocked-is-getting-through">Cross-VLAN traffic that should be blocked is getting through</h3>
-<p>A block rule is missing or in the wrong position. Remember: first match wins. Block rules must be above any pass rules that would otherwise match the same traffic.</p>
-<h3 id="trunk-port-not-passing-all-vlans">Trunk port not passing all VLANs</h3>
-<p>Either the trunk profile is missing a VLAN in Tagged Networks, or the OPNsense VLAN interface is not assigned/enabled. Check both ends of every trunk link.</p>
-<hr />
-<h2 id="reference">Reference</h2>
+<li>
+<p>Navigate to you <code>IP-ADDR:PORT</code> address, using the Admin UI port set in your <code>compose.yaml</code> above. </p>
+</li>
+<li>
+<p>Login with:</p>
 <ul>
-<li><a href="https://docs.opnsense.org/manual/other-interfaces.html">OPNsense VLAN Documentation</a></li>
-<li><a href="https://docs.opnsense.org/manual/firewall.html">OPNsense Firewall Rules</a></li>
-<li><a href="https://docs.opnsense.org/manual/nat.html">OPNsense NAT</a></li>
-<li><a href="https://docs.opnsense.org/manual/dnsmasq.html">OPNsense Dnsmasq</a></li>
-<li><a href="https://www.tp-link.com/us/support/faq/3089/">TP-Link Omada VLAN Configuration</a></li>
+<li>EMAIL: EMAIL@example.com</li>
+<li>Password: changeme</li>
 </ul>
+<p>(probably best to change the password immediately.)</p>
+</li>
+<li>
+<p>Go to SSL Certificates, "Add Certificates", select "Let's Encrypt". </p>
+</li>
+<li>
+<p>Enter your DDNS address, valid email, enable "Use a DNS challenge", choose your DNS provider, add your DDNS token, accept TOS and save.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can get a DDNS from multiple providers including DuckDNS, cloudflare, or porkbun. </p>
+</div>
+<p><strong>To set a Host:</strong> </p>
+<ul>
+<li>
+<p>Select "Hosts" &gt; "Proxy Hosts" </p>
+</li>
+<li>
+<p>Add Proxy Host</p>
+</li>
+<li>
+<p>Under Domain Names input desired domain</p>
+<ul>
+<li>
+<p>service.domain.com</p>
+</li>
+<li>
+<p>or whatever you want it to be called</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Scheme: HTTP (the reverse proxy w/ your SSL cert will forward to HTTPS).</p>
+</li>
+<li>
+<p>Forward your hostname / IP of the hosting machine/service. </p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is strongly recommended to use the assign a DNS name to your hosting machine and use that instead of the IP address. This is because if you change your IP address, you won't have to update the forward IP in NPM.</p>
+</div>
+<ul>
+<li>
+<p>Forward Port - use port defined in service. This would be the host port defined in a container. </p>
+<ul>
+<li>e.g. a <code>compose.yaml</code> with:
+<div class="highlight"><pre><span></span><code><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;3005:8080&#39;</span>
+</code></pre></div>
+Would use port 3005 as the forwarded IP, not 8080. </li>
+</ul>
+</li>
+<li>
+<p>Choose your ACL rule. </p>
+</li>
+<li>
+<p>Choose "Block COmmon Exploits" and "Websockets support" </p>
+</li>
+<li>
+<p>Select the <strong>SSL</strong> tab at the top</p>
+<ul>
+<li>
+<p>Select the SSL cert made earlier. </p>
+</li>
+<li>
+<p>Force SSL and HTTP/2 support. </p>
+</li>
+</ul>
+</li>
+<li>
+<p>Save</p>
+</li>
+</ul>
+<p>Now you can access <code>service.domain.com</code> instead of <code>192.168.3.20:3005</code>.</p>
 
-
-  <nav class="md-tags" >
-    
-      
-      
-      
-      
-        <span class="md-tag">networking</span>
-      
-    
-      
-      
-      
-      
-        <span class="md-tag">vlans</span>
-      
-    
-      
-      
-      
-      
-        <span class="md-tag">opnsense</span>
-      
-    
-      
-      
-      
-      
-        <span class="md-tag">omada</span>
-      
-    
-  </nav>
 
 
 
@@ -5662,7 +3730,7 @@ ipconfig<span class="w">       </span><span class="c1"># Windows</span>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../opnsense-dns-stack/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OPNSense DNS Stack">
+          <a href="../opnsense/macvlan/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Macvlan">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -5672,20 +3740,20 @@ ipconfig<span class="w">       </span><span class="c1"># Windows</span>
                 Previous
               </span>
               <div class="md-ellipsis">
-                OPNSense DNS Stack
+                Macvlan
               </div>
             </div>
           </a>
         
         
           
-          <a href="../opnsenseadguard/" class="md-footer__link md-footer__link--next" aria-label="Next: Adguard Home">
+          <a href="./npm.md" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Adguard Home
+                Overview
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -5728,10 +3796,10 @@ ipconfig<span class="w">       </span><span class="c1"># Windows</span>
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.16f8adc2.min.js"></script>
+      <script src="../../assets/javascripts/bundle.16f8adc2.min.js"></script>
       
     
   </body>

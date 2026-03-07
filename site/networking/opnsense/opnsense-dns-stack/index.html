@@ -60,6 +60,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
@@ -1691,6 +1693,8 @@
       
         
       
+        
+      
     
     
     
@@ -1901,6 +1905,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dhcp-options-omada-controller-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Options — Omada Controller Discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2002,6 +2017,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dns-broke-after-editing-dnsmasq-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS broke after editing dnsmasq settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#stale-dns-record-after-ip-change" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2017,6 +2043,17 @@
     <span class="md-ellipsis">
       
         Client not receiving correct DNS via DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-containers-cannot-resolve-internal-hostnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker containers cannot resolve .internal hostnames
       
     </span>
   </a>
@@ -2119,6 +2156,34 @@
     
   
     OPNSense VLANs w/ Omada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vlan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNSense Management VLANs w/ Omada
   
 
     
@@ -3686,6 +3751,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dhcp-options-omada-controller-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Options — Omada Controller Discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3787,6 +3863,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dns-broke-after-editing-dnsmasq-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS broke after editing dnsmasq settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#stale-dns-record-after-ip-change" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3802,6 +3889,17 @@
     <span class="md-ellipsis">
       
         Client not receiving correct DNS via DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-containers-cannot-resolve-internal-hostnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker containers cannot resolve .internal hostnames
       
     </span>
   </a>
@@ -3986,7 +4084,7 @@
 </tbody>
 </table>
 <blockquote>
-<p><strong>dnsmasq DNS is enabled here on port 53053.</strong> It is not disabled. Port 0 would disable DNS entirely and break the chain — Unbound would forward <code>.internal</code> queries to nothing.</p>
+<p><strong>Warning — DNS port must not be set to <code>0</code>.</strong> Port <code>0</code> disables dnsmasq DNS entirely. Unbound's Query Forwarding entries point to dnsmasq at port <code>53053</code> — if that port is <code>0</code>, Unbound forwards <code>.internal</code> queries to nothing and all local hostname resolution silently breaks. The DNS port field must always be set to <code>53053</code> (or whatever non-zero port you chose). This is a common misconfiguration that produces confusing symptoms because DHCP continues to work while DNS fails.</p>
 </blockquote>
 <hr />
 <h3 id="static-host-reservations">Static Host Reservations</h3>
@@ -4083,6 +4181,34 @@
 <p>Use the gateway IP of the VLAN the client is on, not a fixed IP — once OPNsense has VLAN interfaces each will have its own IP and AdGuard listens on all of them.</p>
 </blockquote>
 <hr />
+<h3 id="dhcp-options-omada-controller-discovery">DHCP Options — Omada Controller Discovery</h3>
+<p>If you are running Omada managed switches or APs on a dedicated MANAGEMENT VLAN, add an additional DHCP option on the MANAGEMENT interface so devices can locate the Omada controller after a reboot.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface</td>
+<td>MANAGEMENT</td>
+</tr>
+<tr>
+<td>Option</td>
+<td><code>option_capwap_ac_v4 [138]</code></td>
+</tr>
+<tr>
+<td>Value</td>
+<td>IP address of your Omada controller</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>This is required because broadcast-based controller discovery does not work across VLANs. Without Option 138, Omada devices survive a single session but become orphaned after rebooting because they cannot find the controller on a different subnet.</p>
+</blockquote>
+<hr />
 <h2 id="step-2-unbound">Step 2 — Unbound</h2>
 <p><strong>Services → Unbound DNS → General</strong></p>
 <table>
@@ -4168,6 +4294,9 @@
 <p>Replace <code>x.x.x</code> with the reverse zone for your subnet. For <code>10.10.30.0/24</code> this is <code>30.10.10.in-addr.arpa</code>. Add one PTR entry per subnet.</p>
 </blockquote>
 <p>Without these entries, Unbound attempts to resolve <code>hostname.internal</code> from root DNS servers, fails, and returns NXDOMAIN.</p>
+<blockquote>
+<p><strong>These Query Forwarding entries must exist and must point to the correct port.</strong> If dnsmasq DNS is running on port <code>53053</code> but the Query Forwarding entries are missing or point to a different port, <code>.internal</code> resolution will fail silently — DHCP will still work, but hostnames will not resolve.</p>
+</blockquote>
 <hr />
 <h3 id="host-overrides">Host Overrides</h3>
 <p><strong>Services → Unbound DNS → Overrides</strong></p>
@@ -4265,6 +4394,8 @@
 <li>Do the Unbound Query Forwarding entries point to <code>127.0.0.1:53053</code>?</li>
 <li>Is AdGuard upstream set to <code>127.0.0.1:5335</code>?</li>
 </ol>
+<h3 id="dns-broke-after-editing-dnsmasq-settings">DNS broke after editing dnsmasq settings</h3>
+<p>Check the DNS listen port field immediately. It is easy to accidentally set this to <code>0</code> while editing other settings. Port <code>0</code> disables dnsmasq DNS entirely, breaking the Unbound → dnsmasq chain and causing all <code>.internal</code> resolution to fail. Set it back to <code>53053</code> and restart dnsmasq.</p>
 <h3 id="stale-dns-record-after-ip-change">Stale DNS record after IP change</h3>
 <p>Clear cache at every layer in order:</p>
 <ol>
@@ -4278,6 +4409,14 @@
 <div class="highlight"><pre><span></span><code>resolvectl<span class="w"> </span>status<span class="w">          </span><span class="c1"># Linux</span>
 ipconfig<span class="w"> </span>/all<span class="w">              </span><span class="c1"># Windows</span>
 </code></pre></div></p>
+<h3 id="docker-containers-cannot-resolve-internal-hostnames">Docker containers cannot resolve .internal hostnames</h3>
+<p>Docker containers use their own DNS configuration and do not automatically use the host's DNS settings. Add the VLAN gateway as an explicit DNS server in the container's compose file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">myservice</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dns</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.10.30.1</span><span class="w">   </span><span class="c1"># VLAN gateway IP — replace with your LAB/SERVERS gateway</span>
+</code></pre></div>
+<p>Without this, containers query Docker's internal DNS (<code>127.0.0.11</code>) which cannot resolve <code>.internal</code> hostnames.</p>
 <h3 id="rogue-dns-bypass-not-being-caught">Rogue DNS bypass not being caught</h3>
 <p>Verify NAT port forward rules exist for each VLAN under <strong>Firewall → NAT → Port Forward</strong> and that the destination invert is checked.</p>
 

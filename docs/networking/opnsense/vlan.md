@@ -178,7 +178,25 @@ For each VLAN interface, add:
 |---|---|
 | Interface | VLAN interface |
 | Option | `6` (DNS server) |
-| Value | IP address of your DNS server |
+| Value | IP address of your DNS server (use the VLAN gateway IP — OPNsense listens on all VLAN interfaces) |
+
+> Use the gateway IP of the VLAN the client is on (e.g. `10.10.30.1` for the LAB VLAN), not a fixed single IP. This ensures DNS works correctly once the flat LAN is retired.
+
+---
+
+### Step 5a — DHCP Option 138 for Omada Controller Discovery (MANAGEMENT VLAN only)
+
+If you are using a dedicated MANAGEMENT VLAN for Omada switches and APs, you must also configure **DHCP Option 138** on the MANAGEMENT interface. This tells Omada devices where the controller is after a reboot — without it, devices survive a single session but become orphaned the moment they reboot.
+
+Navigate to **Services → Dnsmasq DNS & DHCP → DHCP options**.
+
+| Field | Value |
+|---|---|
+| Interface | MANAGEMENT |
+| Option | `option_capwap_ac_v4 [138]` |
+| Value | IP address of your Omada controller |
+
+> This is required because broadcast-based controller discovery does not cross VLAN boundaries. Once a switch is on the MANAGEMENT VLAN, it can only find the controller if told explicitly via Option 138.
 
 ---
 
@@ -301,6 +319,25 @@ Description: SERVERS internet access
 ```
 
 > Rule 3 uses `any` as destination. Rules 1 and 2 above it have already blocked the specific internal targets — `any` here effectively means everything not already matched.
+
+---
+
+#### SERVERS Rules — Exception for Omada Controller
+
+If your Omada controller runs on the SERVERS/LAB VLAN and you have a MANAGEMENT VLAN for switches, you must add an explicit allow rule so the controller can reach the switches. Place this **above** any block rules on the SERVERS/LAB interface.
+
+```
+Action:      Pass
+Interface:   SERVERS (or LAB)
+Direction:   In
+Protocol:    Any
+Source:      <Omada controller IP>
+Destination: MANAGEMENT net
+Log:         No
+Description: Allow Omada to manage MGMT VLAN
+```
+
+> Without this rule, any "Block SERVERS to MANAGEMENT" rule will prevent the Omada controller from reaching the switches, causing them to appear disconnected in Omada even though they are physically reachable.
 
 ---
 
@@ -456,6 +493,8 @@ Used for ports connecting to OPNsense or between switches. Carries all VLANs tag
 
 > **Why Management as native on trunk?** Untagged frames that arrive on a trunk port (e.g. switch management traffic) need to land somewhere. Assigning management as native ensures switch-to-switch communication stays on the correct VLAN rather than defaulting to VLAN 1.
 
+> **Critical:** When migrating switches to a MANAGEMENT VLAN, verify that VLAN 10 is in the Tagged Networks list of your trunk profile **before** applying the management VLAN config to any switch. If VLAN 10 is missing from the trunk, the switch will be unreachable after migration even though it is physically connected.
+
 ---
 
 ### Step 3 — Assign Profiles to Switch Ports
@@ -484,6 +523,16 @@ Click a port and assign the appropriate profile.
 | Port 6–8 | Spare | Default or appropriate profile |
 
 > **Trunk ports must be trunk on both ends.** If port 1 on the downstream switch is set to `TRUNK - ALL` but the corresponding port on the upstream switch is set to an access profile, VLANs will not pass correctly.
+
+#### Switch Migration Order
+
+When migrating switches to a MANAGEMENT VLAN, always work **upstream first**:
+
+1. Configure and verify the upstream switch (closest to OPNsense) before touching downstream switches
+2. Confirm the upstream switch is reachable at its new MANAGEMENT VLAN IP before proceeding
+3. Only then migrate downstream switches, one at a time
+
+Migrating a downstream switch before its upstream is configured means tagged MANAGEMENT traffic cannot flow back to OPNsense, leaving the switch unreachable.
 
 ---
 
@@ -565,6 +614,10 @@ A block rule is missing or in the wrong position. Remember: first match wins. Bl
 
 Either the trunk profile is missing a VLAN in Tagged Networks, or the OPNsense VLAN interface is not assigned/enabled. Check both ends of every trunk link.
 
+### Omada controller cannot reach switches after MANAGEMENT VLAN migration
+
+The Omada controller is on a different VLAN (e.g. SERVERS/LAB) and a block rule is preventing it from reaching the MANAGEMENT VLAN. Add an explicit pass rule on the controller's VLAN interface allowing the controller IP to reach MANAGEMENT net, placed above any block rules. See the SERVERS Rules — Exception for Omada Controller section above.
+
 ---
 
 ## Reference
@@ -574,3 +627,4 @@ Either the trunk profile is missing a VLAN in Tagged Networks, or the OPNsense V
 - [OPNsense NAT](https://docs.opnsense.org/manual/nat.html)
 - [OPNsense Dnsmasq](https://docs.opnsense.org/manual/dnsmasq.html)
 - [TP-Link Omada VLAN Configuration](https://www.tp-link.com/us/support/faq/3089/)
+- [TP-Link Omada Management VLAN Configuration](https://www.omadanetworks.com/us/support/faq/2814/)

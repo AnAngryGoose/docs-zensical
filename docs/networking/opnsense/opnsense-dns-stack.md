@@ -56,7 +56,7 @@ None of these roles overlap. Each is doing something the others cannot.
 | DHCP local domain | **Enabled** | Makes dnsmasq authoritative for `.internal` — it will not forward these queries upstream |
 | Do not forward to system defined DNS | **Enabled** | Prevents query loops — dnsmasq must not forward back to Unbound for local lookups |
 
-> **dnsmasq DNS is enabled here on port 53053.** It is not disabled. Port 0 would disable DNS entirely and break the chain — Unbound would forward `.internal` queries to nothing.
+> **Warning — DNS port must not be set to `0`.** Port `0` disables dnsmasq DNS entirely. Unbound's Query Forwarding entries point to dnsmasq at port `53053` — if that port is `0`, Unbound forwards `.internal` queries to nothing and all local hostname resolution silently breaks. The DNS port field must always be set to `53053` (or whatever non-zero port you chose). This is a common misconfiguration that produces confusing symptoms because DHCP continues to work while DNS fails.
 
 ---
 
@@ -113,6 +113,20 @@ Clients need to receive AdGuard's IP as their DNS server via DHCP. Add one entry
 
 ---
 
+### DHCP Options — Omada Controller Discovery
+
+If you are running Omada managed switches or APs on a dedicated MANAGEMENT VLAN, add an additional DHCP option on the MANAGEMENT interface so devices can locate the Omada controller after a reboot.
+
+| Field | Value |
+|---|---|
+| Interface | MANAGEMENT |
+| Option | `option_capwap_ac_v4 [138]` |
+| Value | IP address of your Omada controller |
+
+> This is required because broadcast-based controller discovery does not work across VLANs. Without Option 138, Omada devices survive a single session but become orphaned after rebooting because they cannot find the controller on a different subnet.
+
+---
+
 ## Step 2 — Unbound
 
 **Services → Unbound DNS → General**
@@ -144,6 +158,8 @@ This is the critical link. Unbound forwards `.internal` queries to dnsmasq inste
 > Replace `x.x.x` with the reverse zone for your subnet. For `10.10.30.0/24` this is `30.10.10.in-addr.arpa`. Add one PTR entry per subnet.
 
 Without these entries, Unbound attempts to resolve `hostname.internal` from root DNS servers, fails, and returns NXDOMAIN.
+
+> **These Query Forwarding entries must exist and must point to the correct port.** If dnsmasq DNS is running on port `53053` but the Query Forwarding entries are missing or point to a different port, `.internal` resolution will fail silently — DHCP will still work, but hostnames will not resolve.
 
 ---
 
@@ -248,6 +264,10 @@ Check in order:
 3. Do the Unbound Query Forwarding entries point to `127.0.0.1:53053`?
 4. Is AdGuard upstream set to `127.0.0.1:5335`?
 
+### DNS broke after editing dnsmasq settings
+
+Check the DNS listen port field immediately. It is easy to accidentally set this to `0` while editing other settings. Port `0` disables dnsmasq DNS entirely, breaking the Unbound → dnsmasq chain and causing all `.internal` resolution to fail. Set it back to `53053` and restart dnsmasq.
+
 ### Stale DNS record after IP change
 
 Clear cache at every layer in order:
@@ -265,6 +285,19 @@ Verify what DNS the client actually received:
 resolvectl status          # Linux
 ipconfig /all              # Windows
 ```
+
+### Docker containers cannot resolve .internal hostnames
+
+Docker containers use their own DNS configuration and do not automatically use the host's DNS settings. Add the VLAN gateway as an explicit DNS server in the container's compose file:
+
+```yaml
+services:
+  myservice:
+    dns:
+      - 10.10.30.1   # VLAN gateway IP — replace with your LAB/SERVERS gateway
+```
+
+Without this, containers query Docker's internal DNS (`127.0.0.11`) which cannot resolve `.internal` hostnames.
 
 ### Rogue DNS bypass not being caught
 

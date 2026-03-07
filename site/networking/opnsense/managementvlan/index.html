@@ -6,19 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Complete guide to planning, configuring, and implementing VLANs using OPNsense as a router and TP-Link Omada managed switches.">
+        <meta name="description" content="Step-by-step guide to migrating Omada switches and APs to a dedicated management VLAN using OPNsense as a non-Omada gateway. Includes exact firewall rules, DHCP options, order of operations, and lessons learned from a real migration.">
       
       
         <meta name="author" content="goose">
       
       
-        <link rel="canonical" href="https://docs.vanth.me/networking/opnsense/vlan/">
+        <link rel="canonical" href="https://docs.vanth.me/networking/opnsense/managementvlan/">
       
       
-        <link rel="prev" href="../opnsensetailscale/">
-      
-      
-        <link rel="next" href="././">
       
       
         
@@ -29,7 +25,7 @@
     
     
       
-        <title>VLANs with OPNsense & Omada - Homelab References</title>
+        <title>Management VLAN Migration — OPNsense & Omada - Homelab References</title>
       
     
     
@@ -87,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vlans-with-opnsense-omada" class="md-skip">
+        <a href="#management-vlan-migration-opnsense-omada" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VLANs with OPNsense & Omada
+              Management VLAN Migration — OPNsense & Omada
             
           </span>
         </div>
@@ -295,12 +291,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../../" class="md-tabs__link">
           
   
@@ -1598,8 +1592,6 @@
       
   
   
-    
-  
   
   
     
@@ -1619,19 +1611,18 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1653,13 +1644,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1676,10 +1667,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1700,21 +1689,20 @@
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
         
           
-          
         
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
             
   
   
@@ -1732,7 +1720,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1859,37 +1847,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OPNSense VLANs w/ Omada
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../vlan/" class="md-nav__link">
         
   
   
@@ -1905,598 +1866,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Concepts
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-is-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is a VLAN?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tagged-vs-untagged" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tagged vs Untagged
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#router-on-a-stick" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Router-on-a-Stick
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#planning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Planning
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Planning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vlan-scheme" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VLAN Scheme
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#firewall-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Firewall Policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ip-address-allocation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IP Address Allocation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opnsense-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OPNsense Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="OPNsense Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-vlan-interfaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Create VLAN Interfaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-assign-vlan-interfaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Assign VLAN Interfaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-configure-each-vlan-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Configure Each VLAN Interface
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-configure-dhcp-per-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4 — Configure DHCP per VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5-push-dns-server-via-dhcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 5 — Push DNS Server via DHCP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5a-dhcp-option-138-for-omada-controller-discovery-management-vlan-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 5a — DHCP Option 138 for Omada Controller Discovery (MANAGEMENT VLAN only)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-6-static-dhcp-reservations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 6 — Static DHCP Reservations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-7-firewall-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 7 — Firewall Rules
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 7 — Firewall Rules">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#field-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Field Reference
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#management-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MANAGEMENT Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trusted-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TRUSTED Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servers-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SERVERS Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servers-rules-exception-for-omada-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SERVERS Rules — Exception for Omada Controller
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iot-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IOT Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#guest-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GUEST Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-8-force-dns-via-nat-optional-but-recommended" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 8 — Force DNS via NAT (Optional but Recommended)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#omada-switch-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Omada Switch Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Omada Switch Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-networks-in-omada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Create Networks in Omada
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-switch-port-profiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Create Switch Port Profiles
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2 — Create Switch Port Profiles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#access-port-profiles-one-per-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Access Port Profiles (one per VLAN)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trunk-profile-for-uplink-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trunk Profile (for uplink ports)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-assign-profiles-to-switch-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Assign Profiles to Switch Ports
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3 — Assign Profiles to Switch Ports">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-upstream-switch-connected-to-router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Upstream Switch (connected to router)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-downstream-switch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Downstream Switch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#switch-migration-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Switch Migration Order
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verification
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Verification">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dns-resolution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DNS Resolution
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inter-vlan-connectivity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inter-VLAN Connectivity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dhcp-leases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DHCP Leases
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#firewall-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Firewall Logs
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Issues
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#device-received-wrong-subnet-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Device received wrong subnet IP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#no-internet-from-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        No internet from a VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cant-reach-opnsense-gateway-from-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Can't reach OPNsense gateway from a VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cross-vlan-traffic-that-should-be-blocked-is-getting-through" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cross-VLAN traffic that should be blocked is getting through
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trunk-port-not-passing-all-vlans" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trunk port not passing all VLANs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#omada-controller-cannot-reach-switches-after-management-vlan-migration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Omada controller cannot reach switches after MANAGEMENT VLAN migration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reference
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2509,7 +1878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="././" class="md-nav__link">
+      <a href="../vlan/" class="md-nav__link">
         
   
   
@@ -2557,13 +1926,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -2572,7 +1938,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
             
   
   
@@ -2682,13 +2048,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -2697,7 +2060,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
             
   
   
@@ -4018,22 +3381,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Concepts
+        Overview
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Concepts">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-is-a-vlan" class="md-nav__link">
+  <a href="#1-management-vlan-interface" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is a VLAN?
+        1. MANAGEMENT VLAN Interface
       
     </span>
   </a>
@@ -4041,10 +3426,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tagged-vs-untagged" class="md-nav__link">
+  <a href="#2-dhcp-option-138-omada-controller-discovery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tagged vs Untagged
+        2. DHCP Option 138 — Omada Controller Discovery
       
     </span>
   </a>
@@ -4052,10 +3437,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#router-on-a-stick" class="md-nav__link">
+  <a href="#3-firewall-rule-allow-omada-controller-to-reach-management-vlan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Router-on-a-Stick
+        3. Firewall Rule — Allow Omada Controller to Reach MANAGEMENT VLAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dhcp-option-6-push-correct-dns-to-management-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. DHCP Option 6 — Push Correct DNS to MANAGEMENT Devices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-nat-dns-redirect-for-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. NAT DNS Redirect for MANAGEMENT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-verify-opnsense-is-reachable-on-management-vlan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Verify OPNsense is Reachable on MANAGEMENT VLAN
       
     </span>
   </a>
@@ -4068,22 +3486,77 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#planning" class="md-nav__link">
+  <a href="#trunk-profile-verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Planning
+        Trunk Profile Verification
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Planning">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration Order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch-migration-sg2210p-and-sg2016p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Switch Migration — SG2210P and SG2016P
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ap-migration-eap650" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AP Migration — EAP650
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-migration-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-Migration Verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-can-go-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Can Go Wrong
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Can Go Wrong">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vlan-scheme" class="md-nav__link">
+  <a href="#switch-disconnects-and-never-reconnects" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VLAN Scheme
+        Switch disconnects and never reconnects
       
     </span>
   </a>
@@ -4091,10 +3564,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#firewall-policy" class="md-nav__link">
+  <a href="#switch-reconnects-but-omada-cant-manage-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Firewall Policy
+        Switch reconnects but Omada can't manage it
       
     </span>
   </a>
@@ -4102,10 +3575,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ip-address-allocation" class="md-nav__link">
+  <a href="#switch-completely-unreachable-after-applying-config" class="md-nav__link">
     <span class="md-ellipsis">
       
-        IP Address Allocation
+        Switch completely unreachable after applying config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factory-reset-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factory reset required
       
     </span>
   </a>
@@ -4118,470 +3602,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#opnsense-configuration" class="md-nav__link">
+  <a href="#dnsmasq-host-entries-for-infrastructure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OPNsense Configuration
+        dnsmasq Host Entries for Infrastructure
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="OPNsense Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-vlan-interfaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Create VLAN Interfaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-assign-vlan-interfaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Assign VLAN Interfaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-configure-each-vlan-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Configure Each VLAN Interface
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-configure-dhcp-per-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4 — Configure DHCP per VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5-push-dns-server-via-dhcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 5 — Push DNS Server via DHCP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5a-dhcp-option-138-for-omada-controller-discovery-management-vlan-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 5a — DHCP Option 138 for Omada Controller Discovery (MANAGEMENT VLAN only)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-6-static-dhcp-reservations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 6 — Static DHCP Reservations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-7-firewall-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 7 — Firewall Rules
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 7 — Firewall Rules">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#field-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Field Reference
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#management-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MANAGEMENT Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trusted-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TRUSTED Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servers-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SERVERS Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servers-rules-exception-for-omada-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SERVERS Rules — Exception for Omada Controller
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iot-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IOT Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#guest-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GUEST Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-8-force-dns-via-nat-optional-but-recommended" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 8 — Force DNS via NAT (Optional but Recommended)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#omada-switch-configuration" class="md-nav__link">
+  <a href="#security-hardening-post-migration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Omada Switch Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Omada Switch Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-networks-in-omada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Create Networks in Omada
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-switch-port-profiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Create Switch Port Profiles
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2 — Create Switch Port Profiles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#access-port-profiles-one-per-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Access Port Profiles (one per VLAN)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trunk-profile-for-uplink-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trunk Profile (for uplink ports)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-assign-profiles-to-switch-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Assign Profiles to Switch Ports
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3 — Assign Profiles to Switch Ports">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-upstream-switch-connected-to-router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Upstream Switch (connected to router)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-downstream-switch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Downstream Switch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#switch-migration-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Switch Migration Order
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verification
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Verification">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dns-resolution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DNS Resolution
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inter-vlan-connectivity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inter-VLAN Connectivity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dhcp-leases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DHCP Leases
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#firewall-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Firewall Logs
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Issues
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#device-received-wrong-subnet-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Device received wrong subnet IP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#no-internet-from-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        No internet from a VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cant-reach-opnsense-gateway-from-a-vlan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Can't reach OPNsense gateway from a VLAN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cross-vlan-traffic-that-should-be-blocked-is-getting-through" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cross-VLAN traffic that should be blocked is getting through
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trunk-port-not-passing-all-vlans" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trunk port not passing all VLANs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#omada-controller-cannot-reach-switches-after-management-vlan-migration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Omada controller cannot reach switches after MANAGEMENT VLAN migration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reference
+        Security Hardening (Post-Migration)
       
     </span>
   </a>
@@ -4606,70 +3641,12 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Get started
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Networking
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../opnsense/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    OPNsense
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
                   
   
-    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/networking/opnsense/vlan.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/networking/opnsense/managementvlan.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
@@ -4677,61 +3654,23 @@
   
 
 
-<h1 id="vlans-with-opnsense-omada">VLANs with OPNsense &amp; Omada</h1>
-<p>This guide covers planning and implementing a VLAN network using <strong>OPNsense</strong> as the router/firewall and <strong>TP-Link Omada</strong> managed switches. It covers the full stack: VLAN design, OPNsense interface and DHCP configuration, firewall rules, NAT, and Omada switch profiles and port assignments.</p>
+<h1 id="management-vlan-migration-opnsense-omada">Management VLAN Migration — OPNsense &amp; Omada</h1>
+<p>This guide covers migrating Omada managed switches and APs from flat LAN management to a dedicated <strong>MANAGEMENT VLAN</strong> when using OPNsense as the gateway (non-Omada router scenario).</p>
+<p>This is <strong>Topology 2</strong> in TP-Link's official documentation: <a href="https://www.omadanetworks.com/us/support/faq/2814/">How to configure Management VLAN in Omada SDN Controller</a></p>
 <hr />
-<h2 id="concepts">Concepts</h2>
-<h3 id="what-is-a-vlan">What is a VLAN?</h3>
-<p>A VLAN (Virtual Local Area Network) logically separates devices on the same physical network into isolated segments. Devices on different VLANs cannot communicate with each other unless explicitly permitted by a router or firewall rule.</p>
-<p>Common use cases:</p>
-<ul>
-<li>Isolating IoT devices from trusted workstations</li>
-<li>Separating guest WiFi from internal networks</li>
-<li>Segmenting servers from personal devices</li>
-<li>Creating a dedicated management network for infrastructure</li>
-</ul>
-<h3 id="tagged-vs-untagged">Tagged vs Untagged</h3>
-<p>Understanding the difference between tagged and untagged traffic is fundamental to VLAN configuration.</p>
-<p><strong>Untagged (access ports)</strong>
-Used for end devices that are not VLAN-aware — computers, servers, NAS devices, printers. The device sends a normal ethernet frame with no VLAN information. The switch receives it, stamps the appropriate VLAN tag internally based on the port's profile, and routes it accordingly. On egress, the tag is stripped before delivery to the device. The device never knows VLANs exist.</p>
-<p><strong>Tagged (trunk ports)</strong>
-Used for VLAN-aware devices — routers, upstream switches, hypervisors. The device itself includes a VLAN tag in each ethernet frame. The switch receives the frame with the tag intact and uses it to route traffic to the correct VLAN. Trunk ports carry multiple VLANs simultaneously, each identified by its tag.</p>
+<h2 id="overview">Overview</h2>
+<p>By default, Omada devices are managed over whatever network they're on — typically a flat LAN (<code>192.168.0.x</code>). Moving management traffic to a dedicated VLAN isolates it from client traffic, reduces attack surface, and makes the network easier to reason about.</p>
+<p><strong>The challenge:</strong> the Omada controller itself is likely on a different VLAN (e.g. LAB/SERVERS), and after migration the switches will be on a separate MANAGEMENT VLAN. OPNsense must route between them, and firewall rules must explicitly permit it.</p>
+<hr />
+<h2 id="network-reference">Network Reference</h2>
+<p>This guide uses the following addressing. Adjust to match your own setup.</p>
 <table>
 <thead>
 <tr>
-<th>Port Type</th>
-<th>Used For</th>
-<th>Device Awareness</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Untagged / Access</td>
-<td>End devices (PCs, servers)</td>
-<td>Device is VLAN-unaware</td>
-</tr>
-<tr>
-<td>Tagged / Trunk</td>
-<td>Routers, switches, hypervisors</td>
-<td>Device tags its own frames</td>
-</tr>
-</tbody>
-</table>
-<h3 id="router-on-a-stick">Router-on-a-Stick</h3>
-<p>With a single physical port connecting OPNsense to the switch, all VLAN traffic travels over one link — each VLAN tagged. OPNsense creates virtual sub-interfaces (one per VLAN) on top of that physical port. This is the most common homelab setup and works well at any scale that doesn't saturate the uplink.</p>
-<hr />
-<h2 id="planning">Planning</h2>
-<h3 id="vlan-scheme">VLAN Scheme</h3>
-<p>Design your VLANs before touching any configuration. A clean numbering scheme that maps to subnets makes the network far easier to manage and troubleshoot.</p>
-<p><strong>Recommended pattern:</strong> Use the VLAN ID as the third octet of the subnet.</p>
-<table>
-<thead>
-<tr>
-<th>VLAN ID</th>
+<th>VLAN</th>
 <th>Name</th>
 <th>Subnet</th>
 <th>Gateway</th>
-<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
@@ -4740,303 +3679,83 @@ Used for VLAN-aware devices — routers, upstream switches, hypervisors. The dev
 <td>MANAGEMENT</td>
 <td>10.10.10.0/24</td>
 <td>10.10.10.1</td>
-<td>Infrastructure — router, switches, DNS</td>
 </tr>
 <tr>
 <td>20</td>
 <td>TRUSTED</td>
 <td>10.10.20.0/24</td>
 <td>10.10.20.1</td>
-<td>Workstations, personal devices</td>
 </tr>
 <tr>
 <td>30</td>
-<td>SERVERS</td>
+<td>LAB</td>
 <td>10.10.30.0/24</td>
 <td>10.10.30.1</td>
-<td>Servers, self-hosted services</td>
 </tr>
 <tr>
 <td>50</td>
 <td>IOT</td>
 <td>10.10.50.0/24</td>
 <td>10.10.50.1</td>
-<td>Smart home, cameras, IoT devices</td>
 </tr>
 <tr>
 <td>99</td>
 <td>GUEST</td>
 <td>10.10.99.0/24</td>
 <td>10.10.99.1</td>
-<td>Guest WiFi — internet only</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Tip:</strong> Leave gaps in your VLAN ID numbering (10, 20, 30 rather than 1, 2, 3) so you can insert new VLANs later without renumbering.</p>
-</blockquote>
-<h3 id="firewall-policy">Firewall Policy</h3>
-<p>Define your inter-VLAN routing policy before writing any rules. This makes the rules themselves straightforward to implement.</p>
 <table>
 <thead>
 <tr>
-<th>Source</th>
-<th>Destination</th>
-<th>Policy</th>
-<th>Reason</th>
+<th>Device</th>
+<th>IP</th>
+<th>VLAN</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>OPNsense</td>
+<td>10.10.10.1</td>
+<td>MANAGEMENT (and all other VLANs as gateway)</td>
+</tr>
+<tr>
+<td>Omada Controller (prod-deb-01)</td>
+<td>10.10.30.20</td>
+<td>LAB</td>
+</tr>
+<tr>
+<td>SG2210P (core switch)</td>
+<td>10.10.10.2</td>
 <td>MANAGEMENT</td>
-<td>All</td>
-<td>Allow</td>
-<td>Admins need access to everything</td>
 </tr>
 <tr>
-<td>TRUSTED</td>
-<td>All</td>
-<td>Allow</td>
-<td>Workstations need full access</td>
-</tr>
-<tr>
-<td>SERVERS</td>
-<td>TRUSTED</td>
-<td>Block</td>
-<td>Servers shouldn't reach workstations</td>
-</tr>
-<tr>
-<td>SERVERS</td>
+<td>SG2016P (downstream switch)</td>
+<td>10.10.10.3</td>
 <td>MANAGEMENT</td>
-<td>Block</td>
-<td>Servers shouldn't manage infrastructure</td>
 </tr>
 <tr>
-<td>SERVERS</td>
-<td>WAN</td>
-<td>Allow</td>
-<td>Servers need internet</td>
-</tr>
-<tr>
-<td>IOT</td>
-<td>Internal (all)</td>
-<td>Block</td>
-<td>IoT isolated from all internal networks</td>
-</tr>
-<tr>
-<td>IOT</td>
-<td>WAN</td>
-<td>Allow</td>
-<td>IoT devices need internet</td>
-</tr>
-<tr>
-<td>GUEST</td>
-<td>Internal (all)</td>
-<td>Block</td>
-<td>Guests isolated from everything internal</td>
-</tr>
-<tr>
-<td>GUEST</td>
-<td>WAN</td>
-<td>Allow</td>
-<td>Guests need internet</td>
-</tr>
-</tbody>
-</table>
-<h3 id="ip-address-allocation">IP Address Allocation</h3>
-<p>Plan static IP allocation to avoid conflicts with DHCP ranges.</p>
-<p><strong>Recommended layout per subnet:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Range</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.1</code></td>
-<td>Gateway (OPNsense VLAN interface)</td>
-</tr>
-<tr>
-<td><code>.2 – .9</code></td>
-<td>Reserved infrastructure (DNS, NTP, etc.)</td>
-</tr>
-<tr>
-<td><code>.10 – .99</code></td>
-<td>Static device assignments</td>
-</tr>
-<tr>
-<td><code>.100 – .200</code></td>
-<td>DHCP pool</td>
-</tr>
-<tr>
-<td><code>.201 – .254</code></td>
-<td>Reserved</td>
+<td>EAP650 (WAP)</td>
+<td>10.10.10.4</td>
+<td>MANAGEMENT</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="opnsense-configuration">OPNsense Configuration</h2>
-<h3 id="step-1-create-vlan-interfaces">Step 1 — Create VLAN Interfaces</h3>
-<p>Navigate to <strong>Interfaces → Other Types → VLAN</strong>.</p>
-<p>For each VLAN, click <strong>+</strong> and set:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Device</td>
-<td>Leave auto-generated</td>
-<td>OPNsense names it <code>vlan0.X</code></td>
-</tr>
-<tr>
-<td>Parent Interface</td>
-<td>Your LAN physical port (e.g. <code>igb0</code>)</td>
-<td>The port connected to your switch</td>
-</tr>
-<tr>
-<td>VLAN tag</td>
-<td>VLAN ID (e.g. <code>10</code>)</td>
-<td>Must match switch config exactly</td>
-</tr>
-<tr>
-<td>VLAN priority</td>
-<td><code>0</code></td>
-<td>Leave default unless using QoS</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>e.g. <code>MANAGEMENT</code></td>
-<td>For your reference only</td>
-</tr>
-</tbody>
-</table>
-<p>Click <strong>Save</strong> after each entry, then <strong>Apply changes</strong>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before touching anything in Omada, the following must be in place in OPNsense. Skipping any of these will cause devices to disconnect and be unrecoverable without physical access.</p>
+<h3 id="1-management-vlan-interface">1. MANAGEMENT VLAN Interface</h3>
+<p>The MANAGEMENT VLAN interface must exist on OPNsense with a static IP and DHCP range.</p>
+<p><strong>Interfaces → [MANAGEMENT]:</strong>
+- IPv4: Static, <code>10.10.10.1/24</code></p>
+<p><strong>Services → Dnsmasq → DHCP ranges:</strong>
+- Interface: MANAGEMENT
+- Range: <code>10.10.10.100</code> – <code>10.10.10.200</code></p>
 <hr />
-<h3 id="step-2-assign-vlan-interfaces">Step 2 — Assign VLAN Interfaces</h3>
-<p>Navigate to <strong>Interfaces → Assignments</strong>.</p>
-<p>Each VLAN device you created needs to be assigned as an interface so OPNsense can route for it.</p>
-<ol>
-<li>At the bottom, select a VLAN device from the <strong>Device</strong> dropdown</li>
-<li>Click <strong>+ Add</strong></li>
-<li>Repeat for each VLAN</li>
-<li>Click <strong>Save</strong></li>
-</ol>
-<p>You will now see each VLAN listed as an interface (OPT1, OPT2, etc.). Click each one to configure it.</p>
-<hr />
-<h3 id="step-3-configure-each-vlan-interface">Step 3 — Configure Each VLAN Interface</h3>
-<p>Navigate to <strong>Interfaces → [VLAN NAME]</strong> for each interface.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Enable</td>
-<td>✅ Checked</td>
-<td>Must be enabled</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>e.g. <code>MANAGEMENT</code></td>
-<td>Replaces the OPT label</td>
-</tr>
-<tr>
-<td>IPv4 Configuration Type</td>
-<td>Static IPv4</td>
-<td></td>
-</tr>
-<tr>
-<td>IPv4 Address</td>
-<td>Gateway IP (e.g. <code>10.10.10.1</code>)</td>
-<td>OPNsense acts as gateway</td>
-</tr>
-<tr>
-<td>Subnet mask</td>
-<td><code>24</code></td>
-<td>For /24 subnets</td>
-</tr>
-<tr>
-<td>IPv6 Configuration Type</td>
-<td>None</td>
-<td>Unless using IPv6</td>
-</tr>
-</tbody>
-</table>
-<p>Click <strong>Save</strong> → <strong>Apply changes</strong> after each interface.</p>
-<hr />
-<h3 id="step-4-configure-dhcp-per-vlan">Step 4 — Configure DHCP per VLAN</h3>
-<p>Navigate to <strong>Services → Dnsmasq DNS &amp; DHCP → DHCP ranges</strong>.</p>
-<p>Add one DHCP range per VLAN interface:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Interface</td>
-<td>Select the VLAN interface</td>
-</tr>
-<tr>
-<td>Start address</td>
-<td>e.g. <code>10.10.10.100</code></td>
-</tr>
-<tr>
-<td>End address</td>
-<td>e.g. <code>10.10.10.200</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Do not create overlapping ranges. Static reservations (dnsmasq Hosts) do not need their own DHCP range — they sit outside the pool by convention.</p>
-</blockquote>
-<hr />
-<h3 id="step-5-push-dns-server-via-dhcp">Step 5 — Push DNS Server via DHCP</h3>
-<p>Clients need to receive your DNS server (e.g. AdGuard Home) via DHCP so all DNS queries are filtered.</p>
-<p>Navigate to <strong>Services → Dnsmasq DNS &amp; DHCP → DHCP options</strong>.</p>
-<p>For each VLAN interface, add:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Interface</td>
-<td>VLAN interface</td>
-</tr>
-<tr>
-<td>Option</td>
-<td><code>6</code> (DNS server)</td>
-</tr>
-<tr>
-<td>Value</td>
-<td>IP address of your DNS server (use the VLAN gateway IP — OPNsense listens on all VLAN interfaces)</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Use the gateway IP of the VLAN the client is on (e.g. <code>10.10.30.1</code> for the LAB VLAN), not a fixed single IP. This ensures DNS works correctly once the flat LAN is retired.</p>
-</blockquote>
-<hr />
-<h3 id="step-5a-dhcp-option-138-for-omada-controller-discovery-management-vlan-only">Step 5a — DHCP Option 138 for Omada Controller Discovery (MANAGEMENT VLAN only)</h3>
-<p>If you are using a dedicated MANAGEMENT VLAN for Omada switches and APs, you must also configure <strong>DHCP Option 138</strong> on the MANAGEMENT interface. This tells Omada devices where the controller is after a reboot — without it, devices survive a single session but become orphaned the moment they reboot.</p>
-<p>Navigate to <strong>Services → Dnsmasq DNS &amp; DHCP → DHCP options</strong>.</p>
+<h3 id="2-dhcp-option-138-omada-controller-discovery">2. DHCP Option 138 — Omada Controller Discovery</h3>
+<p>After migration, switches reboot into the MANAGEMENT VLAN. They can no longer find the Omada controller by broadcast (broadcast doesn't cross VLANs). DHCP Option 138 (CAPWAP AC) embeds the controller IP in the DHCP response so the switch knows where to connect.</p>
+<p><strong>Services → Dnsmasq → DHCP options → Add:</strong></p>
 <table>
 <thead>
 <tr>
@@ -5055,17 +3774,17 @@ Used for VLAN-aware devices — routers, upstream switches, hypervisors. The dev
 </tr>
 <tr>
 <td>Value</td>
-<td>IP address of your Omada controller</td>
+<td><code>10.10.30.20</code> (Omada controller IP)</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>This is required because broadcast-based controller discovery does not cross VLAN boundaries. Once a switch is on the MANAGEMENT VLAN, it can only find the controller if told explicitly via Option 138.</p>
+<p>Without this, switches survive a single session but become orphaned after a reboot.</p>
 </blockquote>
 <hr />
-<h3 id="step-6-static-dhcp-reservations">Step 6 — Static DHCP Reservations</h3>
-<p>For servers and infrastructure that need consistent IPs, use static reservations rather than configuring IPs on the devices themselves where possible.</p>
-<p>Navigate to <strong>Services → Dnsmasq DNS &amp; DHCP → Hosts</strong>.</p>
+<h3 id="3-firewall-rule-allow-omada-controller-to-reach-management-vlan">3. Firewall Rule — Allow Omada Controller to Reach MANAGEMENT VLAN</h3>
+<p>The Omada controller runs on the LAB VLAN (<code>10.10.30.20</code>). After migration, the switches are on the MANAGEMENT VLAN (<code>10.10.10.x</code>). Without an explicit allow rule, OPNsense blocks this traffic.</p>
+<p><strong>Firewall → Rules → LAB → Add (place ABOVE any block rules):</strong></p>
 <table>
 <thead>
 <tr>
@@ -5075,234 +3794,41 @@ Used for VLAN-aware devices — routers, upstream switches, hypervisors. The dev
 </thead>
 <tbody>
 <tr>
-<td>Host</td>
-<td>Hostname (e.g. <code>server01</code>)</td>
+<td>Action</td>
+<td>Pass</td>
 </tr>
 <tr>
-<td>IP address</td>
-<td>Static IP outside DHCP pool (e.g. <code>10.10.30.10</code>)</td>
+<td>Protocol</td>
+<td>Any</td>
 </tr>
 <tr>
-<td>Hardware address</td>
-<td>Device MAC address</td>
+<td>Source</td>
+<td><code>10.10.30.20</code> (Omada controller)</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>MANAGEMENT net</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Allow Omada to manage MGMT VLAN</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>Note:</strong> Do not duplicate entries across both Dnsmasq Hosts and Unbound Overrides. Pick one. Unbound Overrides are preferred for DNS records. Dnsmasq Hosts are preferred for DHCP-bound static reservations.</p>
+<p><strong>Order matters.</strong> This rule must be above any "Block LAB to MANAGEMENT" rule. OPNsense evaluates rules top to bottom, first match wins.</p>
 </blockquote>
-<hr />
-<h3 id="step-7-firewall-rules">Step 7 — Firewall Rules</h3>
-<p>Navigate to <strong>Firewall → Rules → [Interface tab]</strong>.</p>
-<p>OPNsense processes rules <strong>top to bottom, first match wins</strong>. Always place block rules above allow rules.</p>
-<h4 id="field-reference">Field Reference</h4>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Typical Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Action</strong></td>
-<td>What to do with matching traffic</td>
-<td><code>Pass</code>, <code>Block</code>, or <code>Reject</code></td>
-</tr>
-<tr>
-<td><strong>Disabled</strong></td>
-<td>Temporarily disable the rule</td>
-<td>Unchecked</td>
-</tr>
-<tr>
-<td><strong>Interface</strong></td>
-<td>Which interface this rule applies to</td>
-<td>The SOURCE interface</td>
-</tr>
-<tr>
-<td><strong>Direction</strong></td>
-<td>Inbound or outbound</td>
-<td>Always <code>In</code></td>
-</tr>
-<tr>
-<td><strong>TCP/IP Version</strong></td>
-<td>IP version</td>
-<td><code>IPv4</code></td>
-</tr>
-<tr>
-<td><strong>Protocol</strong></td>
-<td>Traffic type</td>
-<td><code>Any</code>, <code>TCP</code>, <code>UDP</code>, <code>TCP/UDP</code>, <code>ICMP</code></td>
-</tr>
-<tr>
-<td><strong>Source</strong></td>
-<td>Origin of traffic</td>
-<td>Interface network (e.g. <code>SERVERS net</code>)</td>
-</tr>
-<tr>
-<td><strong>Source Port</strong></td>
-<td>Source port</td>
-<td><code>any</code> — source ports are ephemeral</td>
-</tr>
-<tr>
-<td><strong>Destination</strong></td>
-<td>Target of traffic</td>
-<td>Specific network, host alias, or <code>any</code></td>
-</tr>
-<tr>
-<td><strong>Destination Port</strong></td>
-<td>Target port</td>
-<td><code>any</code> for broad rules, specific port for service rules</td>
-</tr>
-<tr>
-<td><strong>Log</strong></td>
-<td>Log matching packets</td>
-<td>Enable on all block rules</td>
-</tr>
-<tr>
-<td><strong>Description</strong></td>
-<td>Label for the rule</td>
-<td>Always fill in — critical for maintenance</td>
-</tr>
-<tr>
-<td><strong>State Type</strong></td>
-<td>Connection tracking</td>
-<td><code>Keep State</code> (default)</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Block vs Reject:</strong> <code>Block</code> silently drops packets (client times out). <code>Reject</code> sends an immediate refusal. Use <code>Block</code> for security rules — it gives less information to potential attackers and is the safer default.</p>
-</blockquote>
-<hr />
-<h4 id="management-rules">MANAGEMENT Rules</h4>
-<p>One rule — full unrestricted access:</p>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   MANAGEMENT
-Direction:   In
-Protocol:    Any
-Source:      MANAGEMENT net
-Destination: any
-Log:         No
-Description: Management full access
+<p><strong>Example LAB rules in correct order:</strong></p>
+<div class="highlight"><pre><span></span><code>1. PASS   — 10.10.30.20 → MANAGEMENT net    [Allow Omada to manage MGMT VLAN]
+2. BLOCK  — LAB net → TRUSTED net            [Block LAB to TRUSTED]
+3. BLOCK  — LAB net → MANAGEMENT net         [Block LAB to MANAGEMENT]
+4. PASS   — LAB net → any                    [LAB Internet Access]
+5. PASS   — LAB net → 10.10.30.1:53 DNS      [Force DNS to AdGuard - LAB]
 </code></pre></div>
 <hr />
-<h4 id="trusted-rules">TRUSTED Rules</h4>
-<p>One rule — full unrestricted access:</p>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   TRUSTED
-Direction:   In
-Protocol:    Any
-Source:      TRUSTED net
-Destination: any
-Log:         No
-Description: Trusted full access
-</code></pre></div>
-<hr />
-<h4 id="servers-rules">SERVERS Rules</h4>
-<p>Three rules in this order:</p>
-<p><strong>Rule 1 — Block servers from reaching trusted workstations</strong>
-<div class="highlight"><pre><span></span><code>Action:      Block
-Interface:   SERVERS
-Direction:   In
-Protocol:    Any
-Source:      SERVERS net
-Destination: TRUSTED net
-Log:         Yes
-Description: Block SERVERS to TRUSTED
-</code></pre></div></p>
-<p><strong>Rule 2 — Block servers from reaching management infrastructure</strong>
-<div class="highlight"><pre><span></span><code>Action:      Block
-Interface:   SERVERS
-Direction:   In
-Protocol:    Any
-Source:      SERVERS net
-Destination: MANAGEMENT net
-Log:         Yes
-Description: Block SERVERS to MANAGEMENT
-</code></pre></div></p>
-<p><strong>Rule 3 — Allow servers internet access</strong>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   SERVERS
-Direction:   In
-Protocol:    Any
-Source:      SERVERS net
-Destination: any
-Log:         No
-Description: SERVERS internet access
-</code></pre></div></p>
-<blockquote>
-<p>Rule 3 uses <code>any</code> as destination. Rules 1 and 2 above it have already blocked the specific internal targets — <code>any</code> here effectively means everything not already matched.</p>
-</blockquote>
-<hr />
-<h4 id="servers-rules-exception-for-omada-controller">SERVERS Rules — Exception for Omada Controller</h4>
-<p>If your Omada controller runs on the SERVERS/LAB VLAN and you have a MANAGEMENT VLAN for switches, you must add an explicit allow rule so the controller can reach the switches. Place this <strong>above</strong> any block rules on the SERVERS/LAB interface.</p>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   SERVERS (or LAB)
-Direction:   In
-Protocol:    Any
-Source:      &lt;Omada controller IP&gt;
-Destination: MANAGEMENT net
-Log:         No
-Description: Allow Omada to manage MGMT VLAN
-</code></pre></div>
-<blockquote>
-<p>Without this rule, any "Block SERVERS to MANAGEMENT" rule will prevent the Omada controller from reaching the switches, causing them to appear disconnected in Omada even though they are physically reachable.</p>
-</blockquote>
-<hr />
-<h4 id="iot-rules">IOT Rules</h4>
-<p>Two rules in this order:</p>
-<p><strong>Rule 1 — Block IoT from all internal networks</strong>
-<div class="highlight"><pre><span></span><code>Action:      Block
-Interface:   IOT
-Direction:   In
-Protocol:    Any
-Source:      IOT net
-Destination: 10.0.0.0/8  (or your internal range)
-Log:         Yes
-Description: Block IOT to all internal
-</code></pre></div></p>
-<blockquote>
-<p>Use an alias if your internal networks span multiple RFC1918 ranges (10.x.x.x, 192.168.x.x, 172.16.x.x). Create the alias under <strong>Firewall → Aliases</strong> and reference it as the destination.</p>
-</blockquote>
-<p><strong>Rule 2 — Allow IoT internet access</strong>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   IOT
-Direction:   In
-Protocol:    Any
-Source:      IOT net
-Destination: any
-Log:         No
-Description: IOT internet access
-</code></pre></div></p>
-<hr />
-<h4 id="guest-rules">GUEST Rules</h4>
-<p>Two rules in this order:</p>
-<p><strong>Rule 1 — Block guests from all internal networks</strong>
-<div class="highlight"><pre><span></span><code>Action:      Block
-Interface:   GUEST
-Direction:   In
-Protocol:    Any
-Source:      GUEST net
-Destination: 10.0.0.0/8
-Log:         Yes
-Description: Block GUEST to all internal
-</code></pre></div></p>
-<p><strong>Rule 2 — Allow guest internet access</strong>
-<div class="highlight"><pre><span></span><code>Action:      Pass
-Interface:   GUEST
-Direction:   In
-Protocol:    Any
-Source:      GUEST net
-Destination: any
-Log:         No
-Description: GUEST internet access
-</code></pre></div></p>
-<hr />
-<h3 id="step-8-force-dns-via-nat-optional-but-recommended">Step 8 — Force DNS via NAT (Optional but Recommended)</h3>
-<p>Prevents clients from bypassing your DNS server by pointing at a public resolver directly (e.g. <code>8.8.8.8</code>). Any DNS query not going to your resolver gets redirected.</p>
-<p>Navigate to <strong>Firewall → NAT → Port Forward</strong>. Create one rule per VLAN:</p>
+<h3 id="4-dhcp-option-6-push-correct-dns-to-management-devices">4. DHCP Option 6 — Push Correct DNS to MANAGEMENT Devices</h3>
+<p>Switches and APs use DNS for NTP lookups and firmware update checks. Push the correct DNS server for the MANAGEMENT VLAN.</p>
+<p><strong>Services → Dnsmasq → DHCP options → Add:</strong></p>
 <table>
 <thead>
 <tr>
@@ -5313,27 +3839,45 @@ Description: GUEST internet access
 <tbody>
 <tr>
 <td>Interface</td>
-<td>VLAN interface (e.g. IOT)</td>
+<td>MANAGEMENT</td>
 </tr>
 <tr>
-<td>TCP/IP Version</td>
-<td>IPv4</td>
+<td>Option</td>
+<td><code>dns-server [6]</code></td>
+</tr>
+<tr>
+<td>Value</td>
+<td><code>10.10.10.1</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="5-nat-dns-redirect-for-management">5. NAT DNS Redirect for MANAGEMENT</h3>
+<p>Prevents devices on the MANAGEMENT VLAN from bypassing your DNS server.</p>
+<p><strong>Firewall → NAT → Port Forward → Add:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface</td>
+<td>MANAGEMENT</td>
 </tr>
 <tr>
 <td>Protocol</td>
 <td>TCP/UDP</td>
 </tr>
 <tr>
-<td>Source</td>
-<td>VLAN net</td>
-</tr>
-<tr>
-<td>Source Port</td>
-<td>any</td>
-</tr>
-<tr>
 <td>Destination / Invert</td>
-<td>✅ Invert — enter your DNS server IP</td>
+<td>✅ Enabled</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td><code>10.10.10.1</code></td>
 </tr>
 <tr>
 <td>Destination Port</td>
@@ -5341,11 +3885,210 @@ Description: GUEST internet access
 </tr>
 <tr>
 <td>Redirect Target IP</td>
-<td>Your DNS server IP</td>
+<td><code>10.10.10.1</code></td>
 </tr>
 <tr>
 <td>Redirect Target Port</td>
 <td>53</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Force DNS to AdGuard - MANAGEMENT</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="6-verify-opnsense-is-reachable-on-management-vlan">6. Verify OPNsense is Reachable on MANAGEMENT VLAN</h3>
+<p>From any device on the network, confirm OPNsense responds on the MANAGEMENT VLAN interface before touching any switches:</p>
+<div class="highlight"><pre><span></span><code>ping<span class="w"> </span><span class="m">10</span>.10.10.1
+</code></pre></div>
+<p>If this doesn't respond, do not proceed — the MANAGEMENT VLAN interface is not configured correctly.</p>
+<hr />
+<h2 id="trunk-profile-verification">Trunk Profile Verification</h2>
+<p>Every trunk port in the chain from OPNsense to each switch must carry VLAN 10 tagged. Verify in Omada:</p>
+<p><strong>Settings → Wired Networks → Switch Profile → [your trunk profile]</strong></p>
+<p>Confirm VLAN 10 - MANAGEMENT is in the <strong>Tagged Networks</strong> list alongside all other VLANs.</p>
+<p>If VLAN 10 is missing from the trunk profile, switches will never receive MANAGEMENT VLAN traffic even if correctly configured.</p>
+<hr />
+<h2 id="migration-order">Migration Order</h2>
+<blockquote>
+<p><strong>Critical:</strong> Always work upstream first. Migrating a downstream switch before its upstream switch is configured means tagged traffic cannot flow, and the device will be unreachable.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>OPNsense (already on 10.10.10.1)
+    ↓
+SG2210P (core/upstream switch) → migrate first
+    ↓
+SG2016P (downstream switch) → migrate second
+    ↓
+EAP650 (WAP) → migrate last
+</code></pre></div>
+<hr />
+<h2 id="switch-migration-sg2210p-and-sg2016p">Switch Migration — SG2210P and SG2016P</h2>
+<p>In Omada: <strong>Devices → [Switch] → Config → VLAN Interface → Edit [10 - MANAGEMENT]</strong></p>
+<p>Enable the <strong>Management VLAN</strong> checkbox first — this reveals the gateway and DNS fields.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Management VLAN</td>
+<td>✅ Enable</td>
+</tr>
+<tr>
+<td>IP Address Mode</td>
+<td>Static</td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td><code>10.10.10.2</code> (SG2210P) or <code>10.10.10.3</code> (SG2016P)</td>
+</tr>
+<tr>
+<td>Subnet Mask</td>
+<td><code>255.255.255.0</code></td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td><code>10.10.10.1</code></td>
+</tr>
+<tr>
+<td>DNS</td>
+<td><code>10.10.10.1</code></td>
+</tr>
+<tr>
+<td>DHCP Mode</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>Click <strong>Apply</strong>.</p>
+<p>The switch will briefly drop from Omada as it transitions. Immediately ping the new IP:</p>
+<div class="highlight"><pre><span></span><code>ping<span class="w"> </span><span class="m">10</span>.10.10.2<span class="w">   </span><span class="c1"># SG2210P</span>
+ping<span class="w"> </span><span class="m">10</span>.10.10.3<span class="w">   </span><span class="c1"># SG2016P</span>
+</code></pre></div>
+<p>Do not proceed to the next device until the current one has reconnected in Omada and ping responds.</p>
+<hr />
+<h2 id="ap-migration-eap650">AP Migration — EAP650</h2>
+<p>APs use a different configuration path than switches.</p>
+<p>In Omada: <strong>Devices → [EAP] → Config → Services → VLAN → Management VLAN</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Management VLAN</td>
+<td>Custom</td>
+</tr>
+<tr>
+<td>LAN Network</td>
+<td>10 - MANAGEMENT</td>
+</tr>
+</tbody>
+</table>
+<p>Click <strong>Apply</strong>.</p>
+<p>The EAP will get its IP via DHCP from OPNsense's MANAGEMENT range (<code>10.10.10.100–200</code>). It does not have a static IP option in this interface — DHCP Option 138 handles controller discovery after each reboot.</p>
+<blockquote>
+<p><strong>Note:</strong> The EAP also has an IP Settings section (Config → IP Settings) with a fixed IP reservation field. This is separate and refers to the IP assigned via DHCP reservation, not the management VLAN assignment. Ignore it for this migration — the Services → Management VLAN setting is what matters.</p>
+</blockquote>
+<hr />
+<h2 id="post-migration-verification">Post-Migration Verification</h2>
+<p>Once all devices are migrated:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Confirm all devices reachable on MANAGEMENT VLAN</span>
+ping<span class="w"> </span><span class="m">10</span>.10.10.1<span class="w">   </span><span class="c1"># OPNsense</span>
+ping<span class="w"> </span><span class="m">10</span>.10.10.2<span class="w">   </span><span class="c1"># SG2210P</span>
+ping<span class="w"> </span><span class="m">10</span>.10.10.3<span class="w">   </span><span class="c1"># SG2016P</span>
+ping<span class="w"> </span><span class="m">10</span>.10.10.4<span class="w">   </span><span class="c1"># EAP650</span>
+</code></pre></div>
+<p>Confirm in Omada device list that all three devices show <code>10.10.10.x</code> IPs and status <strong>Connected</strong>.</p>
+<hr />
+<h2 id="what-can-go-wrong">What Can Go Wrong</h2>
+<h3 id="switch-disconnects-and-never-reconnects">Switch disconnects and never reconnects</h3>
+<p><strong>Most likely cause:</strong> The firewall rule allowing Omada controller (<code>10.10.30.20</code>) to reach MANAGEMENT VLAN is missing or below a block rule.</p>
+<p>Check <strong>Firewall → Rules → LAB</strong> and confirm the allow rule is above the block rule. Then power cycle the switch — it will retry connecting to Omada.</p>
+<h3 id="switch-reconnects-but-omada-cant-manage-it">Switch reconnects but Omada can't manage it</h3>
+<p><strong>Most likely cause:</strong> DHCP Option 138 is missing or set to the wrong IP. The switch rebooted, got a <code>10.10.10.x</code> address, but doesn't know where the Omada controller is.</p>
+<p>Check <strong>Services → Dnsmasq → DHCP options → MANAGEMENT</strong> and confirm <code>option_capwap_ac_v4 [138]</code> = <code>10.10.30.20</code>.</p>
+<h3 id="switch-completely-unreachable-after-applying-config">Switch completely unreachable after applying config</h3>
+<p><strong>Most likely cause:</strong> VLAN 10 is not in the trunk profile on one or more links in the chain between the switch and OPNsense.</p>
+<p>Check the trunk profile in Omada and verify VLAN 10 is tagged. Also verify OPNsense responds at <code>10.10.10.1</code> — if not, the MANAGEMENT VLAN interface itself is the issue.</p>
+<h3 id="factory-reset-required">Factory reset required</h3>
+<p>If a switch becomes completely unrecoverable (no ping, not appearing in Omada):</p>
+<ol>
+<li>Physically reset the switch (hold reset button 5–10 seconds)</li>
+<li>The switch returns to flat LAN defaults (<code>192.168.0.x</code> DHCP)</li>
+<li>All port profiles are wiped — every device connected to it loses its VLAN assignment</li>
+<li>Connect to Omada via a device on the upstream switch or flat LAN</li>
+<li>Re-adopt the reset switch</li>
+<li>Re-apply all port profiles before moving cables back</li>
+</ol>
+<blockquote>
+<p><strong>Lesson learned:</strong> When a downstream switch factory resets, any devices with static IPs on VLANs (e.g. servers at <code>10.10.30.x</code>) will lose connectivity because their ports revert to Default VLAN 1. Recovery requires either physical access to set a temporary flat LAN IP on the server, or connecting the server temporarily to a working switch upstream.</p>
+</blockquote>
+<hr />
+<h2 id="dnsmasq-host-entries-for-infrastructure">dnsmasq Host Entries for Infrastructure</h2>
+<p>Once switches are on the MANAGEMENT VLAN with static IPs, add hostname entries so they resolve via <code>.internal</code> DNS.</p>
+<p><strong>Services → Dnsmasq → Hosts → Add</strong> (one per device):</p>
+<table>
+<thead>
+<tr>
+<th>Host</th>
+<th>Domain</th>
+<th>IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sg2210p</td>
+<td>internal</td>
+<td>10.10.10.2</td>
+</tr>
+<tr>
+<td>sg2016p</td>
+<td>internal</td>
+<td>10.10.10.3</td>
+</tr>
+<tr>
+<td>eap650</td>
+<td>internal</td>
+<td>10.10.10.4</td>
+</tr>
+</tbody>
+</table>
+<p>Restart dnsmasq after adding entries.</p>
+<hr />
+<h2 id="security-hardening-post-migration">Security Hardening (Post-Migration)</h2>
+<p>Once management is isolated, add a rule to prevent TRUSTED VLAN devices from accessing MANAGEMENT infrastructure:</p>
+<p><strong>Firewall → Rules → TRUSTED → Add (above the TRUSTED full access rule):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action</td>
+<td>Block</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>Any</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>TRUSTED net</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>MANAGEMENT net</td>
 </tr>
 <tr>
 <td>Log</td>
@@ -5353,358 +4096,10 @@ Description: GUEST internet access
 </tr>
 <tr>
 <td>Description</td>
-<td>Force DNS to resolver - [VLAN NAME]</td>
+<td>Block TRUSTED to MANAGEMENT</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>The <strong>invert</strong> on destination means: match any destination that is NOT your DNS server. This redirects rogue DNS queries while leaving legitimate queries to your resolver untouched.</p>
-</blockquote>
-<hr />
-<h2 id="omada-switch-configuration">Omada Switch Configuration</h2>
-<h3 id="step-1-create-networks-in-omada">Step 1 — Create Networks in Omada</h3>
-<p>Navigate to <strong>Settings → Wired Networks → Networks</strong>.</p>
-<p>Create a network entry for each VLAN. The VLAN IDs must exactly match what you configured in OPNsense.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td>e.g. <code>10 - MANAGEMENT</code></td>
-<td>Descriptive name</td>
-</tr>
-<tr>
-<td>Purpose</td>
-<td><code>VLAN</code></td>
-<td>Not Interface</td>
-</tr>
-<tr>
-<td>VLAN</td>
-<td>VLAN ID (e.g. <code>10</code>)</td>
-<td>Must match OPNsense</td>
-</tr>
-<tr>
-<td>Application</td>
-<td><code>Gateways and Switches</code></td>
-<td>Standard choice for routed VLANs</td>
-</tr>
-<tr>
-<td>IGMP Snooping</td>
-<td>Disabled</td>
-<td>Enable only if running multicast (e.g. Plex on local network)</td>
-</tr>
-<tr>
-<td>MLD Snooping</td>
-<td>Disabled</td>
-<td>IPv6 multicast — leave off unless needed</td>
-</tr>
-<tr>
-<td>QoS Queue</td>
-<td>Disabled</td>
-<td>Enable only if implementing QoS policy</td>
-</tr>
-<tr>
-<td>Legal DHCP Servers</td>
-<td>Disabled</td>
-<td>Enable to restrict DHCP to known servers only (optional hardening)</td>
-</tr>
-<tr>
-<td>DHCP L2 Relay</td>
-<td>Disabled</td>
-<td>Only needed if DHCP server is on a different L3 segment</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="step-2-create-switch-port-profiles">Step 2 — Create Switch Port Profiles</h3>
-<p>Navigate to <strong>Settings → Wired Networks → Switch Profile</strong>.</p>
-<p>Port profiles define how a switch port handles VLAN traffic. Create one profile per VLAN for access ports, plus one trunk profile for uplinks.</p>
-<h4 id="access-port-profiles-one-per-vlan">Access Port Profiles (one per VLAN)</h4>
-<p>Used for end devices — servers, workstations, NAS, IoT devices.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td>e.g. <code>20 - TRUSTED</code></td>
-<td></td>
-</tr>
-<tr>
-<td>PoE</td>
-<td>Keep Device's Settings</td>
-<td>Adjust per port if needed</td>
-</tr>
-<tr>
-<td>Native Network</td>
-<td>The VLAN (e.g. <code>20 - TRUSTED</code>)</td>
-<td>Untagged frames are assigned this VLAN</td>
-</tr>
-<tr>
-<td>Tagged Networks</td>
-<td>None</td>
-<td>Access ports carry one VLAN only</td>
-</tr>
-<tr>
-<td>Untagged Networks</td>
-<td>The same VLAN</td>
-<td>Frames exit untagged to the device</td>
-</tr>
-<tr>
-<td>Voice Network</td>
-<td>None</td>
-<td>Only needed for VoIP deployments</td>
-</tr>
-</tbody>
-</table>
-<p>Create one profile for each VLAN:</p>
-<table>
-<thead>
-<tr>
-<th>Profile Name</th>
-<th>Native Network</th>
-<th>Tagged</th>
-<th>Untagged</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10 - MANAGEMENT</td>
-<td>10 - MANAGEMENT</td>
-<td>—</td>
-<td>10 - MANAGEMENT</td>
-</tr>
-<tr>
-<td>20 - TRUSTED</td>
-<td>20 - TRUSTED</td>
-<td>—</td>
-<td>20 - TRUSTED</td>
-</tr>
-<tr>
-<td>30 - SERVERS</td>
-<td>30 - SERVERS</td>
-<td>—</td>
-<td>30 - SERVERS</td>
-</tr>
-<tr>
-<td>50 - IOT</td>
-<td>50 - IOT</td>
-<td>—</td>
-<td>50 - IOT</td>
-</tr>
-<tr>
-<td>99 - GUEST</td>
-<td>99 - GUEST</td>
-<td>—</td>
-<td>99 - GUEST</td>
-</tr>
-</tbody>
-</table>
-<h4 id="trunk-profile-for-uplink-ports">Trunk Profile (for uplink ports)</h4>
-<p>Used for ports connecting to OPNsense or between switches. Carries all VLANs tagged.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td><code>TRUNK - ALL</code></td>
-<td></td>
-</tr>
-<tr>
-<td>PoE</td>
-<td>Keep Device's Settings</td>
-<td></td>
-</tr>
-<tr>
-<td>Native Network</td>
-<td><code>10 - MANAGEMENT</code></td>
-<td>Untagged frames default to management VLAN</td>
-</tr>
-<tr>
-<td>Tagged Networks</td>
-<td>All VLANs (10, 20, 30, 50, 99)</td>
-<td>All VLANs pass through tagged</td>
-</tr>
-<tr>
-<td>Untagged Networks</td>
-<td>None</td>
-<td>Uplink devices are VLAN-aware</td>
-</tr>
-<tr>
-<td>Voice Network</td>
-<td>None</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Why Management as native on trunk?</strong> Untagged frames that arrive on a trunk port (e.g. switch management traffic) need to land somewhere. Assigning management as native ensures switch-to-switch communication stays on the correct VLAN rather than defaulting to VLAN 1.</p>
-<p><strong>Critical:</strong> When migrating switches to a MANAGEMENT VLAN, verify that VLAN 10 is in the Tagged Networks list of your trunk profile <strong>before</strong> applying the management VLAN config to any switch. If VLAN 10 is missing from the trunk, the switch will be unreachable after migration even though it is physically connected.</p>
-</blockquote>
-<hr />
-<h3 id="step-3-assign-profiles-to-switch-ports">Step 3 — Assign Profiles to Switch Ports</h3>
-<p>Navigate to <strong>Devices → [Switch] → Ports</strong>.</p>
-<p>Click a port and assign the appropriate profile.</p>
-<h4 id="example-upstream-switch-connected-to-router">Example: Upstream Switch (connected to router)</h4>
-<table>
-<thead>
-<tr>
-<th>Port</th>
-<th>Connected To</th>
-<th>Profile</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Port 1</td>
-<td>OPNsense LAN port</td>
-<td><code>TRUNK - ALL</code></td>
-</tr>
-<tr>
-<td>Port 2</td>
-<td>Downstream switch</td>
-<td><code>TRUNK - ALL</code></td>
-</tr>
-<tr>
-<td>Port 3–8</td>
-<td>End devices</td>
-<td>Appropriate access profile</td>
-</tr>
-</tbody>
-</table>
-<h4 id="example-downstream-switch">Example: Downstream Switch</h4>
-<table>
-<thead>
-<tr>
-<th>Port</th>
-<th>Connected To</th>
-<th>Profile</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Port 1</td>
-<td>Upstream switch</td>
-<td><code>TRUNK - ALL</code></td>
-</tr>
-<tr>
-<td>Port 2</td>
-<td>Server A</td>
-<td><code>30 - SERVERS</code></td>
-</tr>
-<tr>
-<td>Port 3</td>
-<td>Server B</td>
-<td><code>30 - SERVERS</code></td>
-</tr>
-<tr>
-<td>Port 4</td>
-<td>Workstation</td>
-<td><code>20 - TRUSTED</code></td>
-</tr>
-<tr>
-<td>Port 5</td>
-<td>IoT device</td>
-<td><code>50 - IOT</code></td>
-</tr>
-<tr>
-<td>Port 6–8</td>
-<td>Spare</td>
-<td>Default or appropriate profile</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Trunk ports must be trunk on both ends.</strong> If port 1 on the downstream switch is set to <code>TRUNK - ALL</code> but the corresponding port on the upstream switch is set to an access profile, VLANs will not pass correctly.</p>
-</blockquote>
-<h4 id="switch-migration-order">Switch Migration Order</h4>
-<p>When migrating switches to a MANAGEMENT VLAN, always work <strong>upstream first</strong>:</p>
-<ol>
-<li>Configure and verify the upstream switch (closest to OPNsense) before touching downstream switches</li>
-<li>Confirm the upstream switch is reachable at its new MANAGEMENT VLAN IP before proceeding</li>
-<li>Only then migrate downstream switches, one at a time</li>
-</ol>
-<p>Migrating a downstream switch before its upstream is configured means tagged MANAGEMENT traffic cannot flow back to OPNsense, leaving the switch unreachable.</p>
-<hr />
-<h2 id="verification">Verification</h2>
-<p>Once configuration is complete, verify each layer is working correctly.</p>
-<h3 id="dns-resolution">DNS Resolution</h3>
-<p>From a client on each VLAN, confirm DNS resolves correctly:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Should return an IP via your internal DNS resolver</span>
-dig<span class="w"> </span>example.com<span class="w"> </span>@&lt;dns-server-ip&gt;
-
-<span class="c1"># Internal hostname should resolve</span>
-dig<span class="w"> </span>server01.internal<span class="w"> </span>@&lt;dns-server-ip&gt;
-</code></pre></div>
-<h3 id="inter-vlan-connectivity">Inter-VLAN Connectivity</h3>
-<p>Test that your firewall policy is enforced:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># From TRUSTED — should reach servers</span>
-ping<span class="w"> </span><span class="m">10</span>.10.30.10
-
-<span class="c1"># From SERVERS — should NOT reach trusted workstations</span>
-ping<span class="w"> </span><span class="m">10</span>.10.20.10<span class="w">   </span><span class="c1"># expect: timeout</span>
-
-<span class="c1"># From IOT — should NOT reach any internal host</span>
-ping<span class="w"> </span><span class="m">10</span>.10.20.10<span class="w">   </span><span class="c1"># expect: timeout</span>
-ping<span class="w"> </span><span class="m">10</span>.10.30.10<span class="w">   </span><span class="c1"># expect: timeout</span>
-
-<span class="c1"># From any VLAN — internet should work</span>
-ping<span class="w"> </span><span class="m">8</span>.8.8.8
-</code></pre></div>
-<h3 id="dhcp-leases">DHCP Leases</h3>
-<p>Confirm devices are receiving IPs in the correct subnet:</p>
-<div class="highlight"><pre><span></span><code>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w">   </span><span class="c1"># Linux</span>
-ipconfig<span class="w">       </span><span class="c1"># Windows</span>
-</code></pre></div>
-<p>Check active leases in OPNsense under <strong>Services → Dnsmasq → Leases</strong> — confirm each device's IP falls within its expected VLAN subnet.</p>
-<h3 id="firewall-logs">Firewall Logs</h3>
-<p>Navigate to <strong>Firewall → Log Files → Live View</strong> in OPNsense. Generate some cross-VLAN traffic and confirm block rules are logging hits as expected.</p>
-<hr />
-<h2 id="common-issues">Common Issues</h2>
-<h3 id="device-received-wrong-subnet-ip">Device received wrong subnet IP</h3>
-<p>The port profile on the switch does not match the intended VLAN. Check:</p>
-<ol>
-<li>The port's assigned profile in Omada</li>
-<li>That the profile's Native/Untagged network matches the intended VLAN</li>
-<li>That the VLAN ID in the Omada network matches OPNsense exactly</li>
-</ol>
-<h3 id="no-internet-from-a-vlan">No internet from a VLAN</h3>
-<p>The allow rule for that VLAN is missing or below a block rule that is matching first. Check rule order in <strong>Firewall → Rules → [Interface]</strong>.</p>
-<h3 id="cant-reach-opnsense-gateway-from-a-vlan">Can't reach OPNsense gateway from a VLAN</h3>
-<p>The VLAN interface IP is not configured. Check <strong>Interfaces → [VLAN]</strong> and confirm a static IPv4 address is set.</p>
-<h3 id="cross-vlan-traffic-that-should-be-blocked-is-getting-through">Cross-VLAN traffic that should be blocked is getting through</h3>
-<p>A block rule is missing or in the wrong position. Remember: first match wins. Block rules must be above any pass rules that would otherwise match the same traffic.</p>
-<h3 id="trunk-port-not-passing-all-vlans">Trunk port not passing all VLANs</h3>
-<p>Either the trunk profile is missing a VLAN in Tagged Networks, or the OPNsense VLAN interface is not assigned/enabled. Check both ends of every trunk link.</p>
-<h3 id="omada-controller-cannot-reach-switches-after-management-vlan-migration">Omada controller cannot reach switches after MANAGEMENT VLAN migration</h3>
-<p>The Omada controller is on a different VLAN (e.g. SERVERS/LAB) and a block rule is preventing it from reaching the MANAGEMENT VLAN. Add an explicit pass rule on the controller's VLAN interface allowing the controller IP to reach MANAGEMENT net, placed above any block rules. See the SERVERS Rules — Exception for Omada Controller section above.</p>
-<hr />
-<h2 id="reference">Reference</h2>
-<ul>
-<li><a href="https://docs.opnsense.org/manual/other-interfaces.html">OPNsense VLAN Documentation</a></li>
-<li><a href="https://docs.opnsense.org/manual/firewall.html">OPNsense Firewall Rules</a></li>
-<li><a href="https://docs.opnsense.org/manual/nat.html">OPNsense NAT</a></li>
-<li><a href="https://docs.opnsense.org/manual/dnsmasq.html">OPNsense Dnsmasq</a></li>
-<li><a href="https://www.tp-link.com/us/support/faq/3089/">TP-Link Omada VLAN Configuration</a></li>
-<li><a href="https://www.omadanetworks.com/us/support/faq/2814/">TP-Link Omada Management VLAN Configuration</a></li>
-</ul>
 
 
   <nav class="md-tags" >
@@ -5735,6 +4130,13 @@ ipconfig<span class="w">       </span><span class="c1"># Windows</span>
       
       
         <span class="md-tag">omada</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">management</span>
       
     
   </nav>
@@ -5774,44 +4176,6 @@ ipconfig<span class="w">       </span><span class="c1"># Windows</span>
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../opnsensetailscale/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OPNSense + Tailscale">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                OPNSense + Tailscale
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="././" class="md-footer__link md-footer__link--next" aria-label="Next: OPNSense Management VLANs w&#x2f; Omada">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                OPNSense Management VLANs w/ Omada
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">

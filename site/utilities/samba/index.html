@@ -12,36 +12,32 @@
         <meta name="author" content="goose">
       
       
-        <link rel="canonical" href="https://docs.vanth.me/ansible/">
+        <link rel="canonical" href="https://docs.vanth.me/utilities/samba/">
       
       
-        <link rel="prev" href="../Linux/performance-debugging/">
-      
-      
-        <link rel="next" href="./ansible/">
       
       
         
       
       
-      <link rel="icon" href="../lucide/server">
+      <link rel="icon" href="../../lucide/server">
       <meta name="generator" content="zensical-0.0.23">
     
     
       
-        <title>Ansible - Homelab References</title>
+        <title>Samba - Homelab References</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.1e989742.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e989742.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -60,9 +56,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -86,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#samba" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -96,7 +97,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="./.." title="Homelab References" class="md-header__button md-logo" aria-label="Homelab References" data-md-component="logo">
+    <a href="../.." title="Homelab References" class="md-header__button md-logo" aria-label="Homelab References" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -116,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ansible
+              Samba
             
           </span>
         </div>
@@ -200,7 +201,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   Get started
@@ -218,7 +219,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../Linux/" class="md-tabs__link">
+        <a href="../../Linux/" class="md-tabs__link">
           
   
   Linux
@@ -233,13 +234,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="././" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../ansible/" class="md-tabs__link">
           
   
   Ansible
@@ -258,7 +257,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../docker/" class="md-tabs__link">
+        <a href="../../docker/" class="md-tabs__link">
           
   
   Docker
@@ -277,7 +276,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../media-server/" class="md-tabs__link">
+        <a href="../../media-server/" class="md-tabs__link">
           
   
   Media Server
@@ -296,7 +295,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../networking/" class="md-tabs__link">
+        <a href="../../networking/" class="md-tabs__link">
           
   
   Networking
@@ -315,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../services/" class="md-tabs__link">
+        <a href="../../services/" class="md-tabs__link">
           
   
   Services
@@ -334,7 +333,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../documentation/getstarted/" class="md-tabs__link">
+        <a href="../../documentation/getstarted/" class="md-tabs__link">
           
   
   Documentation
@@ -367,7 +366,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="./.." title="Homelab References" class="md-nav__button md-logo" aria-label="Homelab References" data-md-component="logo">
+    <a href="../.." title="Homelab References" class="md-nav__button md-logo" aria-label="Homelab References" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -397,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -479,7 +478,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../Linux/" class="md-nav__link ">
+            <a href="../../Linux/" class="md-nav__link ">
               
   
   
@@ -525,7 +524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/pcsetup/" class="md-nav__link">
+      <a href="../../Linux/pcsetup/" class="md-nav__link">
         
   
   
@@ -555,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/nassetup/" class="md-nav__link">
+      <a href="../../Linux/nassetup/" class="md-nav__link">
         
   
   
@@ -585,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/disk-management/" class="md-nav__link">
+      <a href="../../Linux/disk-management/" class="md-nav__link">
         
   
   
@@ -615,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/mergerfs/" class="md-nav__link">
+      <a href="../../Linux/mergerfs/" class="md-nav__link">
         
   
   
@@ -645,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/snapraid/" class="md-nav__link">
+      <a href="../../Linux/snapraid/" class="md-nav__link">
         
   
   
@@ -675,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/users-permissions/" class="md-nav__link">
+      <a href="../../Linux/users-permissions/" class="md-nav__link">
         
   
   
@@ -705,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/ssh/" class="md-nav__link">
+      <a href="../../Linux/ssh/" class="md-nav__link">
         
   
   
@@ -735,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/systemd/" class="md-nav__link">
+      <a href="../../Linux/systemd/" class="md-nav__link">
         
   
   
@@ -765,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/networking/" class="md-nav__link">
+      <a href="../../Linux/networking/" class="md-nav__link">
         
   
   
@@ -795,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/package-management/" class="md-nav__link">
+      <a href="../../Linux/package-management/" class="md-nav__link">
         
   
   
@@ -825,7 +824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/cron/" class="md-nav__link">
+      <a href="../../Linux/cron/" class="md-nav__link">
         
   
   
@@ -855,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/log-management/" class="md-nav__link">
+      <a href="../../Linux/log-management/" class="md-nav__link">
         
   
   
@@ -885,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/firewall/" class="md-nav__link">
+      <a href="../../Linux/firewall/" class="md-nav__link">
         
   
   
@@ -915,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Linux/performance-debugging/" class="md-nav__link">
+      <a href="../../Linux/performance-debugging/" class="md-nav__link">
         
   
   
@@ -949,8 +948,6 @@
       
   
   
-    
-  
   
   
     
@@ -974,23 +971,22 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="././" class="md-nav__link md-nav__link--active">
+            <a href="../../ansible/" class="md-nav__link ">
               
   
   
@@ -1010,13 +1006,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1036,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./ansible/" class="md-nav__link">
+      <a href="../../ansible/ansible/" class="md-nav__link">
         
   
   
@@ -1066,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./ansibleinstallation/" class="md-nav__link">
+      <a href="../../ansible/ansibleinstallation/" class="md-nav__link">
         
   
   
@@ -1096,7 +1092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./ansibleinventory/" class="md-nav__link">
+      <a href="../../ansible/ansibleinventory/" class="md-nav__link">
         
   
   
@@ -1126,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./ansiblecommands/" class="md-nav__link">
+      <a href="../../ansible/ansiblecommands/" class="md-nav__link">
         
   
   
@@ -1156,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./ansibleplaybook/" class="md-nav__link">
+      <a href="../../ansible/ansibleplaybook/" class="md-nav__link">
         
   
   
@@ -1224,7 +1220,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../docker/" class="md-nav__link ">
+            <a href="../../docker/" class="md-nav__link ">
               
   
   
@@ -1268,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker/docker/" class="md-nav__link">
+      <a href="../../docker/docker/" class="md-nav__link">
         
   
   
@@ -1298,7 +1294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker/dockerpostinstall/" class="md-nav__link">
+      <a href="../../docker/dockerpostinstall/" class="md-nav__link">
         
   
   
@@ -1326,7 +1322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker/cheatsheet/" class="md-nav__link">
+      <a href="../../docker/cheatsheet/" class="md-nav__link">
         
   
   
@@ -1396,7 +1392,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../media-server/" class="md-nav__link ">
+            <a href="../../media-server/" class="md-nav__link ">
               
   
   
@@ -1442,7 +1438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../media-server/qbittorrent/" class="md-nav__link">
+      <a href="../../media-server/qbittorrent/" class="md-nav__link">
         
   
   
@@ -1472,7 +1468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../media-server/gluetun/" class="md-nav__link">
+      <a href="../../media-server/gluetun/" class="md-nav__link">
         
   
   
@@ -1502,7 +1498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../media-server/radarr/" class="md-nav__link">
+      <a href="../../media-server/radarr/" class="md-nav__link">
         
   
   
@@ -1532,7 +1528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../media-server/sonarr/" class="md-nav__link">
+      <a href="../../media-server/sonarr/" class="md-nav__link">
         
   
   
@@ -1562,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../media-server/seerr/" class="md-nav__link">
+      <a href="../../media-server/seerr/" class="md-nav__link">
         
   
   
@@ -1630,7 +1626,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../networking/" class="md-nav__link ">
+            <a href="../../networking/" class="md-nav__link ">
               
   
   
@@ -1742,7 +1738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/opnsense/opnsense/" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsense/" class="md-nav__link">
         
   
   
@@ -1770,7 +1766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/opnsense/opnsense-dns-stack/" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsense-dns-stack/" class="md-nav__link">
         
   
   
@@ -1798,7 +1794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/opnsense/opnsenseadguard/" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsenseadguard/" class="md-nav__link">
         
   
   
@@ -1826,7 +1822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/opnsense/opnsensetailscale/" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsensetailscale/" class="md-nav__link">
         
   
   
@@ -1854,7 +1850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/opnsense/vlan/" class="md-nav__link">
+      <a href="../../networking/opnsense/vlan/" class="md-nav__link">
         
   
   
@@ -1882,7 +1878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/opnsense/vlan/" class="md-nav__link">
+      <a href="../../networking/opnsense/vlan/" class="md-nav__link">
         
   
   
@@ -1978,7 +1974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/npm/npm/" class="md-nav__link">
+      <a href="../../networking/npm/npm/" class="md-nav__link">
         
   
   
@@ -2006,7 +2002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/npm/npm-pihole/" class="md-nav__link">
+      <a href="../../networking/npm/npm-pihole/" class="md-nav__link">
         
   
   
@@ -2100,7 +2096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/cloudflare/tunnels/" class="md-nav__link">
+      <a href="../../networking/cloudflare/tunnels/" class="md-nav__link">
         
   
   
@@ -2186,7 +2182,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../services/" class="md-nav__link ">
+            <a href="../../services/" class="md-nav__link ">
               
   
   
@@ -2290,7 +2286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/backups/backrest/" class="md-nav__link">
+      <a href="../../services/backups/backrest/" class="md-nav__link">
         
   
   
@@ -2318,7 +2314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/backups/backrestssh/" class="md-nav__link">
+      <a href="../../services/backups/backrestssh/" class="md-nav__link">
         
   
   
@@ -2412,7 +2408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/git/git/" class="md-nav__link">
+      <a href="../../services/git/git/" class="md-nav__link">
         
   
   
@@ -2506,7 +2502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/homeassisstant/homeassisstant/" class="md-nav__link">
+      <a href="../../services/homeassisstant/homeassisstant/" class="md-nav__link">
         
   
   
@@ -2602,7 +2598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/immich/immich/" class="md-nav__link">
+      <a href="../../services/immich/immich/" class="md-nav__link">
         
   
   
@@ -2630,7 +2626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/immich/takeoutimport/" class="md-nav__link">
+      <a href="../../services/immich/takeoutimport/" class="md-nav__link">
         
   
   
@@ -2724,7 +2720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/ollama/ollama/" class="md-nav__link">
+      <a href="../../services/ollama/ollama/" class="md-nav__link">
         
   
   
@@ -2818,7 +2814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/omada/omada/" class="md-nav__link">
+      <a href="../../services/omada/omada/" class="md-nav__link">
         
   
   
@@ -2912,7 +2908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/pihole/pihole/" class="md-nav__link">
+      <a href="../../services/pihole/pihole/" class="md-nav__link">
         
   
   
@@ -3006,7 +3002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/tailscale/tailscale/" class="md-nav__link">
+      <a href="../../services/tailscale/tailscale/" class="md-nav__link">
         
   
   
@@ -3102,7 +3098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/utilities/convertx/" class="md-nav__link">
+      <a href="../../services/utilities/convertx/" class="md-nav__link">
         
   
   
@@ -3130,7 +3126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/utilities/obslivesync/" class="md-nav__link">
+      <a href="../../services/utilities/obslivesync/" class="md-nav__link">
         
   
   
@@ -3237,7 +3233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../documentation/getstarted/" class="md-nav__link">
+      <a href="../../documentation/getstarted/" class="md-nav__link">
         
   
   
@@ -3267,7 +3263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../documentation/markdown/" class="md-nav__link">
+      <a href="../../documentation/markdown/" class="md-nav__link">
         
   
   
@@ -3297,7 +3293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../documentation/zensical-cloudflare/" class="md-nav__link">
+      <a href="../../documentation/zensical-cloudflare/" class="md-nav__link">
         
   
   
@@ -3327,7 +3323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../documentation/customcss/" class="md-nav__link">
+      <a href="../../documentation/customcss/" class="md-nav__link">
         
   
   
@@ -3375,6 +3371,27 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -3392,52 +3409,12 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="./.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Get started
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="././" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Ansible
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
                   
   
-    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/ansible/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/utilities/samba.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
@@ -3445,37 +3422,33 @@
   
 
 
-  <h1>Ansible</h1>
-
-<div class="grid cards">
-<ul>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m10.617 11.473 4.686 3.695-3.102-7.662zM12 0C5.371 0 0 5.371 0 12s5.371 12 12 12 12-5.371 12-12S18.629 0 12 0m5.797 17.305a.85.85 0 0 1-.875.83c-.236 0-.416-.09-.664-.293l-6.19-5-2.079 5.203H6.191L11.438 5.44a.79.79 0 0 1 .764-.506.76.76 0 0 1 .742.506l4.774 11.494c.045.111.08.234.08.348z"/></svg></span> <strong><a href="ansible/">Ansible</a></strong></p>
-<hr />
-<p>Overview of Ansible.</p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-download" viewBox="0 0 24 24"><path d="M12 15V3M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg></span> <strong><a href="ansibleinstallation/">Installation &amp; Setup</a></strong></p>
-<hr />
-<p>Install and Run Ansible.</p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-pile" viewBox="0 0 24 24"><circle cx="12" cy="19" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="20" cy="19" r="2"/><circle cx="4" cy="19" r="2"/><circle cx="8" cy="12" r="2"/></svg></span> <strong><a href="ansibleinventory/">Setup Hosts</a></strong></p>
-<hr />
-<p>Create a host inventory to manage &amp; run ad-hoc commands.</p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-terminal" viewBox="0 0 24 24"><path d="M12 19h8M4 17l6-6-6-6"/></svg></span> <strong><a href="ansiblecommands/">Commands</a></strong></p>
-<hr />
-<p>Elevated commands to actually do stuff with. </p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></span> <strong><a href="ansibleplaybook/">Playbooks</a></strong></p>
-<hr />
-<p>Playbooks for repeatable, reusable, simple configuration. </p>
-</li>
-</ul>
-</div>
+<h1 id="samba">Samba</h1>
+<h2 id="installation">Installation</h2>
+<p>Server install: </p>
+<p><code>sudo apt update &amp;&amp; sudo apt install samba -y</code></p>
+<p>Client Install (this will be needed, install it)</p>
+<p><code>sudo apt install samba-client -y</code> </p>
+<p>Confirm it is running:</p>
+<p><code>sudo systemctl status smbd</code></p>
+<p>Create the dir to be used</p>
+<p><code>sudo mkdir -p /mnt/storage/backups</code></p>
+<p>Change ownership</p>
+<p><code>sudo chown goose:goose /mnt/storage/backups</code></p>
+<p>Edit the samba config</p>
+<p><code>sudo nano /etc/samba/smb.conf</code></p>
+<p>Add this block to the bottom</p>
+<div class="highlight"><pre><span></span><code><span class="k">[backups]</span>
+<span class="w">   </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/mnt/storage/backups</span>
+<span class="w">   </span><span class="na">browseable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
+<span class="w">   </span><span class="na">read only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">no</span>
+<span class="w">   </span><span class="na">valid users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">goose</span>
+</code></pre></div>
+<p>Save and exit. Then set a samba password for your user.</p>
+<p><code>sudo smbpasswd -a goose</code></p>
+<p>Restart to apply the config </p>
+<p><code>sudo systemctl restart smbd</code></p>
+<p>Verify share is visible</p>
+<p><code>smbclient -L localhost -U goose</code></p>
 
 
 
@@ -3484,9 +3457,6 @@
 
 
 
-
-  
-  
 
 
 
@@ -3513,44 +3483,6 @@
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../Linux/performance-debugging/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Performance &amp; Debugging">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Performance & Debugging
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="./ansible/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Overview
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -3584,10 +3516,10 @@
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.5fcf0de6.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5fcf0de6.min.js"></script>
       
     
   </body>

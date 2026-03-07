@@ -1,3 +1,6 @@
+---
+icon: simple/opnsense
+---
 # OPNSense  
 
 [OPNSense docs :simple-opnsense: ](https://docs.opnsense.org/)

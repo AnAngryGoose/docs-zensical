@@ -1,7 +1,5 @@
 ---
 title: DNS Stack — AdGuard + Unbound + dnsmasq
-description: Setting up a three-tier DNS stack on OPNsense using AdGuard Home for filtering, Unbound for recursive resolution, and dnsmasq for DHCP and local hostname registration.
-tags:
   - networking
   - dns
   - opnsense
@@ -13,6 +11,10 @@ tags:
 # DNS Stack — AdGuard + Unbound + dnsmasq
 
 This guide covers setting up a layered DNS stack on OPNsense. Each service has a distinct role and they chain together so that all client DNS traffic is filtered, recursively resolved, and locally registered.
+
+I am only using IPv4 for this guide. Not familiar enough with IPv6, and I don't feel like dealing with for now. I'll come around to it (maybe).
+
+This is made for DNSMasq and Unbound DNS specifically, but same ideas apply if using something else. Same for omada controller (for the most part) 
 
 ## References
 
@@ -32,7 +34,7 @@ Client
               └─► Root DNS servers — all other queries
 ```
 
-**Why three services?**
+**Purpose of each service:**
 
 - **AdGuard** — filtering layer. Sits in front so every query is inspected before resolution. Cannot do recursive resolution itself.
 - **Unbound** — recursive resolver. Resolves public DNS from root servers directly (no third-party upstream needed). Forwards internal domain queries to dnsmasq.
@@ -56,7 +58,12 @@ None of these roles overlap. Each is doing something the others cannot.
 | DHCP local domain | **Enabled** | Makes dnsmasq authoritative for `.internal` — it will not forward these queries upstream |
 | Do not forward to system defined DNS | **Enabled** | Prevents query loops — dnsmasq must not forward back to Unbound for local lookups |
 
+<<<<<<< HEAD
 > **Warning — DNS port must not be set to `0`.** Port `0` disables dnsmasq DNS entirely. Unbound's Query Forwarding entries point to dnsmasq at port `53053` — if that port is `0`, Unbound forwards `.internal` queries to nothing and all local hostname resolution silently breaks. The DNS port field must always be set to `53053` (or whatever non-zero port you chose). This is a common misconfiguration that produces confusing symptoms because DHCP continues to work while DNS fails.
+=======
+!!!tip
+    **dnsmasq DNS is enabled here on port 53053.** It is not disabled. Port 0 would disable DNS entirely and break the chain — Unbound would forward `.internal` queries to nothing.
+>>>>>>> 6fde6a4794a98b8cfa89e7a0ab14bc9395849e01
 
 ---
 
@@ -79,8 +86,15 @@ This gives you three things from one entry:
 2. `server01` resolves to the IP
 3. `server01.internal` resolves to the IP
 
-> **Decision rule:** Use dnsmasq Hosts for DHCP-managed devices. Use Unbound Overrides only for devices with static IPs configured on the device itself (no DHCP), or for custom DNS aliases.
+!!!tip
+    Use dnsmasq Hosts for DHCP-managed devices. Use Unbound Overrides only for devices with static IPs configured on the device itself (no DHCP), or for custom DNS aliases.
 
+!!!tip
+    **DHCP Static Reservation** = Assigns a static IP to MAC address
+
+    **DNS Override** = Assigns a DNS address to an IP address.
+
+    The DNS record must match the DHCP Reservation if it is set, or it will not resolve. 
 ---
 
 ### DHCP Ranges
@@ -88,6 +102,13 @@ This gives you three things from one entry:
 **Services → Dnsmasq DNS & DHCP → DHCP ranges**
 
 Add one range per VLAN. Static reservations defined in Hosts sit outside the pool by MAC binding — they do not need to be excluded from the range manually.
+
+!!!note
+    Reservations will reserve the IP address inside a range, meaning the reserved IP will not be offered to dynamic clients.
+
+    A dynamic range like 192.168.1.100-192.168.1.199 and a reservation like 192.168.1.101 are valid and there will be no collisions.
+
+    The reservation can also be outside the dynamic range, but it is not recommended for simple setups as the dynamic dns registration with dhcp-fqdn will not work correctly
 
 | Field | Value |
 |---|---|
@@ -109,7 +130,8 @@ Clients need to receive AdGuard's IP as their DNS server via DHCP. Add one entry
 | Option | `6` (DNS server) |
 | Value | IP of OPNsense interface where AdGuard listens (e.g. `10.10.10.1`) |
 
-> Use the gateway IP of the VLAN the client is on, not a fixed IP — once OPNsense has VLAN interfaces each will have its own IP and AdGuard listens on all of them.
+!!!tip 
+    Use the gateway IP of the VLAN the client is on, not a fixed IP — once OPNsense has VLAN interfaces each will have its own IP and AdGuard listens on all of them.
 
 ---
 
@@ -148,16 +170,19 @@ If you are running Omada managed switches or APs on a dedicated MANAGEMENT VLAN,
 
 **Services → Unbound DNS → Query Forwarding**
 
-This is the critical link. Unbound forwards `.internal` queries to dnsmasq instead of trying to resolve them recursively (which would fail — `.internal` is not a real TLD).
+!!!warning
+
+ Unbound forwards `.internal` queries to dnsmasq instead of trying to resolve them recursively (which would fail — `.internal` is not a real TLD).
 
 | Domain | Server IP | Port | Description |
 |---|---|---|---|
 | `internal` | `127.0.0.1` | `53053` | Forward local hostname lookups to dnsmasq |
 | `x.x.x.in-addr.arpa` | `127.0.0.1` | `53053` | Forward reverse PTR lookups to dnsmasq |
 
-> Replace `x.x.x` with the reverse zone for your subnet. For `10.10.30.0/24` this is `30.10.10.in-addr.arpa`. Add one PTR entry per subnet.
+!!!warning
+    Replace `x.x.x` with the reverse zone for your subnet. For `10.10.30.0/24` this is `30.10.10.in-addr.arpa`. Add one PTR entry per subnet.
 
-Without these entries, Unbound attempts to resolve `hostname.internal` from root DNS servers, fails, and returns NXDOMAIN.
+    Without these entries, Unbound attempts to resolve `hostname.internal` from root DNS servers, fails, and returns NXDOMAIN.
 
 > **These Query Forwarding entries must exist and must point to the correct port.** If dnsmasq DNS is running on port `53053` but the Query Forwarding entries are missing or point to a different port, `.internal` resolution will fail silently — DHCP will still work, but hostnames will not resolve.
 
@@ -181,7 +206,7 @@ Do **not** duplicate entries that already exist as dnsmasq Hosts — they will c
 
 **Services → Adguardhome**
 
-AdGuard sits in front of everything. Clients query it on port 53. It filters, then forwards upstream.
+AdGuard sits in front of everything. Clients query it on port 53 (DNS port). It filters, then forwards upstream to Unbound on 5335.
 
 **Settings → DNS settings → Upstream DNS servers:**
 

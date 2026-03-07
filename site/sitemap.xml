@@ -100,10 +100,13 @@
         <loc>https://docs.vanth.me/networking/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/networking/opnsense/opnsense/</loc>
+        <loc>https://docs.vanth.me/networking/opnsense/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/opnsense/opnsense-dns-stack/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/networking/opnsense/vlan/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/opnsense/opnsenseadguard/</loc>
@@ -112,13 +115,17 @@
         <loc>https://docs.vanth.me/networking/opnsense/opnsensetailscale/</loc>
       </url>
       <url>
-        <loc>https://docs.vanth.me/networking/opnsense/vlan/</loc>
+        <loc>https://docs.vanth.me/networking/opnsense/macvlan/</loc>
       </url>
       <url>
+<<<<<<< HEAD
         <loc>https://docs.vanth.me/networking/opnsense/vlan/</loc>
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/npm/npm/</loc>
+=======
+        <loc>https://docs.vanth.me/networking/npm/</loc>
+>>>>>>> 6fde6a4794a98b8cfa89e7a0ab14bc9395849e01
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/npm/npm-pihole/</loc>

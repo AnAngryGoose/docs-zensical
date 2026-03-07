@@ -102,15 +102,21 @@ nav = [
   { "Networking" = [
     "networking/index.md",
     {"OPNsense" = [
+      "networking/opnsense/index.md",
       {"OPNSense"               = "networking/opnsense/opnsense.md"},
       {"OPNSense DNS Stack"     = "networking/opnsense/opnsense-dns-stack.md"},
-      {"OPNSense + ADGuard"     = "networking/opnsense/opnsenseadguard.md"},
-      {"OPNSense + Tailscale"   = "networking/opnsense/opnsensetailscale.md"},
       {"OPNSense VLANs w/ Omada"= "networking/opnsense/vlan.md"},
+<<<<<<< HEAD
       {"OPNSense Management VLANs w/ Omada" = "networking/opnsense/vlan.md"},
+=======
+      {"Adguard Home"           = "networking/opnsense/opnsenseadguard.md"},
+      {"Tailscale           "   = "networking/opnsense/opnsensetailscale.md"},
+      {"Macvlan"                = "networking/opnsense/macvlan.md"},
+>>>>>>> 6fde6a4794a98b8cfa89e7a0ab14bc9395849e01
     ]},
 
     {"NGINX Proxy Manager" = [
+      "networking/npm/index.md",
       {"Overview"               = "networking/npm/npm.md"},
       {"NPM + PiHole"           = "networking/npm/npm-pihole.md"},
     ]},
@@ -205,7 +211,7 @@ extra_css = ["stylesheets/extra.css"]
 # Read more:
 # - https://zensical.org/docs/customization/#extending-the-theme
 #
-custom_dir = "overrides"
+#custom_dir = "overrides"
 
 # With the "favicon" option you can set your own image to use as the icon
 # browsers will use in the browser title bar or tab bar. The path provided
@@ -450,7 +456,6 @@ custom_fences = [
 [project.markdown_extensions.pymdownx.emoji] # emoji support
 emoji_index = "zensical.extensions.emoji.twemoji" 
 emoji_generator = "zensical.extensions.emoji.to_svg"
-options.custom_icons = ["overrides/.icons"] # allow custom icons
-
+[project.markdown_extensions.tables] # enable tables
 
 

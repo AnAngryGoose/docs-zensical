@@ -106,13 +106,12 @@ nav = [
       {"OPNSense"               = "networking/opnsense/opnsense.md"},
       {"OPNSense DNS Stack"     = "networking/opnsense/opnsense-dns-stack.md"},
       {"OPNSense VLANs w/ Omada"= "networking/opnsense/vlan.md"},
-<<<<<<< HEAD
+
       {"OPNSense Management VLANs w/ Omada" = "networking/opnsense/vlan.md"},
-=======
+
       {"Adguard Home"           = "networking/opnsense/opnsenseadguard.md"},
       {"Tailscale           "   = "networking/opnsense/opnsensetailscale.md"},
       {"Macvlan"                = "networking/opnsense/macvlan.md"},
->>>>>>> 6fde6a4794a98b8cfa89e7a0ab14bc9395849e01
     ]},
 
     {"NGINX Proxy Manager" = [

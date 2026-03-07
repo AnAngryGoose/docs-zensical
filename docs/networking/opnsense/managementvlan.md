@@ -6,7 +6,7 @@ tags:
   - vlans
   - opnsense
   - omada
-  - management
+  - managements
 ---
 
 # Management VLAN Migration — OPNsense & Omada

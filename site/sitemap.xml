@@ -109,6 +109,9 @@
         <loc>https://docs.vanth.me/networking/opnsense/vlan/</loc>
       </url>
       <url>
+        <loc>https://docs.vanth.me/networking/opnsense/vlan/</loc>
+      </url>
+      <url>
         <loc>https://docs.vanth.me/networking/opnsense/opnsenseadguard/</loc>
       </url>
       <url>
@@ -118,14 +121,7 @@
         <loc>https://docs.vanth.me/networking/opnsense/macvlan/</loc>
       </url>
       <url>
-<<<<<<< HEAD
-        <loc>https://docs.vanth.me/networking/opnsense/vlan/</loc>
-      </url>
-      <url>
-        <loc>https://docs.vanth.me/networking/npm/npm/</loc>
-=======
         <loc>https://docs.vanth.me/networking/npm/</loc>
->>>>>>> 6fde6a4794a98b8cfa89e7a0ab14bc9395849e01
       </url>
       <url>
         <loc>https://docs.vanth.me/networking/npm/npm-pihole/</loc>
@@ -183,5 +179,11 @@
       </url>
       <url>
         <loc>https://docs.vanth.me/documentation/customcss/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/utilities/samba/</loc>
+      </url>
+      <url>
+        <loc>https://docs.vanth.me/utilities/borg/</loc>
       </url>
 </urlset>

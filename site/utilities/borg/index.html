@@ -12,36 +12,34 @@
         <meta name="author" content="goose">
       
       
-        <link rel="canonical" href="https://docs.vanth.me/networking/npm/npm/">
+        <link rel="canonical" href="https://docs.vanth.me/utilities/borg/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../samba/">
       
-      
-        <link rel="next" href="../npm-pihole/">
       
       
         
       
       
-      <link rel="icon" href="../../../lucide/server">
-      <meta name="generator" content="zensical-0.0.24">
+      <link rel="icon" href="../../lucide/server">
+      <meta name="generator" content="zensical-0.0.23">
     
     
       
-        <title>NGINX Proxy Mananger - Homelab References</title>
+        <title>Borg / Borgmatic - Homelab References</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.28978c9b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.1e989742.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -60,9 +58,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -87,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nginx-proxy-mananger" class="md-skip">
+        <a href="#borg-borgmatic" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +99,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Homelab References" class="md-header__button md-logo" aria-label="Homelab References" data-md-component="logo">
+    <a href="../.." title="Homelab References" class="md-header__button md-logo" aria-label="Homelab References" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -121,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NGINX Proxy Mananger
+              Borg / Borgmatic
             
           </span>
         </div>
@@ -205,7 +203,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   Get started
@@ -223,7 +221,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Linux/" class="md-tabs__link">
+        <a href="../../Linux/" class="md-tabs__link">
           
   
   Linux
@@ -242,7 +240,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../ansible/" class="md-tabs__link">
+        <a href="../../ansible/" class="md-tabs__link">
           
   
   Ansible
@@ -261,7 +259,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../docker/" class="md-tabs__link">
+        <a href="../../docker/" class="md-tabs__link">
           
   
   Docker
@@ -280,7 +278,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../media-server/" class="md-tabs__link">
+        <a href="../../media-server/" class="md-tabs__link">
           
   
   Media Server
@@ -295,13 +293,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../networking/" class="md-tabs__link">
           
   
   Networking
@@ -320,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../services/" class="md-tabs__link">
+        <a href="../../services/" class="md-tabs__link">
           
   
   Services
@@ -339,10 +335,31 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../documentation/getstarted/" class="md-tabs__link">
+        <a href="../../documentation/getstarted/" class="md-tabs__link">
           
   
   Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../samba/" class="md-tabs__link">
+          
+  
+  Utilities
 
         </a>
       </li>
@@ -372,7 +389,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Homelab References" class="md-nav__button md-logo" aria-label="Homelab References" data-md-component="logo">
+    <a href="../.." title="Homelab References" class="md-nav__button md-logo" aria-label="Homelab References" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
@@ -402,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -484,7 +501,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../Linux/" class="md-nav__link ">
+            <a href="../../Linux/" class="md-nav__link ">
               
   
   
@@ -530,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/pcsetup/" class="md-nav__link">
+      <a href="../../Linux/pcsetup/" class="md-nav__link">
         
   
   
@@ -560,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/nassetup/" class="md-nav__link">
+      <a href="../../Linux/nassetup/" class="md-nav__link">
         
   
   
@@ -590,7 +607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/disk-management/" class="md-nav__link">
+      <a href="../../Linux/disk-management/" class="md-nav__link">
         
   
   
@@ -620,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/mergerfs/" class="md-nav__link">
+      <a href="../../Linux/mergerfs/" class="md-nav__link">
         
   
   
@@ -650,7 +667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/snapraid/" class="md-nav__link">
+      <a href="../../Linux/snapraid/" class="md-nav__link">
         
   
   
@@ -680,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/users-permissions/" class="md-nav__link">
+      <a href="../../Linux/users-permissions/" class="md-nav__link">
         
   
   
@@ -710,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/ssh/" class="md-nav__link">
+      <a href="../../Linux/ssh/" class="md-nav__link">
         
   
   
@@ -740,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/systemd/" class="md-nav__link">
+      <a href="../../Linux/systemd/" class="md-nav__link">
         
   
   
@@ -770,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/networking/" class="md-nav__link">
+      <a href="../../Linux/networking/" class="md-nav__link">
         
   
   
@@ -800,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/package-management/" class="md-nav__link">
+      <a href="../../Linux/package-management/" class="md-nav__link">
         
   
   
@@ -830,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/cron/" class="md-nav__link">
+      <a href="../../Linux/cron/" class="md-nav__link">
         
   
   
@@ -860,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/log-management/" class="md-nav__link">
+      <a href="../../Linux/log-management/" class="md-nav__link">
         
   
   
@@ -890,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/firewall/" class="md-nav__link">
+      <a href="../../Linux/firewall/" class="md-nav__link">
         
   
   
@@ -920,7 +937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/performance-debugging/" class="md-nav__link">
+      <a href="../../Linux/performance-debugging/" class="md-nav__link">
         
   
   
@@ -992,7 +1009,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ansible/" class="md-nav__link ">
+            <a href="../../ansible/" class="md-nav__link ">
               
   
   
@@ -1038,7 +1055,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansible/" class="md-nav__link">
+      <a href="../../ansible/ansible/" class="md-nav__link">
         
   
   
@@ -1068,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansibleinstallation/" class="md-nav__link">
+      <a href="../../ansible/ansibleinstallation/" class="md-nav__link">
         
   
   
@@ -1098,7 +1115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansibleinventory/" class="md-nav__link">
+      <a href="../../ansible/ansibleinventory/" class="md-nav__link">
         
   
   
@@ -1128,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansiblecommands/" class="md-nav__link">
+      <a href="../../ansible/ansiblecommands/" class="md-nav__link">
         
   
   
@@ -1158,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansibleplaybook/" class="md-nav__link">
+      <a href="../../ansible/ansibleplaybook/" class="md-nav__link">
         
   
   
@@ -1226,7 +1243,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../docker/" class="md-nav__link ">
+            <a href="../../docker/" class="md-nav__link ">
               
   
   
@@ -1270,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker/" class="md-nav__link">
+      <a href="../../docker/docker/" class="md-nav__link">
         
   
   
@@ -1300,7 +1317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/dockerpostinstall/" class="md-nav__link">
+      <a href="../../docker/dockerpostinstall/" class="md-nav__link">
         
   
   
@@ -1328,7 +1345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/cheatsheet/" class="md-nav__link">
+      <a href="../../docker/cheatsheet/" class="md-nav__link">
         
   
   
@@ -1398,7 +1415,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../media-server/" class="md-nav__link ">
+            <a href="../../media-server/" class="md-nav__link ">
               
   
   
@@ -1444,7 +1461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/qbittorrent/" class="md-nav__link">
+      <a href="../../media-server/qbittorrent/" class="md-nav__link">
         
   
   
@@ -1474,7 +1491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/gluetun/" class="md-nav__link">
+      <a href="../../media-server/gluetun/" class="md-nav__link">
         
   
   
@@ -1504,7 +1521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/radarr/" class="md-nav__link">
+      <a href="../../media-server/radarr/" class="md-nav__link">
         
   
   
@@ -1534,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/sonarr/" class="md-nav__link">
+      <a href="../../media-server/sonarr/" class="md-nav__link">
         
   
   
@@ -1564,7 +1581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../media-server/seerr/" class="md-nav__link">
+      <a href="../../media-server/seerr/" class="md-nav__link">
         
   
   
@@ -1598,8 +1615,6 @@
       
   
   
-    
-  
   
   
     
@@ -1619,23 +1634,22 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../networking/" class="md-nav__link ">
               
   
   
@@ -1655,13 +1669,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1707,13 +1721,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1723,7 +1734,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../opnsense/" class="md-nav__link ">
+            <a href="../../networking/opnsense/" class="md-nav__link ">
               
   
   
@@ -1743,7 +1754,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -1769,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../opnsense/opnsense.md" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsense.md" class="md-nav__link">
         
   
   
@@ -1797,7 +1808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../opnsense/opnsense-dns-stack/" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsense-dns-stack/" class="md-nav__link">
         
   
   
@@ -1825,7 +1836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../opnsense/vlan/" class="md-nav__link">
+      <a href="../../networking/opnsense/vlan/" class="md-nav__link">
         
   
   
@@ -1853,7 +1864,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../opnsense/opnsenseadguard/" class="md-nav__link">
+      <a href="../../networking/opnsense/vlan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNSense Management VLANs w/ Omada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/opnsense/opnsenseadguard/" class="md-nav__link">
         
   
   
@@ -1881,7 +1920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../opnsense/opnsensetailscale/" class="md-nav__link">
+      <a href="../../networking/opnsense/opnsensetailscale/" class="md-nav__link">
         
   
   
@@ -1909,7 +1948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../opnsense/macvlan/" class="md-nav__link">
+      <a href="../../networking/opnsense/macvlan/" class="md-nav__link">
         
   
   
@@ -1917,34 +1956,6 @@
     
   
     Macvlan
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../opnsense/vlan/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OPNSense Management VLANs w/ Omada
   
 
     
@@ -1970,8 +1981,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1991,21 +2000,20 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../networking/npm/" class="md-nav__link ">
               
   
   
@@ -2025,13 +2033,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2048,43 +2056,12 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.008 0A823 823 0 0 0 1.59 6.043V18c3.578 2.087 7.238 4.274 10.418 6 3.928-2.267 6.71-3.868 10.402-6v-3.043l-1.045.6v1.8l-1.545.9-1.56-.9v-1.8l1.56-.885v-.002l.268.156a8 8 0 0 0 .404-1.754v-.002a9 9 0 0 0 .072-1.072 10 10 0 0 0-.072-1.127 9 9 0 0 0-.515-1.97v-.003a8.1 8.1 0 0 0-1.301-2.242 7 7 0 0 0-.615-.699 10 10 0 0 0-.846-.728 8 8 0 0 0-1.902-1.116 5 5 0 0 0-.586-.213v-.957q.616.177 1.2.442a9.2 9.2 0 0 1 1.618.943 9.4 9.4 0 0 1 1.158.986q.409.416.774.872c.532.686.97 1.44 1.302 2.244h-.002a9.5 9.5 0 0 1 .645 2.613q.061.476.056.957c0 .314-.014.614-.043.914-.082.838-.37 1.786-.542 2.373l.472.27 1.045-.602V8.986l-1.303-.742v-.002l1.303.744V6c-3.56-2.057-7.212-4.154-10.402-6m8.08 14.826c-.02.052.003.002.004.002zM12.035 1.213l1.56.9v1.801l-1.56.885-1.545-.885h-.002v-.328a8.5 8.5 0 0 0-1.744.516 8.2 8.2 0 0 0-1.889 1.07l-.001.002a7 7 0 0 0-.9.783 9 9 0 0 0-.616.672 8.8 8.8 0 0 0-1.3 2.228l.228.127 1.287-.742 1.203.686c1.929-1.112 3.397-1.961 5.252-3.014l.027.014c1.926 1.114 3.398 1.955 5.238 3.029.028 1.997.014 4.064.014 6.086-1.874 1.084-3.753 2.16-5.28 3.043a860 860 0 0 1-5.294-3.043V8.957l.043-.027-1.203-.688-1.287.744-.229-.129h-.002a8.4 8.4 0 0 0-.53 2.057q-.067.54-.07 1.086.003.517.07 1.027v.002c.015.215.06.429.102.643l-.83.484a7 7 0 0 1-.2-1.199A7 7 0 0 1 2.52 12c0-.329.028-.672.056-1a9.8 9.8 0 0 1 .658-2.6 9.4 9.4 0 0 1 1.303-2.244c.243-.3.5-.57.758-.842q.556-.558 1.203-1.013-1.823-.125 0-.002a9.4 9.4 0 0 1 1.645-.942 9.9 9.9 0 0 1 2.347-.7l-.002-.542-1.043-.601 1.045.6zm0 .773-.887.514v1.027l.887.516.887-.516V2.5Zm-.03 6.928c-.935.532-1.888 1.084-2.689 1.543v3.086c.933.535 1.892 1.095 2.692 1.557.926-.565 1.865-1.093 2.676-1.557v-3.086c-.945-.542-1.857-1.074-2.678-1.543Zm-7.74 5.758 1.546.885v1.8l-.329.186q.219.266.471.5.417.432.902.785a8 8 0 0 0 1.83 1.059h.002a8.1 8.1 0 0 0 2.061.57q.626.087 1.258.086a8.4 8.4 0 0 0 1.332-.1 8.6 8.6 0 0 0 2.017-.572 8 8 0 0 0 1.86-1.1c.172-.114.315-.242.472-.37l.83.47a10 10 0 0 1-.945.787l.946.541 1.302-.756-1.302.758-.946-.543c-.516.37-1.067.69-1.644.955l-.002.002a9.5 9.5 0 0 1-2.588.756q-.662.086-1.33.086a12 12 0 0 1-1.26-.072v.002a9.4 9.4 0 0 1-2.605-.744 9 9 0 0 1-1.688-.971 9.6 9.6 0 0 1-1.775-1.658h-.002l-.412.244-1.56-.9v-1.801zm0 .756-.886.515v1.028l.887.515.886-.515v-1.028zm15.555 0-.902.515v1.028l.902.515.887-.515v-1.028z"/></svg>
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../networking/npm/npm.md" class="md-nav__link">
         
   
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.008 0A823 823 0 0 0 1.59 6.043V18c3.578 2.087 7.238 4.274 10.418 6 3.928-2.267 6.71-3.868 10.402-6v-3.043l-1.045.6v1.8l-1.545.9-1.56-.9v-1.8l1.56-.885v-.002l.268.156a8 8 0 0 0 .404-1.754v-.002a9 9 0 0 0 .072-1.072 10 10 0 0 0-.072-1.127 9 9 0 0 0-.515-1.97v-.003a8.1 8.1 0 0 0-1.301-2.242 7 7 0 0 0-.615-.699 10 10 0 0 0-.846-.728 8 8 0 0 0-1.902-1.116 5 5 0 0 0-.586-.213v-.957q.616.177 1.2.442a9.2 9.2 0 0 1 1.618.943 9.4 9.4 0 0 1 1.158.986q.409.416.774.872c.532.686.97 1.44 1.302 2.244h-.002a9.5 9.5 0 0 1 .645 2.613q.061.476.056.957c0 .314-.014.614-.043.914-.082.838-.37 1.786-.542 2.373l.472.27 1.045-.602V8.986l-1.303-.742v-.002l1.303.744V6c-3.56-2.057-7.212-4.154-10.402-6m8.08 14.826c-.02.052.003.002.004.002zM12.035 1.213l1.56.9v1.801l-1.56.885-1.545-.885h-.002v-.328a8.5 8.5 0 0 0-1.744.516 8.2 8.2 0 0 0-1.889 1.07l-.001.002a7 7 0 0 0-.9.783 9 9 0 0 0-.616.672 8.8 8.8 0 0 0-1.3 2.228l.228.127 1.287-.742 1.203.686c1.929-1.112 3.397-1.961 5.252-3.014l.027.014c1.926 1.114 3.398 1.955 5.238 3.029.028 1.997.014 4.064.014 6.086-1.874 1.084-3.753 2.16-5.28 3.043a860 860 0 0 1-5.294-3.043V8.957l.043-.027-1.203-.688-1.287.744-.229-.129h-.002a8.4 8.4 0 0 0-.53 2.057q-.067.54-.07 1.086.003.517.07 1.027v.002c.015.215.06.429.102.643l-.83.484a7 7 0 0 1-.2-1.199A7 7 0 0 1 2.52 12c0-.329.028-.672.056-1a9.8 9.8 0 0 1 .658-2.6 9.4 9.4 0 0 1 1.303-2.244c.243-.3.5-.57.758-.842q.556-.558 1.203-1.013-1.823-.125 0-.002a9.4 9.4 0 0 1 1.645-.942 9.9 9.9 0 0 1 2.347-.7l-.002-.542-1.043-.601 1.045.6zm0 .773-.887.514v1.027l.887.516.887-.516V2.5Zm-.03 6.928c-.935.532-1.888 1.084-2.689 1.543v3.086c.933.535 1.892 1.095 2.692 1.557.926-.565 1.865-1.093 2.676-1.557v-3.086c-.945-.542-1.857-1.074-2.678-1.543Zm-7.74 5.758 1.546.885v1.8l-.329.186q.219.266.471.5.417.432.902.785a8 8 0 0 0 1.83 1.059h.002a8.1 8.1 0 0 0 2.061.57q.626.087 1.258.086a8.4 8.4 0 0 0 1.332-.1 8.6 8.6 0 0 0 2.017-.572 8 8 0 0 0 1.86-1.1c.172-.114.315-.242.472-.37l.83.47a10 10 0 0 1-.945.787l.946.541 1.302-.756-1.302.758-.946-.543c-.516.37-1.067.69-1.644.955l-.002.002a9.5 9.5 0 0 1-2.588.756q-.662.086-1.33.086a12 12 0 0 1-1.26-.072v.002a9.4 9.4 0 0 1-2.605-.744 9 9 0 0 1-1.688-.971 9.6 9.6 0 0 1-1.775-1.658h-.002l-.412.244-1.56-.9v-1.801zm0 .756-.886.515v1.028l.887.515.886-.515v-1.028zm15.555 0-.902.515v1.028l.902.515.887-.515v-1.028z"/></svg>
   
   <span class="md-ellipsis">
     
@@ -2098,88 +2075,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Github
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-compose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Docker Compose
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2192,7 +2087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../npm-pihole/" class="md-nav__link">
+      <a href="../../networking/npm/npm-pihole/" class="md-nav__link">
         
   
   
@@ -2238,13 +2133,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -2253,7 +2145,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
             
   
   
@@ -2289,7 +2181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cloudflare/tunnels/" class="md-nav__link">
+      <a href="../../networking/cloudflare/tunnels/" class="md-nav__link">
         
   
   
@@ -2375,7 +2267,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../services/" class="md-nav__link ">
+            <a href="../../services/" class="md-nav__link ">
               
   
   
@@ -2479,7 +2371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/backups/backrest/" class="md-nav__link">
+      <a href="../../services/backups/backrest/" class="md-nav__link">
         
   
   
@@ -2507,7 +2399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/backups/backrestssh/" class="md-nav__link">
+      <a href="../../services/backups/backrestssh/" class="md-nav__link">
         
   
   
@@ -2601,7 +2493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/git/git/" class="md-nav__link">
+      <a href="../../services/git/git/" class="md-nav__link">
         
   
   
@@ -2695,7 +2587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/homeassisstant/homeassisstant/" class="md-nav__link">
+      <a href="../../services/homeassisstant/homeassisstant/" class="md-nav__link">
         
   
   
@@ -2791,7 +2683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/immich/immich/" class="md-nav__link">
+      <a href="../../services/immich/immich/" class="md-nav__link">
         
   
   
@@ -2819,7 +2711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/immich/takeoutimport/" class="md-nav__link">
+      <a href="../../services/immich/takeoutimport/" class="md-nav__link">
         
   
   
@@ -2913,7 +2805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/ollama/ollama/" class="md-nav__link">
+      <a href="../../services/ollama/ollama/" class="md-nav__link">
         
   
   
@@ -3007,7 +2899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/omada/omada/" class="md-nav__link">
+      <a href="../../services/omada/omada/" class="md-nav__link">
         
   
   
@@ -3101,7 +2993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/pihole/pihole/" class="md-nav__link">
+      <a href="../../services/pihole/pihole/" class="md-nav__link">
         
   
   
@@ -3195,7 +3087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/tailscale/tailscale/" class="md-nav__link">
+      <a href="../../services/tailscale/tailscale/" class="md-nav__link">
         
   
   
@@ -3291,7 +3183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/utilities/convertx/" class="md-nav__link">
+      <a href="../../services/utilities/convertx/" class="md-nav__link">
         
   
   
@@ -3319,7 +3211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../services/utilities/obslivesync/" class="md-nav__link">
+      <a href="../../services/utilities/obslivesync/" class="md-nav__link">
         
   
   
@@ -3426,7 +3318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/getstarted/" class="md-nav__link">
+      <a href="../../documentation/getstarted/" class="md-nav__link">
         
   
   
@@ -3456,7 +3348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/markdown/" class="md-nav__link">
+      <a href="../../documentation/markdown/" class="md-nav__link">
         
   
   
@@ -3486,7 +3378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/zensical-cloudflare/" class="md-nav__link">
+      <a href="../../documentation/zensical-cloudflare/" class="md-nav__link">
         
   
   
@@ -3516,7 +3408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../documentation/customcss/" class="md-nav__link">
+      <a href="../../documentation/customcss/" class="md-nav__link">
         
   
   
@@ -3534,6 +3426,331 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Utilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samba/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-share-2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Samba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 8.144v6.023h2.006V8.144Zm2.324 0v1.203h1.488v1.285H2.324v1.048h1.488v1.284H2.324v1.203h2.328l1.207-1.203V11.78l-.603-.604.603-.603V9.347L4.652 8.144Zm5.569 1.203L6.69 10.55v2.414l1.203 1.203H9.24v-1.125h-.522V10.55h.522V9.347Zm1.665 0v1.203h.5v2.492h-.5v1.125h1.344l1.202-1.203V10.55l-1.202-1.203Zm3.454 0v4.82h2.006v-4.82Zm3 0-.672.676v.527h.854v1.171h2.01v-1.248l-.975-1.126Zm3.971 0-1.202 1.203v2.414l1.202 1.203h1.094l.6-.594v-.531h-.89V9.347Zm1.121 0v1.203h.89v4.253h-2.446v.444l.603.609h2.646L24 14.644V10.55l-1.203-1.203Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Borgmatic
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 8.144v6.023h2.006V8.144Zm2.324 0v1.203h1.488v1.285H2.324v1.048h1.488v1.284H2.324v1.203h2.328l1.207-1.203V11.78l-.603-.604.603-.603V9.347L4.652 8.144Zm5.569 1.203L6.69 10.55v2.414l1.203 1.203H9.24v-1.125h-.522V10.55h.522V9.347Zm1.665 0v1.203h.5v2.492h-.5v1.125h1.344l1.202-1.203V10.55l-1.202-1.203Zm3.454 0v4.82h2.006v-4.82Zm3 0-.672.676v.527h.854v1.171h2.01v-1.248l-.975-1.126Zm3.971 0-1.202 1.203v2.414l1.202 1.203h1.094l.6-.594v-.531h-.89V9.347Zm1.121 0v1.203h.89v4.253h-2.446v.444l.603.609h2.646L24 14.644V10.55l-1.203-1.203Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Borgmatic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Root Install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-root-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Root Install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-ways-to-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other ways to Install
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edit Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edit Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-passphrase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a passphrase
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-first-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run first backup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automate-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automate Backups
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automate Backups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cron
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3574,28 +3791,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Github
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3608,10 +3803,32 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#docker-compose" class="md-nav__link">
+  <a href="#root-install" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Docker Compose
+        Root Install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-root-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Root Install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-ways-to-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other ways to Install
       
     </span>
   </a>
@@ -3624,10 +3841,94 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edit Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edit Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-passphrase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a passphrase
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-first-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run first backup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automate-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automate Backups
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automate Backups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cron
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
       
     </span>
   </a>
@@ -3659,7 +3960,7 @@
   
   
     <li class="md-path__item">
-      <a href="../../.." class="md-path__link">
+      <a href="../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Get started
@@ -3677,28 +3978,10 @@
     
     
       <li class="md-path__item">
-        <a href="../../" class="md-path__link">
+        <a href="../samba/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Networking
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    NGINX Proxy Manager
+    Utilities
   </span>
 
         </a>
@@ -3715,7 +3998,7 @@
                 
                   
   
-    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/networking/npm/npm.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/AnAngryGoose/docs-zensical/edit/master/docs/utilities/borg.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
@@ -3723,116 +4006,144 @@
   
 
 
-<h1 id="nginx-proxy-mananger">NGINX Proxy Mananger</h1>
-<h2 id="github"><a href="https://github.com/NginxProxyManager/nginx-proxy-manager">Github <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> </a></h2>
-<h2 id="overview">Overview</h2>
-<p><strong>NGINX Proxy Mananger</strong> is a user-friendly, web-based interface for configuring Nginx as a reverse proxy, simplifying the management of multiple web services on a single IP address, especially for home labs and self-hosted applications, by offering easy setup for proxy hosts, Let's Encrypt SSL certificates, redirects, access controls, and stream proxying, all within Docker containers. It removes the need for manual Nginx configuration, allowing quick deployment and management of secure web access to internal services through a simple dashboard. </p>
-<p>Instead of remembering 8000 different <code>IP-ADDR:PORT</code> combos, you can use NPM to set a reverse proxy to <code>service.domain.me</code>. </p>
-<p>I am solely using that as an <strong>internal</strong> DNS reverse proxy, not an internet edge. That is handled by cloudflare tunnels. </p>
+<h1 id="borg-borgmatic">Borg / Borgmatic</h1>
+<p>borgmatic is simple, configuration-driven backup software for servers and workstations. Protect your files with client-side encryption. Backup your databases too. Monitor it all with integrated third-party services.</p>
+<p>https://torsion.org/borgmatic/</p>
+<hr />
 <h2 id="installation">Installation</h2>
-<h3 id="docker-compose">Docker Compose</h3>
-<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">npm</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jc21/nginx-proxy-manager:latest</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;80:80&quot;</span><span class="w">     </span><span class="c1"># HTTP</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;81:81&quot;</span><span class="w">     </span><span class="c1"># Admin UI</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;443:443&quot;</span><span class="w">   </span><span class="c1"># HTTPS</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">DB_SQLITE_FILE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data/database.sqlite&quot;</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${APPDATA}/ingress/npm/data:/data</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${APPDATA}/ingress/npm/letsencrypt:/etc/letsencrypt</span>
+<p>To install borgmatic, first <a href="https://borgbackup.readthedocs.io/en/stable/installation.html">install Borg</a>, at least version 1.1. (borgmatic does not install Borg automatically so as to avoid conflicts with existing Borg installations.)</p>
+<p><code>sudo apt install borgbackup</code></p>
+<p>Then, <a href="https://pypa.github.io/pipx/installation/">install pipx</a> as the root user (with <code>sudo</code>) to make installing borgmatic easier without impacting other Python applications on your system. If you have trouble installing pipx with pip, then you can install a system package instead. E.g. on Ubuntu or Debian, run:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>pipx
 </code></pre></div>
-<h2 id="usage">Usage</h2>
-<ul>
-<li>
-<p>Navigate to you <code>IP-ADDR:PORT</code> address, using the Admin UI port set in your <code>compose.yaml</code> above. </p>
-</li>
-<li>
-<p>Login with:</p>
-<ul>
-<li>EMAIL: EMAIL@example.com</li>
-<li>Password: changeme</li>
-</ul>
-<p>(probably best to change the password immediately.)</p>
-</li>
-<li>
-<p>Go to SSL Certificates, "Add Certificates", select "Let's Encrypt". </p>
-</li>
-<li>
-<p>Enter your DDNS address, valid email, enable "Use a DNS challenge", choose your DNS provider, add your DDNS token, accept TOS and save.</p>
-</li>
-</ul>
+<h3 id="root-install">Root Install</h3>
+<p>If you want to run borgmatic on a schedule with privileged access to your files, then you should install borgmatic as the root user by running the following commands:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pipx<span class="w"> </span>ensurepath
+sudo<span class="w"> </span>pipx<span class="w"> </span>install<span class="w"> </span>borgmatic
+</code></pre></div>
+<p>Check whether this worked with:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
+borgmatic<span class="w"> </span>--version
+</code></pre></div>
+<p>If borgmatic is properly installed, that should output your borgmatic version. And if you'd also like sudo borgmatic to work, keep reading!</p>
+<h3 id="non-root-install">Non-Root Install</h3>
+<div class="admonition success">
+<p class="admonition-title">Preferred - run as sudo</p>
+</div>
+<p>If you only want to run borgmatic as a non-root user (without privileged file access) or you want to make <code>sudo borgmatic</code> work so borgmatic runs as root, then install borgmatic as a non-root user by running the following commands as that user:</p>
+<p><div class="highlight"><pre><span></span><code>pipx<span class="w"> </span>ensurepath
+pipx<span class="w"> </span>install<span class="w"> </span>borgmatic
+</code></pre></div>
+Reload your shell</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>~/.zshrc<span class="w"> </span><span class="c1"># or ~/.bashrc</span>
+</code></pre></div>
+Verify </p>
+<div class="highlight"><pre><span></span><code>borgmatic<span class="w"> </span>--version<span class="w"> </span><span class="c1"># to verify</span>
+</code></pre></div>
+<p>This should work even if you've also installed borgmatic as the root user.</p>
+<p>If borgmatic is properly installed, that should output your borgmatic version. You can also try <code>sudo borgmatic --version</code> if you intend to run borgmatic with sudo. If that doesn't work, you may need to update your sudoers secure_path option.</p>
+<h3 id="other-ways-to-install">Other ways to Install</h3>
+<p>You  can also install via docker/podman. The official docs cover this. I chose to just run it natively as it is a root privledged system backup that manages files. Running via a container can work fine, just a bit extra work. I like to run infrastructue services outside of a container, if those services manage containers. Either way works. </p>
+<h2 id="configuration">Configuration</h2>
+<p>Generate the defualt config:</p>
+<p><code>sudo borgmatic config generate --destination /etc/borgmatic/config.yaml</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You can get a DDNS from multiple providers including DuckDNS, cloudflare, or porkbun. </p>
+<p>If you are met with a "<code>sudo: borgmatic: command not found</code>" message, and wish to run it as sudo, you may need to update your sudoers secure_path option.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>visudo
+</code></pre></div>
+<p>Find the line that says <code>Defaults secure_path=...</code> and add <code>/home/user/.local/bin</code> to it, for example:</p>
+<div class="highlight"><pre><span></span><code>Defaults<span class="w"> </span><span class="nv">secure_path</span><span class="o">=</span><span class="s2">&quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/user/.local/bin&quot;</span>
+</code></pre></div>
 </div>
-<p><strong>To set a Host:</strong> </p>
-<ul>
-<li>
-<p>Select "Hosts" &gt; "Proxy Hosts" </p>
-</li>
-<li>
-<p>Add Proxy Host</p>
-</li>
-<li>
-<p>Under Domain Names input desired domain</p>
-<ul>
-<li>
-<p>service.domain.com</p>
-</li>
-<li>
-<p>or whatever you want it to be called</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Scheme: HTTP (the reverse proxy w/ your SSL cert will forward to HTTPS).</p>
-</li>
-<li>
-<p>Forward your hostname / IP of the hosting machine/service. </p>
-</li>
-</ul>
+<p>You should see:</p>
+<div class="highlight"><pre><span></span><code>Generating a configuration file at: /etc/borgmatic/config.yaml
+
+This includes all available configuration options with example values, the few
+required options as indicated. Please edit the file to suit your needs.
+
+If you ever need help: https://torsion.org/borgmatic/#issues
+
+summary:
+Generate successful
+</code></pre></div>
+<h3 id="edit-configuration">Edit Configuration</h3>
+<p>Edit the config file.</p>
+<p><code>sudo micro /etc/borgmatic/config.yaml</code></p>
+<p>I setup a mounted SMB/CIFS drive to my NAS. This is what I'll be using to backup. You can find info on that <a href="../samba">here</a></p>
+<p>For a basic config with a local/mounted share you can add:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">source_directories</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/docker</span>
+
+<span class="nt">repositories</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/nas/prod-deb-01</span>
+<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nas</span>
+
+<span class="nt">keep_daily</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
+</code></pre></div>
+<h4 id="create-a-passphrase">Create a passphrase</h4>
+<p>You can add a plaintext passphrase, but I prefer a seperate file. </p>
+<p>Create the passphrase file:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/borgmatic
+sudo<span class="w"> </span>nano<span class="w"> </span>/etc/borgmatic/passphrase
+</code></pre></div>
+<p>Add a strong passphrase, then lock permissions:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/etc/borgmatic/passphrase
+</code></pre></div>
+<p>Then in the config set:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">encryption_passcommand</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat /etc/borgmatic/passphrase</span>
+</code></pre></div>
+<p>Validate the config file:</p>
+<p><code>sudo borgmatic config validate</code></p>
+<p>Intialize repo (run on current machine TO BE backed up)</p>
+<p><code>sudo borgmatic init --encryption repokey-blake2</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is strongly recommended to use the assign a DNS name to your hosting machine and use that instead of the IP address. This is because if you change your IP address, you won't have to update the forward IP in NPM.</p>
-</div>
-<ul>
-<li>
-<p>Forward Port - use port defined in service. This would be the host port defined in a container. </p>
-<ul>
-<li>e.g. a <code>compose.yaml</code> with:
-<div class="highlight"><pre><span></span><code><span class="nt">ports</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;3005:8080&#39;</span>
+<p><code>repokey-blake2</code> stores the key inside the repo itself - key was auto created, stored at /mnt/nas/hostname. Passphrase will unlock it.</p>
+<p>As a precaution you can export the key now. If the NAS dies you'll lose both repo and key. You can export it via:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>borg<span class="w"> </span>key<span class="w"> </span><span class="nb">export</span><span class="w"> </span>/mnt/nas/hostname<span class="w"> </span>/etc/borgmatic/repo-key-backup
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/etc/borgmatic/repo-key-backup
 </code></pre></div>
-Would use port 3005 as the forwarded IP, not 8080. </li>
-</ul>
-</li>
-<li>
-<p>Choose your ACL rule. </p>
-</li>
-<li>
-<p>Choose "Block COmmon Exploits" and "Websockets support" </p>
-</li>
-<li>
-<p>Select the <strong>SSL</strong> tab at the top</p>
-<ul>
-<li>
-<p>Select the SSL cert made earlier. </p>
-</li>
-<li>
-<p>Force SSL and HTTP/2 support. </p>
-</li>
-</ul>
-</li>
-<li>
-<p>Save</p>
-</li>
-</ul>
-<p>Now you can access <code>service.domain.com</code> instead of <code>192.168.3.20:3005</code>.</p>
+</div>
+<h2 id="run-first-backup">Run first backup</h2>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>borgmatic<span class="w"> </span>create<span class="w"> </span>--verbosity<span class="w"> </span><span class="m">1</span><span class="w"> </span>--list<span class="w"> </span>--stats<span class="w"> </span>
+</code></pre></div>
+<p>The <code>--verbosity</code> flag makes borgmatic show the steps it's performing. </p>
+<p>The <code>--list</code> flag lists each file that's new or changed since the last backup. </p>
+<p>And <code>--stats</code> shows summary information about the created archive. All of these flags are optional.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can take awhile depending on size of dir to be backed up. </p>
+</div>
+<h2 id="automate-backups">Automate Backups</h2>
+<h3 id="cron">Cron</h3>
+<p>I prefer <code>cron</code> to automate my services. Systemd is also an option, read <a href="https://torsion.org/borgmatic/how-to/set-up-backups/#systemd">here</a>.</p>
+<p>Download the sample cron file.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>curl<span class="w"> </span>-o<span class="w"> </span>/etc/cron.d/borgmatic<span class="w"> </span>https://projects.torsion.org/borgmatic-collective/borgmatic/raw/branch/main/sample/cron/borgmatic
+sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/cron.d/borgmatic
+</code></pre></div>
+<p>Edit the path </p>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/cron.d/borgmatic
+</code></pre></div>
+Change <code>/root/.local/bin/borgmatic</code> to <code>/home/hostname/.local/bin/borgmatic.</code></p>
+<p>Save and exit. Machine is good to go. </p>
+<h2 id="notifications">Notifications</h2>
+<p>Borgmatic supports this natively via <code>ntfy</code> or generic <code>webhook</code> hooks. Official way is via <strong>Apprise</strong>, which borgmatic natively supports since version 1.8.4. It supports Discord among many other services. Since you installed borgmatic with pipx, you need to reinstall it with the Apprise extra:</p>
+<div class="highlight"><pre><span></span><code>pipx<span class="w"> </span>uninstall<span class="w"> </span>borgmatic<span class="w"> </span><span class="c1"># no sudo as this was installed as non-root</span>
+pipx<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;borgmatic[Apprise]&#39;</span>
+</code></pre></div>
+<p>Then add this to your <code>/etc/borgmatic/config.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apprise</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">services</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discord://webhook_id/webhook_token</span>
+<span class="w">      </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discord</span>
+<span class="w">  </span><span class="nt">send_logs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># for logs in notification</span>
+<span class="w">  </span><span class="nt">states</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finish</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fail</span>
+</code></pre></div>
+<p>The Discord URL format is <code>discord://webhook_id/webhook_token</code> — you get both values from your Discord webhook URL which looks like <code>https://discord.com/api/webhooks/{webhook_id}/{webhook_token}</code>.</p>
 
 
 
@@ -3875,11 +4186,7 @@ Would use port 3005 as the forwarded IP, not 8080. </li>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-<<<<<<< HEAD
-          <a href="../../opnsense/vlan/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OPNSense Management VLANs w&#x2f; Omada">
-=======
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: NGINX Proxy Mananger">
->>>>>>> 6fde6a4794a98b8cfa89e7a0ab14bc9395849e01
+          <a href="../samba/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Samba">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -3889,31 +4196,11 @@ Would use port 3005 as the forwarded IP, not 8080. </li>
                 Previous
               </span>
               <div class="md-ellipsis">
-<<<<<<< HEAD
-                OPNSense Management VLANs w/ Omada
-=======
-                NGINX Proxy Mananger
->>>>>>> 6fde6a4794a98b8cfa89e7a0ab14bc9395849e01
+                Samba
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../npm-pihole/" class="md-footer__link md-footer__link--next" aria-label="Next: NPM + PiHole">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                NPM + PiHole
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
@@ -3949,10 +4236,10 @@ Would use port 3005 as the forwarded IP, not 8080. </li>
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.16f8adc2.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5fcf0de6.min.js"></script>
       
     
   </body>

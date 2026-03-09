@@ -4,46 +4,44 @@ icon: lucide/server
 
 # Homelab Documentation
 
-This is a general reference for all the projects, guides, and references for my homelab projects. Most has references and is from official docs, some is just from what worked for me. 
-
-This covers a wide range of stuff including:
+Reference for the my homelab. Covers setup, configuration, and confugration across most things I run. Most pages reference the official docs. Some stuff may be missing here and there, but its a work in progress. 
 
 <div class="grid cards" markdown>
 
--   :simple-linux:{ .lg .middle } __[Linux](../Linux/)__
+-   :simple-linux:{ .lg .middle } __[Linux](Linux/index.md)__
 
     ---
 
-    Installation and configuration of Linux servers.
+    Server and NAS setup, filesystem management, SSH, networking, and system administration on Debian/Ubuntu.
 
--   :simple-ansible:{ .lg .middle } __[Ansible](../ansible/index.md)__
-
-    ---
-
-    IaC configuration management software.
-
--   :simple-docker:{ .lg .middle } __[Docker](../docker/index.md)__
+-   :simple-ansible:{ .lg .middle } __[Ansible](ansible/index.md)__
 
     ---
 
-    Run and management containerized applications.
+    Configuration management and automated provisioning across hosts.
 
--   :lucide-play:{ .lg .middle } __[Media Server](../media-server/index.md)__
-
-    ---
-
-    Building and managing a media server.
-
--   :lucide-network:{ .lg .middle } __[Networking](../networking/index.md)__
+-   :simple-docker:{ .lg .middle } __[Docker](docker/index.md)__
 
     ---
 
-    Networking with OPNSense & More.
+    Installing and managing containerized applications with Docker Compose.
 
--   :lucide-container:{ .lg .middle } __[Services](../services/index.md)__
+-   :lucide-play:{ .lg .middle } __[Media Server](media-server/index.md)__
 
     ---
 
-    Various services to run and use.
+    Plex, the Arr stack, qBittorrent with Gluetun VPN, and media request management.
+
+-   :lucide-network:{ .lg .middle } __[Networking](networking/index.md)__
+
+    ---
+
+    OPNsense, VLANs, DNS stack, Nginx Proxy Manager, Cloudflare Tunnels, and Tailscale.
+
+-   :lucide-container:{ .lg .middle } __[Services](services/index.md)__
+
+    ---
+
+    Backups, home automation, photo management, and other self-hosted services.
 
 </div>

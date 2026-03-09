@@ -1,36 +1,58 @@
+---
+icon: simple/docker
+title: Docker
+---
+
+Running and managing containerized services with Docker Compose.Bascically all the services I run are ran as compose stacks.
+
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
+-   :lucide-download:{ .lg .middle } __[Installation](docker.md)__
 
     ---
 
-    Install [`zensical`](#) with [`pip`](#) and get up
-    and running in minutes
+    Installing Docker Engine and the Compose plugin on Debian.
 
-    [:octicons-arrow-right-24: Getting started](#)
-
--   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
+-   :lucide-settings:{ .lg .middle } __[Post-Installation](dockerpostinstall.md)__
 
     ---
 
-    Focus on your content and generate a responsive and searchable static site
+    Non-root access, socket permissions, and initial configuration.
 
-    [:octicons-arrow-right-24: Reference](#)
-
--   :material-format-font:{ .lg .middle } __Made to measure__
+-   :lucide-file-code:{ .lg .middle } __[Compose Reference](compose-reference.md)__
 
     ---
 
-    Change the colors, fonts, language, icons, logo and more with a few lines
+    Anatomy of a compose.yaml — services, environment, volumes, networks, healthchecks, and restart policies.
 
-    [:octicons-arrow-right-24: Customization](#)
-
--   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
+-   :lucide-network:{ .lg .middle } __[Networks](networks.md)__
 
     ---
 
-    Zensical is licensed under MIT and available on [GitHub]
+    Bridge, host, and macvlan networks. External networks for cross-stack communication.
 
-    [:octicons-arrow-right-24: License](#)
+-   :lucide-hard-drive:{ .lg .middle } __[Volumes](volumes.md)__
+
+    ---
+
+    Named volumes vs bind mounts, the `/opt/docker` directory convention, and external volumes.
+
+-   :lucide-globe:{ .lg .middle } __[DNS in Containers](dns.md)__
+
+    ---
+
+    The `dns:` key in compose and resolving `.internal` hostnames from containers.
+
+-   :lucide-shield:{ .lg .middle } __[Security](security.md)__
+
+    ---
+
+    Non-root users, `.env` file permissions, read-only mounts, and socket exposure.
+
+-   :lucide-list:{ .lg .middle } __[Cheatsheet](cheatsheet.md)__
+
+    ---
+
+    Command reference, update workflows, volume backups, and environment variable patterns.
 
 </div>

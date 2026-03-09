@@ -3,42 +3,74 @@ icon: simple/linux
 title: Linux
 ---
 
+General reference for Linux server and NAS administration on Debian. Covers initial setup and various different Linux services.
+
 <div class="grid cards" markdown>
 
--   :simple-linux:{ .lg .middle } __[Linux Installation and Setup](../Linux/pcsetup.md)__
+-   :lucide-server:{ .lg .middle } __[Server Setup](pcsetup.md)__
 
     ---
 
-    Installation and setup of a NAS and Application server. Debian and Ubuntu.
+    Debian installation and base configuration for an application server.
 
--   :material-file-tree:{ .lg .middle } __[Filesystem Management](../Linux/disk-management.md)__
-
-    ---
-
-    Managing a Linux filesystem. MergerFS and SnapRAID.
-
--   :lucide-lock:{ .lg .middle } __[SSH Hardening & Key Management](../Linux/ssh.md)__
+-   :lucide-hard-drive:{ .lg .middle } __[NAS Setup](nassetup.md)__
 
     ---
 
-    Various references for command line basic utilities.
+    Debian installation and configuration for a NAS.
 
--   :lucide-network:{ .lg .middle } __[Networking Basics](../Linux/networking.md)__
-
-    ---
-
-    Linux networking basics.
-
--   :lucide-clock:{ .lg .middle } __[Cron and Scheduling](../Linux/cron.md)__
+-   :lucide-disc:{ .lg .middle } __[Disk Management](disk-management.md)__
 
     ---
 
-    Cron and other scheduling info.
+    Partitioning, formatting, and mounting drives.
 
--   :lucide-diamond-plus:{ .lg .middle } __[Users, Logs & More](../Linux/users-permissions.md)__
+-   :lucide-layers:{ .lg .middle } __[MergerFS](mergerfs.md)__
 
     ---
 
-    User management, logs, package management, systemd, and performance. 
+    Pool multiple drives into a single mount point without striping.
+
+-   :lucide-switch-camera:{ .lg .middle } __[SnapRAID](snapraid.md)__
+
+    ---
+
+    Snapshot-based parity protection for disk arrays.
+
+-   :lucide-lock:{ .lg .middle } __[SSH](ssh.md)__
+
+    ---
+
+    Key-based authentication, hardening, and agent forwarding.
+
+-   :lucide-users:{ .lg .middle } __[Users & Permissions](users-permissions.md)__
+
+    ---
+
+    User management, sudo configuration, and file permissions.
+
+-   :lucide-network:{ .lg .middle } __[Networking](networking.md)__
+
+    ---
+
+    Interfaces, static IPs, DNS configuration, and ifupdown/netplan.
+
+-   :lucide-shield:{ .lg .middle } __[Firewall](firewall.md)__
+
+    ---
+
+    ufw and nftables rules for host-level traffic control.
+
+-   :lucide-settings:{ .lg .middle } __[System Administration](systemd.md)__
+
+    ---
+
+    systemd, package management, cron scheduling, and log management.
+
+-   :lucide-activity:{ .lg .middle } __[Performance & Debugging](performance-debugging.md)__
+
+    ---
+
+    Resource monitoring, profiling, and common troubleshooting.
 
 </div>

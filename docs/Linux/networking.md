@@ -6,6 +6,8 @@ description: Network configuration, diagnostics, and DNS management on Linux.
 
 # Networking Basics
 
+This guide only cover *Linux* networking. For a more general/infrastrure level networking guide, see [Networking](../networking).
+
 > **Reference:** [iproute2 Docs](https://wiki.linuxfoundation.org/networking/iproute2) · [Debian Wiki — NetworkConfiguration](https://wiki.debian.org/NetworkConfiguration) · [Ubuntu Docs — Networking](https://help.ubuntu.com/community/NetworkConfigurationCommandLine)
 
 ---

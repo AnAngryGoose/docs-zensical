@@ -1,36 +1,64 @@
+---
+icon: lucide/container
+title: Services
+---
+
+Self-hosted services I run/ran. Networking related services (reverse proxy, tunnels, DNS) are covered under [Networking](../networking/index.md).
+
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
+-   :lucide-archive:{ .lg .middle } __[Backups](backups/index.md)__
 
     ---
 
-    Install [`zensical`](#) with [`pip`](#) and get up
-    and running in minutes
+    Borgmatic on all three hosts, with local and remote Borg repositories.
 
-    [:octicons-arrow-right-24: Getting started](#)
-
--   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
+-   :simple-git:{ .lg .middle } __[git](git/git.md)__
 
     ---
 
-    Focus on your content and generate a responsive and searchable static site
+    Git workflow for Docker compose files and config management. Secret detection and disaster recovery.
 
-    [:octicons-arrow-right-24: Reference](#)
-
--   :material-format-font:{ .lg .middle } __Made to measure__
+-   :simple-homeassistant:{ .lg .middle } __[Home Assistant](homeassisstant/homeassisstant.md)__
 
     ---
 
-    Change the colors, fonts, language, icons, logo and more with a few lines
+    Home automation hub. Runs on prod-deb-01 with Zigbee2MQTT and Mosquitto.
 
-    [:octicons-arrow-right-24: Customization](#)
-
--   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
+-   :simple-immich:{ .lg .middle } __[Immich](immich/immich.md)__
 
     ---
 
-    Zensical is licensed under MIT and available on [GitHub]
+    Self-hosted photo and video library. Runs on jupiter, accessible on local network and over Tailscale.
 
-    [:octicons-arrow-right-24: License](#)
+-   :simple-ollama:{ .lg .middle } __[Ollama & AI](ollama/ollama.md)__
+
+    ---
+
+    Local LLM inference on kupier. Accessed via Open WebUI.
+
+-   :simple-tp-link:{ .lg .middle } __[Omada](omada/omada.md)__
+
+    ---
+
+    TP-Link Omada controller for managing switches and access points.
+
+-   :simple-pihole:{ .lg .middle } __[Pi-hole](pihole/pihole.md)__
+
+    ---
+
+    DNS-based ad blocker. Superseded by AdGuard Home — kept for reference.
+
+-   :simple-tailscale:{ .lg .middle } __[Tailscale](tailscale/tailscale.md)__
+
+    ---
+
+    Tailscale client setup and configuration. OPNsense-level Tailscale is covered under [Networking](../networking/opnsense/opnsensetailscale.md).
+
+-   :lucide-wrench:{ .lg .middle } __[Utilities](utilities/convertx.md)__
+
+    ---
+
+    ConvertX for file conversion, Obsidian LiveSync for cross-device vault sync.
 
 </div>

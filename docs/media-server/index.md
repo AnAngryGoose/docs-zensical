@@ -3,72 +3,66 @@ icon: lucide/play
 title: Media Server
 ---
 
-# Media Server 
+This is all the media services running on my NAS. The OS/physical setup for that can be found at [Server Setup: NAS](../Linux/nassetup).
 
-This section covers how to setup and configure a media server. This covers running Plex, as well as downloaders, VPN, and arr stack integration. This is entirely run via a single docker compose file. The file is included below. 
+I just run it all via a single Docker Compose file. Compose file found below. 
 
-Further configuration of most of these services is covered in depth here: [TRaSH-Guides](https://trash-guides.info/). 
-
-
-**This setup includes:**
+Covers the streaming server, the Arr stack for automated media management, and a VPN-routed download client. Further configuration for most services is documented at [TRaSH Guides](https://trash-guides.info/).
 
 <div class="grid cards" markdown>
 
-
--    :simple-plex:{ .lg .middle } __[**Plex Media Server**](https://www.plex.tv/media-server-downloads/)__ 
-
-    ---
-
-    Media Player and streaming server.
-
--    :simple-jellyfin:{ .lg .middle } __[**Jellyfin**](https://jellyfin.org/)__ 
+-   :simple-plex:{ .lg .middle } __[Plex](plex.md)__
 
     ---
 
-    Open-source media server alternative to Plex.
+    Media server and streaming. Hardware transcoding via Intel QuickSync.
 
--    :simple-qbittorrent:{ .lg .middle } __[**qBittorrent**](https://www.qbittorrent.org/)__ 
-
-    ---
-
-    Torrent client for downloading media.
-
--    :simple-qbittorrent:{ .lg .middle } __[**Qbit Manage**](https://github.com/StuffAnThings/qbit_manage)__ 
+-   :simple-qbittorrent:{ .lg .middle } __[qBittorrent](qbittorrent.md)__
 
     ---
 
-    Web interface for managing qBittorrent.
+    Torrent client. Runs behind Gluetun — all traffic routed through ProtonVPN.
 
--    :material-vpn:{ .lg .middle } __[**Gluetun**](https://github.com/qdm12/gluetun)__ 
-
-    ---
-
-    VPN client for secure torrenting.
-
--    :simple-radarr:{ .lg .middle } __[**Radarr**](https://radarr.video/)__
+-   :material-vpn:{ .lg .middle } __[Gluetun](gluetun.md)__
 
     ---
 
-    Movie downloader and organizer.
+    VPN gateway container. qBittorrent and Qbit Manage use its network stack.
 
--    :simple-sonarr:{ .lg .middle } __[**Sonarr**](https://sonarr.tv/)__ 
-
-    ---
-
-    TV show downloader and organizer.
-
--   :lucide-paw-print:{ .lg .middle } __[**Prowlarr**](https://prowlarr.com/)__ 
+-   :simple-radarr:{ .lg .middle } __[Radarr](radarr.md)__
 
     ---
 
-    Indexer manager for Radarr and Sonarr.
+    Automated movie downloads, library management, and quality upgrades.
 
--    :lucide-list:{ .lg .middle } __[**Seerr**](https://seerr.dev/)__ 
+-   :simple-sonarr:{ .lg .middle } __[Sonarr](sonarr.md)__
 
     ---
 
-    Media request and management interface. Allows for autodownload via watchlists.
+    Automated TV show downloads and library management.
+
+-   :lucide-paw-print:{ .lg .middle } __[Prowlarr](prowlarr.md)__
+
+    ---
+
+    Indexer manager. Connects to Radarr and Sonarr as a single source of indexers.
+
+-   :lucide-list:{ .lg .middle } __[Seerr](seerr.md)__
+
+    ---
+
+    Media request interface. Users can request titles for automatic download.
+
+-   :simple-qbittorrent:{ .lg .middle } __[Qbit Manage](qbit-manage.md)__
+
+    ---
+
+    Automated torrent management — tagging, categories, and cleanup.
+
 </div>
+
+!!! note "Pages to write"
+    Plex, Prowlarr, and Qbit Manage do not have guide pages yet.
 
 ## Docker Compose
 

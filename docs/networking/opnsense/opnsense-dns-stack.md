@@ -58,12 +58,8 @@ None of these roles overlap. Each is doing something the others cannot.
 | DHCP local domain | **Enabled** | Makes dnsmasq authoritative for `.internal` — it will not forward these queries upstream |
 | Do not forward to system defined DNS | **Enabled** | Prevents query loops — dnsmasq must not forward back to Unbound for local lookups |
 
-<<<<<<< HEAD
-> **Warning — DNS port must not be set to `0`.** Port `0` disables dnsmasq DNS entirely. Unbound's Query Forwarding entries point to dnsmasq at port `53053` — if that port is `0`, Unbound forwards `.internal` queries to nothing and all local hostname resolution silently breaks. The DNS port field must always be set to `53053` (or whatever non-zero port you chose). This is a common misconfiguration that produces confusing symptoms because DHCP continues to work while DNS fails.
-=======
-!!!tip
-    **dnsmasq DNS is enabled here on port 53053.** It is not disabled. Port 0 would disable DNS entirely and break the chain — Unbound would forward `.internal` queries to nothing.
->>>>>>> 6fde6a4794a98b8cfa89e7a0ab14bc9395849e01
+!!!warning 
+    DNS port must not be set to `0`.** Port `0` disables dnsmasq DNS entirely. Unbound's Query Forwarding entries point to dnsmasq at port `53053` — if that port is `0`, Unbound forwards `.internal` queries to nothing and all local hostname resolution silently breaks. The DNS port field must always be set to `53053` (or whatever non-zero port you chose). This is a common misconfiguration that produces confusing symptoms because DHCP continues to work while DNS fails.
 
 ---
 

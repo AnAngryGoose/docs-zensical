@@ -3,29 +3,65 @@
 [Cloudflare docs :simple-cloudflare:](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 ---
-This covers creating a cloudflare tunnel in docker, serving a container with it, and securing it using an access policy. This is assuming you already have a domain and CNAME DNS record setup with cloudflare. 
 
-## Creating A Tunnel 
+Cloudflare Tunnel provides a secure way to connect resources to Cloudflare without a publicly routable IP address. Instead of sending traffic to an external IP, `cloudflared` creates outbound-only connections to Cloudflare's global network — no open ports, no exposed home IP.
+
+For this setup, I use one tunnel per host. One `cloudflared` container routes all services on that host through a shared external Docker network. Services join the network — no extra containers, no extra tokens.
+
+```
+Cloudflare Edge
+    │
+    ├─ tunnel: machine1 ──── cloudflared
+    │                               ├─ immich.domain.me   → immich-server:2283
+    │                               └─ ha.domain.me       → homeassistant:8123
+    │
+    └─ tunnel: machine2 ─────── cloudflared
+                                    ├─ seerr.domain.me    → seerr:5055
+                                    └─ files.domain.me    → filebrowser:80
+```
+
+!!! note
+    Cloudflare terminates HTTPS and manages certificates automatically. No ports need to be opened on OPNsense, and no SSL certs need to be managed manually.
 
 ---
 
-First, you need to generate a tunnel and get its Tunnel Token.
+## 1. Create the Tunnel
 
-1. Login to the [Cloudflare Zero Trust Dashboard](https://one.dash.cloudflare.com/)
-   
-2. Navigate to Networks > Tunnels.
-   
-3. Click Create a tunnel, select cloudflared, and give it a name.
-   
-4. On the "Install connector" page, select Docker.
-   
-5. Copy the Token from the provided command (it's the long string after --token).
+1. Log in to the [Cloudflare Zero Trust Dashboard](https://one.dash.cloudflare.com/)
 
-## Deploy the Connector 
+2. Navigate to **Networks > Connectors > Cloudflare Tunnels**
+
+3. Click **Create a tunnel**, choose **Cloudflared** as the connector type, and select **Next**
+
+4. Enter a name for the tunnel — use the host name (e.g. `prod-deb-01`)
+
+5. Click **Save tunnel**
+
+6. On the **Install connector** page, select **Docker** and copy the token from the provided command — it's the long string after `--token`
 
 ---
 
-There are multiple ways to deploy a tunnel. This is using a docker `compose.yaml` file. This allows you to easily manage the container as well as the tunnel together or seperately. 
+## 2. Create the Shared Tunnel Network
+
+On the host, create a persistent external Docker network. This must exist before any stack tries to join it.
+
+```bash
+docker network create tunnel-net
+```
+
+This network persists independently of any compose stack. Only create it once per host.
+
+---
+
+## 3. Deploy the Connector
+
+### One Tunnel per Host
+
+!!! success "Recommended"
+
+Create a standalone compose stack for `cloudflared`. This is the only place the tunnel token lives.
+
+`/opt/docker/cloudflared/compose.yaml`
 
 ```yaml
 services:
@@ -34,7 +70,46 @@ services:
     container_name: cloudflared
     restart: unless-stopped
     environment:
-      - TUNNEL_TOKEN=your_token_here  # Paste your token from step 1
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate run
+    networks:
+      - tunnel-net
+
+networks:
+  tunnel-net:
+    external: true
+```
+
+`/opt/docker/cloudflared/.env`
+
+```
+TUNNEL_TOKEN=your_token_here
+```
+
+Start it:
+
+```bash
+cd /opt/docker/cloudflared
+docker compose up -d
+```
+
+The connector will appear in the Zero Trust dashboard. Once running, click **Next** in the dashboard to proceed. The tunnel should show as **Healthy** under **Networks > Connectors**.
+
+### 3a. One Tunnel Per Service
+
+Instead of one tunnel per host, it is possible to run a separate `cloudflared` container per service — colocated in the same compose stack.
+
+!!! warning "Not Recommended"
+    Each `cloudflared` container establishes four outbound connections to Cloudflare's edge. With 10+ services, that's 40+ persistent connections and 10+ containers doing nothing but tunneling — more compose files to maintain, more tokens to track, more things to break. Per the [Cloudflare community](https://community.cloudflare.com/t/can-i-use-cloudflared-in-a-docker-compose-yml/407168), one tunnel per host is the recommended approach.
+
+```yaml
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    environment:
+      - TUNNEL_TOKEN=your_token_here
     command: tunnel --no-autoupdate run
     networks:
       - tunnel-net
@@ -51,76 +126,118 @@ networks:
     name: tunnel-net
 ```
 
-NOTE: **The `cloudflared` container must be on the same Docker network as the service you want to expose.**
+---
 
+## 4. Expose a Service
 
-## Route Traffic (Public Hostname)
+For any service you want to expose externally, add it to the shared `tunnel-net` network. No `cloudflared` container needed in the service's compose file.
+
+```yaml
+services:
+  my-app:
+    image: your-app-image:latest
+    container_name: my-app
+    restart: unless-stopped
+    networks:
+      - tunnel-net      # joins the shared tunnel network
+      - internal-net    # for DB, cache, etc — isolated from tunnel
+
+networks:
+  tunnel-net:
+    external: true      # must already exist on the host
+  internal-net:
+    internal: true      # no external access
+```
+
+The service URL used in Cloudflare is the **container name** and **internal port** — not the host port.
+
+```
+container_name: bentopdf      →  http://bentopdf:8080
+container_name: immich-server →  http://immich-server:2283
+```
+
+!!! warning
+    Do not expose `ports:` to the host for services routed through the tunnel. Traffic enters via Cloudflare only. Services not going through the tunnel may still use `ports:` for internal LAN access — this is intentional.
 
 ---
 
-Now that the connector is running, tell Cloudflare where to send the traffic:
+## 5. Add a Published Application Route
 
-1. Back in the Cloudflare Dashboard, go to the Public Hostname tab for your tunnel.
+Tell Cloudflare where to route traffic for this service. Per the [official docs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2a-publish-an-application), this is done immediately after the connector is running — before or alongside creating the Access application.
 
-2. Click Add a public hostname.
+1. Navigate to **Networks > Connectors > Cloudflare Tunnels**
 
-3. Fill in your details:
+2. Click your tunnel → **Published application routes** tab → **Add a published application route**
 
-        Subdomain: app
+3. Fill in the details:
 
-        Domain: yourdomain.com
+    | Field | Value |
+    |---|---|
+    | Subdomain | e.g. `immich` |
+    | Domain | `domain.me` |
+    | Path | leave empty |
+    | Service Type | `HTTP` |
+    | URL | `immich-server:2283` (container name + internal port) |
 
-        Service Type: HTTP
+4. Under **Additional application settings**, enable **Protect with Access** — this instructs `cloudflared` to validate the Access JWT on every request, rejecting anything that bypasses the Access layer.
 
-        URL: my-app:80 (Use the Docker container name and internal port).
+5. Select **Save**. Cloudflare automatically creates the CNAME DNS record.
 
-4. Save the configuration.
+!!! warning
+    The route is publicly reachable as soon as it's saved. Proceed immediately to step 6 to lock it down with an Access application.
 
-## Secure Tunnel
+!!! note
+    Docker's internal DNS resolves container names across the shared `tunnel-net` network — use the container name, not an IP address.
 
 ---
 
-Using an access policy, you can secure the initial access to the tunnel. Multiple options are available including email, Indent providers (github, google, etc) and more. Im using an email for simplicity here. 
+## 6. Create an Access Application
 
-### Create the Access Application 
+Per the [official docs](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/), creating an Access application is what controls who can reach the published route. All Access applications are deny-by-default — a user must match an Allow policy to be granted access.
 
-1. In the Zero Trust Dashboard, navigate to Access > Applications.
+1. Navigate to **Access controls > Applications**
 
-2. lick Add an application and select Self-hosted.
+2. Click **Add an application** → **Self-hosted**
 
-3. Application Configuration:
+3. Configure:
 
-    Application name: (e.g., My App Protection)
+    | Field | Value |
+    |---|---|
+    | Application name | e.g. `Immich` |
+    | Session Duration | `30 days` (recommended for personal use) |
+    | Application domain | Match exactly what was set in the tunnel route (e.g. `immich.domain.me`) |
 
-    Session Duration: How long a user stays logged in.
+4. Click **Policies** tab
+   
 
-    Application domain: Enter the Subdomain and Domain that matches exactly what you set up in your Tunnel (e.g., app.yourdomain.com).
+### Create an Access Policy
 
-4. Click Next.
+!!! note "Access Policies"
+    There are many different options regarding the access policy. Email is the easiest for this guide to show the process, however you can include, exclude or require various things including names, countries, etc. 
 
-### Create Access Policy
+1. Configure the policy:
 
+    | Field | Value |
+    |---|---|
+    | Policy Name | e.g. `Allow Me` |
+    | Action | `Allow` |
 
-1. This defines who is allowed to get through the lock.
+2. Under **Configure rules**:
 
-    Policy Name: (e.g., Allow Casey Only)
-
-    Action: Ensure this is set to Allow.
-
-    Assign a group (Optional): You can skip this for a simple rule.
-
-    Configure rules:
-
-        Include: Select Emails or Email ending in.
-
-        Require: Select Emails. 
-
-        Value: Enter your specific email address.
-
-2. Click Next through the Setup page and then click Add application.
-
-Your app, served at app.domain.com should now be forwarded via a cloudflare tunnel, and secure with an inital check by cloudflare. 
+    - **Include:** Select `Emails` → add each allowed email address
+    - Or use **Email ending in** for a whole domain
+  
 
 
 
+3. Click **Next** through Setup, then **Add application**
 
+!!! tip
+    For multiple users, create a reusable group under **Reusable components > Lists**, add emails there, then reference the group in each Access policy instead of listing emails individually.
+
+
+
+!!! note "Native apps and Access"
+    Cloudflare Access breaks native app authentication — mobile apps cannot complete the browser-based OTP flow. For services accessed via a native app (e.g. Immich mobile), skip Access and rely on the app's own built-in auth instead. Ensure the app's auth is properly configured before exposing it.
+
+---

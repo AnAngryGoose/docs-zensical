@@ -12,10 +12,10 @@
         <meta name="author" content="goose">
       
       
-        <link rel="canonical" href="https://docs.vanth.me/networking/cloudflare/tunnels/">
+        <link rel="canonical" href="https://docs.domain.me/networking/cloudflare/tunnels/">
       
       
-        <link rel="prev" href="../../npm/npm-pihole/">
+        <link rel="prev" href="../">
       
       
         <link rel="next" href="../../../services/">
@@ -59,8 +59,6 @@
         <style>:root{--md-text-font:"Inter";--md-code-font:"Jetbrains Mono"}</style>
       
     
-    
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -1718,8 +1716,6 @@
       
         
       
-        
-      
     
     
     
@@ -1779,34 +1775,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../opnsense/opnsense.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OPNSense
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -2139,6 +2107,10 @@
     
       
         
+          
+        
+      
+        
       
     
     
@@ -2159,9 +2131,12 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.509 16.845c.147-.507.09-.971-.155-1.316-.225-.316-.605-.499-1.062-.52l-8.66-.113a.16.16 0 0 1-.133-.07.2.2 0 0 1-.02-.156.24.24 0 0 1 .203-.156l8.736-.113c1.035-.049 2.16-.886 2.554-1.913l.499-1.302a.27.27 0 0 0 .014-.168 5.689 5.689 0 0 0-10.937-.584 2.58 2.58 0 0 0-1.794-.498 2.56 2.56 0 0 0-2.223 3.18A3.634 3.634 0 0 0 0 16.751q.002.264.035.527a.174.174 0 0 0 .17.148h15.98c.091 0 .176-.065.204-.155zm2.757-5.564c-.077 0-.161 0-.239.011-.056 0-.105.042-.127.098l-.337 1.174c-.148.507-.092.971.154 1.317.225.316.605.498 1.062.52l1.844.113c.056 0 .105.026.133.07a.2.2 0 0 1 .021.156.24.24 0 0 1-.204.156l-1.92.112c-1.042.049-2.159.887-2.553 1.914l-.141.358c-.028.072.021.142.099.142h6.597a.174.174 0 0 0 .17-.126c.111-.408.175-.837.175-1.28a4.74 4.74 0 0 0-4.734-4.727"/></svg>
   
   <span class="md-ellipsis">
     
@@ -2174,8 +2149,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_4">
@@ -2187,6 +2168,8 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -2256,10 +2239,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-a-tunnel" class="md-nav__link">
+  <a href="#1-create-the-tunnel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating A Tunnel
+        1. Create the Tunnel
       
     </span>
   </a>
@@ -2267,10 +2250,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-the-connector" class="md-nav__link">
+  <a href="#2-create-the-shared-tunnel-network" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy the Connector
+        2. Create the Shared Tunnel Network
       
     </span>
   </a>
@@ -2278,33 +2261,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#route-traffic-public-hostname" class="md-nav__link">
+  <a href="#3-deploy-the-connector" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Route Traffic (Public Hostname)
+        3. Deploy the Connector
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#secure-tunnel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Secure Tunnel
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Secure Tunnel">
+    <nav class="md-nav" aria-label="3. Deploy the Connector">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-the-access-application" class="md-nav__link">
+  <a href="#one-tunnel-per-host" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create the Access Application
+        One Tunnel per Host
       
     </span>
   </a>
@@ -2312,10 +2284,60 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-access-policy" class="md-nav__link">
+  <a href="#3a-one-tunnel-per-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create Access Policy
+        3a. One Tunnel Per Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-expose-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Expose a Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-add-a-published-application-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Add a Published Application Route
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-an-access-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Create an Access Application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Create an Access Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-access-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create an Access Policy
       
     </span>
   </a>
@@ -3727,10 +3749,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-a-tunnel" class="md-nav__link">
+  <a href="#1-create-the-tunnel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating A Tunnel
+        1. Create the Tunnel
       
     </span>
   </a>
@@ -3738,10 +3760,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-the-connector" class="md-nav__link">
+  <a href="#2-create-the-shared-tunnel-network" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy the Connector
+        2. Create the Shared Tunnel Network
       
     </span>
   </a>
@@ -3749,33 +3771,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#route-traffic-public-hostname" class="md-nav__link">
+  <a href="#3-deploy-the-connector" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Route Traffic (Public Hostname)
+        3. Deploy the Connector
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#secure-tunnel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Secure Tunnel
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Secure Tunnel">
+    <nav class="md-nav" aria-label="3. Deploy the Connector">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-the-access-application" class="md-nav__link">
+  <a href="#one-tunnel-per-host" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create the Access Application
+        One Tunnel per Host
       
     </span>
   </a>
@@ -3783,10 +3794,60 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-access-policy" class="md-nav__link">
+  <a href="#3a-one-tunnel-per-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create Access Policy
+        3a. One Tunnel Per Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-expose-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Expose a Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-add-a-published-application-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Add a Published Application Route
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-an-access-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Create an Access Application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Create an Access Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-access-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create an Access Policy
       
     </span>
   </a>
@@ -3859,7 +3920,7 @@
     
     
       <li class="md-path__item">
-        <a href="././" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
     Cloudflare
@@ -3890,37 +3951,94 @@
 <h1 id="cloudflare-tunnels">Cloudflare Tunnels</h1>
 <p><a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/">Cloudflare docs <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.509 16.845c.147-.507.09-.971-.155-1.316-.225-.316-.605-.499-1.062-.52l-8.66-.113a.16.16 0 0 1-.133-.07.2.2 0 0 1-.02-.156.24.24 0 0 1 .203-.156l8.736-.113c1.035-.049 2.16-.886 2.554-1.913l.499-1.302a.27.27 0 0 0 .014-.168 5.689 5.689 0 0 0-10.937-.584 2.58 2.58 0 0 0-1.794-.498 2.56 2.56 0 0 0-2.223 3.18A3.634 3.634 0 0 0 0 16.751q.002.264.035.527a.174.174 0 0 0 .17.148h15.98c.091 0 .176-.065.204-.155zm2.757-5.564c-.077 0-.161 0-.239.011-.056 0-.105.042-.127.098l-.337 1.174c-.148.507-.092.971.154 1.317.225.316.605.498 1.062.52l1.844.113c.056 0 .105.026.133.07a.2.2 0 0 1 .021.156.24.24 0 0 1-.204.156l-1.92.112c-1.042.049-2.159.887-2.553 1.914l-.141.358c-.028.072.021.142.099.142h6.597a.174.174 0 0 0 .17-.126c.111-.408.175-.837.175-1.28a4.74 4.74 0 0 0-4.734-4.727"/></svg></span></a></p>
 <hr />
-<p>This covers creating a cloudflare tunnel in docker, serving a container with it, and securing it using an access policy. This is assuming you already have a domain and CNAME DNS record setup with cloudflare. </p>
-<h2 id="creating-a-tunnel">Creating A Tunnel</h2>
+<p>Cloudflare Tunnel provides a secure way to connect resources to Cloudflare without a publicly routable IP address. Instead of sending traffic to an external IP, <code>cloudflared</code> creates outbound-only connections to Cloudflare's global network — no open ports, no exposed home IP.</p>
+<p>For this setup, I use one tunnel per host. One <code>cloudflared</code> container routes all services on that host through a shared external Docker network. Services join the network — no extra containers, no extra tokens.</p>
+<div class="highlight"><pre><span></span><code>Cloudflare Edge
+    │
+    ├─ tunnel: machine1 ──── cloudflared
+    │                               ├─ immich.domain.me   → immich-server:2283
+    │                               └─ ha.domain.me       → homeassistant:8123
+    │
+    └─ tunnel: machine2 ─────── cloudflared
+                                    ├─ seerr.domain.me    → seerr:5055
+                                    └─ files.domain.me    → filebrowser:80
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cloudflare terminates HTTPS and manages certificates automatically. No ports need to be opened on OPNsense, and no SSL certs need to be managed manually.</p>
+</div>
 <hr />
-<p>First, you need to generate a tunnel and get its Tunnel Token.</p>
+<h2 id="1-create-the-tunnel">1. Create the Tunnel</h2>
 <ol>
 <li>
-<p>Login to the <a href="https://one.dash.cloudflare.com/">Cloudflare Zero Trust Dashboard</a></p>
+<p>Log in to the <a href="https://one.dash.cloudflare.com/">Cloudflare Zero Trust Dashboard</a></p>
 </li>
 <li>
-<p>Navigate to Networks &gt; Tunnels.</p>
+<p>Navigate to <strong>Networks &gt; Connectors &gt; Cloudflare Tunnels</strong></p>
 </li>
 <li>
-<p>Click Create a tunnel, select cloudflared, and give it a name.</p>
+<p>Click <strong>Create a tunnel</strong>, choose <strong>Cloudflared</strong> as the connector type, and select <strong>Next</strong></p>
 </li>
 <li>
-<p>On the "Install connector" page, select Docker.</p>
+<p>Enter a name for the tunnel — use the host name (e.g. <code>prod-deb-01</code>)</p>
 </li>
 <li>
-<p>Copy the Token from the provided command (it's the long string after --token).</p>
+<p>Click <strong>Save tunnel</strong></p>
+</li>
+<li>
+<p>On the <strong>Install connector</strong> page, select <strong>Docker</strong> and copy the token from the provided command — it's the long string after <code>--token</code></p>
 </li>
 </ol>
-<h2 id="deploy-the-connector">Deploy the Connector</h2>
 <hr />
-<p>There are multiple ways to deploy a tunnel. This is using a docker <code>compose.yaml</code> file. This allows you to easily manage the container as well as the tunnel together or seperately. </p>
+<h2 id="2-create-the-shared-tunnel-network">2. Create the Shared Tunnel Network</h2>
+<p>On the host, create a persistent external Docker network. This must exist before any stack tries to join it.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>tunnel-net
+</code></pre></div>
+<p>This network persists independently of any compose stack. Only create it once per host.</p>
+<hr />
+<h2 id="3-deploy-the-connector">3. Deploy the Connector</h2>
+<h3 id="one-tunnel-per-host">One Tunnel per Host</h3>
+<div class="admonition success">
+<p class="admonition-title">Recommended</p>
+</div>
+<p>Create a standalone compose stack for <code>cloudflared</code>. This is the only place the tunnel token lives.</p>
+<p><code>/opt/docker/cloudflared/compose.yaml</code></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cloudflared</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloudflare/cloudflared:latest</span>
 <span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloudflared</span>
 <span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TUNNEL_TOKEN=your_token_here</span><span class="w">  </span><span class="c1"># Paste your token from step 1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TUNNEL_TOKEN=${TUNNEL_TOKEN}</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tunnel --no-autoupdate run</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tunnel-net</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tunnel-net</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p><code>/opt/docker/cloudflared/.env</code></p>
+<div class="highlight"><pre><span></span><code>TUNNEL_TOKEN=your_token_here
+</code></pre></div>
+<p>Start it:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/opt/docker/cloudflared
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p>The connector will appear in the Zero Trust dashboard. Once running, click <strong>Next</strong> in the dashboard to proceed. The tunnel should show as <strong>Healthy</strong> under <strong>Networks &gt; Connectors</strong>.</p>
+<h3 id="3a-one-tunnel-per-service">3a. One Tunnel Per Service</h3>
+<p>Instead of one tunnel per host, it is possible to run a separate <code>cloudflared</code> container per service — colocated in the same compose stack.</p>
+<div class="admonition warning">
+<p class="admonition-title">Not Recommended</p>
+<p>Each <code>cloudflared</code> container establishes four outbound connections to Cloudflare's edge. With 10+ services, that's 40+ persistent connections and 10+ containers doing nothing but tunneling — more compose files to maintain, more tokens to track, more things to break. Per the <a href="https://community.cloudflare.com/t/can-i-use-cloudflared-in-a-docker-compose-yml/407168">Cloudflare community</a>, one tunnel per host is the recommended approach.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cloudflared</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloudflare/cloudflared:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloudflared</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TUNNEL_TOKEN=your_token_here</span>
 <span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tunnel --no-autoupdate run</span>
 <span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tunnel-net</span>
@@ -3936,73 +4054,176 @@
 <span class="w">  </span><span class="nt">tunnel-net</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tunnel-net</span>
 </code></pre></div>
-<p>NOTE: <strong>The <code>cloudflared</code> container must be on the same Docker network as the service you want to expose.</strong></p>
-<h2 id="route-traffic-public-hostname">Route Traffic (Public Hostname)</h2>
 <hr />
-<p>Now that the connector is running, tell Cloudflare where to send the traffic:</p>
-<ol>
-<li>
-<p>Back in the Cloudflare Dashboard, go to the Public Hostname tab for your tunnel.</p>
-</li>
-<li>
-<p>Click Add a public hostname.</p>
-</li>
-<li>
-<p>Fill in your details:</p>
-<pre><code>Subdomain: app
+<h2 id="4-expose-a-service">4. Expose a Service</h2>
+<p>For any service you want to expose externally, add it to the shared <code>tunnel-net</code> network. No <code>cloudflared</code> container needed in the service's compose file.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">my-app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-app-image:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tunnel-net</span><span class="w">      </span><span class="c1"># joins the shared tunnel network</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internal-net</span><span class="w">    </span><span class="c1"># for DB, cache, etc — isolated from tunnel</span>
 
-Domain: yourdomain.com
-
-Service Type: HTTP
-
-URL: my-app:80 (Use the Docker container name and internal port).
-</code></pre>
-</li>
-<li>
-<p>Save the configuration.</p>
-</li>
-</ol>
-<h2 id="secure-tunnel">Secure Tunnel</h2>
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tunnel-net</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">      </span><span class="c1"># must already exist on the host</span>
+<span class="w">  </span><span class="nt">internal-net</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">internal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">      </span><span class="c1"># no external access</span>
+</code></pre></div>
+<p>The service URL used in Cloudflare is the <strong>container name</strong> and <strong>internal port</strong> — not the host port.</p>
+<div class="highlight"><pre><span></span><code>container_name: bentopdf      →  http://bentopdf:8080
+container_name: immich-server →  http://immich-server:2283
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not expose <code>ports:</code> to the host for services routed through the tunnel. Traffic enters via Cloudflare only. Services not going through the tunnel may still use <code>ports:</code> for internal LAN access — this is intentional.</p>
+</div>
 <hr />
-<p>Using an access policy, you can secure the initial access to the tunnel. Multiple options are available including email, Indent providers (github, google, etc) and more. Im using an email for simplicity here. </p>
-<h3 id="create-the-access-application">Create the Access Application</h3>
+<h2 id="5-add-a-published-application-route">5. Add a Published Application Route</h2>
+<p>Tell Cloudflare where to route traffic for this service. Per the <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2a-publish-an-application">official docs</a>, this is done immediately after the connector is running — before or alongside creating the Access application.</p>
 <ol>
 <li>
-<p>In the Zero Trust Dashboard, navigate to Access &gt; Applications.</p>
+<p>Navigate to <strong>Networks &gt; Connectors &gt; Cloudflare Tunnels</strong></p>
 </li>
 <li>
-<p>lick Add an application and select Self-hosted.</p>
+<p>Click your tunnel → <strong>Published application routes</strong> tab → <strong>Add a published application route</strong></p>
 </li>
 <li>
-<p>Application Configuration:</p>
-<p>Application name: (e.g., My App Protection)</p>
-<p>Session Duration: How long a user stays logged in.</p>
-<p>Application domain: Enter the Subdomain and Domain that matches exactly what you set up in your Tunnel (e.g., app.yourdomain.com).</p>
+<p>Fill in the details:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subdomain</td>
+<td>e.g. <code>immich</code></td>
+</tr>
+<tr>
+<td>Domain</td>
+<td><code>domain.me</code></td>
+</tr>
+<tr>
+<td>Path</td>
+<td>leave empty</td>
+</tr>
+<tr>
+<td>Service Type</td>
+<td><code>HTTP</code></td>
+</tr>
+<tr>
+<td>URL</td>
+<td><code>immich-server:2283</code> (container name + internal port)</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
-<p>Click Next.</p>
+<p>Under <strong>Additional application settings</strong>, enable <strong>Protect with Access</strong> — this instructs <code>cloudflared</code> to validate the Access JWT on every request, rejecting anything that bypasses the Access layer.</p>
+</li>
+<li>
+<p>Select <strong>Save</strong>. Cloudflare automatically creates the CNAME DNS record.</p>
 </li>
 </ol>
-<h3 id="create-access-policy">Create Access Policy</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The route is publicly reachable as soon as it's saved. Proceed immediately to step 6 to lock it down with an Access application.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Docker's internal DNS resolves container names across the shared <code>tunnel-net</code> network — use the container name, not an IP address.</p>
+</div>
+<hr />
+<h2 id="6-create-an-access-application">6. Create an Access Application</h2>
+<p>Per the <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/">official docs</a>, creating an Access application is what controls who can reach the published route. All Access applications are deny-by-default — a user must match an Allow policy to be granted access.</p>
 <ol>
 <li>
-<p>This defines who is allowed to get through the lock.</p>
-<p>Policy Name: (e.g., Allow Casey Only)</p>
-<p>Action: Ensure this is set to Allow.</p>
-<p>Assign a group (Optional): You can skip this for a simple rule.</p>
-<p>Configure rules:</p>
-<pre><code>Include: Select Emails or Email ending in.
-
-Require: Select Emails.
-
-Value: Enter your specific email address.
-</code></pre>
+<p>Navigate to <strong>Access controls &gt; Applications</strong></p>
 </li>
 <li>
-<p>Click Next through the Setup page and then click Add application.</p>
+<p>Click <strong>Add an application</strong> → <strong>Self-hosted</strong></p>
+</li>
+<li>
+<p>Configure:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application name</td>
+<td>e.g. <code>Immich</code></td>
+</tr>
+<tr>
+<td>Session Duration</td>
+<td><code>30 days</code> (recommended for personal use)</td>
+</tr>
+<tr>
+<td>Application domain</td>
+<td>Match exactly what was set in the tunnel route (e.g. <code>immich.domain.me</code>)</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Click <strong>Policies</strong> tab</p>
 </li>
 </ol>
-<p>Your app, served at app.domain.com should now be forwarded via a cloudflare tunnel, and secure with an inital check by cloudflare. </p>
+<h3 id="create-an-access-policy">Create an Access Policy</h3>
+<div class="admonition note">
+<p class="admonition-title">Access Policies</p>
+<p>There are many different options regarding the access policy. Email is the easiest for this guide to show the process, however you can include, exclude or require various things including names, countries, etc. </p>
+</div>
+<ol>
+<li>
+<p>Configure the policy:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy Name</td>
+<td>e.g. <code>Allow Me</code></td>
+</tr>
+<tr>
+<td>Action</td>
+<td><code>Allow</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Under <strong>Configure rules</strong>:</p>
+<ul>
+<li><strong>Include:</strong> Select <code>Emails</code> → add each allowed email address</li>
+<li>Or use <strong>Email ending in</strong> for a whole domain</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Next</strong> through Setup, then <strong>Add application</strong></p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For multiple users, create a reusable group under <strong>Reusable components &gt; Lists</strong>, add emails there, then reference the group in each Access policy instead of listing emails individually.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Native apps and Access</p>
+<p>Cloudflare Access breaks native app authentication — mobile apps cannot complete the browser-based OTP flow. For services accessed via a native app (e.g. Immich mobile), skip Access and rely on the app's own built-in auth instead. Ensure the app's auth is properly configured before exposing it.</p>
+</div>
+<hr />
 
 
 
@@ -4042,7 +4263,7 @@ Value: Enter your specific email address.
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../npm/npm-pihole/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NPM + PiHole">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cloudflare">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -4052,7 +4273,7 @@ Value: Enter your specific email address.
                 Previous
               </span>
               <div class="md-ellipsis">
-                NPM + PiHole
+                Cloudflare
               </div>
             </div>
           </a>
@@ -4108,7 +4329,7 @@ Value: Enter your specific email address.
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight","toc.follow"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.5fcf0de6.min.js"></script>

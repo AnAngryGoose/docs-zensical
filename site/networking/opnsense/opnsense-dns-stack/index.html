@@ -12,10 +12,10 @@
         <meta name="author" content="goose">
       
       
-        <link rel="canonical" href="https://docs.vanth.me/networking/opnsense/opnsense-dns-stack/">
+        <link rel="canonical" href="https://docs.domain.me/networking/opnsense/opnsense-dns-stack/">
       
       
-        <link rel="prev" href="../opnsense.md">
+        <link rel="prev" href="../">
       
       
         <link rel="next" href="../vlan/">
@@ -59,8 +59,6 @@
         <style>:root{--md-text-font:"Inter";--md-code-font:"Jetbrains Mono"}</style>
       
     
-    
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -1720,8 +1718,6 @@
       
         
       
-        
-      
     
     
     
@@ -1779,34 +1775,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../opnsense.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OPNSense
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -1906,6 +1874,211 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Step 1 — dnsmasq">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-host-reservations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Host Reservations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Ranges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-options-push-dns-to-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Options — Push DNS to Clients
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-options-omada-controller-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Options — Omada Controller Discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-unbound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Unbound
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2 — Unbound">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query Forwarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host Overrides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-adguard-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — AdGuard Home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-force-dns-via-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Force DNS via NAT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-aka-itll-be-better-a-different-way-and-i-break-my-fucking-internet-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting AKA "It'll be better a different way and I break my fucking internet (again)"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting AKA &quot;It&#x27;ll be better a different way and I break my fucking internet (again)&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nxdomain-for-local-hostnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NXDOMAIN for local hostnames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-broke-after-editing-dnsmasq-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS broke after editing dnsmasq settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stale-dns-record-after-ip-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stale DNS record after IP change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-not-receiving-correct-dns-via-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client not receiving correct DNS via DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-containers-cannot-resolve-internal-hostnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker containers cannot resolve .internal hostnames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rogue-dns-bypass-not-being-caught" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rogue DNS bypass not being caught
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2218,6 +2391,10 @@
     
       
         
+          
+        
+      
+        
       
     
     
@@ -2240,9 +2417,12 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cloudflare/" class="md-nav__link ">
+              
   
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.509 16.845c.147-.507.09-.971-.155-1.316-.225-.316-.605-.499-1.062-.52l-8.66-.113a.16.16 0 0 1-.133-.07.2.2 0 0 1-.02-.156.24.24 0 0 1 .203-.156l8.736-.113c1.035-.049 2.16-.886 2.554-1.913l.499-1.302a.27.27 0 0 0 .014-.168 5.689 5.689 0 0 0-10.937-.584 2.58 2.58 0 0 0-1.794-.498 2.56 2.56 0 0 0-2.223 3.18A3.634 3.634 0 0 0 0 16.751q.002.264.035.527a.174.174 0 0 0 .17.148h15.98c.091 0 .176-.065.204-.155zm2.757-5.564c-.077 0-.161 0-.239.011-.056 0-.105.042-.127.098l-.337 1.174c-.148.507-.092.971.154 1.317.225.316.605.498 1.062.52l1.844.113c.056 0 .105.026.133.07a.2.2 0 0 1 .021.156.24.24 0 0 1-.204.156l-1.92.112c-1.042.049-2.159.887-2.553 1.914l-.141.358c-.028.072.021.142.099.142h6.597a.174.174 0 0 0 .17-.126c.111-.408.175-.837.175-1.28a4.74 4.74 0 0 0-4.734-4.727"/></svg>
   
   <span class="md-ellipsis">
     
@@ -2255,8 +2435,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_4">
@@ -2268,6 +2454,8 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -3718,6 +3906,211 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Step 1 — dnsmasq">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-host-reservations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Host Reservations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Ranges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-options-push-dns-to-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Options — Push DNS to Clients
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-options-omada-controller-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Options — Omada Controller Discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-unbound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Unbound
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2 — Unbound">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query Forwarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host Overrides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-adguard-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — AdGuard Home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-force-dns-via-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Force DNS via NAT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-aka-itll-be-better-a-different-way-and-i-break-my-fucking-internet-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting AKA "It'll be better a different way and I break my fucking internet (again)"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting AKA &quot;It&#x27;ll be better a different way and I break my fucking internet (again)&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nxdomain-for-local-hostnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NXDOMAIN for local hostnames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-broke-after-editing-dnsmasq-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS broke after editing dnsmasq settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stale-dns-record-after-ip-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stale DNS record after IP change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-not-receiving-correct-dns-via-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client not receiving correct DNS via DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-containers-cannot-resolve-internal-hostnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker containers cannot resolve .internal hostnames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rogue-dns-bypass-not-being-caught" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rogue DNS bypass not being caught
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3883,29 +4276,10 @@
 </tr>
 </tbody>
 </table>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<blockquote>
-<h1 id="warning-dns-port-must-not-be-set-to-0-port-0-disables-dnsmasq-dns-entirely-unbounds-query-forwarding-entries-point-to-dnsmasq-at-port-53053-if-that-port-is-0-unbound-forwards-internal-queries-to-nothing-and-all-local-hostname-resolution-silently-breaks-the-dns-port-field-must-always-be-set-to-53053-or-whatever-non-zero-port-you-chose-this-is-a-common-misconfiguration-that-produces-confusing-symptoms-because-dhcp-continues-to-work-while-dns-fails"><strong>Warning — DNS port must not be set to <code>0</code>.</strong> Port <code>0</code> disables dnsmasq DNS entirely. Unbound's Query Forwarding entries point to dnsmasq at port <code>53053</code> — if that port is <code>0</code>, Unbound forwards <code>.internal</code> queries to nothing and all local hostname resolution silently breaks. The DNS port field must always be set to <code>53053</code> (or whatever non-zero port you chose). This is a common misconfiguration that produces confusing symptoms because DHCP continues to work while DNS fails.</h1>
-</blockquote>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>dnsmasq DNS is enabled here on port 53053.</strong> It is not disabled. Port 0 would disable DNS entirely and break the chain — Unbound would forward <code>.internal</code> queries to nothing.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DNS port must not be set to <code>0</code>.** Port <code>0</code> disables dnsmasq DNS entirely. Unbound's Query Forwarding entries point to dnsmasq at port <code>53053</code> — if that port is <code>0</code>, Unbound forwards <code>.internal</code> queries to nothing and all local hostname resolution silently breaks. The DNS port field must always be set to <code>53053</code> (or whatever non-zero port you chose). This is a common misconfiguration that produces confusing symptoms because DHCP continues to work while DNS fails.</p>
 </div>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>6fde6a4794a98b8cfa89e7a0ab14bc9395849e01</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 <hr />
 <h3 id="static-host-reservations">Static Host Reservations</h3>
 <p><strong>Services → Dnsmasq DNS &amp; DHCP → Hosts</strong></p>
@@ -4299,7 +4673,7 @@ ipconfig<span class="w"> </span>/all<span class="w">              </span><span c
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../opnsense.md" class="md-footer__link md-footer__link--prev" aria-label="Previous: OPNSense">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: OPNSense">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -4365,7 +4739,7 @@ ipconfig<span class="w"> </span>/all<span class="w">              </span><span c
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.action.edit","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight","toc.follow"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.5fcf0de6.min.js"></script>

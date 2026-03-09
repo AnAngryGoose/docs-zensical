@@ -31,7 +31,7 @@ site_author = "goose"
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-site_url = "https://docs.vanth.me/"
+site_url = "https://docs.domain.me/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
@@ -103,7 +103,6 @@ nav = [
     "networking/index.md",
     {"OPNsense" = [
       "networking/opnsense/index.md",
-      {"OPNSense"               = "networking/opnsense/opnsense.md"},
       {"OPNSense DNS Stack"     = "networking/opnsense/opnsense-dns-stack.md"},
       {"OPNSense VLANs w/ Omada"= "networking/opnsense/vlan.md"},
 
@@ -121,6 +120,7 @@ nav = [
     ]},
 
     {"Cloudflare" = [
+      "networking/cloudflare/index.md",
       {"Cloudflare Tunnels"     = "networking/cloudflare/tunnels.md"},
     ]},
   ]},
@@ -186,7 +186,7 @@ nav = [
 #
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
-extra_css = ["stylesheets/extra.css"]
+# extra_css = ["stylesheets/extra.css"]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
 # project to customize the behavior according to your needs.
@@ -372,12 +372,12 @@ features = [
     # When anchor following for the table of contents is enabled, the sidebar
     # is automatically scrolled so that the active anchor is always visible.
     # https://zensical.org/docs/setup/navigation/#anchor-following
-    # "toc.follow",
+    "toc.follow",
 
     # When navigation integration for the table of contents is enabled, it is
     # always rendered as part of the navigation sidebar on the left.
     # https://zensical.org/docs/setup/navigation/#navigation-integration
-    #"toc.integrate",
+    # "toc.integrate",
 ]
 
 # ----------------------------------------------------------------------------

@@ -31,7 +31,7 @@ site_author = "goose"
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-site_url = "https://docs.domain.me/"
+site_url = "https://docs.vanth.me/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
@@ -106,7 +106,7 @@ nav = [
       {"OPNSense DNS Stack"     = "networking/opnsense/opnsense-dns-stack.md"},
       {"OPNSense VLANs w/ Omada"= "networking/opnsense/vlan.md"},
 
-      {"OPNSense Management VLANs w/ Omada" = "networking/opnsense/vlan.md"},
+      {"OPNSense Management VLANs w/ Omada" = "networking/opnsense/managementvlan.md"},
 
       {"Adguard Home"           = "networking/opnsense/opnsenseadguard.md"},
       {"Tailscale           "   = "networking/opnsense/opnsensetailscale.md"},
@@ -115,7 +115,6 @@ nav = [
 
     {"NGINX Proxy Manager" = [
       "networking/npm/index.md",
-      {"Overview"               = "networking/npm/npm.md"},
       {"NPM + PiHole"           = "networking/npm/npm-pihole.md"},
     ]},
 
@@ -135,7 +134,7 @@ nav = [
       {"Overview"               = "services/git/git.md"},
     ]},
     {"Home Assistant" = [
-      {"Overview          "     = "services/homeassisstant/homeassisstant.md"},
+      {"Overview          "     = "services/homeassistant/homeassistant.md"},
     ]},
     {"Immich" = [
       {"Immich"                 = "services/immich/immich.md"},

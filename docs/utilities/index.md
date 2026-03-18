@@ -19,7 +19,7 @@ Various utilities I run. These are more baseline things, less docker services.
 
     Git workflow for Docker compose files and config management. Secret detection and disaster recovery.
 
--   :lucide-share2:{ .lg .middle } __[git](utilities/samba.md)__
+-   :lucide-share2:{ .lg .middle } __[git](samba/samba.md)__
 
     ---
 

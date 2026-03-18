@@ -41,8 +41,10 @@ services:
       # - 443:443 # Default HTTPS port (uncomment if you want to use it)
       - 4043:443 
     depends_on:
-      - nextcloud_db
-      - nextcloud_redis
+      nextcloud_db:
+        condition: service_healthy
+      nextcloud_redis:
+        condition: service_started
     restart: unless-stopped
 
   nextcloud_db:
@@ -50,19 +52,21 @@ services:
     container_name: nextcloud_db
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}  # CHANGE THIS in .env!
-      - POSTGRES_DB=${POSTGRES_DB} 
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - /mnt/appdata/nextcloud/db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     restart: unless-stopped
 
   nextcloud_redis:
     image: redis:alpine
     container_name: nextcloud_redis
     restart: unless-stopped
-
-volumes:
-  db_data:
 ```
 
 ---
@@ -73,9 +77,14 @@ After creating your `compose.yaml` and `.env` files, run `docker compose up -d` 
 
 Navigate to `https://your.server.ip:4043` to access the setup wizard.
 
-1.  **Create Admin Account:** Enter your desired username and password.
-2.  **Database Configuration:** Click "Storage & Database" to expand the options.
-3.  **Select Database:** Choose **PostgreSQL**.
+1. **Create Admin Account:** Enter your desired username and password.
+2. **Database Configuration:** Click "Storage & Database" to expand the options.
+3. **Select Database:** Choose **PostgreSQL**.
+4. **Database user:** `nextcloud` (or whatever is in .env)
+5. **Database password:** set in `.env`
+6. **Database name:** set in `.env`
+7. **Database host:** `nextcloud_db` (PostgreSQL container name) 
+
 
 !!! warning "Database Hostname"
     When asked for "Database host", do not use `localhost` or an IP. Use the container name: `nextcloud_db`.
@@ -102,7 +111,8 @@ Redis is an in-memory data structure store used for:
 2.  **Transactional File Locking:** Prevents file corruption when multiple devices (phone, desktop) access the same file simultaneously.
 
 **How to configure:**
-The `nextcloud_redis` container is running, but Nextcloud needs to be told to use it.
+
+**Following first boot**:The `nextcloud_redis` container is running, but Nextcloud needs to be told to use it.
 
 1.  Locate your `config.php` file (mapped in your volume, e.g., `/mnt/appdata/nextcloud/config/www/nextcloud/config/config.php`).
 2.  Add or modify the following lines inside the `$CONFIG = array ( ... );` block:

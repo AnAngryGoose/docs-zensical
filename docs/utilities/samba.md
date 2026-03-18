@@ -10,6 +10,8 @@ Server Message Block (SMB) enables [file sharing](https://en.wikipedia.org/wiki/
 
 I am primarily using Samba as my local file sharing as NFS causes issues with MergerFS, which is what my NAS uses. Samba also allows for easy sharing across Linux and Windows devices. Outside of these 2 issues, NFS is excellent, but Samba just works better in my situation. 
 
+---
+
 ## Installation 
 
 This is for creating a share on a NAS, then sharing that as a mount to other machines.
@@ -121,23 +123,15 @@ reload deamon
 
 Repeat this for any other machines you need to mount the share to. 
 
-```bash
-Go ahead and run through the same steps on kupier:
-```
+---
+
+### Complete instruction for client
 
 ```bash
 sudo apt install cifs-utils -y
 sudo mkdir -p /mnt/nas
 sudo nano /etc/samba/credentials
 ```
-
-Credentials file:
-```
-username=goose
-password=<your samba password>
-```
-
-### Complete instruction for client
 
 ```bash
 sudo chmod 600 /etc/samba/credentials

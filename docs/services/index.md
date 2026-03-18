@@ -7,18 +7,6 @@ Self-hosted services I run/ran. Networking related services (reverse proxy, tunn
 
 <div class="grid cards" markdown>
 
--   :lucide-archive:{ .lg .middle } __[Backups](backups/index.md)__
-
-    ---
-
-    Borgmatic on all three hosts, with local and remote Borg repositories.
-
--   :simple-git:{ .lg .middle } __[git](git/git.md)__
-
-    ---
-
-    Git workflow for Docker compose files and config management. Secret detection and disaster recovery.
-
 -   :simple-homeassistant:{ .lg .middle } __[Home Assistant](homeassisstant/homeassisstant.md)__
 
     ---

@@ -126,13 +126,6 @@ nav = [
 ###################
   { "Services" = [
     "services/index.md",
-    {"Backups" = [
-      {"Backrest"               = "services/backups/backrest.md"},
-      {"Backrest + SSH"         = "services/backups/backrestssh.md"},
-    ]},
-    {"git" = [
-      {"Overview"               = "services/git/git.md"},
-    ]},
     {"Home Assistant" = [
       {"Overview          "     = "services/homeassistant/homeassistant.md"},
     ]},
@@ -166,8 +159,15 @@ nav = [
   ]},
 ###################
  { "Utilities" = [
+    {"Backups" = [
+      {"Backrest"               = "utilities/backups/backrest.md"},
+      {"Backrest + SSH"         = "utilities/backups/backrestssh.md"},
+      {"Borgmatic"              = "utilities/borg.md"},
+    ]},
+    {"git" = [
+      {"Overview"               = "utilities/git/git.md"},
+    ]},
     {"Samba"                 = "utilities/samba.md"},
-    {"Borgmatic"                 = "utilities/borg.md"},
 
   ]},
 ]

@@ -159,6 +159,7 @@ nav = [
   ]},
 ###################
  { "Utilities" = [
+  "utilities/index.md",
     {"Backups" = [
       {"Backrest"               = "utilities/backups/backrest.md"},
       {"Backrest + SSH"         = "utilities/backups/backrestssh.md"},
@@ -167,7 +168,7 @@ nav = [
     {"git" = [
       {"Overview"               = "utilities/git/git.md"},
     ]},
-    {"Samba"                 = "utilities/samba.md"},
+    {"Samba"                 = "utilities/samba/samba.md"},
 
   ]},
 ]

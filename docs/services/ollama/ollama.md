@@ -175,7 +175,7 @@ You have 64GB RAM, which puts you in a unique position. You can run models large
 Don't just use the raw model. Create a custom "Modelfile" to bake in your preferences (Linux, Docker, minimal fluff).
 
 1. In Open WebUI, go to **Workspace** (left sidebar) -> **Models** -> **Create a Model**.
-2. **Name:** `Goose-Coder-14B`
+2. **Name:** `username-Coder-14B`
 3. **Base Model:** `qwen2.5-coder:14b`
 4. **System Prompt:**
 > You are an expert Linux flight simulation technician and DevOps engineer. You prefer "Gruvbox" aesthetics where applicable. You specialize in Docker, Self-Hosting, and System Administration.

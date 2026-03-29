@@ -36,7 +36,7 @@ Create the dir to be used
 
 Change ownership
 
-`sudo chown goose:goose /mnt/storage/backups`
+`sudo chown username:username /mnt/storage/backups`
 
 Edit the samba config
 
@@ -49,12 +49,12 @@ Add this block to the bottom
    path = /mnt/storage/backups
    browseable = yes
    read only = no
-   valid users = goose
+   valid users = username
 ```
 
 Save and exit. Then set a samba password for your user.
 
-`sudo smbpasswd -a goose`
+`sudo smbpasswd -a username`
 
 Restart to apply the config 
 
@@ -62,7 +62,7 @@ Restart to apply the config
 
 Verify share is visible
 
-`smbclient -L localhost -U goose`
+`smbclient -L localhost -U username`
 
 ### Mounting to machine
 
@@ -82,7 +82,7 @@ sudo nano /etc/samba/credentials
 
 Add:
 ```bash
-username=goose
+username=username
 password=<your samba password>
 ```
 
@@ -114,7 +114,7 @@ You should see:
 ```
 mount: (hint) your fstab has been modified, but systemd still uses
        the old version; use 'systemctl daemon-reload' to reload.
-//jupiter.internal/backups           22T   17T  5.7T  74% /mnt/nas
+//nas.internal/backups           22T   17T  5.7T  74% /mnt/nas
 ```
 
 reload deamon

@@ -17,7 +17,7 @@ Self-hosted services I run/ran. Networking related services (reverse proxy, tunn
 
     ---
 
-    Self-hosted photo and video library. Runs on jupiter, accessible on local network and over Tailscale.
+    Self-hosted photo and video library. Runs on nas, accessible on local network and over Tailscale.
 
 -   :simple-ollama:{ .lg .middle } __[Ollama & AI](ollama/ollama.md)__
 

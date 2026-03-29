@@ -1,7 +1,7 @@
 # medialnk Project Overview
 
 **Version:** 1.0.0
-**Repository:** https://github.com/AnAngryGoose/medialnk
+**Repository:** https://github.com/AnAngryusername/medialnk
 **Language:** Python 3.11+ (stdlib only, zero dependencies)
 
 

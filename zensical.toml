@@ -77,10 +77,17 @@ nav = [
   { "Ansible" = [
     "ansible/index.md",
     {"Overview"                 = "ansible/ansible.md"},
-    {"Installation"             = "ansible/ansibleinstallation.md"},
-    {"Inventory"                = "ansible/ansibleinventory.md"},
-    {"Commands"                 = "ansible/ansiblecommands.md"},
-    {"Playbooks"                = "ansible/ansibleplaybook.md"},
+    {"Quick Reference"          = "ansible/quickref.md"},
+    {"Configuration Files"      = "ansible/configuration-files.md"},
+    {"Inventory"                = "ansible/inventory.md"},
+    {"Variables"                = "ansible/variables.md"},
+    {"Vault"                    = "ansible/vault.md"},
+    {"Roles"                    = "ansible/roles.md"},
+    {"Playbooks"                = "ansible/playbooks.md"},
+    {"Running Playbooks"        = "ansible/playbookrunning.md"},
+    {"Compose Templates"        = "ansible/composetemplates.md"},
+    {"Base Configuration"       = "ansible/baseconfig.md"},
+    {"Troubleshooting"          = "ansible/troubleshooting.md"},
   ]},
 ###################
   { "Docker" = [
@@ -92,11 +99,13 @@ nav = [
 ###################
   { "Media Server" = [
     "media-server/index.md",
+    {"Jellyfin"                 = "media-server/jellyfin.md"},
     {"Qbittorrent"              = "media-server/qbittorrent.md"},
     {"Gluetun - ProtonVPN + Qbittorrent"    = "media-server/gluetun.md"},
     {"Radarr"                   = "media-server/radarr.md"},
     {"Sonarr"                   = "media-server/sonarr.md"},
     {"Seerr"                    = "media-server/seerr.md"},  
+    
   ]},
 ###################
   { "Networking" = [
@@ -168,7 +177,10 @@ nav = [
     {"git" = [
       {"Overview"               = "utilities/git/git.md"},
     ]},
-    {"Samba"                 = "utilities/samba/samba.md"},
+    {"Samba" = [
+      {"Samba"                 = "utilities/samba/samba.md"},
+      {"Samba Quick Reference"    = "utilities/samba/quickref.md"},
+    ]},
 
   ]},
 ]
@@ -186,7 +198,7 @@ nav = [
 #
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
-extra_css = ["stylesheets/extra.css"]
+# extra_css = ["stylesheets/extra.css"]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
 # project to customize the behavior according to your needs.

@@ -59,7 +59,7 @@ If you leave the root password blank, the installer will automatically install `
 
 ```
 
-* **Full name / Username:** Enter your details (e.g., `goose`).
+* **Full name / Username:** Enter your details (e.g., `username`).
 * **Password:** Set a strong password for this user.
 
 **C. Partitioning**
@@ -134,7 +134,7 @@ sudo systemctl restart networking
 Switch to your main PC terminal:
 
 ```bash
-ssh goose@192.168.1.50
+ssh username@192.168.1.50
 
 ```
 

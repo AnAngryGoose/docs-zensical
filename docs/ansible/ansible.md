@@ -1,123 +1,270 @@
----
-icon: simple/ansible
----
-
-# Ansible
-
-[Ansible :simple-ansible: ](https://docs.ansible.com/projects/ansible/latest/getting_started/index.html)
+# Ansible 
 
 ---
 
-## Overview
+This page covers installation, project structure, every role config, and how to run it all.
 
---
+This doubles as a quick reference. Use the table of contents to jump to what you need.
 
-Ansible automates the management of remote systems and controls their desired state.
-
-Ansible provides open-source automation that reduces complexity and runs everywhere. Using Ansible lets you automate virtually any task. Here are some common use cases for Ansible:
-
-* Eliminate repetition and simplify workflows
-
-* Manage and maintain system configuration
-
-* Continuously deploy complex software
-
-* Perform zero-downtime rolling updates
-
-Ansible uses simple, human-readable scripts called playbooks to automate your tasks. You declare the desired state of a local or remote system in your playbook. Ansible ensures that the system remains in that state.
-
-![ansible-getting-started.png](https://docs.ansible.com/projects/ansible/latest/_images/ansible_inv_start.svg)
-
-As shown in the preceding figure, most Ansible environments have three main components:
-
-**Control node**
-
-* A system on which Ansible is installed. You run Ansible commands such as `ansible` or `ansible-inventory` on a control node.
-
-**Inventory**
-
-* A list of managed nodes that are logically organized. You create an inventory on the control node to describe host deployments to Ansible.
-
-**Managed node**
-
-* A remote system, or host, that Ansible controls.
-
-## Initial Setup 
+Official Ansible docs: https://docs.ansible.com/projects/ansible/latest/getting_started/index.html
 
 ---
 
-This will cover the installation and structure required for using Ansible efficiently. 
+## How It Works
 
-Ansible be run from **one** computer (control node) to manage the configuration of **multiple** other servers (mananged nodes).
+```
+hostname (control node)  --SSH-->  ops-01, prod-01, dev-01 (managed nodes)
+        |
+   ~/ansible/
+   ansible.cfg          # how Ansible behaves (user, key, inventory path)
+   inventory/hosts.ini  # what hosts exist and how they're grouped
+   group_vars/all.yml   # variables shared by all hosts
+   group_vars/vault.yml # encrypted secrets (passwords, tokens)
+   playbooks/base.yml   # what to do (calls roles in order)
+   roles/base/          # how to do it (tasks, templates, handlers)
+```
 
-This requires a few things to work.
-
-## SSH Keys
-
----
-
-Generate an SSH on the **control node**. Add a passphrase, this is your main, secure key. 
-
-    ssh-keygen -t ed25519 -C "controlhostname"
-
-Copy that SSH key to the **mananged node(s)**.
-
-    ssh-copy-id -i ~/.ssh/id_ed25519.pub <IP Address>
-
-Generate an SSH key that is **specifically for Ansible**. No passphrase. This is ansible specific key.
-
-    ssh-keygen -t ed25519 -C "ansible"
-
-Copy that SSH key to the **mananged node(s)**.
-
-    ssh-copy-id -i ~/.ssh/ansible.pub <IP Address>
-
-Connecting using an SSH key. 
-
-    ssh -i .ssh/<key_name> <IP Address>
-
-Cache the passphrase
-
-    eval $(ssh-agent)
-    ssh-add
-
-Bash alias for caching the passphrase
-
-    alias ssha='eval $(ssh-agent) && ssh-add'
-
-
-## Git Repository
+Ansible reads the **playbook**, which targets **hosts** from the **inventory**, applies **roles** containing **tasks**, and fills in **templates** using **variables**. It connects via SSH and runs everything through sudo.
 
 ---
 
-**Check** if git is installed
+## Table of Contents
 
-    which git
-    # This will return `/usr/bin/git` if installed. 
+1. [Concepts](#concepts)
+2. [Installation](#installation)
+3. [SSH Key Setup](#ssh-key-setup)
+4. [Project Structure](#project-structure)
+5. [Configuration Files](./configuration-files)
+6. [Inventory](./inventory)
+7. [Variables](./variables)
+8. [Vault](./vault)
+9. [Roles](./roles)
+10. [Playbooks](./playbooks)
+11. [Running Playbooks](./playbookrunning)
+12. [Compose Templates](./compose-templates)
+13. [Base Configuration](./baseconfig)
+14. [Troubleshooting](./troubleshooting)
 
-**Install** git
+---
 
-    sudo apt update
-    sudo apt install git
+## Concepts
 
-**Create user config** for git
+**Control node** -- The machine that runs Ansible.
 
-    git config --global user.name "First Last"
-    git config --global user.email "somebody@somewhere.net"
+**Managed nodes** -- The machines Ansible configures. For you: prod-01, ops-01, dev-01 (and optionally nas).
 
-**Check the status** of your git repository
+**Inventory** -- A file listing your managed nodes and grouping them.
 
-    git status
+**Playbook** -- The entry point. Says "run these roles against these hosts." You execute this.
 
-**Stage the README.md** file (after making changes) to be included in the next git commit
+**Role** -- A folder containing everything needed for one job (install Docker, configure backups). Keeps things modular and reusable.
 
-    git add README.md
+**Task** -- A single action inside a role. "Install this package." "Copy this file." "Start this service." Runs top to bottom.
 
-**Set up the README.md** file to be included in a commit
+**Template** -- A config file with `{{ variables }}` that Ansible fills in before placing on the host. Turns one file into many host-specific versions.
 
-    git commit -m "Updated readme file, initial commit"
+**Handler** -- A task that only fires when notified. "Restart sshd, but only if the config actually changed." Prevents unnecessary restarts.
 
-**Send the commit** to Github
+**Idempotent** -- Running the same playbook twice produces the same result. Ansible only changes things that need changing.
 
-    git push origin master
+```
+You run a playbook
+  - playbook targets hosts and calls roles
+    - role runs tasks in order (tasks/main.yml)
+      - task uses a template (.j2) to place a config file
+        - template pulls values from group_vars/host_vars
+          - task notifies a handler if something changed
+            - handler runs once at the end (e.g., restart service)
+```
 
+**On disk:**
+
+```
+playbooks/base.yml              # you run this
+  calls -> roles/docker/
+             tasks/main.yml      # what to do, in order
+             templates/daemon.json.j2  # config files with variables
+             handlers/main.yml   # triggered reactions
+```
+
+**Playbook** calls **role**. **Role** runs **tasks**. **Tasks** use **templates**. **Tasks** notify **handlers**.
+
+Ref: [https://docs.ansible.com/projects/ansible/latest/getting_started/get_started_ansible.html](https://docs.ansible.com/projects/ansible/latest/getting_started/get_started_ansible.html)
+
+--- 
+
+## Installation
+
+Run on **Control Node** only. Managed nodes do not need Ansible installed.
+
+```bash
+# Install Ansible from the official PPA
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible
+
+# Verify
+ansible --version
+```
+
+Ref: https://docs.ansible.com/projects/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu
+
+---
+
+## SSH Key Setup
+
+Ansible uses SSH to connect to managed nodes. You need two keys: your personal key (with passphrase) and a dedicated Ansible key (no passphrase, for automation).
+
+```bash
+# Generate a dedicated Ansible key (no passphrase)
+ssh-keygen -t ed25519 -C "ansible" -f ~/.ssh/ansible -N ""
+
+# Copy it to each managed node (do this once per host)
+ssh-copy-id -i ~/.ssh/ansible.pub username@ops-01.internal
+ssh-copy-id -i ~/.ssh/ansible.pub username@prod-deb-01.internal
+ssh-copy-id -i ~/.ssh/ansible.pub username@dev-01.internal
+ssh-copy-id -i ~/.ssh/ansible.pub username@nas.internal
+```
+
+Test that it works without a password prompt:
+
+```bash
+ssh -i ~/.ssh/ansible username@ops-01.internal "hostname"
+```
+
+If that prints the hostname without asking for a password, you're good.
+
+
+Test connectivity with Ansible:
+
+```bash
+cd ~/ansible
+ansible ops-01.internal -m ping
+```
+
+!!! warning "Debian Install Issue?"
+
+    Fresh Debian minimal install doesn't include `sudo` by default. You need to install it and configure it. SSH into ops-01 as root:
+
+    ```bash
+    ssh root@ops-01.internal "apt update && apt install -y sudo && echo 'username ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/username && chmod 440 /etc/sudoers.d/username"
+    ```
+
+    If root SSH is disabled, log in as username and use `su`:
+
+    ```bash
+    ssh username@ops-01.internal
+    su -
+    apt update && apt install -y sudo
+    echo 'username ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/username
+    chmod 440 /etc/sudoers.d/username
+    exit
+    exit
+    ```
+
+    Then test again:
+
+    ```bash
+    ansible ops-01.internal -m ping
+    ```
+
+---
+
+## Project Structure
+
+Create this on Control Node. This is where all your Ansible code lives.
+
+```bash
+mkdir -p ~/ansible
+cd ~/ansible
+```
+
+Final structure:
+
+```
+~/ansible
+├── ansible.cfg
+├── inventory
+│   ├── group_vars
+│   │   ├── all.yml
+│   │   └── vault.yml
+│   ├── hosts.ini
+│   └── host_vars
+├── playbooks
+│   ├── base.yml
+│   ├── stacks.yml
+│   └── update.yml
+└── roles
+    ├── base
+    │   ├── files
+    │   ├── handlers
+    │   │   └── main.yml
+    │   ├── tasks
+    │   │   └── main.yml
+    │   └── templates
+    │       └── sshd_config.j2
+    ├── borgmatic
+    │   ├── tasks
+    │   │   └── main.yml
+    │   └── templates
+    │       ├── borgmatic-config.yml.j2
+    │       └── borgmatic.cron.j2
+    ├── codeserver
+    │   └── tasks
+    │       └── main.yml
+    ├── docker
+    │   ├── handlers
+    │   │   └── main.yml
+    │   ├── tasks
+    │   │   └── main.yml
+    │   └── templates
+    │       └── daemon.json.j2
+    ├── mounts
+    │   └── tasks
+    │       ├── main.yml
+    │       └── templates
+    ├── stacks_apps
+    │   ├── tasks
+    │   └── templates
+    ├── stacks_infra
+    │   ├── tasks
+    │   │   └── main.yml
+    │   └── templates
+    │       ├── cloudflared-compose.yml.j2
+    │       ├── homeassistant-compose.yml.j2
+    │       ├── homepage-compose.yml.j2
+    │       ├── homepage-env.j2
+    │       ├── monitoring-compose.yml.j2
+    │       ├── npm-compose.yml.j2
+    │       └── vaultwarden-compose.yml.j2
+    ├── tailscale
+    │   └── tasks
+    │       └── main.yml
+    └── update_containers
+        └── tasks
+            └── main.yml
+
+```
+
+Create the skeleton:
+
+```bash
+cd ~/ansible
+mkdir -p inventory/group_vars inventory/host_vars
+mkdir -p playbooks
+mkdir -p roles/base/{tasks,handlers,templates,files}
+mkdir -p roles/docker/{tasks,handlers,templates}
+mkdir -p roles/borgmatic/{tasks,templates}
+mkdir -p roles/tailscale/tasks
+mkdir -p roles/mounts/tasks/templates
+mkdir -p roles/stacks_infra/{tasks,templates}
+mkdir -p roles/stacks_apps/{tasks,templates}
+```
+Verify it looks right:
+
+```bash
+tree ~/ansible -L 3
+```
+
+Ref: [Ansible Docs](https://docs.ansible.com/projects/ansible/latest/user_guide/playbooks_reuse_roles.html#directory-layout-for-roles)

@@ -13,52 +13,49 @@ Configuration management tool for automating provisioning and maintaining desire
 
     What Ansible is, how it works, and initial SSH key setup.
 
--   :lucide-download:{ .lg .middle } __[Installation](ansibleinstallation.md)__
+-   :lucide-download:{ .lg .middle } __[Installation](ansible.md#installation)__
 
     ---
 
     Installing Ansible on the control node.
 
--   :lucide-circle-pile:{ .lg .middle } __[Inventory](ansibleinventory.md)__
+-   :lucide-circle-pile:{ .lg .middle } __[Inventory](inventory.md)__
 
     ---
 
     Defining managed hosts and running ad hoc commands.
 
--   :lucide-terminal:{ .lg .middle } __[Commands](ansiblecommands.md)__
+-   :lucide-variable:{ .lg .middle } __[Variables](variables.md)__
 
     ---
 
-    Elevated ad hoc commands for making changes on managed nodes.
+    Variables let you define values once and reuse them.
 
--   :lucide-book:{ .lg .middle } __[Playbooks](ansibleplaybook.md)__
-
-    ---
-
-    Repeatable, ordered task definitions for configuring hosts.
-
--   :lucide-variable:{ .lg .middle } __[Variables](ansiblevars.md)__
+-   :lucide-lock:{ .lg .middle } __[Vault](vault.md)__
 
     ---
 
-    group_vars, host_vars, and vars_files for managing per-host and per-group configuration.
+    Encrypting secrets and sensitive variables in playbooks and inventory.
 
--   :lucide-package:{ .lg .middle } __[Roles](ansibleroles.md)__
+
+
+-   :lucide-package:{ .lg .middle } __[Roles](roles.md)__
 
     ---
 
     Structuring playbooks into reusable, portable units.
 
--   :lucide-tag:{ .lg .middle } __[Tags & Handlers](ansibletagshandlers.md)__
+-   :lucide-book:{ .lg .middle } __[Playbooks](playbooks.md)__
 
     ---
 
-    Running targeted parts of a playbook and triggering tasks on change.
+    Repeatable, ordered task definitions for configuring hosts.
 
--   :lucide-lock:{ .lg .middle } __[Vault](ansiblevault.md)__
+-   :simple-docker:{ .lg .middle } __[Compose Templates](composetemplates.md)__
 
     ---
 
-    Encrypting secrets and sensitive variables in playbooks and inventory.
+    Templates for running Docker containers with Ansible.
+
 
 </div>

@@ -199,7 +199,7 @@ ls -ld /mnt/disk1 /mnt/disk2 /mnt/parity1 /mnt/appdata
 
 - If owner listed as `root` (and doesnt need to be) run :
 ```bash 
-sudo chown -R goose:goose /mnt/disk1 /mnt/disk2 /mnt/parity1 /mnt/appdata
+sudo chown -R username:username /mnt/disk1 /mnt/disk2 /mnt/parity1 /mnt/appdata
 ```
 
 

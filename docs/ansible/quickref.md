@@ -97,6 +97,62 @@ vars_files:
   - ../inventory/group_vars/vault.yml
 ```
 
+## Display Ansible Files
+
+```bash
+cd ~/ansible && {
+  printf '\n========== TREE ==========\n'
+  tree -L 4
+
+  while IFS= read -r f; do
+    [ -f "$f" ] || continue
+    printf '\n========== %s ==========\n' "$f"
+    sed -n '1,250p' "$f"
+  done <<'EOF'
+ansible.cfg
+inventory/hosts.ini
+inventory/group_vars/all.yml
+playbooks/base.yml
+playbooks/stacks.yml
+playbooks/update.yml
+roles/base/tasks/main.yml
+roles/base/handlers/main.yml
+roles/docker/tasks/main.yml
+roles/docker/handlers/main.yml
+roles/mounts/tasks/main.yml
+roles/borgmatic/tasks/main.yml
+roles/codeserver/tasks/main.yml
+roles/stacks_infra/tasks/main.yml
+roles/stacks_apps/tasks/main.yml
+roles/tailscale/tasks/main.yml
+roles/update_containers/tasks/main.yml
+EOF
+
+  printf '\n========== HOST_VARS ==========\n'
+  find inventory/host_vars -maxdepth 2 -type f \( -name '*.yml' -o -name '*.yaml' \) | sort | while IFS= read -r f; do
+    printf '\n========== %s ==========\n' "$f"
+    sed -n '1,250p' "$f"
+  done
+}
+```
+
+## Checking Host Status
+
+```bash
+{
+  echo '========== OPS-01 docker ps =========='
+  ansible ops-01.internal -a "docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'"
+
+  echo
+  echo '========== OPS-01 /opt/docker =========='
+  ansible ops-01.internal -a "tree -L 2 /opt/docker"
+
+  echo
+  echo '========== OPS-01 services =========='
+  ansible ops-01.internal -a "systemctl --no-pager --type=service --state=running"
+}
+```
+
 ---
 
 ## Updating Docker Containers

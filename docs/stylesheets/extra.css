@@ -1,37 +1,31 @@
 /* ==========================================================================
-   ZENSICAL — CUSTOM THEME
+   GRUVBOX COLOR THEME
    extra.css
 
-   SETUP:
-     zensical.toml:  extra_css = ["stylesheets/extra.css"]
+   Colors only — no layout, sizing, or structural overrides.
+   Default Zensical/Material responsive layout is preserved.
 
-   Also set in your config:
-     palette.primary = "custom"
-     palette.accent  = "custom"
-     (scheme is set per [[project.theme.palette]] block)
+   STRUCTURE:
+     Section 1 — Base palette (named color tokens, shared across schemes)
+     Section 2 — Per-scheme variables (dark/light set --theme-* and --md-*)
+     Section 3 — Component color overrides (reference --theme-* only)
 
-   HOW THIS FILE IS STRUCTURED:
-     Section 1 — Base palette (raw named colors, shared across schemes)
-     Section 2 — Per-scheme variable definitions (dark + light)
-                 Each scheme sets --theme-* and --md-* variables.
-     Section 3 — Component overrides (reference --theme-* only, no scheme scope)
-     Section 4 — Layout (scheme-agnostic)
-     Section 5 — Hero (commented out, not currently in use)
-
-   CURRENT PRESETS:
+   SCHEMES:
      Dark  → Gruvbox Dark  (Hard Contrast)  [data-md-color-scheme="slate"]
      Light → Gruvbox Light (Hard Contrast)  [data-md-color-scheme="default"]
+
+   TO RETHEME: swap the hex values in Sections 1 and 2. All component
+   colors in Section 3 resolve through --theme-* variables automatically.
    ========================================================================== */
 
 
 /* ==========================================================================
    SECTION 1 — BASE PALETTE
-   Raw named colors only. No theme logic here.
-   Both dark and light schemes reference these.
+   Named color tokens. Both schemes reference these.
    ========================================================================== */
 :root {
 
-  /* ── Dark variant colors (saturated, for dark backgrounds) ── */
+  /* -- Dark variant (saturated, for dark backgrounds) -- */
   --color-dark-red:         #fb4934;
   --color-dark-orange:      #fe8019;
   --color-dark-yellow:      #fabd2f;
@@ -39,9 +33,8 @@
   --color-dark-aqua:        #8ec07c;
   --color-dark-blue:        #83a598;
   --color-dark-purple:      #d3869b;
-  --color-dark-gray:        #928374;
 
-  /* ── Light variant colors (muted, for light backgrounds) ── */
+  /* -- Light variant (muted, for light backgrounds) -- */
   --color-light-red:        #9d0006;
   --color-light-orange:     #af3a03;
   --color-light-yellow:     #b57614;
@@ -49,43 +42,31 @@
   --color-light-aqua:       #427b58;
   --color-light-blue:       #076678;
   --color-light-purple:     #8f3f71;
-  --color-light-gray:       #7c6f64;
 
-  /* ── Fonts ─────────────────────────────────────────────────────────────
-     Per Zensical docs: define fonts via CSS variables to preserve fallback. */
+  /* -- Fonts -- */
   --md-text-font:           "Inter";
   --md-code-font:           "JetBrains Mono";
-
-  /* ── Transitions ────────────────────────────────────────────────────── */
-  --transition-speed:       0.2s;
-  --transition-easing:      ease;
-
-  /* ── Shadows ────────────────────────────────────────────────────────── */
-  --shadow-z1: 0 0.2rem 0.5rem rgba(0,0,0,0.2), 0 0 0.05rem rgba(0,0,0,0.3);
-  --shadow-z2: 0 0.3rem 0.8rem rgba(0,0,0,0.3), 0 0 0.05rem rgba(0,0,0,0.4);
-  --shadow-z3: 0 0.4rem 1.2rem rgba(0,0,0,0.5), 0 0 0.05rem rgba(0,0,0,0.5);
 }
 
 
 /* ==========================================================================
-   SECTION 2A — DARK SCHEME  (Gruvbox Dark Hard)
-   Sets --theme-* variables for use in Section 3, then maps to --md-*.
+   SECTION 2A — DARK SCHEME (Gruvbox Dark Hard)
    ========================================================================== */
 [data-md-color-scheme="slate"] {
 
-  /* ── Backgrounds ────────────────────────────────────────────────────── */
+  /* -- Backgrounds -- */
   --theme-bg-base:          #1d2021;
   --theme-bg-surface:       #282828;
   --theme-bg-highlight:     #3c3836;
   --theme-bg-border:        #504945;
 
-  /* ── Typography ─────────────────────────────────────────────────────── */
+  /* -- Text -- */
   --theme-text-main:        #ebdbb2;
   --theme-text-bold:        #fbf1c7;
   --theme-text-muted:       #d5c4a1;
   --theme-text-dim:         #928374;
 
-  /* ── Headings ───────────────────────────────────────────────────────── */
+  /* -- Headings (h1–h6) -- */
   --h1-color:               var(--color-dark-red);
   --h2-color:               var(--color-dark-orange);
   --h3-color:               var(--color-dark-yellow);
@@ -93,21 +74,21 @@
   --h5-color:               var(--color-dark-blue);
   --h6-color:               var(--color-dark-purple);
 
-  /* ── Accents & links ────────────────────────────────────────────────── */
+  /* -- Accents and links -- */
   --theme-accent-main:      #fe8019;
   --theme-accent-hover:     #fabd2f;
   --theme-link:             #83a598;
   --theme-link-active:      #fe8019;
   --theme-nav-title:        var(--color-dark-red);
 
-  /* ── Admonitions ────────────────────────────────────────────────────── */
+  /* -- Admonition border colors -- */
   --status-info:            #83a598;
   --status-success:         #b8bb26;
   --status-warning:         #fabd2f;
   --status-danger:          #fb4934;
   --status-special:         #d3869b;
 
-  /* ── Code syntax ────────────────────────────────────────────────────── */
+  /* -- Code syntax highlighting -- */
   --code-keyword:           #fb4934;
   --code-function:          #fabd2f;
   --code-string:            #b8bb26;
@@ -118,48 +99,56 @@
   --code-operator:          #ebdbb2;
   --code-punctuation:       #d5c4a1;
 
-  /* ── --md-* mappings ────────────────────────────────────────────────── */
-  --md-header-height:                 var(--layout-header-height);
+  /* -- Zensical/Material variable mappings --
+     NOTE: --light/--lighter/--lightest variants MUST use alpha transparency,
+     not opaque colors. The theme uses these for the glassmorphism header,
+     sidebar overlay, and separator lines. Opaque values break layout. */
 
+  /* Page background (opaque base) and transparent variants */
   --md-default-bg-color:              var(--theme-bg-base);
-  --md-default-bg-color--light:       var(--theme-bg-surface);
-  --md-default-bg-color--lighter:     var(--theme-bg-highlight);
-  --md-default-bg-color--lightest:    var(--theme-bg-surface);
+  --md-default-bg-color--light:       rgba(29, 32, 33, 0.54);
+  --md-default-bg-color--lighter:     rgba(29, 32, 33, 0.26);
+  --md-default-bg-color--lightest:    rgba(29, 32, 33, 0.07);
 
+  /* Page foreground (text) and transparent variants */
   --md-default-fg-color:              var(--theme-text-main);
-  --md-default-fg-color--light:       var(--theme-text-muted);
-  --md-default-fg-color--lighter:     var(--theme-text-dim);
-  --md-default-fg-color--lightest:    var(--theme-bg-border);
+  --md-default-fg-color--light:       rgba(235, 219, 178, 0.56);
+  --md-default-fg-color--lighter:     rgba(235, 219, 178, 0.32);
+  --md-default-fg-color--lightest:    rgba(235, 219, 178, 0.12);
 
-  --md-primary-fg-color:              var(--theme-bg-surface);
-  --md-primary-fg-color--light:       var(--theme-text-bold);
-  --md-primary-fg-color--dark:        var(--theme-bg-base);
+  /* Header/brand bar colors */
+  --md-primary-fg-color:              var(--theme-accent-main);
+  --md-primary-fg-color--light:       var(--theme-accent-hover);
+  --md-primary-fg-color--dark:        #d65d0e;
   --md-primary-bg-color:              var(--theme-text-main);
-  --md-primary-bg-color--light:       var(--theme-text-muted);
+  --md-primary-bg-color--light:       rgba(235, 219, 178, 0.7);
 
+  /* Accent color for interactive elements */
   --md-accent-fg-color:               var(--theme-accent-main);
   --md-accent-fg-color--transparent:  rgba(254, 128, 25, 0.1);
   --md-accent-bg-color:               var(--theme-bg-surface);
+  --md-accent-bg-color--light:        rgba(40, 40, 40, 0.7);
 
+  /* Link color */
   --md-typeset-a-color:               var(--theme-link);
 
-  --md-footer-bg-color:               var(--theme-bg-base);
+  /* Footer */
+  --md-footer-bg-color:               rgba(29, 32, 33, 0.87);
   --md-footer-bg-color--dark:         var(--theme-bg-base);
-  --md-footer-fg-color:               var(--theme-text-main);
-  --md-footer-fg-color--light:        var(--theme-text-muted);
-  --md-footer-fg-color--lighter:      var(--theme-text-dim);
 
-  --md-inputs-bg-color:               var(--theme-bg-highlight);
-  --md-inputs-fg-color:               var(--theme-text-main);
+  /* Table stripe */
+  --md-typeset-table-color:           rgba(235, 219, 178, 0.12);
+  --md-typeset-table-color--light:    rgba(235, 219, 178, 0.035);
 
-  --md-typeset-table-color:           rgba(235, 219, 178, 0.05);
-
+  /* Admonitions */
   --md-admonition-bg-color:           var(--theme-bg-surface);
   --md-admonition-fg-color:           var(--theme-text-main);
 
+  /* Code blocks */
   --md-code-bg-color:                 var(--theme-bg-surface);
   --md-code-fg-color:                 var(--theme-text-main);
-  --md-code-hl-color:                 var(--theme-bg-highlight);
+  --md-code-hl-color:                 #2977ff;
+  --md-code-hl-color--light:          rgba(41, 119, 255, 0.1);
   --md-code-hl-keyword-color:         var(--code-keyword);
   --md-code-hl-function-color:        var(--code-function);
   --md-code-hl-string-color:          var(--code-string);
@@ -172,31 +161,31 @@
   --md-code-hl-punctuation-color:     var(--code-punctuation);
   --md-code-hl-generic-color:         var(--theme-text-muted);
 
-  --md-shadow-z1:                     var(--shadow-z1);
-  --md-shadow-z2:                     var(--shadow-z2);
-  --md-shadow-z3:                     var(--shadow-z3);
+  /* Shadows */
+  --md-shadow-z1: 0 0.2rem 0.5rem rgba(0,0,0,0.05), 0 0 0.05rem rgba(255,255,255,0.1);
+  --md-shadow-z2: 0 0.2rem 0.5rem rgba(0,0,0,0.25), 0 0 0.05rem rgba(255,255,255,0.35);
+  --md-shadow-z3: 0 0.5rem 2rem rgba(0,0,0,0.4), 0 0 0.05rem rgba(0,0,0,0.35);
 }
 
 
 /* ==========================================================================
-   SECTION 2B — LIGHT SCHEME  (Gruvbox Light Hard)
-   Mirrors Section 2A structure exactly. Edit colors here only.
+   SECTION 2B — LIGHT SCHEME (Gruvbox Light Hard)
    ========================================================================== */
 [data-md-color-scheme="default"] {
 
-  /* ── Backgrounds ────────────────────────────────────────────────────── */
+  /* -- Backgrounds -- */
   --theme-bg-base:          #f9f5d7;
   --theme-bg-surface:       #ebdbb2;
   --theme-bg-highlight:     #d5c4a1;
   --theme-bg-border:        #bdae93;
 
-  /* ── Typography ─────────────────────────────────────────────────────── */
+  /* -- Text -- */
   --theme-text-main:        #3c3836;
   --theme-text-bold:        #282828;
   --theme-text-muted:       #504945;
   --theme-text-dim:         #7c6f64;
 
-  /* ── Headings ───────────────────────────────────────────────────────── */
+  /* -- Headings (h1–h6) -- */
   --h1-color:               var(--color-light-red);
   --h2-color:               var(--color-light-orange);
   --h3-color:               var(--color-light-yellow);
@@ -204,21 +193,21 @@
   --h5-color:               var(--color-light-blue);
   --h6-color:               var(--color-light-purple);
 
-  /* ── Accents & links ────────────────────────────────────────────────── */
+  /* -- Accents and links -- */
   --theme-accent-main:      #af3a03;
   --theme-accent-hover:     #b57614;
   --theme-link:             #076678;
   --theme-link-active:      #af3a03;
   --theme-nav-title:        var(--color-light-red);
 
-  /* ── Admonitions ────────────────────────────────────────────────────── */
+  /* -- Admonition border colors -- */
   --status-info:            #076678;
   --status-success:         #79740e;
   --status-warning:         #b57614;
   --status-danger:          #9d0006;
   --status-special:         #8f3f71;
 
-  /* ── Code syntax ────────────────────────────────────────────────────── */
+  /* -- Code syntax highlighting -- */
   --code-keyword:           #9d0006;
   --code-function:          #b57614;
   --code-string:            #79740e;
@@ -229,48 +218,55 @@
   --code-operator:          #3c3836;
   --code-punctuation:       #504945;
 
-  /* ── --md-* mappings ────────────────────────────────────────────────── */
-  --md-header-height:                 var(--layout-header-height);
+  /* -- Zensical/Material variable mappings --
+     NOTE: --light/--lighter/--lightest variants MUST use alpha transparency.
+     See dark scheme note above. */
 
+  /* Page background (opaque base) and transparent variants */
   --md-default-bg-color:              var(--theme-bg-base);
-  --md-default-bg-color--light:       var(--theme-bg-surface);
-  --md-default-bg-color--lighter:     var(--theme-bg-highlight);
-  --md-default-bg-color--lightest:    var(--theme-bg-surface);
+  --md-default-bg-color--light:       rgba(249, 245, 215, 0.7);
+  --md-default-bg-color--lighter:     rgba(249, 245, 215, 0.3);
+  --md-default-bg-color--lightest:    rgba(249, 245, 215, 0.12);
 
+  /* Page foreground (text) and transparent variants */
   --md-default-fg-color:              var(--theme-text-main);
-  --md-default-fg-color--light:       var(--theme-text-muted);
-  --md-default-fg-color--lighter:     var(--theme-text-dim);
-  --md-default-fg-color--lightest:    var(--theme-bg-border);
+  --md-default-fg-color--light:       rgba(60, 56, 54, 0.56);
+  --md-default-fg-color--lighter:     rgba(60, 56, 54, 0.32);
+  --md-default-fg-color--lightest:    rgba(60, 56, 54, 0.12);
 
-  --md-primary-fg-color:              var(--theme-bg-surface);
-  --md-primary-fg-color--light:       var(--theme-text-bold);
-  --md-primary-fg-color--dark:        var(--theme-bg-base);
-  --md-primary-bg-color:              var(--theme-text-main);
-  --md-primary-bg-color--light:       var(--theme-text-muted);
+  /* Header/brand bar colors */
+  --md-primary-fg-color:              var(--theme-accent-main);
+  --md-primary-fg-color--light:       var(--theme-accent-hover);
+  --md-primary-fg-color--dark:        #8a3000;
+  --md-primary-bg-color:              var(--theme-bg-base);
+  --md-primary-bg-color--light:       rgba(249, 245, 215, 0.7);
 
+  /* Accent color for interactive elements */
   --md-accent-fg-color:               var(--theme-accent-main);
   --md-accent-fg-color--transparent:  rgba(175, 58, 3, 0.1);
-  --md-accent-bg-color:               var(--theme-bg-surface);
+  --md-accent-bg-color:               var(--theme-bg-base);
+  --md-accent-bg-color--light:        rgba(249, 245, 215, 0.7);
 
+  /* Link color */
   --md-typeset-a-color:               var(--theme-link);
 
-  --md-footer-bg-color:               var(--theme-bg-base);
-  --md-footer-bg-color--dark:         var(--theme-bg-surface);
-  --md-footer-fg-color:               var(--theme-text-main);
-  --md-footer-fg-color--light:        var(--theme-text-muted);
-  --md-footer-fg-color--lighter:      var(--theme-text-dim);
+  /* Footer */
+  --md-footer-bg-color:               rgba(60, 56, 54, 0.87);
+  --md-footer-bg-color--dark:         var(--theme-text-bold);
 
-  --md-inputs-bg-color:               var(--theme-bg-highlight);
-  --md-inputs-fg-color:               var(--theme-text-main);
+  /* Table stripe */
+  --md-typeset-table-color:           rgba(60, 56, 54, 0.12);
+  --md-typeset-table-color--light:    rgba(60, 56, 54, 0.035);
 
-  --md-typeset-table-color:           rgba(60, 56, 54, 0.05);
-
+  /* Admonitions */
   --md-admonition-bg-color:           var(--theme-bg-surface);
   --md-admonition-fg-color:           var(--theme-text-main);
 
+  /* Code blocks */
   --md-code-bg-color:                 var(--theme-bg-surface);
   --md-code-fg-color:                 var(--theme-text-main);
-  --md-code-hl-color:                 var(--theme-bg-highlight);
+  --md-code-hl-color:                 #4287ff;
+  --md-code-hl-color--light:          rgba(66, 135, 255, 0.1);
   --md-code-hl-keyword-color:         var(--code-keyword);
   --md-code-hl-function-color:        var(--code-function);
   --md-code-hl-string-color:          var(--code-string);
@@ -283,24 +279,23 @@
   --md-code-hl-punctuation-color:     var(--code-punctuation);
   --md-code-hl-generic-color:         var(--theme-text-muted);
 
-  --md-shadow-z1:                     var(--shadow-z1);
-  --md-shadow-z2:                     var(--shadow-z2);
-  --md-shadow-z3:                     var(--shadow-z3);
+  /* Shadows */
+  --md-shadow-z1: 0 0.2rem 0.5rem rgba(0,0,0,0.05), 0 0 0.05rem rgba(0,0,0,0.1);
+  --md-shadow-z2: 0 0.2rem 0.5rem rgba(0,0,0,0.1), 0 0 0.05rem rgba(0,0,0,0.25);
+  --md-shadow-z3: 0 0.2rem 0.5rem rgba(0,0,0,0.2), 0 0 0.05rem rgba(0,0,0,0.35);
 }
 
 
 /* ==========================================================================
-   SECTION 3 — COMPONENT OVERRIDES
-   No scheme selector here — all values resolve via --theme-* variables,
-   which are defined per-scheme in Section 2A/2B above.
+   SECTION 3 — COMPONENT COLOR OVERRIDES
+   Colors only. No sizing, spacing, or structural changes.
+   All values resolve via --theme-* so both schemes work automatically.
    ========================================================================== */
 
-/* ── 3.1 TYPOGRAPHY ─────────────────────────────────────────────────────── */
-
+/* -- Bold text color -- */
 strong { color: var(--theme-text-bold); }
 
-.md-typeset { line-height: 1.75; }
-
+/* -- Heading colors and weights (h1–h6) -- */
 .md-typeset h1 { color: var(--h1-color); font-weight: 800; }
 .md-typeset h2 { color: var(--h2-color); font-weight: 700; }
 .md-typeset h3 { color: var(--h3-color); font-weight: 600; }
@@ -308,179 +303,38 @@ strong { color: var(--theme-text-bold); }
 .md-typeset h5 { color: var(--h5-color); font-weight: 600; }
 .md-typeset h6 { color: var(--h6-color); font-weight: 600; }
 
-/* ── 3.2 LINKS ──────────────────────────────────────────────────────────── */
+/* -- Link hover color -- */
+.md-typeset a:hover { color: var(--theme-accent-hover); }
 
-.md-typeset a {
-  transition: color var(--transition-speed) var(--transition-easing);
-}
-.md-typeset a:hover {
-  color: var(--theme-accent-hover);
-}
-
-/* ── 3.3 NAVIGATION ─────────────────────────────────────────────────────── */
-
-/* Collapsible section label
-   NOTE: Targets the classic Material for MkDocs HTML structure — a <label>
-   with class md-nav__link and a [for] attribute. If section title colors are
-   not applying, inspect rendered HTML and update this selector.        */
+/* -- Sidebar nav: section label color -- */
 .md-nav__item--section > .md-nav__link[for] {
   color: var(--theme-nav-title);
   font-weight: 700;
 }
 
-.md-nav__title {
-  color: var(--theme-text-bold);
-}
+/* -- Sidebar nav: title color -- */
+.md-nav__title { color: var(--theme-text-bold); }
 
-.md-nav__item--active > .md-nav__link {
-  color: var(--theme-link-active);
-}
+/* -- Sidebar nav: active page highlight -- */
+.md-nav__item--active > .md-nav__link { color: var(--theme-link-active); }
 
-/* ── 3.4 CODE ───────────────────────────────────────────────────────────── */
-
-.md-typeset code       { border-radius: 0.2rem; }
-.md-typeset pre > code { border-radius: 0.3rem; }
-
-/* ── 3.5 ADMONITIONS ────────────────────────────────────────────────────── */
-
-.md-typeset .admonition,
-.md-typeset details {
-  border-width: 0 0 0 0.4rem;
-  border-style: solid;
-}
-
+/* -- Admonition/details left border colors by type -- */
 .md-typeset :is(.admonition, details):is(.note, .info)      { border-color: var(--status-info); }
 .md-typeset :is(.admonition, details):is(.tip, .success)    { border-color: var(--status-success); }
 .md-typeset :is(.admonition, details).warning               { border-color: var(--status-warning); }
 .md-typeset :is(.admonition, details):is(.danger, .failure) { border-color: var(--status-danger); }
 .md-typeset :is(.admonition, details).example               { border-color: var(--status-special); }
 
-/* ── 3.6 TABLES ─────────────────────────────────────────────────────────── */
+/* -- Table header background and hover row highlight -- */
+.md-typeset table:not([class]) th { background-color: var(--theme-bg-highlight); color: var(--theme-text-bold); }
+.md-typeset table:not([class]) tr:hover { background-color: var(--theme-bg-highlight); }
 
-.md-typeset table:not([class]) {
-  border: 1px solid var(--theme-bg-border);
-  border-radius: 0.3rem;
-}
-.md-typeset table:not([class]) th {
-  background-color: var(--theme-bg-highlight);
-  color: var(--theme-text-bold);
-}
-.md-typeset table:not([class]) tr:hover {
-  background-color: var(--theme-bg-highlight);
-}
+/* -- Search result highlight color -- */
+.md-search-result mark { color: var(--theme-accent-hover); background-color: transparent; }
 
-/* ── 3.7 SEARCH ─────────────────────────────────────────────────────────── */
+/* -- Scrollbar track and thumb colors -- */
+.md-content { scrollbar-color: var(--theme-accent-main) var(--theme-bg-surface); scrollbar-width: thin; }
 
-.md-search-result mark {
-  color: var(--theme-accent-hover);
-  background-color: transparent;
-}
-
-/* ── 3.8 SCROLLBAR ──────────────────────────────────────────────────────── */
-
-* {
-  scrollbar-color: var(--theme-accent-main) var(--theme-bg-surface);
-  scrollbar-width: thin;
-}
-
-/* ── 3.9 FOOTER ─────────────────────────────────────────────────────────── */
-
-.md-footer a {
-  color: var(--theme-text-muted);
-  transition: color var(--transition-speed) var(--transition-easing);
-}
-.md-footer a:hover {
-  color: var(--theme-accent-hover);
-}
-
-/* ── 3.10 GRID CARDS ─────────────────────────────────────────────────────── */
-
-/* 14rem is max allowable minmax value before cards stack vertically */
-.md-typeset .grid.cards {
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)) !important;
-}
-
-
-/* ==========================================================================
-   SECTION 4 — LAYOUT
-   Scheme-agnostic. Controls content width, sidebar, and header dimensions.
-   ========================================================================== */
-
-:root {
-  --layout-content-width:   60rem;
-  --layout-sidebar-width:   14rem;
-  --layout-header-height:   2.4rem;
-}
-
-.md-grid    { max-width: var(--layout-content-width); }
-.md-sidebar { width: var(--layout-sidebar-width); }
-.md-header  { height: var(--layout-header-height); line-height: var(--layout-header-height); }
-
-
-/* ==========================================================================
-   SECTION 5 — HERO (Landing Page)
-   Commented out — not currently in use.
-
-.hero-container {
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-
-  min-height: 100vh;
-  padding: 4rem;
-  margin-top: calc(-1 * var(--layout-header-height));
-  margin-bottom: -5rem;
-  box-sizing: border-box;
-
-  background:
-    linear-gradient(
-      rgba(var(--hero-overlay-rgb), var(--hero-overlay-alpha)),
-      rgba(var(--hero-overlay-rgb), var(--hero-overlay-alpha))
-    ),
-    var(--hero-bg-image);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.hero-container h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin: 0 0 1rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-}
-
-.hero-container p {
-  font-size: 1.4rem;
-  max-width: 600px;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-}
-
-.hero-container .hero-cta {
-  display: inline-block;
-  padding: 0.75rem 1.75rem;
-  font-weight: 700;
-  border-radius: 0.3rem;
-  text-decoration: none;
-  transition: background-color var(--transition-speed) var(--transition-easing);
-}
-
-To re-enable:
-  1. Uncomment this section.
-  2. Add to each scheme block in Section 2:
-       --hero-bg-image:      url('../assets/landing-bg-gruvbox-dark.png');  (dark)
-       --hero-bg-image:      url('../assets/landing-bg-gruvbox-light.png'); (light)
-       --hero-overlay-rgb:   29, 32, 33;    (dark)
-       --hero-overlay-rgb:   249, 245, 215; (light)
-       --hero-overlay-alpha: 0.85;
-   ========================================================================== */
+/* -- Footer link colors -- */
+.md-footer a { color: var(--theme-text-muted); }
+.md-footer a:hover { color: var(--theme-accent-hover); }

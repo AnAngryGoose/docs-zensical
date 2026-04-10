@@ -1,5 +1,8 @@
 # Pi-hole DNS Blocker
 
+!!! danger "Superceded"
+    Pi-Hole was superceded in my setup for Adguard Home + Unbound DNS
+
 ## Overview
 The [Pi-hole®](https://github.com/pi-hole/pi-hole) is a [DNS sinkhole](https://en.wikipedia.org/wiki/DNS_Sinkhole) that protects your devices from unwanted content without installing any client-side software.
 

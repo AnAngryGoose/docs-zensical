@@ -41,9 +41,9 @@ copyright = """
 Copyright &copy; 2026 The authors
 """
 
-###################
-#   NAV SECTION   # 
-###################
+####################################################################
+                        #   NAV SECTION   # 
+####################################################################
 
 # Zensical supports both implicit navigation and explicitly defined navigation.
 # If you decide not to define a navigation here then Zensical will simply
@@ -53,9 +53,9 @@ Copyright &copy; 2026 The authors
 #
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
-###################
+####################################################################
   { "Get started" = "index.md" },
-###################
+####################################################################
   { "Linux" = [
     "Linux/index.md",
     { "Server Setup"            = "Linux/pcsetup.md" },
@@ -73,43 +73,8 @@ nav = [
     { "Firewall"                = "Linux/firewall.md" },
     { "Performance & Debugging" = "Linux/performance-debugging.md" },
   ]},
-###################
-  { "Ansible" = [
-    "ansible/index.md",
-    {"Overview"                 = "ansible/ansible.md"},
-    {"Quick Reference"          = "ansible/quickref.md"},
-    {"Configuration Files"      = "ansible/configuration-files.md"},
-    {"Inventory"                = "ansible/inventory.md"},
-    {"Variables"                = "ansible/variables.md"},
-    {"Vault"                    = "ansible/vault.md"},
-    {"Roles"                    = "ansible/roles.md"},
-    {"Playbooks"                = "ansible/playbooks.md"},
-    {"Running Playbooks"        = "ansible/playbookrunning.md"},
-    {"Compose Templates"        = "ansible/composetemplates.md"},
-    {"Base Configuration"       = "ansible/baseconfig.md"},
-    {"Troubleshooting"          = "ansible/troubleshooting.md"},
-    {"Complete Tutorial"        = "ansible/tutorial.md"},
-  ]},
-###################
-  { "Docker" = [
-    "docker/index.md",
-    {"Installation"             = "docker/docker.md"},
-    {"Post-Installation Steps"  = "docker/dockerpostinstall.md"},
-    {"Cheatsheet"               = "docker/cheatsheet.md"},
-  ]},
-###################
-  { "Media Server" = [
-    "media-server/index.md",
-    {"Jellyfin"                 = "media-server/jellyfin.md"},
-    {"Qbittorrent"              = "media-server/qbittorrent.md"},
-    {"Gluetun - ProtonVPN + Qbittorrent"    = "media-server/gluetun.md"},
-    {"Radarr"                   = "media-server/radarr.md"},
-    {"Sonarr"                   = "media-server/sonarr.md"},
-    {"Seerr"                    = "media-server/seerr.md"},  
-    
-  ]},
-###################
-  { "Networking" = [
+####################################################################
+    { "Networking" = [
     "networking/index.md",
     {"OPNsense" = [
       "networking/opnsense/index.md",
@@ -130,15 +95,47 @@ nav = [
 
     {"Cloudflare" = [
       "networking/cloudflare/index.md",
-      {"Cloudflare Tunnels"     = "networking/cloudflare/tunnels.md"},
+      {"Cloudflare Tunnels"     = "networking/cloudflare/externalaccess.md"},
     ]},
   ]},
-###################
+####################################################################
+    { "Docker" = [
+    "docker/index.md",
+    {"Installation"             = "docker/docker.md"},
+    {"Post-Installation Steps"  = "docker/dockerpostinstall.md"},
+    {"Cheatsheet"               = "docker/cheatsheet.md"},
+  ]},
+####################################################################
+  { "Ansible" = [
+    "ansible/index.md",
+    {"Overview"                 = "ansible/ansible.md"},
+    {"Quick Reference"          = "ansible/quickref.md"},
+    {"Configuration Files"      = "ansible/configuration-files.md"},
+    {"Inventory"                = "ansible/inventory.md"},
+    {"Variables"                = "ansible/variables.md"},
+    {"Vault"                    = "ansible/vault.md"},
+    {"Roles"                    = "ansible/roles.md"},
+    {"Playbooks"                = "ansible/playbooks.md"},
+    {"Running Playbooks"        = "ansible/playbookrunning.md"},
+    {"Compose Templates"        = "ansible/composetemplates.md"},
+    {"Base Configuration"       = "ansible/baseconfig.md"},
+    {"Troubleshooting"          = "ansible/troubleshooting.md"},
+    {"Complete Tutorial"        = "ansible/tutorial.md"},
+  ]},
+####################################################################
+  { "Media Server" = [
+    "media-server/index.md",
+    {"Jellyfin"                 = "media-server/jellyfin.md"},
+    {"Qbittorrent"              = "media-server/qbittorrent.md"},
+    {"Gluetun - ProtonVPN + Qbittorrent"    = "media-server/gluetun.md"},
+    {"Radarr"                   = "media-server/radarr.md"},
+    {"Sonarr"                   = "media-server/sonarr.md"},
+    {"Seerr"                    = "media-server/seerr.md"},  
+    
+  ]},
+####################################################################
   { "Services" = [
     "services/index.md",
-    {"Home Assistant" = [
-      {"Overview          "     = "services/homeassistant/homeassistant.md"},
-    ]},
     {"Immich" = [
       {"Immich"                 = "services/immich/immich.md"},
       {"Importing Google Photos Library"   = "services/immich/takeoutimport.md"},
@@ -160,14 +157,16 @@ nav = [
       {"Obsidian Livesync"      = "services/utilities/obslivesync.md"},
     ]},
   ]},
-###################
-  { "Documentation" = [
-    {"Zensical"                 = "documentation/getstarted.md"},
-    {"Markdown"                 = "documentation/markdown.md"},
-    {"Hosting Zensical With Cloudflare Pages"  = "documentation/zensical-cloudflare.md"},
-    {"Custom CSS"                 = "documentation/customcss.md"},
-  ]},
-###################
+####################################################################
+{ "Smart Home" = [
+    {"Home Assistant" = [
+      {"Overview"     = "services/homeassistant/homeassistant.md"},
+      {"Frigate NVR"  = "services/homeassistant/frigate-setup.md"},
+    ]},
+
+
+   ]},
+####################################################################
  { "Utilities" = [
   "utilities/index.md",
     {"Backups" = [
@@ -184,10 +183,17 @@ nav = [
     ]},
 
   ]},
+####################################################################
+  { "Documentation" = [
+    {"Zensical"                 = "documentation/getstarted.md"},
+    {"Markdown"                 = "documentation/markdown.md"},
+    {"Hosting Zensical With Cloudflare Pages"  = "documentation/zensical-cloudflare.md"},
+    {"Custom CSS"                 = "documentation/customcss.md"},
+  ]},
 ]
-###################
-# END NAV SECTION # 
-###################
+####################################################################
+                        # END NAV SECTION # 
+####################################################################
 
 
 
@@ -199,7 +205,7 @@ nav = [
 #
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
-#extra_css = ["stylesheets/extra.css"]
+extra_css = ["stylesheets/extra.css"]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
 # project to customize the behavior according to your needs.

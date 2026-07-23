@@ -63,7 +63,7 @@ Then while in the same folder as the docker-compose.yml run:
 
 ### Linux 
 
-#### Debian / Ubuntu and derivatives[​](https://jellyfin.org/docs/general/installation/linux#debian--ubuntu-and-derivatives "Direct link to Debian / Ubuntu and derivatives")
+#### Debian / Ubuntu and derivatives
 
 To simplify deployment and help automate this for as many users as possible, we provide a BASH script to handle repo installation as well as installing Jellyfin on Debian / Ubuntu and derivatives. All you need to do is run this command on your system (requires `curl`, or substitute `curl` with `wget -O-`):
 
@@ -71,7 +71,7 @@ To simplify deployment and help automate this for as many users as possible, we 
 curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
 ```
 
-note
+**Note:**
 
 You can verify the script download integrity with (requires `sha256sum`):
 
@@ -82,16 +82,17 @@ diff <( curl -s https://repo.jellyfin.org/install-debuntu.sh -o install-debuntu.
 An empty output means everything is correct. Then you can inspect the script to see what it does (optional but recommended) and execute it with:
 
 ```
-less install-debuntu.shsudo bash install-debuntu.sh
+less install-debuntu.sh
+sudo bash install-debuntu.sh
 ```
 
-note
+**Note:**
 
 The script tries to handle as many common derivatives as possible, including, at least, Linux Mint (Ubuntu and Debian editions), Raspbian/Raspberry Pi OS, and KDE Neon. We welcome PRs [to the script](https://github.com/jellyfin/jellyfin-repo-helper-scripts/blob/master/install-debuntu.sh) for any other common derivatives.
 
 If you do not want to execute a script with superuser permissions, you can also install the Jellyfin software repository manually (using either [extrepo](https://jellyfin.org/docs/general/installation/advanced/manual/#debian-using-extrepo) or the [fully manual method](https://jellyfin.org/docs/general/installation/advanced/manual/#official-linux-repository-manual)).
 
-#### Other Distributions[​](https://jellyfin.org/docs/general/installation/linux#other-distributions "Direct link to Other Distributions")
+#### Other Distributions
 
 For other distributions, [containers](https://jellyfin.org/docs/general/installation/container) are the recommended way to install Jellyfin. There are also [community-maintained packages](https://jellyfin.org/docs/general/installation/advanced/community) provided by 3rd parties if you would like to use them instead.
 
@@ -103,7 +104,7 @@ Additionally, in local networks, Jellyfin offers various Auto-Discovery services
 
 As a fully self-hosted software, Jellyfin runs independently from the Internet. You do not have to make your server accessible through the internet. Neither does Jellyfin require an internet connection to run; however you should note that it will load metadata from various Providers, which will not work without an Internet connection.
 
-### Port Bindings[​](https://jellyfin.org/docs/general/post-install/networking/#port-bindings "Direct link to Port Bindings")
+### Port Bindings
 
 This section aims to provide an administrator with knowledge on what ports Jellyfin binds to and what purpose they serve.
 
@@ -113,13 +114,13 @@ This section aims to provide an administrator with knowledge on what ports Jelly
 | 8920 | TCP | ✔️  | Default HTTPS |
 | 7359 | UDP | ❌   | Client Discovery |
 
-### Accessing Jellyfin[​](https://jellyfin.org/docs/general/post-install/networking/#accessing-jellyfin "Direct link to Accessing Jellyfin")
+### Accessing Jellyfin
 
 This section focusses on how to make Jellyfin Available within Networks. Here you will find descriptions on how to make Jellyfin accessible both only locally and through the Internet.
 
 In general, Jellyfin will be available locally on the specified port over the host-ip - e.g. `http://10.0.0.2:8096`. However its also possible to create a local DNS entry that will point to your Jellyfin-Server - e.g. `http://jellyfin.local:8096`.
 
-#### Firewall / Port Forwarding[​](https://jellyfin.org/docs/general/post-install/networking/#firewall--port-forwarding "Direct link to Firewall / Port Forwarding")
+#### Firewall / Port Forwarding
 
 Networks are usually divided from each other by firewalls. These block all incoming traffic and are meant to protect the network. To access Jellyfin through these boundaries, its ports need to be forwarded / opened in the respective firewalls.
 
@@ -146,7 +147,7 @@ How exactly a port will be opened depends on your firewall software and its UI. 
 -   [Uncomplicated Firewall](https://wiki.ubuntu.com/UncomplicatedFirewall#Basic_Usage) (ufw)
 -   [nftables](https://wiki.nftables.org/wiki-nftables/index.php/Main_Page)
 
-#### External Access[​](https://jellyfin.org/docs/general/post-install/networking/#external-access "Direct link to External Access")
+#### External Access
 
 Since Jellyfin is entirely self-hosted, you must manually expose it to the internet. To do so, you need a method to access the HTTP(S) ports remotely. Automatic discovery only works locally and should not be exposed externally.
 
@@ -163,13 +164,13 @@ There are multiple ways of exposing Jellyfin to the outside - the most common on
 
 Learn more about reverse proxies in our dedicated [Reverse Proxy guide](https://jellyfin.org/docs/general/post-install/networking/reverse-proxy/).
 
-#### SSL / https[​](https://jellyfin.org/docs/general/post-install/networking/#ssl--https "Direct link to SSL / https")
+#### SSL / https
 
 Using https to access the Server is recommended. By default, HTTPS is disabled because it requires an SSL certificate.
 
 SSL Certificates are usually issued by a third party and verify that the Server and URL are assigned to another. Please use a trusted certificate authority such as [Let's Encrypt](https://jellyfin.org/docs/general/post-install/networking/advanced/letsencrypt) when using https.
 
-caution
+**Caution:**
 
 Self-signed certificates pose security and compatibility issues and are strongly discouraged.
 
@@ -177,11 +178,11 @@ While Jellyfin supports HTTPS, it is strongly recommended to handle HTTPS termin
 
 **It's strongly recommend that you check your SSL strength and server security at [SSLLabs](https://www.ssllabs.com/ssltest/analyze.html) if you are exposing these services to the internet.**
 
-#### Base URL[​](https://jellyfin.org/docs/general/post-install/networking/#base-url "Direct link to Base URL")
+#### Base URL
 
 Running Jellyfin with a path (e.g. `https://example.com/jellyfin`) is supported.
 
-caution
+**Caution:**
 
 Base URL is known to break HDHomeRun, the [DLNA plugin](https://jellyfin.org/docs/general/post-install/networking/dlna), Sonarr, Radarr, and MrMC.
 

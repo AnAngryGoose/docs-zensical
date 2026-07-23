@@ -2,7 +2,7 @@
 
 A complete and local NVR designed for Home Assistant with AI object detection. Uses OpenCV and Tensorflow to perform realtime object detection locally for IP cameras.
 
-[https://docs.frigate.video/](Official Docs)
+[Official Docs](https://docs.frigate.video/)
 
 ---
 

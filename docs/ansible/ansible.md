@@ -41,7 +41,7 @@ Ansible reads the **playbook**, which targets **hosts** from the **inventory**, 
 9. [Roles](./roles)
 10. [Playbooks](./playbooks)
 11. [Running Playbooks](./playbookrunning)
-12. [Compose Templates](./compose-templates)
+12. [Compose Templates](./composetemplates)
 13. [Base Configuration](./baseconfig)
 14. [Troubleshooting](./troubleshooting)
 

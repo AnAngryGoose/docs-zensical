@@ -3,7 +3,7 @@ icon: lucide/archive
 title: Backups
 ---
 
-Borgmatic handles all backups across the homelab. All three hosts (prod-deb-01, nas, kupier) run Borgmatic on a daily cron schedule with Discord notifications. Borgmatic configuration lives in `utilities/borg.md`.
+Borgmatic handles all backups across the homelab. All three hosts (prod-deb-01, nas, kupier) run Borgmatic on a daily cron schedule with Discord notifications. Borgmatic configuration is documented on the [Borgmatic](borg.md) page.
 
 | Host | Repository | Type |
 |---|---|---|
@@ -15,7 +15,7 @@ Borgmatic handles all backups across the homelab. All three hosts (prod-deb-01, 
 
 <div class="grid cards" markdown>
 
--   :lucide-archive:{ .lg .middle } __[Borgmatic](../../utilities/borg.md)__
+-   :lucide-archive:{ .lg .middle } __[Borgmatic](borg.md)__
 
     ---
 

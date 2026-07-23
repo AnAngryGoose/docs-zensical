@@ -7,7 +7,7 @@ Self-hosted services I run/ran. Networking related services (reverse proxy, tunn
 
 <div class="grid cards" markdown>
 
--   :simple-homeassistant:{ .lg .middle } __[Home Assistant](homeassisstant/homeassisstant.md)__
+-   :simple-homeassistant:{ .lg .middle } __[Home Assistant](homeassistant/homeassistant.md)__
 
     ---
 

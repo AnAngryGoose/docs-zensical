@@ -107,7 +107,7 @@ Edit the config file.
 
 `sudo micro /etc/borgmatic/config.yaml`
 
-I setup a mounted SMB/CIFS drive to my NAS. This is what I'll be using to backup. You can find info on that [here](samba)
+I setup a mounted SMB/CIFS drive to my NAS. This is what I'll be using to backup. You can find info on that [here](../samba/samba.md)
 
 For a basic config with a local/mounted share you can add:
 
@@ -124,7 +124,7 @@ keep_daily: 7
 
 #### Create a passphrase
 
-You can add a plaintext passphrase, but I prefer a seperate file. 
+You can add a plaintext passphrase, but I prefer a separate file. 
 
 Create the passphrase file:
 

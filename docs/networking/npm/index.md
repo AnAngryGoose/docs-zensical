@@ -7,12 +7,6 @@ NPM handles internal reverse proxying only — mapping `service.domain.internal`
 
 <div class="grid cards" markdown>
 
--   :simple-nginxproxymanager:{ .lg .middle } __[Overview](npm.md)__
-
-    ---
-
-    Installation, initial setup, and configuring proxy hosts with SSL.
-
 -   :simple-pihole:{ .lg .middle } __[NPM + Pi-hole](npm-pihole.md)__
 
     ---

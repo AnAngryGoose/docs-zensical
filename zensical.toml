@@ -162,17 +162,28 @@ nav = [
     {"Home Assistant" = [
       {"Overview"     = "services/homeassistant/homeassistant.md"},
       {"Frigate NVR"  = "services/homeassistant/frigate-setup.md"},
+      {"Frigate + HA Notifications" = "services/homeassistant/frigate-ha-notifications.md"},
+      {"Home Assistant Smart Display" = "services/homeassistant/ha-smart-display.md"},
+
     ]},
 
 
    ]},
+####################################################################
+  { "3D Printing" = [
+    "3d-printing/index.md",
+    {"Basics"                   = "3d-printing/basics.md"},
+    {"Filaments"                = "3d-printing/filaments.md"},
+    {"Print Settings"           = "3d-printing/print-settings.md"},
+    {"Troubleshooting"          = "3d-printing/troubleshooting.md"},
+  ]},
 ####################################################################
  { "Utilities" = [
   "utilities/index.md",
     {"Backups" = [
       {"Backrest"               = "utilities/backups/backrest.md"},
       {"Backrest + SSH"         = "utilities/backups/backrestssh.md"},
-      {"Borgmatic"              = "utilities/borg.md"},
+      {"Borgmatic"              = "utilities/backups/borg.md"},
     ]},
     {"git" = [
       {"Overview"               = "utilities/git/git.md"},

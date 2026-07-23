@@ -15,7 +15,7 @@ I am specifically configuring this for the **Sonoff ZBDongle-MG24** (Model "E" o
 
 The stack runs via Docker Compose, with Home Assistant running in `host` networking mode for optimal device discovery.
 
-I'm a big fan of the zigbee system as each device acts as a repeater for the other devices. Also, working of seperate protocol, your devices will continue working even without WiFi.
+I'm a big fan of the Zigbee system as each device acts as a repeater for the other devices. Also, because Zigbee runs on a separate protocol, your devices will continue working even without Wi-Fi.
 
 ---
 

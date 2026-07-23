@@ -30,7 +30,7 @@ Reference for my homelab. Covers setup, configuration, and administration across
 
     ---
 
-    Media streaming, the *arr stack, qBittorrent with Gluetun VPN, and media request management.
+    Plex, the *arr stack, qBittorrent with Gluetun VPN, and media request management.
 
 -   :lucide-network:{ .lg .middle } __[Networking](networking/index.md)__
 

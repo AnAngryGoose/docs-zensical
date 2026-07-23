@@ -62,7 +62,7 @@ Covers the streaming server, the Arr stack for automated media management, and a
 </div>
 
 !!! note "Pages to write"
-    Plex, Prowlarr, and Qbit Manage do not have guide pages yet.
+    Prowlarr and Qbit Manage do not have guide pages yet.
 
 ## Docker Compose
 

@@ -125,7 +125,7 @@ nav = [
 ####################################################################
   { "Media Server" = [
     "media-server/index.md",
-    {"Jellyfin"                 = "media-server/jellyfin.md"},
+    {"Plex"                     = "media-server/plex.md"},
     {"Qbittorrent"              = "media-server/qbittorrent.md"},
     {"Gluetun - ProtonVPN + Qbittorrent"    = "media-server/gluetun.md"},
     {"Radarr"                   = "media-server/radarr.md"},

@@ -492,4 +492,7 @@ emoji_index = "zensical.extensions.emoji.twemoji"
 emoji_generator = "zensical.extensions.emoji.to_svg"
 [project.markdown_extensions.tables] # enable tables
 
+[project.markdown_extensions.pymdownx.tabbed] # content tabs: === "Tab"
+alternate_style = true
+
 

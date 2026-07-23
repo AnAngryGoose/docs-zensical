@@ -199,6 +199,7 @@ nav = [
     {"Zensical"                 = "documentation/getstarted.md"},
     {"Markdown"                 = "documentation/markdown.md"},
     {"Hosting Zensical With Cloudflare Pages"  = "documentation/zensical-cloudflare.md"},
+    {"Forgejo → Cloudflare Pages"              = "documentation/forgejo-cloudflare.md"},
     {"Custom CSS"                 = "documentation/customcss.md"},
   ]},
 ]

@@ -1,0 +1,43 @@
+# Build the Zensical site and deploy it to Cloudflare Pages.
+#
+# One-time setup is required before this will run — see
+# docs/documentation/forgejo-cloudflare.md for the full walkthrough:
+#
+#   1. Register a Forgejo Actions runner (act_runner) for this repo/instance.
+#   2. Enable Actions:  Repo → Settings → Actions → Enable.
+#   3. Create a Cloudflare Pages project using "Direct Upload".
+#   4. Repo → Settings → Actions → Secrets:
+#        CLOUDFLARE_API_TOKEN   — token with the "Cloudflare Pages: Edit" permission
+#        CLOUDFLARE_ACCOUNT_ID  — your Cloudflare account ID
+#      Repo → Settings → Actions → Variables:
+#        CF_PAGES_PROJECT       — the Pages project name (e.g. docs-zensical)
+#
+# No secrets are stored in this file.
+
+name: Deploy to Cloudflare Pages
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build site with Zensical
+        run: |
+          python3 -m pip install --break-system-packages zensical \
+            || python3 -m pip install zensical
+          zensical build --clean
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npm install -g wrangler
+          wrangler pages deploy site \
+            --project-name "${{ vars.CF_PAGES_PROJECT }}" \
+            --branch main

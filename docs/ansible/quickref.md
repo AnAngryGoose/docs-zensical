@@ -342,34 +342,6 @@ ansible ops-01.internal -a "mountpoint /mnt/backups"
 ansible ops-01.internal -a "ping -c 2 nas.internal"
 ```
 
----
-
-
-## Vault (Secrets)
-
-```bash
-# Create encrypted file                   opens editor, encrypts on save
-ansible-vault create inventory/group_vars/vault.yml
-
-# Edit existing vault                     decrypts, opens editor, re-encrypts
-ansible-vault edit inventory/group_vars/vault.yml
-
-# View without editing                    decrypts to stdout
-ansible-vault view inventory/group_vars/vault.yml
-
-# Change vault password
-ansible-vault rekey inventory/group_vars/vault.yml
-```
-
-Vault files need `vars_files` in the playbook to load:
-
-```yaml
-vars_files:
-  - ../inventory/group_vars/vault.yml
-```
-
----
-
 ## Troubleshooting
 
 ```bash

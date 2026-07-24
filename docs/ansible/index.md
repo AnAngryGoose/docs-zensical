@@ -19,6 +19,42 @@ Configuration management tool for automating provisioning and maintaining desire
 
     Installing Ansible on the control node.
 
+-   :lucide-list-checks:{ .lg .middle } __[Writing Tasks](writing-tasks.md)__
+
+    ---
+
+    How tasks work — modules, loops, conditionals, register, handlers, and blocks.
+
+-   :lucide-blocks:{ .lg .middle } __[Common Modules](modules.md)__
+
+    ---
+
+    The toolbox — apt, copy, template, file, service, and the rest, with examples.
+
+-   :lucide-file-code-2:{ .lg .middle } __[Templates & Jinja2](templates-jinja2.md)__
+
+    ---
+
+    Writing `.j2` files — Jinja2 variables, filters, loops, and conditionals.
+
+-   :lucide-search-code:{ .lg .middle } __[Facts & Variables](facts.md)__
+
+    ---
+
+    System facts, magic variables, and which value wins when names collide.
+
+-   :lucide-library:{ .lg .middle } __[Collections & Galaxy](collections.md)__
+
+    ---
+
+    Where modules come from, FQCNs, and installing collections.
+
+-   :lucide-terminal-square:{ .lg .middle } __[Ad-hoc & Safe Runs](ad-hoc.md)__
+
+    ---
+
+    One-off commands, check mode, `--diff`, tags, and limiting scope.
+
 -   :lucide-circle-pile:{ .lg .middle } __[Inventory](inventory.md)__
 
     ---

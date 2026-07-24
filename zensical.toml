@@ -110,6 +110,12 @@ nav = [
   { "Ansible" = [
     "ansible/index.md",
     {"Overview"                 = "ansible/ansible.md"},
+    {"Writing Tasks"            = "ansible/writing-tasks.md"},
+    {"Common Modules"           = "ansible/modules.md"},
+    {"Templates & Jinja2"       = "ansible/templates-jinja2.md"},
+    {"Facts & Variables"        = "ansible/facts.md"},
+    {"Collections & Galaxy"     = "ansible/collections.md"},
+    {"Ad-hoc & Safe Runs"       = "ansible/ad-hoc.md"},
     {"Quick Reference"          = "ansible/quickref.md"},
     {"Configuration Files"      = "ansible/configuration-files.md"},
     {"Inventory"                = "ansible/inventory.md"},

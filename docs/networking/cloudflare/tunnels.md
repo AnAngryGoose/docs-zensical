@@ -59,7 +59,7 @@ This network persists independently of any compose stack. Only create it once pe
 
 !!! success "Recommended"
 
-Create a standalone compose stack for `cloudflared`. This is the only place the tunnel token lives.
+    Create a standalone compose stack for `cloudflared`. This is the only place the tunnel token lives.
 
 `/opt/docker/cloudflared/compose.yaml`
 

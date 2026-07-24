@@ -58,6 +58,7 @@ nav = [
 ####################################################################
   { "Linux" = [
     "Linux/index.md",
+    { "Cheatsheet"              = "Linux/cheatsheet.md" },
     { "Server Setup"            = "Linux/pcsetup.md" },
     { "NAS Setup"               = "Linux/nassetup.md"},
     { "Disk Management"         = "Linux/disk-management.md" },

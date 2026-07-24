@@ -50,7 +50,7 @@ mkdir -p ~/homelab/smarthome/{homeassistant,zigbee2mqtt/data,mosquitto/config,mo
 Create your `compose.yaml` file in `~/homelab/smarthome/`.
 
 !!! note "Port Mapping"
-This configuration maps the Zigbee2MQTT frontend to port **8082** to avoid conflicts, and maps the USB device. Ensure the `devices` section matches the ID you found in Step 1.
+    This configuration maps the Zigbee2MQTT frontend to port **8082** to avoid conflicts, and maps the USB device. Ensure the `devices` section matches the ID you found in Step 1.
 
 ```yaml
 ### --- Smart Home Stack: MQTT Broker, Zigbee2MQTT, Home Assistant --- ###
@@ -133,7 +133,7 @@ allow_anonymous true
 Create the file: `~/homelab/smarthome/zigbee2mqtt/data/configuration.yaml`
 
 !!! warning "Driver Selection"
-The `adapter: ember` setting is critical for the Sonoff MG24. If you omit this, Z2M will try to use the default driver and fail to start.
+    The `adapter: ember` setting is critical for the Sonoff MG24. If you omit this, Z2M will try to use the default driver and fail to start.
 
 ```yaml
 # Home Assistant Integration

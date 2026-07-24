@@ -27,7 +27,7 @@ sudo chown -R 5984:5984 ./couchdb-etc
 ```
 
 !!! note
-If you need to edit files in `couchdb-etc` manually later, you may need to temporarily change ownership back to your user (`sudo chown -R $USER:$USER ...`) or use `sudo`.
+    If you need to edit files in `couchdb-etc` manually later, you may need to temporarily change ownership back to your user (`sudo chown -R $USER:$USER ...`) or use `sudo`.
 
 ### 2. Configuration File (`docker.ini`)
 
@@ -71,7 +71,7 @@ max_age = 3600
 Create the `compose.yaml` file.
 
 !!! warning "Environment Variables"
-This compose file uses `${COUCHDB_USER}` and `${COUCHDB_PASSWORD}`. You must either create a `.env` file in the same directory with these values or replace them directly in the file.
+    This compose file uses `${COUCHDB_USER}` and `${COUCHDB_PASSWORD}`. You must either create a `.env` file in the same directory with these values or replace them directly in the file.
 
 ```yaml
 services:

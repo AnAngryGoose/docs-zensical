@@ -7,6 +7,12 @@ General reference for Linux server and NAS administration on Debian. Covers init
 
 <div class="grid cards" markdown>
 
+-   :lucide-terminal:{ .lg .middle } __[Cheatsheet](cheatsheet.md)__
+
+    ---
+
+    One-page quick reference for the most-used Linux commands.
+
 -   :lucide-server:{ .lg .middle } __[Server Setup](pcsetup.md)__
 
     ---

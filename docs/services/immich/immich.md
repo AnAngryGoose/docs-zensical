@@ -19,8 +19,8 @@ Immich is designed to be run via Docker Compose. While there is a monolithic "al
 Because Immich uses modular configuration files for hardware acceleration, you **must** download two helper files into your directory before running the compose file.
 
 ```bash
-wget [https://github.com/immich-app/immich/releases/latest/download/hwaccel.ml.yml](https://github.com/immich-app/immich/releases/latest/download/hwaccel.ml.yml)
-wget [https://github.com/immich-app/immich/releases/latest/download/hwaccel.transcoding.yml](https://github.com/immich-app/immich/releases/latest/download/hwaccel.transcoding.yml)
+wget https://github.com/immich-app/immich/releases/latest/download/hwaccel.ml.yml
+wget https://github.com/immich-app/immich/releases/latest/download/hwaccel.transcoding.yml
 
 ```
 
@@ -29,15 +29,15 @@ wget [https://github.com/immich-app/immich/releases/latest/download/hwaccel.tran
 Create a `.env` file in the same directory to handle your storage locations and database passwords.
 
 !!! note "Hardware Note"
-This configuration is optimized for an **Intel i5-8500T** using Intel QuickSync and OpenVINO. If you have a dedicated GPU, you will need to adjust the `service: quicksync` and `service: openvino` lines.
+    This configuration is optimized for an **Intel i5-8500T** using Intel QuickSync and OpenVINO. If you have a dedicated GPU, you will need to adjust the `service: quicksync` and `service: openvino` lines.
 
 ```yaml
 #
-# WARNING: To install Immich, follow our guide: [https://docs.immich.app/install/docker-compose](https://docs.immich.app/install/docker-compose)
+# WARNING: To install Immich, follow our guide: https://docs.immich.app/install/docker-compose
 #
 # Make sure to use the docker-compose.yml of the current release:
 #
-# [https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml](https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml)
+# https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml
 #
 # The compose file on main may not be compatible with the latest release.
 
@@ -70,7 +70,7 @@ services:
     # For hardware acceleration, add one of -[armnn, cuda, rocm, openvino, rknn] to the image tag.
     # Example tag: ${IMMICH_VERSION:-release}-cuda
     image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}-openvino
-    extends: # uncomment this section for hardware acceleration - see [https://docs.immich.app/features/ml-hardware-acceleration](https://docs.immich.app/features/ml-hardware-acceleration)
+    extends: # uncomment this section for hardware acceleration - see https://docs.immich.app/features/ml-hardware-acceleration
       file: hwaccel.ml.yml
       service: openvino # set to one of [armnn, cuda, rocm, openvino, openvino-wsl, rknn] for accelerated inference - use the `-wsl` version for WSL2 where applicable
     volumes:
@@ -166,7 +166,7 @@ docker compose logs immich-machine-learning | grep "OpenVINO"
 Immich requires a specific version of Postgres equipped with `pgvector`. This extension allows the database to store "vector embeddings"—mathematical representations of images. This enables smart searches (e.g., searching for "red truck" finds trucks without manual tags).
 
 !!! warning "Performance Tip"
-Unlike Nextcloud, you rarely touch the DB config manually. However, ensure `DB_DATA_LOCATION` in your `.env` points to fast storage (SSD/NVMe). Vector searches on HDDs are noticeably slower.
+    Unlike Nextcloud, you rarely touch the DB config manually. However, ensure `DB_DATA_LOCATION` in your `.env` points to fast storage (SSD/NVMe). Vector searches on HDDs are noticeably slower.
 
 ### Storage Template
 

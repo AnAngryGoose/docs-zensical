@@ -17,7 +17,7 @@ icon: simple/debian
 Get the **[Small Installation Image (Netinst)](https://www.debian.org/distrib/netinst)**.
 
 !!! note "Architecture"
-For Lenovo M920q/M70q nodes, ensure you download the **amd64** ISO.
+    For Lenovo M920q/M70q nodes, ensure you download the **amd64** ISO.
 
 **B. Flash to USB**
 Use **BalenaEtcher**, **Rufus**, or `dd` to write the ISO to a USB drive (4GB+).
@@ -52,12 +52,9 @@ Boot from USB. The Debian installer uses a classic text-based interface. Navigat
 **B. User & Password (Crucial)**
 
 !!! warning "Sudo Configuration"
-**Leave the 'Root password' field BLANK.**
+    **Leave the 'Root password' field BLANK.**
 
-```
-If you leave the root password blank, the installer will automatically install `sudo` and add your new user to the sudo group. If you set a root password now, you will have to manually configure sudo later.
-
-```
+    If you leave the root password blank, the installer will automatically install `sudo` and add your new user to the sudo group. If you set a root password now, you will have to manually configure sudo later.
 
 * **Full name / Username:** Enter your details (e.g., `username`).
 * **Password:** Set a strong password for this user.

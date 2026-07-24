@@ -1,15 +1,13 @@
-# Docker Cheat Sheet & Workflows
-
 ---
-
+icon: lucide/terminal
 tags:
-
-* docker
-* service
-* cheat_sheet
-* infrastructure
-
+  - docker
+  - service
+  - cheat-sheet
+  - infrastructure
 ---
+
+# Docker Cheat Sheet & Workflows
 
 ## 1. Command Reference
 
@@ -24,7 +22,7 @@ tags:
 | `docker compose restart` | Stop then restart containers. Does not rebuild/pull updated images. |
 | `docker compose down` | Stop and remove containers/networks. |
 | `docker compose down -v` | **DANGER:** Removes containers AND **standard volumes**. |
-| `docker compose down --volumes --rmi all --remove-orphans` | **DANGER:** Removes all volumes, images built by container, and orphaned compose files. |
+| `docker compose down --volumes --rmi all --remove-orphans` | **DANGER:** Removes containers, all volumes, all images used by the stack, and orphaned containers not defined in the current compose file. |
 | `docker compose stop` | Stops services without removing containers. |
 | `docker compose pull` | Downloads latest images defined in YAML. |
 | `docker compose logs -f` | Stream logs for all services in the stack. |

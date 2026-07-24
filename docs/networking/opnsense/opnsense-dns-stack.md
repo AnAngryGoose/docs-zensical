@@ -168,7 +168,7 @@ If you are running Omada managed switches or APs on a dedicated MANAGEMENT VLAN,
 
 !!!warning
 
- Unbound forwards `.internal` queries to dnsmasq instead of trying to resolve them recursively (which would fail — `.internal` is not a real TLD).
+    Unbound forwards `.internal` queries to dnsmasq instead of trying to resolve them recursively (which would fail — `.internal` is not a real TLD).
 
 | Domain | Server IP | Port | Description |
 |---|---|---|---|

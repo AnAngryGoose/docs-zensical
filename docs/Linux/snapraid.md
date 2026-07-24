@@ -38,17 +38,17 @@ To ensure the latest features and compatibility, SnapRAID is often compiled from
 
 ### Compile from Source
 
-Run the following commands to download, compile, and install version 13.0.
+Run the following commands to download, compile, and install version 14.0.
 
 ```bash
 # Download source
-wget https://github.com/amadvance/snapraid/releases/download/v13.0/snapraid-13.0.tar.gz
+wget https://github.com/amadvance/snapraid/releases/download/v14.0/snapraid-14.0.tar.gz
 
 # Extract archive
-tar xzvf snapraid-13.0.tar.gz
+tar xzvf snapraid-14.0.tar.gz
 
 # Enter directory
-cd snapraid
+cd snapraid-14.0
 
 # Compile and Install
 ./autogen.sh

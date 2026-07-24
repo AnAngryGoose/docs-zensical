@@ -26,7 +26,7 @@ This setup below uses NPM to point services to Cloudflare Tunnel. Using a cloudf
 
 !!! success "Recommended"
 
-Create a standalone compose stack for `cloudflared`. This is the only place the tunnel token lives.
+    Create a standalone compose stack for `cloudflared`. This is the only place the tunnel token lives.
 
 `/opt/docker/cloudflared/compose.yaml`
 

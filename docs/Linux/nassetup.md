@@ -222,11 +222,10 @@ Add this line to the bottom of `/etc/fstab`:
 
 ```
 
-* **minfreespace=50G:** Prevents filling a drive completely, which creates fragmentation issues.
 * **cache.files=off:** Disables page caching (reduces RAM usage/complexity).
-* **category.create=mspmfs:** Most Space, Path Most Free Space. Writes new files to the drive with the most free space, unless the path already exists on another drive.
+* **category.create=mspmfs:** **M**ost **S**hared **P**ath, **M**ost **F**ree **S**pace. Of the branches that already share the most of the file's parent path, writes to the one with the most free space.
 * **func.getattr=newest:** Returns file attributes from the file with the newest mtime. Critical for apps like Plex/Kodi to detect changes.
-* **minfreespace=200G:** Prevents filling a drive completely; moves to the next drive when 200GB remains.
+* **minfreespace=100G:** Prevents filling a drive completely; moves to the next drive when 100GB remains (matches the `minfreespace=100G` set above).
 
 
 **C. Activate**
@@ -253,7 +252,7 @@ snapraid --version
 
 ```
 
-**B. Configure `/etc/snapraid.conf**`
+**B. Configure** `/etc/snapraid.conf`
 Backup the default and create your own: `sudo nano /etc/snapraid.conf`
 
 ```text

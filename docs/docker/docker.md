@@ -56,7 +56,7 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 ```
 
 !!!Note
-  The Docker service starts automatically after installation. To verify that Docker is running, use:
+      The Docker service starts automatically after installation. To verify that Docker is running, use:
 
   `sudo systemctl status docker`
 
@@ -88,7 +88,7 @@ Always examine scripts downloaded from the internet before running them locally.
 -   The script isn't designed to upgrade an existing Docker installation. When using the script to update an existing installation, dependencies may not be updated to the expected version, resulting in outdated versions.
 
 !!!Tip
-Preview script steps before running. You can run the script with the `--dry-run` option to learn what steps the script will run when invoked:
+    Preview script steps before running. You can run the script with the `--dry-run` option to learn what steps the script will run when invoked:
 
     $ curl -fsSL https://get.docker.com -o get-docker.sh
     $ sudo sh ./get-docker.sh --dry-run

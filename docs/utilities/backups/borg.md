@@ -43,7 +43,7 @@ If borgmatic is properly installed, that should output your borgmatic version. A
 ### Non-Root Install 
 
 !!! success "Preferred - run as sudo"
-If you only want to run borgmatic as a non-root user (without privileged file access) or you want to make `sudo borgmatic` work so borgmatic runs as root, then install borgmatic as a non-root user by running the following commands as that user:
+    If you only want to run borgmatic as a non-root user (without privileged file access) or you want to make `sudo borgmatic` work so borgmatic runs as root, then install borgmatic as a non-root user by running the following commands as that user:
 
 ```bash
 pipx ensurepath

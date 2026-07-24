@@ -10,7 +10,7 @@ icon: lucide/merge
 
 **MergerFS** is a [union filesystem](https://en.wikipedia.org/wiki/Union_mount) designed to simplify storage management. It pools multiple storage devices (branches) into a single unified directory (mount point).
 
-Unlike RAID, MergerFS does not strip data across drives. Files exist intact on the individual backing drives.
+Unlike RAID, MergerFS does not stripe data across drives. Files exist intact on the individual backing drives.
 
 * **Flexibility:** Drives of different sizes, filesystems, and speeds can be mixed.
 * **Resilience:** If one drive fails, only the data on that specific drive is lost; the rest of the pool remains accessible.
@@ -34,7 +34,8 @@ sudo apt install mergerfs fuse
 
 ## Branch Setup & Preparation
 
-!!! WARNING Important
+!!! warning "Important"
+
     
     Never write data directly to the `/mnt/disk1` folders if you can help it. Always write to `/mnt/storage`. If you modify files on the backing disks directly while MergerFS is running, you might see cache inconsistencies until you remount.
 
@@ -77,7 +78,7 @@ sudo chown root:root /mnt/hdd/10T-XYZ
 sudo chmod 0000 /mnt/hdd/10T-XYZ
 
 # 3. Mark as a specific branch mount (prevents mounting if drive is missing)
-sudo setfattr -n user.mergerfs.branch_mounts_here
+sudo setfattr -n user.mergerfs.branch_mounts_here /mnt/hdd/10T-XYZ
 
 ```
 
@@ -141,7 +142,7 @@ Add the configuration to `/etc/fstab` to ensure the pool mounts at boot.
 **Recommended Options (Linux Kernel v6.6+):**
 
 * `cache.files=off`: Disables page caching (reduces RAM usage/complexity).
-* `category.create=mspmfs`: **M**ost **S**pace, **P**ath **M**ost **F**ree **S**pace. Writes new files to the drive with the most free space, unless the path already exists on another drive.
+* `category.create=mspmfs`: **M**ost **S**hared **P**ath, **M**ost **F**ree **S**pace. Of the branches that already share the most of the file's parent path, writes to the one with the most free space (falls back to most-free-space if the path is new).
 * `func.getattr=newest`: Returns file attributes from the file with the newest `mtime`. Critical for apps like Plex/Kodi to detect changes.
 * `minfreespace=200G`: Prevents filling a drive completely; moves to the next drive when 200GB remains.
 

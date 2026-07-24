@@ -84,9 +84,11 @@ nav = [
 
       {"OPNSense Management VLANs w/ Omada" = "networking/opnsense/managementvlan.md"},
 
+      {"Firewall & Aliases"     = "networking/opnsense/firewall-aliases.md"},
       {"Adguard Home"           = "networking/opnsense/opnsenseadguard.md"},
       {"Tailscale           "   = "networking/opnsense/opnsensetailscale.md"},
       {"Macvlan"                = "networking/opnsense/macvlan.md"},
+      {"Backups & Maintenance"  = "networking/opnsense/maintenance.md"},
     ]},
 
     {"NGINX Proxy Manager" = [

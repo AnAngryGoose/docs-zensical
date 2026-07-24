@@ -1,4 +1,10 @@
-# macvlan 
+---
+icon: lucide/box
+title: Macvlan
+---
+
+# Macvlan
+
 ---
 
 **Without macvlan — the default Docker bridge**
@@ -54,3 +60,93 @@ The fix is either running your MQTT broker in a container too (so it also has it
 ---
 
 So yes — at its simplest, macvlan gives a container its own IP and MAC address so it looks and behaves like a real independent machine on your network. That's exactly what you want for Frigate.
+
+---
+
+## Setting it up
+
+### 1. Create the macvlan network
+
+Create a Docker network tied to the host's physical NIC. Match the subnet, gateway,
+and parent interface to the network the container should join.
+
+```bash
+docker network create -d macvlan \
+  --subnet=192.168.1.0/24 \
+  --gateway=192.168.1.1 \
+  --ip-range=192.168.1.48/28 \      # optional: pool macvlan may hand out
+  -o parent=eth0 \                  # the host's real NIC (check with `ip a`)
+  macvlan-lan
+```
+
+- **`parent`** must be the real interface (`eth0`, `enp3s0`, `eno1`, or a VLAN
+  sub-interface like `eth0.20`). Find it with `ip a`.
+- **`ip-range`** carves out a small block for macvlan so it won't collide with your
+  DHCP pool. Or omit it and assign fixed IPs per container (below).
+
+### 2. Attach a container with a static IP
+
+=== "docker compose"
+
+    ```yaml
+    services:
+      frigate:
+        image: ghcr.io/blakeblackshear/frigate:stable
+        networks:
+          macvlan-lan:
+            ipv4_address: 192.168.1.50   # the container's own IP
+        # no 'ports:' needed — it has a real IP, not a NATed port map
+
+    networks:
+      macvlan-lan:
+        external: true                   # created in step 1
+    ```
+
+=== "docker run"
+
+    ```bash
+    docker run -d --name frigate \
+      --network macvlan-lan \
+      --ip 192.168.1.50 \
+      ghcr.io/blakeblackshear/frigate:stable
+    ```
+
+Now `192.168.1.50` shows up on the network as a distinct device — give it a DHCP
+reservation and DNS entry in OPNsense, and write firewall rules against it.
+
+### 3. Fix host ↔ container communication (the quirk)
+
+As noted above, the host **cannot** talk to its own macvlan containers by default.
+If the host needs to reach the container (or vice-versa), add a macvlan **shim**
+interface on the host that bridges the two:
+
+```bash
+# Create a host-side macvlan interface in the same subnet
+sudo ip link add macvlan-shim link eth0 type macvlan mode bridge
+sudo ip addr add 192.168.1.2/32 dev macvlan-shim
+sudo ip link set macvlan-shim up
+
+# Route the container's IP over the shim
+sudo ip route add 192.168.1.50/32 dev macvlan-shim
+```
+
+!!! warning "The shim is not persistent"
+
+    Those `ip` commands vanish on reboot. Make them permanent with a systemd unit
+    or `/etc/network/interfaces` snippet. In this homelab it's usually unnecessary —
+    Frigate reaches the MQTT broker on the appserver **over the network** through
+    OPNsense, so no shim is needed.
+
+### 4. Notes
+
+- **802.1Q VLANs:** to put a container directly on a VLAN, set `parent=eth0.20`
+  (the tagged sub-interface) and use that VLAN's subnet/gateway.
+- **Promiscuous mode:** the host NIC must allow multiple MACs. Physical NICs are
+  fine; on a VM, enable promiscuous mode on the virtual switch/port group.
+- **Wi-Fi doesn't work** as a macvlan parent — most wireless drivers reject extra
+  MAC addresses. Use a wired NIC.
+
+## Sources
+
+- [Docker — macvlan networks](https://docs.docker.com/engine/network/drivers/macvlan/)
+- [Frigate — network configuration](https://docs.frigate.video/frigate/installation/)

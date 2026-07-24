@@ -1,3 +1,8 @@
+---
+icon: simple/tailscale
+title: Tailscale
+---
+
 # Tailscale & OPNsense Configuration
 
 ---
@@ -130,5 +135,3 @@ To verify the setup is working:
 2. Enable the **Tailscale VPN**.
 3. Attempt to access a service via IP: `http://192.168.0.2:3000` (Should load).
 4. Attempt to access a service via Domain: `http://service.example.com` (Should load).
-
-```

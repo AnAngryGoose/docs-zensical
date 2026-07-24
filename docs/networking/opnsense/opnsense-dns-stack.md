@@ -1,5 +1,7 @@
 ---
 title: DNS Stack — AdGuard + Unbound + dnsmasq
+icon: lucide/layers
+tags:
   - networking
   - dns
   - opnsense

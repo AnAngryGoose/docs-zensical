@@ -37,4 +37,16 @@ OPNsense is the router and firewall for my network. It handles DHCP, DNS, VLANs,
 
     Giving containers their own IP and MAC address so they appear as distinct devices on the network.
 
+-   :lucide-shield:{ .lg .middle } __[Firewall & Aliases](firewall-aliases.md)__
+
+    ---
+
+    The firewall model — rule processing order, aliases, NAT types, and logging.
+
+-   :lucide-save:{ .lg .middle } __[Backups & Maintenance](maintenance.md)__
+
+    ---
+
+    Config backup and restore, firmware updates, plugins, and health monitoring.
+
 </div>
